@@ -1,0 +1,482 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Coaching</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ffc107;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), url('https://via.placeholder.com/1500x800.png?text=Inspiring+Background') no-repeat center center/cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px; /* Adjust based on header height */
+        }
+
+        #hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #e0a800;
+            transform: scale(1.05);
+        }
+
+        /* Sections General Styling */
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            color: #555;
+        }
+
+        /* About Section */
+        #about {
+            background: #fff;
+        }
+
+        #about img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        #services {
+            background: #f4f4f4;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .service-item {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item h4 {
+            font-size: 1.4rem;
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background: #fff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: #f9f9f9;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 5px;
+            font-style: italic;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .testimonial p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .testimonial .author {
+            font-weight: bold;
+            font-style: normal;
+            color: #333;
+            text-align: right;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #333;
+            color: #fff;
+        }
+
+        #contact h3 {
+            color: #fff;
+        }
+
+        #contact p {
+            color: #ccc;
+        }
+
+        #contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            background-color: #444;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffc107;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 0; /* Contact section already has padding */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            header h1 {
+                margin-bottom: 0.5rem;
+            }
+
+            header nav ul {
+                padding-top: 0.5rem;
+            }
+
+            header nav ul li {
+                margin: 0 10px;
+            }
+
+            #hero {
+                height: auto;
+                padding: 100px 20px 60px 20px; /* Adjust padding for header */
+                margin-top: 0; /* Remove margin-top as header is now part of flow or handled differently */
+            }
+
+            #hero h2 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            section h3 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid, .testimonial-grid {
+                grid-template-columns: 1fr; /* Stack items on smaller screens */
+            }
+        }
+
+        @media (max-width: 500px) {
+            header nav ul {
+                 flex-direction: column;
+                 align-items: center;
+             }
+             header nav ul li {
+                 margin: 5px 0;
+             }
+            #hero h2 {
+                font-size: 2rem;
+            }
+            .cta-button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Your Name Coaching</h1>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h2>Unlock Your Potential</h2>
+            <p>Partner with me to achieve your personal and professional goals. Let's build the future you deserve.</p>
+            <a href="#contact" class="cta-button">Book a Free Consultation</a>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <img src="https://via.placeholder.com/200x200.png?text=Your+Photo" alt="Your Name - Coach">
+                <h3>About Me</h3>
+                <p>Hi, I'm [Your Name], a certified professional coach dedicated to helping individuals like you overcome obstacles, gain clarity, and create meaningful change. With [X] years of experience in [Your Niche/Area], I provide tailored guidance and support to empower you on your journey.</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h3>How I Can Help You</h3>
+                <p>I offer personalized coaching programs designed to meet your unique needs:</p>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h4>Life Coaching</h4>
+                        <p>Navigate life transitions, improve relationships, find balance, and boost overall well-being.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Career Coaching</h4>
+                        <p>Advance your career, explore new paths, develop leadership skills, and find fulfilling work.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Executive Coaching</h4>
+                        <p>Enhance leadership effectiveness, improve team dynamics, and drive organizational success.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Custom Programs</h4>
+                        <p>Tailored coaching packages addressing specific goals or challenges you're facing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h3>What Clients Say</h3>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p>"Working with [Your Name] was transformative. I gained clarity on my goals and developed actionable steps to achieve them. Highly recommend!"</p>
+                        <p class="author">- Client A</p>
+                    </div>
+                    <div class="testimonial">
+                        <p>"[Your Name]'s guidance was invaluable during my career transition. I felt supported and motivated throughout the process."</p>
+                        <p class="author">- Client B</p>
+                    </div>
+                     <div class="testimonial">
+                        <p>"The insights and tools I gained from coaching have significantly improved my leadership skills and confidence."</p>
+                        <p class="author">- Client C</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h3>Ready to Start Your Journey?</h3>
+                <p>Reach out for a free, no-obligation consultation call to discuss how coaching can benefit you.</p>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name Coaching. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form submission handler (for demonstration)
+        const contactForm = document.getElementById('contact-form');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent actual form submission
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                // Basic validation
+                if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+
+                // You would typically send this data to a server here
+                // For this example, we'll just show an alert
+                alert(`Thank you, ${name}! Your message has been received (demo). We will contact you at ${email} soon.`);
+
+                // Optionally, reset the form
+                contactForm.reset();
+            });
+        }
+
+        // Smooth scroll for navigation links (already handled by CSS `scroll-behavior: smooth;`)
+        // Adding JS for broader browser compatibility or more complex behavior if needed.
+        // For this simple case, CSS is sufficient.
+
+        // Example: Add active class to nav links on scroll (More complex - might skip for simplicity)
+        // Example: Simple fade-in effect for sections (Requires Intersection Observer API)
+
+    </script>
+
+</body>
+</html>
+```
