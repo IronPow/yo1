@@ -4,44 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WonderSpark Toys - Unlock Worlds of Play & Imagination!</title>
+    <title>Nexus AI Dynamics | Amplify Intelligence. Architect Your Advantage.</title>
     <style>
-        /* --- CSS Reset & Basic Setup --- */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #4a4ae4; /* Electric Blue */
+            --secondary-color: #8e44ad; /* Vibrant Purple */
+            --dark-bg: #12121f; /* Deep Charcoal/Navy */
+            --medium-bg: #1a1a2e;
+            --light-bg: #2a2a3e;
+            --text-light: #f0f0f0;
+            --text-medium: #c0c0c0;
+            --text-dark: #1a1a2e;
+            --accent-glow: rgba(74, 74, 228, 0.5);
+            --border-color: rgba(240, 240, 240, 0.2);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --font-primary: 'Poppins', 'Arial', sans-serif; /* Using Poppins, provide fallback */
+            --transition-speed: 0.3s;
+            --container-width: 1200px;
         }
 
-        :root {
-            /* Color Palette */
-            --clr-primary: #00BFA6; /* Bright Teal */
-            --clr-secondary: #FFD600; /* Sunny Yellow */
-            --clr-accent1: #FF7066; /* Playful Coral */
-            --clr-accent2: #3A506B; /* Deep Blue */
-            --clr-light: #F8F9FA; /* Off-white */
-            --clr-dark: #333333; /* Dark Grey */
-            --clr-text: #444444;
-            --clr-white: #ffffff;
+        /* Basic Reset & Font Loading (Simulated - Use @import or link for real fonts) */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-            /* Fonts */
-            --font-heading: 'Nunito', 'Arial Rounded MT Bold', sans-serif;
-            --font-body: 'Open Sans', 'Verdana', sans-serif;
-
-            /* Spacing */
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
-
-            /* Effects */
-            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.15);
-            --border-radius-sm: 8px;
-            --border-radius-md: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -50,1067 +39,912 @@
         }
 
         body {
-            font-family: var(--font-body);
-            color: var(--clr-text);
-            background-color: var(--clr-light);
-            line-height: 1.6;
+            font-family: var(--font-primary);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.7;
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        img, svg {
-            display: block;
+        /* --- Utility Classes --- */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 2.5rem; text-align: center; }
+        h3 { font-size: 1.6rem; }
+        h4 { font-size: 1.2rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-medium);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img { /* Basic responsive images */
             max-width: 100%;
             height: auto;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            color: var(--clr-accent2);
-            margin-bottom: var(--space-sm);
-            line-height: 1.2;
-        }
-
-        h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
-        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
-        h3 { font-size: clamp(1.4rem, 4vw, 2rem); }
-
-        p {
-            margin-bottom: var(--space-md);
-        }
-
-        a {
-            color: var(--clr-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover, a:focus {
-            color: var(--clr-accent1);
-            text-decoration: underline;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--space-sm);
-            padding-right: var(--space-sm);
-        }
-
-        .section {
-            padding: var(--space-lg) 0;
-        }
-
-        @media (min-width: 768px) {
-            .section {
-                padding: var(--space-xl) 0;
-            }
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-
-        /* --- Buttons --- */
+        /* --- Button Styling --- */
         .btn {
             display: inline-block;
-            padding: 0.9em 1.8em;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1rem;
-            text-align: center;
-            text-decoration: none;
-            border: none;
+            padding: 12px 30px;
             border-radius: 50px; /* Pill shape */
+            font-weight: 600;
+            text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
+            transition: all var(--transition-speed) ease;
+            border: none;
+            font-size: 1rem;
         }
 
         .btn-primary {
-            background-color: var(--clr-accent1);
-            color: var(--clr-white);
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-primary:hover, .btn-primary:focus {
-            background-color: #E55A50; /* Darker Coral */
-            color: var(--clr-white);
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: var(--shadow-medium);
-            text-decoration: none;
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); /* Shift gradient */
+            color: var(--text-light); /* Ensure text stays light on hover */
         }
 
         .btn-secondary {
-            background-color: var(--clr-secondary);
-            color: var(--clr-accent2);
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
         }
 
-        .btn-secondary:hover, .btn-secondary:focus {
-            background-color: #E6C000; /* Darker Yellow */
-            color: var(--clr-accent2);
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: var(--text-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
+            box-shadow: 0 4px 10px var(--accent-glow);
         }
 
-        .btn-small {
-            padding: 0.5em 1em;
-            font-size: 0.9rem;
-        }
-
-        /* --- Hero Section --- */
+        /* --- Header / Hero Section --- */
         .hero {
-            background-color: var(--clr-primary); /* Fallback color */
-            /* Placeholder comment for banner image/illustration */
-            /* background-image: linear-gradient(rgba(0, 191, 166, 0.8), rgba(0, 191, 166, 0.9)), url('placeholder-hero-banner.jpg'); */
-            background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
-            background-size: cover;
-            background-position: center;
-            color: var(--clr-white);
-            padding: var(--space-xl) 0;
-            min-height: 70vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 40px 20px; /* Padding for smaller screens */
+            background-color: var(--dark-bg); /* Fallback */
+            background-image: linear-gradient(135deg, var(--dark-bg) 0%, #1f1f3f 50%, var(--dark-bg) 100%);
+            animation: animatedBackground 20s ease infinite;
+            background-size: 400% 400%;
         }
 
-        .hero::before, .hero::after { /* Decorative shapes */
+        @keyframes animatedBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before { /* Subtle overlay pattern or dots - placeholder */
             content: '';
             position: absolute;
-            border-radius: 50%;
-            opacity: 0.15;
-            z-index: 1;
-        }
-        .hero::before {
-            width: 150px;
-            height: 150px;
-            background-color: var(--clr-white);
-            bottom: 10%;
-            left: 5%;
-            animation: float 6s ease-in-out infinite;
-        }
-        .hero::after {
-            width: 80px;
-            height: 80px;
-            background-color: var(--clr-accent1);
-            top: 15%;
-            right: 10%;
-            animation: float 8s ease-in-out infinite 1s; /* Delay second shape */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         .hero-content {
-            position: relative;
+            position: relative; /* Above pseudo-elements */
             z-index: 2;
-            max-width: 700px;
+            max-width: 800px;
         }
 
         .hero h1 {
-            color: var(--clr-white);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            margin-bottom: var(--space-sm);
+            font-size: 3rem; /* Slightly smaller on mobile */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block; /* For typing animation */
+            /* Typing Animation - Apply via class or directly */
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            white-space: nowrap; /* Keeps the content on a single line */
+            animation: typing 3.5s steps(40, end) forwards;
+                 /* border-right: .15em solid var(--primary-color); /* The typwriter cursor - optional */
+                 /* animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; */
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: var(--space-md);
-            opacity: 0.95;
+        /* Typing animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Optional Blinking Cursor */
+        /* @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        } */
+
+        .hero .sub-headline {
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 3.5s forwards; /* Delay after typing */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero .btn-primary {
-            font-size: 1.2rem;
-            padding: 1em 2.5em;
+             opacity: 0;
+             animation: fadeIn 1s ease 4s forwards; /* Delay after sub-headline */
         }
 
-        /* Subtle animation for hero elements */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        /* --- Section Styling --- */
+        section {
+            padding: 80px 0;
         }
 
-        /* Placeholder for CSS character */
-        .hero-character {
-            width: 80px;
-            height: 100px;
-            background: var(--clr-accent1);
-            border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; /* Simple blob shape */
-            position: absolute;
-            bottom: 10px;
-            right: 5%;
-            transform: rotate(-15deg);
-            z-index: 2;
-            box-shadow: var(--shadow-light);
-            animation: peek 10s ease-in-out infinite;
-            display: none; /* Hidden on small screens by default */
-        }
-        .hero-character::before { /* Eye */
-            content:'';
-            position: absolute;
-            width: 15px; height: 15px; background: var(--clr-white); border-radius: 50%;
-            top: 30%; left: 30%;
-        }
-        .hero-character::after { /* Eye */
-            content:'';
-            position: absolute;
-            width: 15px; height: 15px; background: var(--clr-white); border-radius: 50%;
-            top: 30%; right: 30%;
+        section:nth-of-type(even) {
+            background-color: var(--medium-bg);
         }
 
-        @keyframes peek {
-            0%, 100% { transform: translateY(30px) rotate(-15deg); opacity: 0.7;}
-            50% { transform: translateY(0) rotate(-10deg); opacity: 1;}
-        }
+        /* --- Intelligence Gap Section --- */
+        #problem { background-color: var(--medium-bg); }
 
-        @media (min-width: 768px) {
-            .hero { min-height: 80vh; }
-            .hero-character { display: block; }
-        }
-        @media (min-width: 1024px) {
-            .hero { min-height: 90vh; }
-            .hero-character { width: 120px; height: 150px; bottom: 20px; right: 8%; }
-            .hero-character::before, .hero-character::after { width: 20px; height: 20px; }
-        }
-
-
-        /* --- Discover Section (Categories/Age) --- */
-        .discover {
-            background-color: var(--clr-white);
-        }
-
-        .discover-grid {
+        .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-md);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .discover-card {
-            background-color: var(--clr-light);
-            padding: var(--space-md) var(--space-sm);
-            border-radius: var(--border-radius-md);
+        .problem-item {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
             text-align: center;
-            text-decoration: none;
-            color: var(--clr-text);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
-        .discover-card:hover, .discover-card:focus {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: var(--shadow-medium);
-            background-color: var(--clr-secondary);
-            color: var(--clr-accent2);
-        }
-
-        .discover-card::before { /* Fun background pattern on hover */
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: radial-gradient(var(--clr-primary) 15%, transparent 16%);
-            background-size: 30px 30px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-        }
-
-        .discover-card:hover::before, .discover-card:focus::before {
-            opacity: 0.1;
-        }
-
-
-        .discover-card-icon {
-            font-size: 2.5rem; /* Placeholder for icon */
-            margin-bottom: var(--space-sm);
-            display: block;
-            color: var(--clr-primary);
-            transition: color 0.3s ease;
-            position: relative; /* Ensure icon is above pseudo-element */
-            z-index: 2;
-        }
-
-        .discover-card:hover .discover-card-icon,
-        .discover-card:focus .discover-card-icon {
-            color: var(--clr-accent1);
-            transform: rotate(10deg) scale(1.1); /* Playful rotation */
-        }
-
-        .discover-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            color: var(--clr-accent2);
-            position: relative; /* Ensure text is above pseudo-element */
-            z-index: 2;
-        }
-
-        .discover-card:hover h3, .discover-card:focus h3 {
-             color: var(--clr-accent2);
-        }
-
-        /* --- Featured Products Section --- */
-        .featured {
-            background-color: var(--clr-light);
-            overflow: hidden; /* Needed for horizontal scrollbar */
-        }
-
-        .featured h2 { margin-bottom: var(--space-md); }
-
-        .featured-scroll-container {
-            display: flex;
-            overflow-x: auto;
-            gap: var(--space-md);
-            padding: var(--space-sm) 0 var(--space-lg) 0; /* Add padding for scrollbar and shadow */
-            scrollbar-width: thin; /* Firefox */
-            scrollbar-color: var(--clr-primary) var(--clr-light); /* Firefox */
-        }
-
-        /* Webkit Scrollbar Styles */
-        .featured-scroll-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .featured-scroll-container::-webkit-scrollbar-track {
-            background: var(--clr-light);
-            border-radius: 10px;
-        }
-        .featured-scroll-container::-webkit-scrollbar-thumb {
-            background-color: var(--clr-primary);
-            border-radius: 10px;
-            border: 2px solid var(--clr-light);
-        }
-
-        .product-card {
-            flex: 0 0 calc(80% - var(--space-md)); /* Show most of one card, hint of next */
-            max-width: 280px; /* Max width for larger screens */
-            background-color: var(--clr-white);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--shadow-light);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product-card:hover {
+        .problem-item:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .product-image-placeholder {
-            height: 200px;
-            background-color: var(--clr-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--clr-accent2);
-            font-weight: bold;
-            /* Placeholder for actual image */
-            /* background-image: url('placeholder-product1.jpg'); */
-            /* background-size: cover; */
-            /* background-position: center; */
-            font-size: 0.9rem;
-            text-align: center;
-            padding: var(--space-sm);
-        }
-
-        .product-info {
-            padding: var(--space-md);
-        }
-
-        .product-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: var(--space-xs);
-            color: var(--clr-accent2);
-        }
-
-        .product-info p {
-            font-size: 0.9rem;
-            margin-bottom: var(--space-sm);
-            min-height: 3em; /* Ensure consistent card height */
-        }
-
-        .product-info .btn-small {
-             display: block;
-             width: 100%;
-             margin-top: auto; /* Push button to bottom if using flex column */
-        }
-
-        @media (min-width: 600px) {
-            .product-card {
-                flex-basis: calc(45% - var(--space-md)); /* Show more cards */
-            }
-        }
-
-        @media (min-width: 992px) {
-            .featured-scroll-container {
-                /* Switch to grid on larger screens if preferred */
-                 display: grid;
-                 grid-template-columns: repeat(4, 1fr);
-                 overflow-x: visible;
-                 padding-bottom: var(--space-sm);
-            }
-             .product-card {
-                 flex-basis: auto; /* Reset flex basis for grid */
-                 max-width: none;
-             }
-        }
-
-        /* --- Why Choose Us Section --- */
-        .promise {
-            background-color: #E0F2F7; /* Light Blue/Teal background */
-        }
-
-        .promise-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-            margin-top: var(--space-md);
-        }
-
-        @media (min-width: 576px) {
-            .promise-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 992px) {
-            .promise-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .promise-item {
-            text-align: center;
-        }
-
-        .promise-icon {
+        .problem-icon {
+            font-size: 2.5rem; /* Placeholder for actual icon */
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            /* Basic Placeholder Shape */
             display: inline-block;
-            font-size: 3rem; /* Placeholder size */
-            margin-bottom: var(--space-sm);
-            color: var(--clr-primary);
-            /* Placeholder - Replace with actual icons (SVG/FontAwesome) */
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            line-height: 50px; /* Center text if needed */
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        .problem-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Capabilities Section --- */
+        #capabilities { background-color: var(--dark-bg); }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .capability-card {
+            background-color: var(--medium-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            position: relative; /* Needed for absolute positioned description */
+            min-height: 250px; /* Ensure cards have some height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically initially */
+            padding: 30px;
+            text-align: center;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .capability-icon {
+            font-size: 3rem; /* Placeholder for actual icon */
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            transition: transform var(--transition-speed) ease;
+            /* Basic Placeholder Shape */
+            display: inline-block;
             width: 60px;
             height: 60px;
-            background-color: var(--clr-white);
-            border-radius: 50%;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px; /* Squircle */
+            line-height: 56px; /* Center text if needed */
+            margin: 0 auto 1rem auto; /* Center the icon block */
+        }
+
+         .capability-card:hover .capability-icon {
+            transform: scale(1.1);
+         }
+
+        .capability-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .capability-description {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-top: 10px; /* Add space when revealed */
+        }
+
+        .capability-card:hover .capability-description {
+            max-height: 150px; /* Adjust as needed */
+            opacity: 1;
+        }
+
+        .capability-card:hover h4 { /* Maybe shift title up slightly on hover */
+             /* transform: translateY(-5px); */
+        }
+
+        /* --- Process Section --- */
+        #process { background-color: var(--medium-bg); }
+
+        .process-steps {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: var(--shadow-light);
-        }
-        /* Example Icon Placeholders (Unicode - may vary by browser/OS) */
-        .icon-quality::after { content: '⭐'; } /* Star */
-        .icon-safety::after { content: '✔️'; } /* Checkmark */
-        .icon-learning::after { content: '💡'; } /* Lightbulb */
-        .icon-curated::after { content: '✨'; } /* Sparkles */
-
-        .promise-item h3 {
-            font-size: 1.2rem;
-            color: var(--clr-accent2);
-        }
-
-        .promise-item p {
-            font-size: 0.95rem;
-            color: var(--clr-text);
-        }
-
-
-        /* --- Imagination Hub Section --- */
-        .imagination-hub {
-            background-color: var(--clr-secondary); /* Yellow background */
-            color: var(--clr-accent2);
-            padding: var(--space-lg) 0;
+            justify-content: space-between;
+            margin-top: 50px;
             position: relative;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
-        .imagination-hub::before { /* Wavy top border */
+        /* Dashed line connecting steps (pseudo-element) */
+        .process-steps::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px; /* Adjust height */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' style='fill:%23e0f2f7;'%3E%3C/path%3E%3C/svg%3E"); /* SVG Background using previous section color*/
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: bottom;
-            transform: translateY(-99%); /* Position above */
+            top: 40px; /* Adjust vertical position of the line */
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background-image: linear-gradient(to right, var(--primary-color) 50%, transparent 50%);
+            background-size: 20px 2px;
+            background-repeat: repeat-x;
+            z-index: 0;
+            display: none; /* Hide line on small screens initially */
         }
 
-
-        .hub-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .hub-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .hub-image-placeholder {
-            height: 300px;
-            background-color: var(--clr-accent1); /* Coral placeholder */
-            border-radius: var(--border-radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--clr-white);
-            font-weight: bold;
+        .process-step {
+            flex-basis: calc(25% - 20px); /* 4 steps, adjust gap */
             text-align: center;
-            padding: var(--space-sm);
-            /* background-image: url('placeholder-hub-image.jpg'); */
-            /* background-size: cover; */
-            /* background-position: center; */
-            box-shadow: var(--shadow-medium);
-        }
-
-        .hub-text h3 {
-            color: var(--clr-accent2); /* Override default heading color */
-        }
-        .hub-text p {
-            color: var(--clr-accent2); /* Use accent color for text here */
-            font-size: 1.05rem;
-        }
-
-
-        /* --- Testimonials Section --- */
-        .testimonials {
-             background-color: var(--clr-white);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-            margin-top: var(--space-md);
-        }
-
-        @media (min-width: 768px) {
-            .testimonial-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-         @media (min-width: 1024px) {
-            .testimonial-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .testimonial-card {
-            background-color: var(--clr-light);
-            padding: var(--space-md);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--shadow-light);
             position: relative;
-            border-left: 5px solid var(--clr-primary);
+            z-index: 1;
+            padding: 20px;
+            margin-bottom: 30px; /* Space for wrapping */
         }
 
-        .testimonial-card::before { /* Quote symbol */
+        .step-number {
+            width: 80px;
+            height: 80px;
+            line-height: 76px; /* Adjust for border */
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            background-color: var(--medium-bg); /* Ensure it sits above the line */
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1rem auto;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .process-step:hover .step-number {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .process-step h4 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        /* --- Proof/Industries Section --- */
+        #proof { background-color: var(--dark-bg); }
+
+        .industries-logos, .client-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            filter: grayscale(80%) opacity(0.7); /* Subtle look */
+            transition: filter var(--transition-speed) ease;
+        }
+         .industries-logos:hover, .client-logos:hover {
+             filter: grayscale(0%) opacity(1);
+         }
+
+
+        .logo-placeholder {
+            /* Placeholder styling */
+            padding: 10px 20px;
+            border: 1px dashed var(--border-color);
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            min-width: 120px; /* Ensure some width */
+            text-align: center;
+        }
+
+        .testimonials {
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background-color: var(--medium-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .testimonial::before { /* Quote icon styling */
             content: '“';
-            font-family: serif;
-            font-size: 4rem;
-            color: var(--clr-primary);
-            opacity: 0.2;
             position: absolute;
-            top: 5px;
+            top: 10px;
             left: 15px;
+            font-size: 4rem;
+            color: rgba(142, 68, 173, 0.2); /* Faded secondary color */
             line-height: 1;
         }
 
-        .testimonial-quote {
+        .testimonial blockquote {
             font-style: italic;
-            margin-bottom: var(--space-sm);
-            position: relative; /* Ensure text is above quote symbol */
+            margin-bottom: 1rem;
+            position: relative; /* Ensure text is above quote icon */
             z-index: 1;
+            padding-left: 10px; /* Space from quote icon */
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--clr-accent2);
-            font-size: 0.9rem;
+        .testimonial cite {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
+            margin-top: 1rem;
             text-align: right;
         }
-        .testimonial-author span {
-             display: block;
-             font-weight: normal;
-             font-size: 0.8rem;
-             color: var(--clr-text);
-             opacity: 0.8;
-        }
 
-
-        /* --- Newsletter Section --- */
-        .newsletter {
-            background-color: var(--clr-accent1); /* Coral background */
-            color: var(--clr-white);
-            padding: var(--space-lg) 0;
+        /* --- CTA Trigger Section --- */
+        #cta-trigger {
+            background: var(--gradient-primary);
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 80px 0;
         }
 
-        /* Add some playful background elements */
-        .newsletter::before, .newsletter::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            animation: float 7s ease-in-out infinite alternate;
-        }
-        .newsletter::before {
-            width: 120px; height: 120px;
-            top: -30px; left: 10%;
-        }
-        .newsletter::after {
-            width: 70px; height: 70px;
-            bottom: -20px; right: 15%;
-            animation-delay: 1.5s;
+        #cta-trigger h2 {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
         }
 
-
-        .newsletter h2 {
-            color: var(--clr-white);
-            margin-bottom: var(--space-xs);
-        }
-
-        .newsletter p {
-            margin-bottom: var(--space-md);
-            max-width: 500px;
+        #cta-trigger p {
+            color: var(--text-light);
+            opacity: 0.9;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 2rem;
         }
 
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-            max-width: 450px;
-            margin: 0 auto;
+        #cta-trigger .btn {
+             background: var(--text-light);
+             color: var(--primary-color);
+             padding: 15px 40px;
+             font-size: 1.1rem;
         }
-
-        @media (min-width: 576px) {
-            .newsletter-form {
-                flex-direction: row;
-            }
-        }
-
-        .newsletter-input {
-            flex-grow: 1;
-            padding: 0.8em 1.2em;
-            border: 1px solid var(--clr-white);
-            border-radius: 50px;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: var(--clr-dark);
-            font-family: var(--font-body);
-            font-size: 1rem;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-         .newsletter-input::placeholder {
-            color: #999;
-            opacity: 1;
+         #cta-trigger .btn:hover {
+             background: var(--dark-bg);
+             color: var(--text-light);
+             transform: translateY(-3px) scale(1.05);
+             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
          }
 
-        .newsletter-submit {
-             /* Use btn styles but customize colors */
-            display: inline-block;
-            padding: 0.9em 1.8em;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1rem;
-            text-align: center;
+
+        /* --- CSS Pop-Up Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 18, 31, 0.9); /* Dark semi-transparent bg */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-speed) ease, visibility 0s linear var(--transition-speed);
+        }
+
+        .modal-content {
+            background-color: var(--medium-bg);
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        /* Show modal using :target */
+        .modal-overlay:target {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .modal-overlay:target .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--text-medium);
+            font-size: 1.8rem;
+            font-weight: bold;
+            line-height: 1;
             text-decoration: none;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
-            background-color: var(--clr-accent2); /* Deep Blue */
-            color: var(--clr-white);
-            flex-shrink: 0; /* Prevent shrinking in flex row */
+            transition: color var(--transition-speed) ease;
         }
 
-        .newsletter-submit:hover, .newsletter-submit:focus {
-            background-color: #2C3E50; /* Darker Blue */
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+        .modal-close:hover {
+            color: var(--primary-color);
         }
 
+        .modal-content h3 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
 
-        /* --- Footer --- */
-        .footer {
-            background-color: var(--clr-accent2); /* Deep Blue */
-            color: var(--clr-light);
-            padding: var(--space-lg) 0 var(--space-md) 0;
+        .modal-content p {
+            text-align: center;
+            margin-bottom: 2rem;
             font-size: 0.9rem;
         }
 
-        .footer a {
-            color: var(--clr-secondary); /* Yellow links */
-            text-decoration: none;
+        /* Form styling */
+        .modal-form .form-group {
+            margin-bottom: 1.5rem;
         }
 
-        .footer a:hover, .footer a:focus {
-            color: var(--clr-white);
-            text-decoration: underline;
+        .modal-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .modal-form input[type="text"],
+        .modal-form input[type="email"],
+        .modal-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-bg);
+            color: var(--text-light);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .modal-form input[type="text"]:focus,
+        .modal-form input[type="email"]:focus,
+        .modal-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .modal-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-form .btn-submit { /* Placeholder button */
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .modal-form .btn-submit:hover {
+             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+             box-shadow: 0 6px 15px var(--accent-glow);
+             transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-medium);
+            padding: 40px 0 20px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-md);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .footer-left p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            margin-left: 15px;
+            color: var(--text-medium);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-social a {
+            margin-left: 10px;
+            font-size: 1.2rem; /* Placeholder size */
+            color: var(--text-medium);
+            /* Basic Placeholder Icon Shape */
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
             text-align: center;
+            border: 1px solid var(--text-medium);
+            border-radius: 50%;
         }
 
-        @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: repeat(3, 1fr);
-                text-align: left;
-                gap: var(--space-lg);
-            }
-            .footer-copyright {
-                 grid-column: 1 / -1; /* Span full width */
-                 text-align: center;
-                 margin-top: var(--space-md);
-                 padding-top: var(--space-md);
-                 border-top: 1px solid rgba(255, 255, 255, 0.1);
-             }
+        .footer-social a:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: scale(1.1);
         }
 
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            .container { padding: 40px 0; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .sub-headline { font-size: 1.1rem; }
 
-        .footer-links ul, .footer-contact ul, .footer-info ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li, .footer-contact li, .footer-info li {
-            margin-bottom: var(--space-xs);
-        }
-
-        .footer h4 {
-            color: var(--clr-white);
-            margin-bottom: var(--space-sm);
-            font-size: 1.1rem;
+            .process-steps::before { display: none; } /* Hide line on smaller screens */
+            .process-step { flex-basis: calc(50% - 20px); } /* 2 steps per row */
         }
 
-        .footer-social, .footer-payments {
-            margin-top: var(--space-sm);
-        }
-        .footer-social span, .footer-payments span {
-             display: block;
-             margin-bottom: var(--space-xs);
-             font-weight: bold;
-        }
-        .footer-payments span:last-child { /* Placeholder for payment logos */
-             font-size: 1.5rem;
-             letter-spacing: 5px;
-             color: var(--clr-secondary);
-             /* Example: Replace with actual logos/icons */
-        }
-         .footer-social a { /* Placeholder for social icons */
-             display: inline-block;
-             margin: 0 var(--space-xs);
-             font-size: 1.4rem;
-         }
-         .footer-social a::before {
-             /* Placeholder Icons (Replace with actual SVGs/FontAwesome) */
-             display: inline-block; font-family: sans-serif; width: 30px; height: 30px; line-height: 30px; text-align: center; background: var(--clr-primary); color: var(--clr-white); border-radius: 50%; font-size: 0.9rem; font-weight: bold; margin: 0 2px;
-         }
-         .footer-social a[href*="facebook"]::before { content: 'f'; }
-         .footer-social a[href*="instagram"]::before { content: 'i'; }
-         .footer-social a[href*="pinterest"]::before { content: 'p'; }
+        @media (max-width: 768px) {
+            html { font-size: 15px; }
+            h1 { font-size: 2rem; }
+            .hero { min-height: 80vh; }
+            .hero h1 { animation: none; white-space: normal; border: none; font-size: 2rem; } /* Disable typing on small screens for simplicity */
+            .hero .sub-headline { animation: none; opacity: 1; }
+            .hero .btn-primary { animation: none; opacity: 1; }
 
-        .footer-copyright {
-             margin-top: var(--space-lg);
-             padding-top: var(--space-md);
-             border-top: 1px solid rgba(255, 255, 255, 0.1);
-             text-align: center;
-             font-size: 0.85rem;
-             opacity: 0.8;
+            .problem-grid, .capabilities-grid { grid-template-columns: 1fr; } /* Stack items */
+            .process-step { flex-basis: 100%; } /* Stack steps */
+
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { margin-top: 10px; margin-bottom: 10px; }
+            .footer-links a { margin: 0 8px; }
+            .footer-social { margin-top: 10px; }
         }
 
-         @media (max-width: 767px) { /* Center copyright on mobile */
-             .footer-copyright {
-                 grid-column: 1 / -1; /* Ensure it's centered below others */
-             }
+         @media (max-width: 480px) {
+             html { font-size: 14px; }
+             .container { width: 95%; }
+             .hero { padding: 60px 15px; min-height: 70vh;}
+             .hero h1 { font-size: 1.8rem; }
+             .hero .sub-headline { font-size: 1rem; }
+             .btn { padding: 10px 20px; font-size: 0.9rem; }
+             .modal-content { padding: 30px 20px; width: 95%; }
+             .modal-form input[type="text"],
+             .modal-form input[type="email"],
+             .modal-form textarea { padding: 10px; }
+             .footer-links a { display: block; margin: 5px 0; }
          }
 
 
     </style>
-    <!-- Consider linking Google Fonts if needed, placed here -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ===== Hero Section ===== -->
-    <header class="hero" id="home">
-        <div class="hero-content container">
-            <h1>WonderSpark: Unlock Worlds of Play & Imagination!</h1>
-            <p>Curated, quality toys that inspire creativity, learning, and endless fun. Let the adventure begin!</p>
-            <a href="#featured" class="btn btn-primary">Explore the Wonder!</a>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Nexus AI: Amplify Intelligence. Architect Your Advantage.</h1>
+            <p class="sub-headline">Leveraging bespoke Artificial Intelligence to solve complex challenges and unlock unprecedented growth for your business.</p>
+            <a href="#capabilities" class="btn btn-primary">Explore AI Solutions</a>
+            <!-- Alternative CTA if preferred: <a href="#modal-popup" class="btn btn-primary">Request a Strategic Demo</a> -->
         </div>
-        <!-- Placeholder for friendly character -->
-        <div class="hero-character" aria-hidden="true"></div>
-        <!-- Placeholder Comment for optimal hero image:
-             Use a bright, high-quality landscape image (approx 1920x1080 or similar aspect ratio)
-             featuring diverse children joyfully engaged in imaginative play with abstract or stylized toy shapes.
-             Ensure focus is central and it looks good with the text overlay.
-             Example: <img src="images/wonderspark-hero-banner.jpg" alt="Children playing creatively with WonderSpark toys">
-             Alternatively, use a vibrant illustration.
-        -->
     </header>
 
     <main>
-
-        <!-- ===== Discover Section (Categories/Age) ===== -->
-        <section class="section discover" id="discover">
-            <div class="container text-center">
-                <h2>Discover Your Next Adventure</h2>
-                <p>Find the perfect playtime treasures by age or interest.</p>
-                <div class="discover-grid">
-                    <a href="#category-0-2" class="discover-card">
-                        <span class="discover-card-icon">🧸</span> <!-- Placeholder Icon -->
-                        <h3>Ages 0-2: Little Explorers</h3>
-                    </a>
-                    <a href="#category-3-5" class="discover-card">
-                        <span class="discover-card-icon">🚀</span> <!-- Placeholder Icon -->
-                        <h3>Ages 3-5: Big Imaginations</h3>
-                    </a>
-                    <a href="#category-6-8" class="discover-card">
-                         <span class="discover-card-icon">🎨</span> <!-- Placeholder Icon -->
-                        <h3>Ages 6-8: Growing Minds</h3>
-                    </a>
-                    <a href="#category-stem" class="discover-card">
-                        <span class="discover-card-icon">🔬</span> <!-- Placeholder Icon -->
-                        <h3>STEM & Learning</h3>
-                    </a>
-                    <a href="#category-creative" class="discover-card">
-                        <span class="discover-card-icon">🎭</span> <!-- Placeholder Icon -->
-                        <h3>Creative Corner</h3>
-                    </a>
-                    <a href="#category-outdoor" class="discover-card">
-                        <span class="discover-card-icon">🌳</span> <!-- Placeholder Icon -->
-                        <h3>Outdoor Fun</h3>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Featured Products Section ===== -->
-        <section class="section featured" id="featured">
+        <!-- The Intelligence Gap (Problem/Challenge) Section -->
+        <section id="problem">
             <div class="container">
-                <h2 class="text-center">Sparking Smiles Now!</h2>
-                <p class="text-center">Check out our latest arrivals and playtime favorites.</p>
-                <div class="featured-scroll-container">
-                    <!-- Product Card 1 -->
-                    <article class="product-card">
-                        <div class="product-image-placeholder">Bright Product Shot 1 Placeholder</div>
-                        <div class="product-info">
-                            <h4>Rainbow Stacker Supreme</h4>
-                            <p>Build amazing worlds! Colorful, open-ended fun.</p>
-                            <a href="#product1" class="btn btn-secondary btn-small">Learn More</a>
-                        </div>
-                    </article>
-                    <!-- Product Card 2 -->
-                    <article class="product-card">
-                        <div class="product-image-placeholder">Bright Product Shot 2 Placeholder</div>
-                        <div class="product-info">
-                            <h4>Cozy Critter Puppets</h4>
-                            <p>Creative fun for hours! Tell silly stories together.</p>
-                            <a href="#product2" class="btn btn-secondary btn-small">Shop Now</a>
-                        </div>
-                    </article>
-                    <!-- Product Card 3 -->
-                    <article class="product-card">
-                        <div class="product-image-placeholder">Bright Product Shot 3 Placeholder</div>
-                        <div class="product-info">
-                            <h4>Future Builder Block Set</h4>
-                            <p>Engineering starts here! Develop spatial skills.</p>
-                            <a href="#product3" class="btn btn-secondary btn-small">Learn More</a>
-                        </div>
-                    </article>
-                    <!-- Product Card 4 -->
-                    <article class="product-card">
-                        <div class="product-image-placeholder">Bright Product Shot 4 Placeholder</div>
-                        <div class="product-info">
-                            <h4>Adventure Art Easel</h4>
-                            <p>Unleash their inner artist! Double-sided creativity.</p>
-                            <a href="#product4" class="btn btn-secondary btn-small">Shop Now</a>
-                        </div>
-                    </article>
-                     <!-- Product Card 5 (Example) -->
-                    <article class="product-card">
-                        <div class="product-image-placeholder">Bright Product Shot 5 Placeholder</div>
-                        <div class="product-info">
-                            <h4>Garden Explorer Kit</h4>
-                            <p>Discover nature's wonders! Outdoor adventures await.</p>
-                            <a href="#product5" class="btn btn-secondary btn-small">Learn More</a>
-                        </div>
-                    </article>
-                     <!-- Product Card 6 (Example) -->
-                    <article class="product-card">
-                        <div class="product-image-placeholder">Bright Product Shot 6 Placeholder</div>
-                        <div class="product-info">
-                            <h4>Melody Maker Music Set</h4>
-                            <p>Make joyful noise! Introduce rhythm and sound.</p>
-                            <a href="#product6" class="btn btn-secondary btn-small">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Why Choose Us Section (The WonderSpark Promise) ===== -->
-        <section class="section promise" id="promise">
-            <div class="container text-center">
-                <h2>The WonderSpark Promise</h2>
-                <p>We believe playtime should be joyful, enriching, and worry-free.</p>
-                <div class="promise-grid">
-                    <div class="promise-item">
-                        <span class="promise-icon icon-quality" aria-hidden="true">⭐</span>
-                        <h3>Quality & Durability</h3>
-                        <p>Built for endless play, using safe, sustainable materials whenever possible.</p>
+                <h2>Bridging the Intelligence Gap</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">Businesses today face unprecedented complexity. Legacy systems struggle, data remains untapped, and critical opportunities are missed. Nexus AI provides the clarity and capability to overcome these modern challenges.</p>
+                <div class="problem-grid">
+                    <div class="problem-item">
+                        <div class="problem-icon">📊</div> <!-- Placeholder Icon -->
+                        <h4>Data Overload & Underutilization</h4>
+                        <p>Transform vast datasets from noise into actionable, predictive insights that drive strategic decisions.</p>
                     </div>
-                    <div class="promise-item">
-                        <span class="promise-icon icon-safety" aria-hidden="true">✔️</span>
-                        <h3>Safety Tested</h3>
-                        <p>Peace of mind for you. All our toys meet or exceed rigorous safety standards.</p>
+                    <div class="problem-item">
+                        <div class="problem-icon">⚙️</div> <!-- Placeholder Icon -->
+                        <h4>Operational Inefficiencies</h4>
+                        <p>Automate repetitive tasks, optimize workflows, and free up your human talent for high-value activities.</p>
                     </div>
-                    <div class="promise-item">
-                        <span class="promise-icon icon-learning" aria-hidden="true">💡</span>
-                        <h3>Learning Through Play</h3>
-                        <p>Sparking curious minds and fostering crucial developmental skills naturally.</p>
-                    </div>
-                    <div class="promise-item">
-                        <span class="promise-icon icon-curated" aria-hidden="true">✨</span>
-                        <h3>Expertly Curated</h3>
-                        <p>Thoughtfully selected by play experts for maximum fun and engagement.</p>
+                    <div class="problem-item">
+                        <div class="problem-icon">🎯</div> <!-- Placeholder Icon -->
+                        <h4>Missed Growth Opportunities</h4>
+                        <p>Identify emerging trends, personalize customer experiences, and uncover new revenue streams with AI-driven analysis.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Imagination Hub Section ===== -->
-        <section class="section imagination-hub" id="inspiration">
+        <!-- Nexus Capabilities (Solutions/Services) Section -->
+        <section id="capabilities">
             <div class="container">
-                 <div class="hub-content">
-                     <div class="hub-text">
-                        <h2>Imagination Hub</h2>
-                        <h3>The Magic of Make-Believe</h3>
-                        <p>This week, let's explore the power of pretend play! From dress-up adventures to building magnificent forts, imaginative play helps kids develop social skills, creativity, and problem-solving abilities. Grab a cape, build a den, and let the stories unfold!</p>
-                        <a href="#blog-post" class="btn btn-secondary">Get More Play Ideas</a>
-                     </div>
-                     <div class="hub-image-placeholder" aria-label="Inspiring image of children engaged in make-believe play">
-                         Inspiring Play Image Placeholder
-                     </div>
+                <h2>Our Nexus Capabilities</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">We architect and deploy cutting-edge AI solutions tailored to your unique business landscape. Explore how we empower transformation:</p>
+                <div class="capabilities-grid">
+                    <div class="capability-card">
+                        <div class="capability-icon">📈</div> <!-- Placeholder Icon -->
+                        <h4>Predictive Analytics & Forecasting</h4>
+                        <p class="capability-description">Anticipate market shifts, optimize inventory, and forecast demand with unparalleled accuracy. Benefit: Proactive decision-making.</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">🤖</div> <!-- Placeholder Icon -->
+                        <h4>Intelligent Process Automation (IPA)</h4>
+                        <p class="capability-description">Streamline complex workflows, reduce manual effort, and enhance operational speed using AI-powered automation. Benefit: Increased efficiency & cost savings.</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">💬</div> <!-- Placeholder Icon -->
+                        <h4>Natural Language Understanding (NLU)</h4>
+                        <p class="capability-description">Extract insights from text, power intelligent chatbots, and analyze sentiment across customer interactions. Benefit: Deeper customer understanding.</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">👁️</div> <!-- Placeholder Icon -->
+                        <h4>Computer Vision Systems</h4>
+                        <p class="capability-description">Analyze images and video for quality control, object detection, security monitoring, and more. Benefit: Enhanced visual intelligence.</p>
+                    </div>
+                     <div class="capability-card">
+                        <div class="capability-icon">🧬</div> <!-- Placeholder Icon -->
+                        <h4>Custom AI Model Development</h4>
+                        <p class="capability-description">Building bespoke algorithms and machine learning models engineered specifically for your unique data and challenges. Benefit: Tailored competitive edge.</p>
+                    </div>
+                     <div class="capability-card">
+                        <div class="capability-icon">🔗</div> <!-- Placeholder Icon -->
+                        <h4>AI Integration & Strategy</h4>
+                        <p class="capability-description">Seamlessly integrate AI into your existing infrastructure and develop a strategic roadmap for long-term AI adoption. Benefit: Sustainable intelligent transformation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Nexus Blueprint (Process) Section -->
+        <section id="process">
+            <div class="container">
+                <h2>The Nexus Blueprint: Our Approach</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">We follow a collaborative and transparent process to ensure your AI solution delivers tangible value and integrates seamlessly.</p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Discovery & Strategy</h4>
+                        <p>Deep dive into your challenges, goals, and data landscape to define a clear, impactful AI strategy.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Bespoke Development</h4>
+                        <p>Architecting and training custom AI models using state-of-the-art techniques tailored to your needs.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Seamless Integration</h4>
+                        <p>Expertly integrating the AI solution into your existing workflows and systems with minimal disruption.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Continuous Optimization</h4>
+                        <p>Monitoring performance, refining models, and ensuring long-term value generation and adaptation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transforming Industries (Proof/Applications) Section -->
+        <section id="proof">
+            <div class="container">
+                <h2>Transforming Industries with AI</h2>
+                 <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">Our expertise spans across diverse sectors, delivering bespoke AI solutions that drive innovation and competitive advantage.</p>
+                <!-- Placeholder: Industries Served -->
+                <div class="industries-logos">
+                    <div class="logo-placeholder">Finance</div>
+                    <div class="logo-placeholder">Healthcare</div>
+                    <div class="logo-placeholder">E-commerce</div>
+                    <div class="logo-placeholder">Manufacturing</div>
+                    <div class="logo-placeholder">Logistics</div>
+                    <div class="logo-placeholder">Energy</div>
+                </div>
+
+                <!-- Placeholder: Client Logos -->
+                 <h3 style="text-align:center; margin-top: 60px; margin-bottom: 30px; color: var(--text-medium);">Trusted by Visionary Leaders</h3>
+                 <div class="client-logos">
+                    <div class="logo-placeholder">Client Logo 1</div>
+                    <div class="logo-placeholder">Client Logo 2</div>
+                    <div class="logo-placeholder">Client Logo 3</div>
+                    <div class="logo-placeholder">Client Logo 4</div>
                  </div>
-            </div>
-        </section>
 
-        <!-- ===== Testimonials Section ===== -->
-        <section class="section testimonials" id="reviews">
-            <div class="container">
-                <h2 class="text-center">Hear From Happy Playgrounds!</h2>
-                <div class="testimonial-grid">
-                    <blockquote class="testimonial-card">
-                        <p class="testimonial-quote">"The quality is fantastic! My daughter hasn't stopped playing with her WonderSpark building blocks since they arrived. So much creativity!"</p>
-                        <cite class="testimonial-author">Sarah K. <span>- Austin, TX</span></cite>
-                    </blockquote>
-                    <blockquote class="testimonial-card">
-                        <p class="testimonial-quote">"Finally, toys that aren't just plastic junk! These feel built to last, and my son is actually learning while he plays. Highly recommend!"</p>
-                        <cite class="testimonial-author">Mike P. <span>- Chicago, IL</span></cite>
-                    </blockquote>
-                    <blockquote class="testimonial-card">
-                        <p class="testimonial-quote">"I love the curation. It's so easy to find age-appropriate, engaging toys without being overwhelmed. WonderSpark is my new go-to for gifts."</p>
-                        <cite class="testimonial-author">Jessica L. <span>- Seattle, WA</span></cite>
-                    </blockquote>
+                <!-- Testimonials -->
+                <div class="testimonials">
+                     <h3 style="text-align:center; margin-bottom: 40px;">What Our Partners Say</h3>
+                    <div class="testimonial">
+                        <blockquote>"Nexus AI didn't just provide a solution; they architected a new way for us to operate. Their predictive models have fundamentally improved our forecasting accuracy."</blockquote>
+                        <cite>– CTO, Global Finance Corp (Placeholder)</cite>
+                    </div>
+                    <div class="testimonial">
+                        <blockquote>"The intelligent automation implemented by Nexus AI Dynamics has significantly reduced our processing times and operational costs. A truly transformative partnership."</blockquote>
+                        <cite>– Head of Operations, HealthTech Innovators (Placeholder)</cite>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Newsletter Section ===== -->
-        <section class="section newsletter" id="wonderclub">
+        <!-- Initiate Transformation (Pop-Up Form Trigger) -->
+        <section id="cta-trigger">
             <div class="container">
-                <h2>Join the WonderClub!</h2>
-                <p>Get Play Ideas, Exclusive Offers & Sneak Peeks delivered right to your inbox!</p>
-                <form action="#" method="post" class="newsletter-form">
-                     <label for="email-newsletter" class="visually-hidden">Email Address</label>
-                     <input type="email" id="email-newsletter" name="email" placeholder="Enter your email address" required class="newsletter-input">
-                     <button type="submit" class="newsletter-submit">Spark Me Up!</button>
-                </form>
+                <h2>Ready to Initiate Your Transformation?</h2>
+                <p>Let's discuss how bespoke AI can address your specific challenges and unlock new potential. Request your complimentary strategic consultation today.</p>
+                <a href="#modal-popup" class="btn">Get Your Custom AI Roadmap</a>
             </div>
         </section>
-
     </main>
 
-    <!-- ===== Footer ===== -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-info">
-                <h4>WonderSpark Toys</h4>
-                <p>Igniting imagination, one toy at a time. Curated quality for endless fun and learning.</p>
-                 <div class="footer-social">
-                     <span>Follow the Fun:</span>
-                     <!-- Placeholder Social Links -->
-                     <a href="#" aria-label="WonderSpark Toys on Facebook"><span class="visually-hidden">Facebook</span></a>
-                     <a href="#" aria-label="WonderSpark Toys on Instagram"><span class="visually-hidden">Instagram</span></a>
-                     <a href="#" aria-label="WonderSpark Toys on Pinterest"><span class="visually-hidden">Pinterest</span></a>
-                 </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2025 Nexus AI Dynamics. All Rights Reserved.</p>
+                <p>Architects of Intelligent Transformation.</p>
+                 <p>Email: <a href="mailto:inquire@nexusai.dynamic">inquire@nexusai.dynamic</a> | Phone: +1 (555) 123-4567 (Placeholder)</p>
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Shop All Toys</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#inspiration">Play Ideas Blog</a></li>
-                    <li><a href="#promise">Our Promise</a></li>
-                    <li><a href="#">Gift Cards</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                 <h4>Customer Care</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping & Delivery</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-                 <div class="footer-payments">
-                     <span>Secure Payments:</span>
-                     <span>💳 VISA MC AMEX PayPal</span> <!-- Placeholder -->
-                 </div>
-            </div>
-            <div class="footer-copyright">
-                &copy; 2025 WonderSpark Toys. All Rights Reserved. Let's Play!
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#ethics">Ethical AI Statement</a>
+                    <a href="#careers">Careers</a>
+                </div>
+                <div class="footer-social">
+                    <!-- Placeholder Social Icons (Replace with actual SVGs/FontAwesome later) -->
+                    <a href="#linkedin" aria-label="LinkedIn">Li</a>
+                    <a href="#twitter" aria-label="Twitter">Tw</a>
+                    <!-- <a href="#medium" aria-label="Medium">M</a> -->
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- CSS Pop-Up Modal -->
+    <div id="modal-popup" class="modal-overlay">
+        <div class="modal-content">
+            <a href="#" class="modal-close" aria-label="Close Modal">&times;</a>
+            <h3>Start Your AI Journey</h3>
+            <p>Complete the form below, and one of our AI strategists will contact you shortly to discuss your vision.</p>
+            <form action="#" method="POST" class="modal-form"> <!-- Replace # with your form endpoint -->
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="e.g., Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., jane.doe@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" placeholder="e.g., Acme Corporation" required>
+                </div>
+                 <div class="form-group">
+                    <label for="role">Your Role</label>
+                    <input type="text" id="role" name="role" placeholder="e.g., CTO, Innovation Manager">
+                </div>
+                <div class="form-group">
+                    <label for="challenge">Brief Description of Challenge/Interest</label>
+                    <textarea id="challenge" name="challenge" placeholder="Tell us briefly about the challenges you're facing or the AI solutions you're interested in..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+            </form>
+        </div>
+        <!-- Allow clicking backdrop to close -->
+        <a href="#" class="modal-close-backdrop" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></a>
+    </div>
 
 </body>
 </html>
