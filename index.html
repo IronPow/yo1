@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serenity Springs Spa - Relax & Rejuvenate</title>
+    <title>Elysian Realm Spa & Wellness - Transcend the Ordinary</title>
     <style>
-        /* Basic Reset & Defaults */
+        /* Reset and Base Styles */
         *,
         *::before,
         *::after {
@@ -15,406 +15,1028 @@
             padding: 0;
         }
 
+        :root {
+            /* Colors */
+            --color-background: #1a1a1a; /* Deep Charcoal */
+            --color-surface: #2b2b2b; /* Slightly Lighter Charcoal */
+            --color-text-primary: #f0eadd; /* Warm Cream */
+            --color-text-secondary: #b8b8b8; /* Soft Grey */
+            --color-accent-gold: #c4a77d; /* Muted Gold */
+            --color-accent-teal: #5F9EA0; /* Muted Teal (optional accent) */
+            --color-overlay: rgba(26, 26, 26, 0.7); /* Dark overlay for contrast */
+            --color-button-hover: #d4b88d;
+
+            /* Typography */
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Lato', sans-serif;
+            --font-size-base: 16px;
+            --line-height-base: 1.7;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+
+            /* Borders */
+            --border-radius: 5px;
+            --border-subtle: 1px solid rgba(240, 234, 221, 0.15);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
         html {
             scroll-behavior: smooth;
-            line-height: 1.6;
-            font-size: 16px; /* Base font size */
+            font-size: var(--font-size-base);
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            color: #333;
-            background-color: #f8f9fa; /* Light background */
+            font-family: var(--font-secondary);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: var(--line-height-base);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        img {
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            color: var(--color-accent-gold);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+        h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+            max-width: 70ch; /* Improve readability */
+        }
+
+        a {
+            color: var(--color-accent-gold);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--color-button-hover);
+        }
+
+        img, svg {
             max-width: 100%;
             height: auto;
             display: block;
         }
 
-        a {
-            text-decoration: none;
-            color: #5a8a84; /* Calming teal/green */
-        }
-
-        a:hover {
-            color: #3e605c;
-        }
-
-        h1, h2, h3 {
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: #3e605c; /* Darker teal for headings */
-            font-weight: 600;
-        }
-
-        h1 { font-size: 2.8rem; }
-        h2 { font-size: 2rem; }
-        h3 { font-size: 1.4rem; }
-
-        p {
-            margin-bottom: 1rem;
-            color: #555;
-        }
-
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: var(--spacing-lg) 0;
         }
 
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-        .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
-        .py-2 { padding-top: 2rem; padding-bottom: 2rem; }
-        .py-3 { padding-top: 3rem; padding-bottom: 3rem; }
-        .py-4 { padding-top: 4rem; padding-bottom: 4rem; }
-        .my-1 { margin-top: 1rem; margin-bottom: 1rem; }
-        .my-2 { margin-top: 2rem; margin-bottom: 2rem; }
-
-
-        /* Header & Navigation */
-        .main-header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 0.8rem 0;
+        .section {
+            padding: var(--spacing-lg) 0;
+            overflow: hidden; /* Contain potential overflows */
         }
 
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .section--dark { background-color: var(--color-background); }
+        .section--light { background-color: var(--color-surface); }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #3e605c;
-            text-decoration: none;
-        }
-
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .main-nav ul li {
-            margin-left: 25px;
-        }
-
-        .main-nav ul li a {
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://via.placeholder.com/1500x800.png?text=Relaxing+Spa+Background') no-repeat center center/cover;
-            /* Replace placeholder URL with your actual image */
-            color: #333; /* Text color adjusted for lighter background overlay */
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            flex-direction: column;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            color: #3e605c; /* Ensure heading is readable */
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            color: #444; /* Slightly darker paragraph text */
-        }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--color-accent-gold); }
 
         .btn {
             display: inline-block;
-            background-color: #5a8a84;
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-family: var(--font-secondary);
+            font-weight: 700;
             font-size: 1rem;
-            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
+            border-radius: var(--border-radius);
             cursor: pointer;
+            transition: background-color var(--transition-speed) var(--transition-ease),
+                        transform var(--transition-speed) var(--transition-ease),
+                        box-shadow var(--transition-speed) var(--transition-ease);
+            border: none;
         }
 
-        .btn:hover {
-            background-color: #3e605c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        .btn--primary {
+            background-color: var(--color-accent-gold);
+            color: var(--color-background);
+            box-shadow: 0 4px 15px rgba(196, 167, 125, 0.2);
         }
 
-        /* Services Section */
-        #services {
-            background-color: #eef3f2; /* Very light teal */
+        .btn--primary:hover,
+        .btn--primary:focus {
+            background-color: var(--color-button-hover);
+            color: var(--color-background);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(196, 167, 125, 0.3);
         }
 
-        .services-grid {
+        .btn--secondary {
+            background-color: transparent;
+            color: var(--color-accent-gold);
+            border: 1px solid var(--color-accent-gold);
+        }
+
+        .btn--secondary:hover,
+        .btn--secondary:focus {
+            background-color: rgba(196, 167, 125, 0.1);
+            color: var(--color-button-hover);
+            border-color: var(--color-button-hover);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: var(--spacing-lg) var(--spacing-sm);
+            /* Placeholder for background image/video */
+            background: linear-gradient(45deg, #1f2d30, #3a4a4f); /* Suggestive gradient */
+            /* background-image: url('placeholder-hero-background.jpg'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+            /* background-attachment: fixed; /* Optional parallax effect */
+        }
+
+        .hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-overlay);
+            z-index: 1;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInHero 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInHero {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero__logo-placeholder { /* Optional logo */
+            width: 100px;
+            height: 50px;
+            /* background-color: var(--color-accent-gold); */
+            /* -webkit-mask-image: url('logo.svg'); mask-image: url('logo.svg'); */
+            /* -webkit-mask-size: contain; mask-size: contain; */
+            /* -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; */
+            /* -webkit-mask-position: center; mask-position: center; */
+            margin: 0 auto var(--spacing-md);
+            border: 1px dashed var(--color-accent-gold);
+            display: flex; align-items: center; justify-content: center; font-size: 0.8rem; opacity: 0.5;
+        }
+
+        .hero__headline {
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+        }
+
+        .hero__subheadline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+
+        .hero__cta {
+            margin-top: var(--spacing-md);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 30px;
+            height: 50px;
+            opacity: 0.7;
+            cursor: pointer; /* Indicate it's clickable (though it's just visual) */
+        }
+
+        .scroll-hint::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: var(--color-accent-gold);
+            transform: translateX(-50%);
+            animation: scrollHintLine 2s infinite ease-out;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid var(--color-accent-gold);
+            border-bottom: 2px solid var(--color-accent-gold);
+            transform: translateX(-50%) rotate(45deg);
+            animation: scrollHintArrow 2s infinite ease-out;
+        }
+
+        @keyframes scrollHintLine {
+            0% { height: 0; top: 0; opacity: 0; }
+            50% { height: 100%; top: 0; opacity: 1; }
+            100% { height: 0; top: 100%; opacity: 0; }
+        }
+
+        @keyframes scrollHintArrow {
+            0% { opacity: 0; transform: translateX(-50%) rotate(45deg) translateY(-10px); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(-50%) rotate(45deg) translateY(10px); }
+        }
+
+        /* --- Philosophy Section --- */
+        .philosophy {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .philosophy__shape {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--color-accent-gold), rgba(196, 167, 125, 0.3));
+            border-radius: 50% 30% 60% 40% / 40% 60% 30% 50%; /* Organic shape */
+            margin: 0 auto var(--spacing-md);
+            animation: morphShape 15s infinite ease-in-out alternate;
+        }
+
+        @keyframes morphShape {
+            0%, 100% { border-radius: 50% 30% 60% 40% / 40% 60% 30% 50%; transform: rotate(0deg) scale(1); }
+            50% { border-radius: 30% 50% 40% 60% / 60% 40% 50% 30%; transform: rotate(180deg) scale(1.1); }
+        }
+
+        .philosophy__content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        .philosophy__content p {
+            max-width: 65ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Signature Journeys (Services) --- */
+        .journeys__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 2rem;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
         }
 
-        .service-card {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        .journey-card {
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform var(--transition-speed) var(--transition-ease),
+                        box-shadow var(--transition-speed) var(--transition-ease);
+            border: var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .journey-card__image-placeholder {
+            height: 200px;
+            background-color: #444; /* Placeholder color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+            /* Add comment for real image: background-image: url('journey-image.jpg'); background-size: cover; background-position: center; */
+        }
+
+        .journey-card__image-placeholder::before {
+             content: 'High-Quality Image Placeholder';
+        }
+
+        .journey-card:hover .journey-card__image-placeholder::after { /* Subtle hover zoom effect */
+            content: '';
+            position: absolute;
+            top:0; left: 0; right: 0; bottom: 0;
+            background: inherit; /* Inherit the background (image or color) */
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.05);
+            transition: transform 0.5s var(--transition-ease);
+        }
+
+
+        .journey-card__content {
+            padding: var(--spacing-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .journey-card__title {
+            color: var(--color-accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .journey-card__description {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1;
+        }
+
+        .journey-card__cta {
+            align-self: flex-start;
+            font-size: 0.9rem;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            margin-top: auto; /* Push to bottom */
+        }
+
+        /* --- Ambiance Section --- */
+        .ambiance {
+            position: relative;
+            /* Placeholder for parallax background image */
+             background-color: #333; /* Fallback */
+            /* background-image: url('placeholder-ambiance-bg.jpg'); */
+            /* background-attachment: fixed; */
+            /* background-position: center; */
+            /* background-repeat: no-repeat; */
+            /* background-size: cover; */
+            z-index: 0;
+        }
+        .ambiance::before { /* Overlay for text readability */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(26, 26, 26, 0.8); /* Darker overlay for parallax */
+            z-index: -1;
+        }
+
+        .ambiance .container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .ambiance__text {
+             max-width: 60ch;
+             margin: 0 auto; /* Center text if single column */
+        }
+        .ambiance__text h2 {
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: var(--spacing-md);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+        .ambiance__image-placeholders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
         }
 
-        .service-card i { /* Placeholder for icon */
+        .ambiance__image {
+            height: 180px;
+            background-color: #555;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center;
+            border: var(--border-subtle);
+            /* Add comment for real image: background-image: url('ambiance-detail.jpg'); background-size: cover; background-position: center; */
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials {
+             background-color: var(--color-surface);
+        }
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background-color: var(--color-background);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent-gold);
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card__quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-left: 30px; /* Space for quote mark */
+        }
+
+        .testimonial-card__quote::before {
+            content: '“';
+            position: absolute;
+            left: 0;
+            top: -10px;
             font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #5a8a84;
-            /* Example using Font Awesome: <i class="fas fa-spa"></i> - Requires Font Awesome library */
-            /* Using simple unicode for now: */
-            display: inline-block; /* Needed for unicode styles */
+            color: var(--color-accent-gold);
+            opacity: 0.5;
+            font-family: var(--font-primary);
         }
 
-        .service-card h3 {
-            margin-bottom: 0.5rem;
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            margin-top: var(--spacing-md);
         }
 
-        /* About Section */
-        #about {
-            background-color: #fff;
+        .testimonial-card__author-img-placeholder {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #444;
+            margin-right: var(--spacing-sm);
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--color-text-secondary); text-align: center;
+            /* Placeholder text */
+            line-height: 1.1;
         }
-        .about-content {
+        .testimonial-card__author-img-placeholder::before {
+            content: 'Portrait';
+        }
+
+
+        .testimonial-card__author-name {
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        /* --- Offers & Gifting --- */
+        .offers {
+             background-color: var(--color-background);
+        }
+        .offers__grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+             gap: var(--spacing-md);
+             margin-top: var(--spacing-md);
+             margin-bottom: var(--spacing-lg);
+        }
+         .offer-item {
+            border: var(--border-subtle);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            background-color: var(--color-surface);
+         }
+         .offer-item h4 {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-sm);
+         }
+         .offer-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+         }
+
+        .gifting-cta {
+            background-color: var(--color-surface);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid var(--color-accent-gold);
+            margin-top: var(--spacing-lg);
+        }
+        .gifting-cta h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+        .gifting-cta p {
+            margin-bottom: var(--spacing-md);
+            max-width: 50ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* --- Booking & Contact Section --- */
+        .booking {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), var(--color-surface);
+            /* Optional subtle texture overlay */
+            /* background-image: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('subtle-texture.png'); */
+        }
+
+        .booking .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .booking__cta-section {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        .booking__cta-section h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .booking__details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .booking__info h4, .booking__form-section h4 {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-md);
+        }
+        .booking__info ul {
+            list-style: none;
+            padding: 0;
+        }
+        .booking__info li {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+        .booking__info li strong {
+            color: var(--color-text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+            font-weight: 400;
+        }
+
+        .map-placeholder {
+            height: 250px;
+            background-color: #444;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-style: italic;
+            margin-top: var(--spacing-md);
+            border: var(--border-subtle);
+            /* filter: grayscale(80%) brightness(90%); /* Suggestive styling */
+        }
+         .map-placeholder::before {
+            content: 'Stylized Map Placeholder';
+         }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .booking-form input[type="text"],
+        .booking-form input[type="email"],
+        .booking-form input[type="date"],
+        .booking-form input[type="time"],
+        .booking-form select,
+        .booking-form textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            background-color: var(--color-surface);
+            border: 1px solid rgba(240, 234, 221, 0.2);
+            border-radius: var(--border-radius);
+            color: var(--color-text-primary);
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+        }
+
+        .booking-form input[type="text"]:focus,
+        .booking-form input[type="email"]:focus,
+        .booking-form input[type="date"]:focus,
+        .booking-form input[type="time"]:focus,
+        .booking-form select:focus,
+        .booking-form textarea:focus {
+            outline: none;
+            border-color: var(--color-accent-gold);
+            box-shadow: 0 0 0 2px rgba(196, 167, 125, 0.3);
+        }
+
+        .booking-form select {
+           appearance: none; /* For custom arrow */
+           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C4A77D' d='M6 8L0 2l1.4-1.4L6 5.2l4.6-4.6L12 2z'/%3E%3C/svg%3E");
+           background-repeat: no-repeat;
+           background-position: right var(--spacing-sm) center;
+           padding-right: calc(var(--spacing-sm) * 2.5); /* Space for arrow */
+        }
+
+
+        .booking-form button[type="submit"] {
+            width: 100%;
+            margin-top: var(--spacing-sm);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-background);
+            padding: var(--spacing-md) 0;
+            border-top: var(--border-subtle);
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .footer .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .about-content img {
-             width: 200px; /* Adjust size as needed */
-             height: 200px;
-             border-radius: 50%;
-             object-fit: cover;
-             margin-bottom: 1.5rem;
-             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding-top: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
         }
 
-        /* Contact Section */
-        #contact {
-            background-color: #eef3f2; /* Very light teal */
+        .footer__logo-placeholder {
+            width: 80px;
+            height: 40px;
+            border: 1px dashed var(--color-text-secondary);
+            display: flex; align-items: center; justify-content: center; font-size: 0.7rem; opacity: 0.5;
+            margin-bottom: var(--spacing-sm);
         }
 
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .contact-info strong {
-            color: #3e605c;
-        }
-
-        /* Footer */
-        .main-footer {
-            background-color: #3e605c;
-            color: #eef3f2;
-            text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem; /* Ensure separation */
+        .footer__links {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-sm) 0;
+            display: flex;
+            gap: var(--spacing-md);
         }
 
-        .main-footer p {
-            color: #eef3f2;
-            margin: 0;
-            font-size: 0.9rem;
+        .footer__links a {
+            color: var(--color-text-secondary);
         }
-         /* Social Icons Placeholder - Style as needed */
-        .social-icons {
-            margin-top: 0.5rem;
-        }
-        .social-icons a {
-            color: #eef3f2;
-            margin: 0 10px;
-            font-size: 1.2rem;
-        }
-        .social-icons a:hover {
-            color: #fff;
+        .footer__links a:hover {
+            color: var(--color-accent-gold);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .main-header .container {
-                flex-direction: column;
+        .footer__social {
+            margin: var(--spacing-sm) 0;
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .footer__social a {
+            color: var(--color-text-secondary);
+            font-size: 1.2rem; /* Placeholder size */
+            /* Replace text with actual icons (SVG/Font Awesome) */
+        }
+        .footer__social a:hover {
+            color: var(--color-accent-gold);
+            transform: scale(1.1);
+        }
+
+        .footer__copyright {
+            margin-top: var(--spacing-sm);
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (min-width: 768px) {
+            .container { width: 85%; }
+            .section { padding: var(--spacing-xl) 0; }
+
+            .philosophy {
+                 grid-template-columns: 1fr 2fr; /* Shape | Text */
+                 gap: var(--spacing-xl);
+                 text-align: left;
+            }
+            .philosophy__shape { margin: 0; width: 200px; height: 200px; }
+            .philosophy__content p { margin-left: 0; margin-right: 0; }
+
+            .ambiance .container { grid-template-columns: 1fr 1fr; align-items: center; }
+            .ambiance__text { margin: 0; }
+            .ambiance__text h2 { text-align: left; }
+
+            .booking .container { grid-template-columns: 1fr; } /* Keep booking layout flexible */
+            .booking__details { grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); } /* Side by side info & form */
+
+            .footer .container {
+                flex-direction: row;
+                justify-content: space-between;
                 align-items: center;
+                text-align: left;
             }
-            .main-nav ul {
-                margin-top: 1rem;
-                padding-left: 0; /* Reset padding for centered list */
-                 flex-wrap: wrap; /* Allow wrapping on small screens */
-                 justify-content: center;
-            }
-            .main-nav ul li {
-                margin: 0 10px 10px 10px; /* Adjust spacing */
-            }
-
-            .hero {
-                height: auto; /* Adjust height */
-                min-height: 50vh;
-                padding: 4rem 1rem; /* Add padding */
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.8rem; }
-
-            .services-grid {
-                grid-template-columns: 1fr; /* Stack cards */
-            }
-
-            .about-content {
-                 padding: 0 1rem; /* Add padding on mobile */
-            }
+            .footer__logo-placeholder { margin-bottom: 0; margin-right: auto;}
+            .footer__links { margin: 0; }
+            .footer__social { margin: 0; }
+            .footer__copyright { margin-top: 0; margin-left: var(--spacing-lg);}
         }
-         @media (max-width: 480px) {
-              h1 { font-size: 2rem; }
-              .hero h1 { font-size: 2.2rem; }
-              .hero p { font-size: 1rem; }
-              .btn { padding: 10px 20px; font-size: 0.9rem;}
-         }
+
+        @media (min-width: 1024px) {
+            .container { width: 80%; }
+            .journeys__grid { grid-template-columns: repeat(4, 1fr); } /* 4 cards on large screens */
+            .philosophy { grid-template-columns: 1fr 3fr; }
+        }
+
 
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <a href="#hero" class="logo">Serenity Springs</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#contact" class="btn btn-small">Book Now</a></li>
-                </ul>
-            </nav>
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <!-- <div class="hero__logo-placeholder">Logo</div> Optional -->
+            <h1 class="hero__headline">Elysian Realm: Transcend the Ordinary. Rediscover You.</h1>
+            <p class="hero__subheadline">Your exclusive haven for bespoke wellness journeys and profound tranquility in the heart of the city.</p>
+            <a href="#booking" class="btn btn--primary hero__cta">Reserve Your Sanctuary</a>
         </div>
+        <a href="#philosophy" class="scroll-hint" aria-label="Scroll down"></a>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero py-4">
-        <div class="container">
-            <h1>Find Your Inner Peace</h1>
-            <p>Escape the everyday and discover tranquility at Serenity Springs Spa. Indulge in treatments designed to relax your body and renew your spirit.</p>
-            <a href="#contact" class="btn">Book Your Escape</a>
-        </div>
-    </section>
-
     <main>
-        <!-- Services Section -->
-        <section id="services" class="py-4">
+
+        <!-- The Elysian Philosophy Section -->
+        <section id="philosophy" class="section section--light philosophy">
             <div class="container">
-                <h2 class="text-center my-2">Our Signature Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <span class="service-icon" style="font-size: 3rem;">&#x1F9D8;</span> <!-- Yogi emoji as placeholder -->
-                        <h3>Relaxing Massages</h3>
-                        <p>From Swedish to Deep Tissue, let our expert therapists melt away your tension and stress.</p>
+                 <div class="philosophy__shape" aria-hidden="true"></div>
+                 <div class="philosophy__content">
+                    <h2>The Elysian Philosophy</h2>
+                    <p>At Elysian Realm, we believe true wellness is a harmonious blend of mindful restoration and scientific innovation. More than just a spa, we are a sanctuary devoted to your complete revitalization. Our philosophy centers on bespoke care, tailoring every experience to your unique needs and aspirations.</p>
+                    <p>Guided by expert therapists and enveloped in serene luxury, we fuse ancient wisdom with cutting-edge wellness technologies. Step away from the everyday and into a realm where profound tranquility allows you to reconnect with your inner balance and emerge renewed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature Journeys Section -->
+        <section id="journeys" class="section section--dark">
+            <div class="container">
+                <h2 class="text-center">Signature Journeys</h2>
+                <p class="text-center" style="max-width: 70ch; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-lg);">Curated experiences designed to restore harmony and elevate your well-being.</p>
+                <div class="journeys__grid">
+                    <!-- Journey Card 1 -->
+                    <article class="journey-card">
+                        <div class="journey-card__image-placeholder" aria-label="Luminous facial treatment concept">
+                           <!-- Image placeholder text -->
+                        </div>
+                        <div class="journey-card__content">
+                            <h3 class="journey-card__title">The Lumina Radiance Facial</h3>
+                            <p class="journey-card__description">Illuminate from within. A bespoke facial harnessing potent botanicals and light therapy to reveal your skin's ultimate luminosity and vitality.</p>
+                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                        </div>
+                    </article>
+                    <!-- Journey Card 2 -->
+                    <article class="journey-card">
+                        <div class="journey-card__image-placeholder" aria-label="Person floating peacefully in water">
+                           <!-- Image placeholder text -->
+                        </div>
+                        <div class="journey-card__content">
+                            <h3 class="journey-card__title">Zero Gravity Flotation Therapy</h3>
+                            <p class="journey-card__description">Dissolve stress, float into bliss. Experience profound relaxation and mental clarity as you float effortlessly in a sensory-managed, mineral-rich environment.</p>
+                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                        </div>
+                    </article>
+                    <!-- Journey Card 3 -->
+                    <article class="journey-card">
+                        <div class="journey-card__image-placeholder" aria-label="Warm Himalayan salt stones on back">
+                            <!-- Image placeholder text -->
+                        </div>
+                        <div class="journey-card__content">
+                            <h3 class="journey-card__title">Himalayan Salt Stone Ritual</h3>
+                            <p class="journey-card__description">Detoxify, re-energize, find balance. Warm, mineral-rich salt stones combine with expert massage to melt tension, soothe muscles, and restore equilibrium.</p>
+                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                        </div>
+                    </article>
+                    <!-- Journey Card 4 -->
+                    <article class="journey-card">
+                        <div class="journey-card__image-placeholder" aria-label="Abstract concept of body rhythm synchronization">
+                            <!-- Image placeholder text -->
+                        </div>
+                        <div class="journey-card__content">
+                            <h3 class="journey-card__title">Chrono-Wellness Body Wrap</h3>
+                            <p class="journey-card__description">Synchronize your body's rhythm. An advanced wrap using bio-adaptive ingredients to support cellular renewal and circadian harmony for deep restoration.</p>
+                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Ambiance Section -->
+        <section id="ambiance" class="section ambiance">
+            <div class="container">
+                <div class="ambiance__text">
+                    <h2>Immerse Your Senses</h2>
+                    <p>From the moment you enter Elysian Realm, the city fades away. Be enveloped by an atmosphere meticulously crafted for tranquility. Experience the gentle cascade of water features, the subtle diffusion of calming aromatherapy blends, and the touch of luxurious natural textures.</p>
+                    <p>Soft, ambient lighting complements serene spaces designed for ultimate comfort and privacy. Every detail is considered, allowing you to fully surrender to relaxation and focus entirely on your well-being.</p>
+                </div>
+                <div class="ambiance__image-placeholders">
+                    <div class="ambiance__image" aria-label="Serene water feature detail">Serene Water Feature</div>
+                    <div class="ambiance__image" aria-label="Soft lighting in relaxation lounge">Softly Lit Lounge Area</div>
+                    <div class="ambiance__image" aria-label="Plush textures and natural materials detail">Luxurious Textures</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section section--light testimonials">
+            <div class="container">
+                <h2 class="text-center">Words of Wellness</h2>
+                <p class="text-center" style="max-width: 70ch; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-lg);">Hear from those who have found their sanctuary at Elysian Realm.</p>
+                <div class="testimonials__grid">
+                    <!-- Testimonial 1 -->
+                    <figure class="testimonial-card">
+                        <blockquote class="testimonial-card__quote">
+                            <p>An absolute oasis. From the moment I walked in, the stress melted away. The bespoke facial was transformative, and the attention to detail is unparalleled. I left feeling completely renewed.</p>
+                        </blockquote>
+                        <figcaption class="testimonial-card__author">
+                            <div class="testimonial-card__author-img-placeholder" aria-hidden="true"></div>
+                            <cite class="testimonial-card__author-name">Eleanor Vance</cite>
+                        </figcaption>
+                    </figure>
+                    <!-- Testimonial 2 -->
+                    <figure class="testimonial-card">
+                        <blockquote class="testimonial-card__quote">
+                            <p>The Flotation Therapy was unlike anything I've experienced. Pure bliss and mental clarity. The ambiance is incredibly calming, a true escape within the city. Highly recommend Elysian Realm for genuine restoration.</p>
+                        </blockquote>
+                        <figcaption class="testimonial-card__author">
+                            <div class="testimonial-card__author-img-placeholder" aria-hidden="true"></div>
+                            <cite class="testimonial-card__author-name">James Chen</cite>
+                        </figcaption>
+                    </figure>
+                     <!-- Testimonial 3 -->
+                     <figure class="testimonial-card">
+                        <blockquote class="testimonial-card__quote">
+                            <p>Every visit feels like a personalized retreat. The therapists are incredibly knowledgeable and intuitive. The Himalayan Salt Stone Ritual was deeply relaxing and energizing. This is my essential escape.</p>
+                        </blockquote>
+                        <figcaption class="testimonial-card__author">
+                            <div class="testimonial-card__author-img-placeholder" aria-hidden="true"></div>
+                            <cite class="testimonial-card__author-name">Sophia Moreau</cite>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Offers & Gifting Section -->
+        <section id="offers" class="section section--dark offers">
+             <div class="container">
+                 <h2 class="text-center">Curated Experiences & Gifting</h2>
+                 <p class="text-center" style="max-width: 70ch; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-lg);">Explore seasonal offerings, membership advantages, and the gift of profound relaxation.</p>
+
+                 <div class="offers__grid">
+                    <div class="offer-item">
+                        <h4>Seasonal Radiance Package</h4>
+                        <p>Embrace the season with a curated journey featuring our Lumina Facial and a revitalizing body scrub. [Placeholder for details/price].</p>
                     </div>
-                    <div class="service-card">
-                         <span class="service-icon" style="font-size: 3rem;">&#x1F486;</span> <!-- Face massage emoji -->
-                        <h3>Revitalizing Facials</h3>
-                        <p>Customized facial treatments using premium products to leave your skin glowing and refreshed.</p>
+                     <div class="offer-item">
+                        <h4>Elysian Membership</h4>
+                        <p>Unlock exclusive benefits, priority booking, and special members-only events. Elevate your wellness routine. [Placeholder for details].</p>
                     </div>
-                    <div class="service-card">
-                        <span class="service-icon" style="font-size: 3rem;">&#x1F33F;</span> <!-- Herb emoji -->
-                        <h3>Body Treatments</h3>
-                        <p>Indulge in luxurious body wraps and scrubs designed to detoxify, hydrate, and soothe your skin.</p>
+                     <div class="offer-item">
+                        <h4>Introductory Escape</h4>
+                        <p>New guests are invited to experience Elysian Realm with a special offer on their first Signature Journey. [Placeholder for details].</p>
+                    </div>
+                 </div>
+
+                 <div class="gifting-cta">
+                    <h3>Give the Gift of Elysian Calm</h3>
+                    <p>Present someone special with an unforgettable escape. Our elegantly packaged gift cards offer access to any of our transformative treatments and journeys.</p>
+                    <a href="#" class="btn btn--primary">Purchase Gift Card</a>
+                </div>
+             </div>
+        </section>
+
+        <!-- Reserve Your Moment (Booking & Contact) Section -->
+        <section id="booking" class="section booking">
+            <div class="container">
+                <div class="booking__cta-section">
+                    <h2>Reserve Your Moment</h2>
+                    <p>Your journey towards profound tranquility and revitalization begins now. Secure your preferred time and experience the Elysian difference.</p>
+                    <a href="#booking-form-anchor" class="btn btn--primary">Secure Your Transformation</a>
+                </div>
+
+                <div class="booking__details">
+                    <div class="booking__info">
+                        <h4>Contact & Location</h4>
+                        <ul>
+                            <li><strong>Address:</strong> 123 Serenity Plaza, Suite 500, Metropolis, ST 90210</li>
+                            <li><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></li>
+                            <li><strong>Email:</strong> <a href="mailto:concierge@elysianrealm.com">concierge@elysianrealm.com</a></li>
+                            <li><strong>Hours:</strong><br>
+                                Monday - Friday: 9:00 AM - 8:00 PM<br>
+                                Saturday - Sunday: 10:00 AM - 7:00 PM</li>
+                        </ul>
+                         <div class="map-placeholder" aria-label="Placeholder map showing spa location">
+                             <!-- Embedded map (e.g., Google Maps iframe) would go here -->
+                         </div>
+                    </div>
+
+                    <div class="booking__form-section" id="booking-form-anchor">
+                         <h4>Request Your Appointment</h4>
+                         <p>Submit your preferences, and our concierge will contact you shortly to confirm your booking.</p>
+                         <form action="#" method="POST" class="booking-form">
+                             <div>
+                                 <label for="name">Full Name</label>
+                                 <input type="text" id="name" name="name" required placeholder="Your Name">
+                             </div>
+                             <div>
+                                 <label for="email">Email Address</label>
+                                 <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                             </div>
+                             <div>
+                                <label for="phone">Phone Number (Optional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+                            </div>
+                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm);">
+                                 <div>
+                                     <label for="date">Preferred Date</label>
+                                     <input type="date" id="date" name="date">
+                                 </div>
+                                 <div>
+                                    <label for="time">Preferred Time</label>
+                                    <input type="time" id="time" name="time">
+                                </div>
+                             </div>
+                             <div>
+                                 <label for="service">Service of Interest</label>
+                                 <select id="service" name="service">
+                                     <option value="">Select a Journey (Optional)</option>
+                                     <option value="lumina_facial">The Lumina Radiance Facial</option>
+                                     <option value="flotation_therapy">Zero Gravity Flotation Therapy</option>
+                                     <option value="salt_stone_ritual">Himalayan Salt Stone Ritual</option>
+                                     <option value="chrono_wrap">Chrono-Wellness Body Wrap</option>
+                                     <option value="other">Other / Unsure</option>
+                                 </select>
+                             </div>
+                             <div>
+                                <label for="message">Additional Notes (Optional)</label>
+                                <textarea id="message" name="message" rows="3" placeholder="Any specific requests or questions?"></textarea>
+                            </div>
+                             <button type="submit" class="btn btn--primary">Submit Inquiry</button>
+                             <p style="font-size: 0.8rem; color: var(--color-text-secondary); margin-top: var(--spacing-sm);">Please note: This form submits an inquiry. Your appointment is confirmed only after contact from our concierge.</p>
+                         </form>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="py-4">
-            <div class="container about-content">
-                 <img src="https://via.placeholder.com/200x200.png?text=Spa+Interior" alt="Calm spa interior element">
-                <h2 class="my-2">Your Sanctuary for Wellness</h2>
-                <p>At Serenity Springs Spa, we believe in the power of holistic healing and self-care. Our tranquil environment and dedicated therapists provide a peaceful escape where you can focus on your well-being. We are committed to using natural, high-quality products and personalized techniques to ensure a truly restorative experience.</p>
-                <p>Come visit us and embark on a journey to relaxation and rejuvenation.</p>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-4">
-            <div class="container text-center">
-                <h2 class="my-2">Book Your Appointment</h2>
-                <p>Ready to experience serenity? Contact us today to schedule your visit.</p>
-                <div class="contact-info my-2">
-                    <p><strong>Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:booking@serenitysprings.com">booking@serenitysprings.com</a></p>
-                    <p><strong>Address:</strong> 123 Wellness Way, Tranquil Town, CA 90210</p>
-                </div>
-                <a href="tel:+1234567890" class="btn my-1">Call to Book</a>
-                <!-- Optional: Add a link to an external booking system if you have one -->
-                <!-- <a href="YOUR_BOOKING_LINK_HERE" class="btn my-1" target="_blank">Book Online</a> -->
-
-                <!-- Note: A functional contact form requires backend code (PHP, Node.js, etc.) which cannot be included in a single HTML file -->
-                 <p class="my-2" style="font-size: 0.9rem; color: #666;">(Online booking link or form can be added here)</p>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="main-footer">
+    <footer class="footer">
         <div class="container">
-            <p>&copy; <script>document.write(new Date().getFullYear());</script> Serenity Springs Spa. All Rights Reserved.</p>
-            <div class="social-icons">
-                <!-- Replace # with actual links -->
-                <a href="#" aria-label="Facebook">F</a> <!-- Placeholder -->
-                <a href="#" aria-label="Instagram">I</a> <!-- Placeholder -->
-                <a href="#" aria-label="Twitter">T</a> <!-- Placeholder -->
+             <div class="footer__logo-placeholder" aria-hidden="true">Logo</div>
+            <ul class="footer__links">
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#terms">Terms of Service</a></li>
+                <li><a href="#journeys">Our Journeys</a></li>
+            </ul>
+            <div class="footer__social">
+                <a href="#" aria-label="Facebook">FB</a> <!-- Replace with actual Icon -->
+                <a href="#" aria-label="Instagram">IG</a> <!-- Replace with actual Icon -->
+                <a href="#" aria-label="LinkedIn">LI</a> <!-- Replace with actual Icon -->
             </div>
+            <p class="footer__copyright">&copy; 2025 Elysian Realm Spa & Wellness. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <!-- Minimal JS for potential future use (e.g., smooth scroll already handled by CSS) -->
-    <!-- <script>
-        // Example: Smooth scroll for browsers that don't support scroll-behavior
-        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        //     anchor.addEventListener('click', function (e) {
-        //         e.preventDefault();
-        //         document.querySelector(this.getAttribute('href')).scrollIntoView({
-        //             behavior: 'smooth'
-        //         });
-        //     });
-        // });
-    </script> -->
 
 </body>
 </html>
