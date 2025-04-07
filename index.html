@@ -1,209 +1,222 @@
-Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מרואן ובניו" (Marwan & Sons), designed with Hebrew and RTL conventions in mind.
-
 ```html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="מרואן ובניו - ייעוץ עסקי יוקרתי להצלחה מתמשכת. פתרונות אסטרטגיים מתקדמים לעסקים מובילים.">
-    <title>מרואן ובניו | ייעוץ עסקי יוקרתי</title>
-
-    <!-- Google Fonts (Elegant Hebrew Fonts) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <title>.מרואן ח - ייעוץ עסקי פורץ דרך</title>
     <style>
-        /* --- Reset & Base Styles --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        /* Reset and Base Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-gold: #FFD700; /* Classic Gold */
+            --accent-yellow: #FDB813; /* Richer Yellow/Orange Gold */
+            --neutral-white: #f8f8f8;
+            --neutral-grey: #333333;
+            --dark-grey: #1a1a1a;
+            --font-primary: 'Assistant', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
-            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: 'Assistant', sans-serif; /* Modern sans-serif for body */
-            line-height: 1.7;
-            color: #333; /* Dark gray for readability */
-            background-color: #FFFFFF; /* Primary White */
+            font-family: var(--font-primary);
+            background-color: var(--primary-black);
+            color: var(--neutral-white);
+            line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
-            direction: rtl; /* Ensure RTL */
-            text-align: right; /* Default text alignment */
+            direction: rtl; /* Ensure RTL context */
+            text-align: right; /* Default text alignment for RTL */
         }
 
-        /* --- Color Palette --- */
-        :root {
-            --primary-blue: #0A2342; /* Deep Navy Blue */
-            --secondary-blue: #2E5A88; /* Lighter, sophisticated blue */
-            --accent-gold: #BDA55D; /* Muted Gold */
-            --accent-silver: #E0E1E1; /* Light Silver/Gray */
-            --text-light: #F8F9FA;
-            --text-dark: #212529;
-            --background-light: #FFFFFF;
-            --background-dark: var(--primary-blue);
-            --form-border: #CED4DA;
+        /* Custom Scrollbar (Optional - for a more luxurious feel) */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: var(--dark-grey);
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--primary-gold);
+            border-radius: 10px;
+            border: 2px solid var(--dark-grey);
         }
 
-        /* --- Typography --- */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Frank Ruhl Libre', serif; /* Elegant serif for headings */
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
             font-weight: 700;
-            line-height: 1.3;
-            color: var(--primary-blue);
+            line-height: 1.2;
             margin-bottom: 1rem;
         }
 
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.5rem; margin-bottom: 2rem; }
-        h3 { font-size: 1.75rem; }
-        p { margin-bottom: 1.5rem; font-size: 1.1rem; color: #555; }
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
+            color: var(--primary-gold);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--accent-yellow);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Underline effect for H2 */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0; /* Adjusted for RTL */
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-gold);
+            transition: width var(--transition-speed) ease-in-out;
+        }
+
+        h2:hover::after {
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
 
         a {
-            color: var(--secondary-blue);
+            color: var(--primary-gold);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
         }
+
         a:hover {
-            color: var(--accent-gold);
+            color: var(--accent-yellow);
         }
 
-        /* --- Layout & Containers --- */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden; /* Contain animations/shapes */
-        }
-
-        /* --- Helper Classes --- */
-        .text-center { text-align: center; }
-        .text-light { color: var(--text-light); }
-        .mb-0 { margin-bottom: 0; }
-
-        /* --- Buttons --- */
+        /* Buttons */
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            font-family: 'Assistant', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-align: center;
-            border-radius: 50px; /* Rounded for modern look */
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
             border: none;
+            border-radius: 50px; /* Pill shape */
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
             letter-spacing: 0.5px;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-gold), #caa14e); /* Subtle gold gradient */
-            color: var(--background-light);
-            box-shadow: 0 4px 15px rgba(189, 165, 93, 0.3);
-        }
-        .btn-primary:hover {
+        .btn:hover {
+            background-color: var(--accent-yellow);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(189, 165, 93, 0.5);
+            box-shadow: 0 8px 20px rgba(253, 184, 19, 0.4);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-        .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--background-light);
-        }
-
-        /* --- Hero Section --- */
+        /* Hero Section */
         .hero {
-            height: 100vh;
-            min-height: 700px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            color: var(--text-light);
             text-align: center;
-            padding: 0; /* Remove default section padding */
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 40px 20px;
+            overflow: hidden; /* Contain pseudo-elements */
+            /* Base64 Encoded Hero Background Image - Replace with your high-quality image encoded */
+            /* Example using a dark abstract pattern (smaller size for demo) */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzExMSIvPjxnIHN0cm9rZT0iI0ZGRDcwMCIgc3Ryb2tlLXdpZHRoPSIwLjMiPjxwYXRoIGQ9Ik0tMjAwIDgwMEw4MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDcwMEw3MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDYwMEw2MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDUwMEw1MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDQwMEw0MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDMwMEwzMDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDIwMEwyMDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDEwMEwxMDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDBMMCAtMjAwIi8+PHBhdGggZD0iTS0yMDAgLTEwMEwtMTAwIC0yMDAiLz48cGF0aCBkPSJNMCA4MDBMODEwMCAwIi8+PHBhdGggZD0iTTEwMCA4MDBNMTIwMCAwIi8+PHBhdGggZD0iTTIwMCA4MDBNMTMwMCAwIi8+PHBhdGggZD0iTTMwMCA4MDBNMTQwMCAwIi8+PHBhdGggZD0iTTQwMCA4MDBNMTUwMCAwIi8+PHBhdGggZD0iTTUwMCA4MDBNMTYwMCAwIi8+PHBhdGggZD0iTTYwMCA4MDBNMTcwMCAwIi8+PHBhdGggZD0iTTcwMCA4MDBNMTgwMCAwIi8+PHBhdGggZD0iTTgwMCA4MDBNMTkwMCAwIi8+PHBhdGggZD0iTTkwMCA4MDBNMjAwMCAwIi8+PHBhdGggZD0iTTEwMDAgODAwTTIxMDAgMCIvPjwvZz48L3N2Zz4=');
+            background-size: cover; /* Use 'cover' for images, adjust for patterns */
+            background-position: center center;
+            background-repeat: repeat; /* Use 'repeat' for patterns like this SVG */
+            animation: subtleZoom 40s infinite alternate ease-in-out;
         }
 
-        .hero::before { /* Abstract background shapes */
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 45% 55% 70% 30% / 30% 50% 50% 70%;
-            animation: morph 15s infinite linear alternate, moveBg 30s infinite linear alternate;
-            opacity: 0.7;
-            z-index: 1;
-        }
-
-        .hero::after { /* Another abstract shape */
-            content: '';
-            position: absolute;
-            bottom: -80px;
-            right: -80px;
-            width: 400px;
-            height: 400px;
-            background: rgba(189, 165, 93, 0.1); /* Subtle Gold */
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation: morph 18s infinite linear, moveBgAlt 35s infinite linear alternate-reverse;
-            opacity: 0.8;
-            z-index: 1;
+        @keyframes subtleZoom {
+            from { background-size: 100% 100%; }
+            to { background-size: 110% 110%; }
         }
 
         .hero-content {
+            max-width: 800px;
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            padding: 20px;
-            animation: fadeIn 1.5s ease-out;
+            animation: fadeInDown 1s ease-out;
         }
 
         .hero h1 {
-            font-size: 4.5rem; /* Larger for impact */
-            color: var(--background-light);
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: clamp(3rem, 8vw, 6rem); /* Larger for hero */
+            margin-bottom: 0.5rem;
+            font-weight: 700; /* Bolder for emphasis */
             letter-spacing: 1px;
-            animation: slideInUp 1s ease-out 0.3s backwards;
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--neutral-white);
             font-weight: 300;
-            color: var(--accent-silver);
-            margin-bottom: 2.5rem;
-            animation: slideInUp 1s ease-out 0.6s backwards;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
         }
 
-        .hero .btn {
-            animation: slideInUp 1s ease-out 0.9s backwards;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+        /* Animated background shapes (subtle) */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            background-color: var(--primary-gold);
+            opacity: 0.05; /* Very subtle */
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 8s infinite ease-in-out alternate;
         }
 
-        /* --- Animated Down Arrow (Optional) --- */
+        .hero::before {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 15%; /* Adjusted for RTL visual balance */
+            animation-delay: 0s;
+        }
+
+        .hero::after {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            right: 20%; /* Adjusted for RTL */
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.03; }
+            100% { transform: scale(1.1); opacity: 0.07; }
+        }
+
+        /* Scroll Down Arrow (Interactive Element) */
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -211,240 +224,216 @@ Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מ
             transform: translateX(-50%);
             z-index: 3;
             animation: bounce 2s infinite;
+            cursor: pointer;
         }
+
         .scroll-down a {
-            color: var(--accent-gold);
-            font-size: 2rem;
+            display: block;
+            padding: 10px;
         }
 
-        /* --- About/Intro Section --- */
-        #about {
-            background-color: var(--background-light);
-        }
-        #about .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        .scroll-down span {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid var(--primary-gold);
+            border-bottom: 2px solid var(--primary-gold);
+            transform: rotate(-45deg);
+            opacity: 0.8;
         }
 
-        #about h2 {
-            color: var(--primary-blue);
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -15px); }
+            60% { transform: translate(-50%, -7px); }
+        }
+
+        /* Content Section Base */
+        .content-section {
+            padding: 80px 0;
             position: relative;
-            padding-bottom: 15px;
-        }
-        /* Underline effect */
-        #about h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-gold);
-            border-radius: 2px;
+            overflow: hidden; /* Helps contain animations */
         }
 
-        #about p {
-            max-width: 700px;
-            color: #444;
-            font-size: 1.15rem;
+        /* Alternate Background for Contrast */
+        .content-section.bg-dark {
+            background-color: var(--dark-grey);
         }
 
-        .about-icon {
-            font-size: 3rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            /* Simple SVG Diamond Icon */
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-        }
+         /* About/Intro Section (Optional but good) */
+         #about {
+            /* Add a subtle background texture/pattern if desired */
+            /* Example using a subtle noise pattern */
+             background-image: linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz48ZyBmaWxsLW9wYWNpdHk9IjAuMSIgZmlsbD0iI0ZGRDcwMCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjMwIiB5PSIzMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjQwIiB5PSI0MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjYwIiB5PSI2MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjcwIiB5PSI3MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjkwIiB5PSI5MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjUiIHk9IjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIxNSIgeT0iMTUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIyNSIgeT0iMjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIzNSIgeT0iMzUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI0NSIgeT0iNDUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI1NSIgeT0iNTUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI2NSIgeT0iNjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI3NSIgeT0iNzUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI4NSIgeT0iODUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI5NSIgeT0iOTUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48L2c+PC9zdmc+');
+             background-repeat: repeat;
+         }
 
-        /* --- Contact Form Section --- */
+        /* Contact Form Section */
         #contact {
-            background-color: var(--accent-silver); /* Light gray background */
-            padding-bottom: 100px; /* More space below form */
-        }
-        #contact .container {
-            max-width: 800px; /* Limit form width */
-        }
-        #contact h2 {
-            text-align: center;
-            color: var(--primary-blue);
+            background-color: var(--primary-black); /* Same as body or slightly different dark */
         }
 
         .contact-form {
-            background-color: var(--background-light);
+            max-width: 700px;
+            margin: 0 auto;
             padding: 40px;
+            background-color: var(--dark-grey);
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease-out forwards; /* Animate form appearance */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-top: 5px solid var(--primary-gold);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both; /* Keep state after animation */
             opacity: 0; /* Start hidden for animation */
         }
 
         .form-group {
             margin-bottom: 1.5rem;
-            position: relative; /* For potential floating labels or icons */
+            position: relative; /* For potential icon positioning */
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--primary-blue);
-            font-size: 0.95rem;
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        .form-control {
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
             width: 100%;
             padding: 12px 15px;
-            font-size: 1rem;
-            font-family: 'Assistant', sans-serif;
-            line-height: 1.5;
-            color: var(--text-dark);
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid var(--form-border);
+            border: 1px solid var(--neutral-grey);
+            background-color: var(--primary-black);
+            color: var(--neutral-white);
             border-radius: 5px;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        .form-control:focus {
-            border-color: var(--secondary-blue);
-            outline: 0;
-            box-shadow: 0 0 0 0.2rem rgba(46, 90, 136, 0.25);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
-        textarea.form-control {
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+
+        .form-group textarea {
             min-height: 120px;
             resize: vertical;
         }
 
-        .form-submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            font-size: 1.2rem;
-            margin-top: 1rem;
+        /* Adjust placeholder color */
+        .form-group ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: var(--neutral-grey);
+            opacity: 0.7;
+        }
+        .form-group :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: var(--neutral-grey);
+        }
+        .form-group ::-ms-input-placeholder { /* Microsoft Edge */
+            color: var(--neutral-grey);
         }
 
-        #form-status {
-            margin-top: 1.5rem;
+        .form-group .btn {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 15px 30px; /* Larger padding for main action */
+            font-size: 1.1rem;
+        }
+
+        #form-message {
+            margin-top: 1rem;
             text-align: center;
             font-weight: 600;
-            min-height: 24px; /* Prevent layout shift */
+            display: none; /* Hidden initially */
         }
-        .status-success { color: green; }
-        .status-error { color: red; }
+        #form-message.success {
+            color: #4CAF50; /* Green */
+        }
+        #form-message.error {
+            color: #f44336; /* Red */
+        }
 
-
-        /* --- Footer --- */
+        /* Footer */
         footer {
-            background-color: var(--primary-blue);
-            color: var(--accent-silver);
             padding: 30px 0;
             text-align: center;
             font-size: 0.9rem;
-        }
-        footer p {
-            margin-bottom: 0;
-            color: var(--accent-silver);
-        }
-
-        /* --- Animations --- */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            color: var(--neutral-grey);
+            background-color: var(--dark-grey);
+            margin-top: 50px; /* Ensure spacing */
+            border-top: 1px solid var(--neutral-grey);
         }
 
-        @keyframes slideInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        footer span {
+             color: var(--primary-gold);
+             font-weight: 600;
+        }
+
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-15px); }
-            60% { transform: translateX(-50%) translateY(-8px); }
-        }
-
-        /* Background Shape Animations */
-        @keyframes morph {
-            0% { border-radius: 45% 55% 70% 30% / 30% 50% 50% 70%; }
-            50% { border-radius: 30% 70% 40% 60% / 70% 40% 60% 30%; }
-            100% { border-radius: 45% 55% 70% 30% / 30% 50% 50% 70%; }
-        }
-        @keyframes moveBg {
-            from { transform: translate(-50px, -50px) rotate(0deg); }
-            to { transform: translate(50px, 50px) rotate(180deg); }
-        }
-        @keyframes moveBgAlt {
-             from { transform: translate(80px, 80px) rotate(0deg); }
-            to { transform: translate(-80px, -80px) rotate(-180deg); }
-        }
-
-        /* Scroll Fade In Effect Elements */
-        .fade-in-section {
+        /* Class for triggering animations on scroll */
+        .animate-on-scroll {
             opacity: 0;
-            transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-in-section.is-visible {
+
+        .animate-on-scroll.fade-in {
+            opacity: 0;
+        }
+        .animate-on-scroll.fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        /* Add more animation types as needed (e.g., fade-in-right for RTL) */
+        .animate-on-scroll.fade-in-right {
+             opacity: 0;
+             transform: translateX(-40px); /* Move from left in RTL */
+        }
+
+        .animate-on-scroll.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(0, 0);
         }
 
 
-        /* --- Responsive Design --- */
-        @media (max-width: 992px) {
-            h1 { font-size: 2.8rem; }
-            .hero h1 { font-size: 3.5rem; }
-            h2 { font-size: 2rem; }
-            .hero .subtitle { font-size: 1.3rem; }
-            section { padding: 60px 0; }
-            .container { width: 95%; }
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            html { font-size: 15px; }
-            h1 { font-size: 2.5rem; }
-            .hero h1 { font-size: 3rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            .hero { min-height: 600px; }
-            .contact-form { padding: 30px; }
-            .hero::before, .hero::after { /* Scale down background shapes */
-                width: 200px;
-                height: 200px;
-            }
-            .hero::after {
-                width: 250px;
-                height: 250px;
-            }
+            h1 { font-size: clamp(2rem, 10vw, 3rem); }
+            h2 { font-size: clamp(1.5rem, 8vw, 2rem); }
+            .hero .subtitle { font-size: clamp(1rem, 4vw, 1.3rem); }
+
+            .hero { min-height: 80vh; /* Adjust height on smaller screens */ }
+            .hero::before, .hero::after { display: none; /* Hide subtle shapes on mobile */ }
+
+            .content-section { padding: 60px 0; }
+            .contact-form { padding: 30px 20px; }
+
+            .btn { padding: 10px 25px; font-size: 0.9rem; }
+            .form-group .btn { padding: 12px 25px; font-size: 1rem; }
         }
 
-        @media (max-width: 576px) {
-            html { font-size: 14px; }
-            body { line-height: 1.6; }
-            h1 { font-size: 2rem; }
-            .hero h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            .hero .subtitle { font-size: 1.1rem; margin-bottom: 2rem;}
-            .btn { padding: 10px 25px; font-size: 1rem; }
-            .hero .btn { padding: 12px 30px; font-size: 1.1rem; }
-            .contact-form { padding: 25px; }
-            .form-control { padding: 10px 12px; }
-            textarea.form-control { min-height: 100px; }
-            .form-submit-btn { padding: 12px; }
-            .hero { height: auto; min-height: 90vh; padding: 100px 0 50px 0; } /* Adjust hero height on mobile */
-            .scroll-down { display: none; } /* Hide scroll arrow on small screens */
-             .hero::before { top: 10px; left: 10px; width: 150px; height: 150px;}
-            .hero::after { bottom: 10px; right: 10px; width: 180px; height: 180px;}
+        @media (max-width: 480px) {
+             .container { padding: 0 15px; }
+             .hero h1 { letter-spacing: 0; } /* Reduce spacing on very small screens */
+             footer { font-size: 0.8rem; }
         }
 
     </style>
@@ -452,139 +441,184 @@ Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מ
 <body>
 
     <!-- Hero Section -->
-    <header class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1>מרואן ובניו</h1>
-            <p class="subtitle">מייעצים לעתיד העסקי שלך. פתרונות אסטרטגיים יוקרתיים לתוצאות יוצאות דופן.</p>
-            <a href="#contact" class="btn btn-primary">התחל שיחה</a>
+            <h1>.מרואן ח</h1>
+            <p class="subtitle">ייעוץ עסקי אסטרטגי שמוביל לתוצאות יוצאות דופן.</p>
+            <a href="#contact" class="btn">בואו נדבר על ההצלחה שלכם</a>
         </div>
         <div class="scroll-down">
-            <a href="#about" aria-label="גלול למטה">
-                <!-- Simple Arrow Down SVG -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </a>
+             <a href="#about"><span></span></a>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- About Section -->
-        <section id="about" class="fade-in-section">
-            <div class="container">
-                 <!-- Simple SVG Diamond Icon -->
-                <svg class="about-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
-                    <path d="M12 1.793l-10.207 10.207 10.207 10.207 10.207-10.207zM6.414 12l5.586-5.586 5.586 5.586-5.586 5.586z"/>
-                </svg>
-                <h2>שותפים אסטרטגיים להצלחה</h2>
-                <p>
-                    ב"מרואן ובניו", אנו מאמינים שכדי להגיע לפסגה, צריך שותף שמבין את הדרך. אנו מציעים ייעוץ עסקי ברמה הגבוהה ביותר, המשלב ניסיון עשיר, חשיבה חדשנית ומחויבות בלתי מתפשרת להצלחת לקוחותינו. אנו מתמחים בפיתוח אסטרטגיות צמיחה, אופטימיזציה תפעולית וליווי מנהלים בכירים בצמתים קריטיים.
+    <!-- About Section (Brief Intro) -->
+    <section id="about" class="content-section bg-dark">
+        <div class="container">
+             <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="animate-on-scroll fade-in-up">
+                <h2 >מגדירים מחדש הצלחה עסקית</h2>
+                <p style="font-size: 1.2rem; color: var(--neutral-white); opacity: 0.9;">
+                    אנו ב<span>.מרואן ח</span> מתמחים בליווי חברות ועסקים שאפתניים אל עבר צמיחה משמעותית ויתרון תחרותי. עם ניסיון עשיר, ראייה אסטרטגית ויצירתיות פורצת דרך, אנו בונים פתרונות מותאמים אישית שמניבים ערך אמיתי ובר-קיימא.
                 </p>
-                 <a href="#contact" class="btn btn-secondary">למידע נוסף וייעוץ ראשוני</a>
+                 <p style="font-weight: 600; color: var(--accent-yellow);">
+                    ההצלחה שלכם היא המטרה שלנו.
+                 </p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Form Section -->
-        <section id="contact" class="fade-in-section">
-            <div class="container">
-                <h2 class="mb-5">יצירת קשר</h2>
-                <div class="contact-form">
-                    <form id="inquiryForm">
-                        <div class="form-group">
-                            <label for="name">שם מלא</label>
-                            <input type="text" class="form-control" id="name" name="name" required placeholder="הקלד/י את שמך המלא">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">כתובת דוא"ל</label>
-                            <input type="email" class="form-control" id="email" name="email" required placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">מספר טלפון</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required placeholder="05X-XXXXXXX">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">הודעה</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required placeholder="כיצד נוכל לסייע?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary form-submit-btn">שלח פנייה</button>
-                    </form>
-                    <div id="form-status"></div>
-                </div>
+    <!-- Contact Form Section -->
+    <section id="contact" class="content-section">
+        <div class="container">
+            <div style="text-align: center;" class="animate-on-scroll fade-in-up">
+                <h2>מוכנים לשלב הבא?</h2>
+                <p style="max-width: 600px; margin: 0 auto 2rem auto; color: var(--neutral-white); opacity: 0.8;">
+                    מלאו את הפרטים ונציג מטעמנו ייצור עמכם קשר בהקדם لبحث كيف يمكنנו לקדם את העסק שלכם.
+                </p>
             </div>
-        </section>
-    </main>
+
+            <form id="contact-form" class="contact-form animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                 <div id="form-message" role="alert"></div> <!-- For Success/Error Messages -->
+                <div class="form-group">
+                    <label for="name">שם מלא</label>
+                    <input type="text" id="name" name="name" placeholder="השם שלך" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">דוא&quot;ל</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">טלפון</label>
+                    <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">הודעה</label>
+                    <textarea id="message" name="message" placeholder="איך נוכל לעזור?" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">שליחת פנייה</button>
+                </div>
+            </form>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; <span id="currentYear"></span> מרואן ובניו | כל הזכויות שמורות.</p>
-             <p style="font-size: 0.8em; opacity: 0.7; margin-top: 5px;">עיצוב ופיתוח יוקרתי</p>
+            <p>&copy; <span id="current-year"></span> <span>.מרואן ח</span> | ייעוץ עסקי יוקרתי. כל הזכויות שמורות.</p>
+            <!-- You could add subtle social links here if desired -->
         </div>
     </footer>
 
+    <!-- Embedded JavaScript -->
     <script>
-        // --- Simple Fade-In on Scroll ---
-        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        document.addEventListener('DOMContentLoaded', function() {
 
-        const observerOptions = {
-            root: null, // relative to the viewport
-            rootMargin: '0px',
-            threshold: 0.1 // trigger when 10% of the element is visible
-        };
+            // Set Current Year in Footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+            // --- Intersection Observer for Scroll Animations ---
+            const observerOptions = {
+                root: null, // relative to document viewport
+                rootMargin: '0px',
+                threshold: 0.1 // trigger when 10% of the element is visible
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            };
+
+            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => {
+                 // Add initial animation class based on data attribute or specific class
+                if (el.classList.contains('contact-form') || el.querySelector('h2')?.textContent.includes('מוכנים')) {
+                   el.classList.add('fade-in-up');
+                } else if (el.querySelector('h2')?.textContent.includes('מגדירים')) {
+                     el.classList.add('fade-in-up'); // or fade-in-right for variety
+                } else {
+                     el.classList.add('fade-in'); // Default animation
                 }
+                scrollObserver.observe(el);
             });
-        }, observerOptions);
 
-        fadeInSections.forEach(section => {
-            observer.observe(section);
-        });
 
-        // --- Form Handling ---
-        const form = document.getElementById('inquiryForm');
-        const formStatus = document.getElementById('form-status');
+            // --- Simple Form Handling (Client-Side Demo) ---
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default page reload
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent actual form submission
 
-            // Basic Validation (Front-end only for this example)
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
+                    // Basic validation check (HTML5 required attribute handles most)
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const message = document.getElementById('message').value.trim();
 
-            if (!name || !email || !phone || !message) {
-                showFormStatus('אנא מלא/י את כל השדות.', 'error');
-                return;
+                    if (name && email && phone && message) {
+                        // Simulate successful submission
+                        formMessage.textContent = 'תודה על פנייתך! ניצור קשר בהקדם.';
+                        formMessage.className = 'success'; // Apply success style
+                        formMessage.style.display = 'block';
+                        contactForm.reset(); // Clear the form
+
+                        // Hide the message after a few seconds
+                        setTimeout(() => {
+                            formMessage.style.display = 'none';
+                            formMessage.textContent = '';
+                            formMessage.className = '';
+                        }, 5000);
+
+                    } else {
+                        // Show a generic error if fields are missing (though 'required' should prevent this)
+                        formMessage.textContent = 'אנא מלא את כל השדות הנדרשים.';
+                        formMessage.className = 'error'; // Apply error style
+                         formMessage.style.display = 'block';
+                          setTimeout(() => {
+                            formMessage.style.display = 'none';
+                            formMessage.textContent = '';
+                             formMessage.className = '';
+                        }, 4000);
+                    }
+
+                    // In a real application, you would send the data to a server here using fetch() or XMLHttpRequest.
+                    // Example:
+                    // const formData = new FormData(contactForm);
+                    // fetch('/your-server-endpoint', { method: 'POST', body: formData })
+                    //   .then(response => response.json())
+                    //   .then(data => { console.log('Success:', data); /* Show success message */ })
+                    //   .catch((error) => { console.error('Error:', error); /* Show error message */ });
+                });
             }
 
-            // --- Simulate Form Submission ---
-            // In a real application, you would send this data to a server using fetch() or XMLHttpRequest
-            console.log('Form Data Submitted:');
-            console.log({ name, email, phone, message });
+            // --- Smooth scrolling for internal links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttribute = this.getAttribute('href');
+                    // Ensure it's not just a hash '#' link
+                    if (hrefAttribute.length > 1) {
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start' // Align to top is usually best
+                            });
+                        }
+                    }
+                });
+            });
 
-            // Show success message (simulation)
-            showFormStatus('הפנייה נשלחה בהצלחה! ניצור קשר בהקדם.', 'success');
-            form.reset(); // Clear the form
 
-            // Optionally hide the success message after a few seconds
-            setTimeout(() => {
-                formStatus.textContent = '';
-                formStatus.className = '';
-            }, 5000);
-        });
-
-        function showFormStatus(message, type) {
-            formStatus.textContent = message;
-            formStatus.className = type === 'success' ? 'status-success' : 'status-error';
-        }
-
-        // --- Footer Current Year ---
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
+        }); // End DOMContentLoaded
     </script>
 
 </body>
@@ -593,46 +627,50 @@ Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מ
 
 **Explanation and Features:**
 
-1.  **Single File Structure:** All HTML, CSS (`<style>`), and JavaScript (`<script>`) are contained within this single `.html` file.
+1.  **Single File Structure:** All HTML, CSS (`<style>` block in `<head>`), and JavaScript (`<script>` block before `</body>` end) are contained within this single `.html` file.
 2.  **Hebrew & RTL:**
-    *   `<html lang="he" dir="rtl">`: Sets the language to Hebrew and direction to Right-to-Left.
-    *   CSS: Properties like `text-align: right`, and the natural flow of RTL handle most layout aspects. Specific adjustments (like form label positioning) implicitly work well with `display: block`.
-    *   Fonts: Uses Google Fonts ('Assistant' for body, 'Frank Ruhl Libre' for headings) known for good Hebrew support and an elegant feel.
-3.  **Luxurious Hero Section:**
-    *   **Full Viewport Height:** Takes up the initial screen (`height: 100vh`).
-    *   **Gradient Background:** Uses a sophisticated `linear-gradient` from deep navy to a secondary blue.
-    *   **Abstract Animated Shapes:** Uses `::before` and `::after` pseudo-elements with CSS animations (`morph`, `moveBg`, `moveBgAlt`) to create subtle, non-distracting, dynamic background elements, adding a unique and artistic touch.
-    *   **Elegant Typography:** Large, bold serif heading (`Frank Ruhl Libre`) and a clear sans-serif subtitle (`Assistant`).
-    *   **Color Palette:** Primarily white text on the dark blue background, with gold (`--accent-gold`) used for the primary CTA button and subtle accents (like the animated shapes' opacity).
-    *   **Interactive CTA:** A prominent button (`.btn-primary`) with a gold gradient, hover effects (lift and shadow), linking to the contact form.
-    *   **Entry Animations:** Content elements fade/slide in using CSS animations (`fadeIn`, `slideInUp`) for a smooth entrance.
-    *   **Scroll Down Hint:** An optional animated arrow suggests scrolling (can be removed if preferred).
-4.  **Inquiry Form:**
-    *   **Clear Structure:** Uses standard form elements (`<label>`, `<input>`, `<textarea>`).
-    *   **Styling:** Clean input fields with focus states, clear labels, and a submit button styled consistently with the primary CTA.
-    *   **Placement:** Contained within a visually distinct card (`.contact-form`) with a subtle shadow on a light silver background (`--accent-silver`) for separation.
-    *   **Basic JS Validation:** Simple client-side checks for empty fields.
-    *   **Simulated Submission:** Logs data to the console and displays a success/error message (`#form-status`). **Note:** For actual use, you need backend code to receive this data.
-5.  **Color Palette:**
-    *   **Primary:** White (`#FFFFFF`) and Deep Navy Blue (`#0A2342`).
-    *   **Secondary:** Lighter Blue (`#2E5A88`).
-    *   **Accents (Luxury):** Muted Gold (`#BDA55D`), Light Silver/Gray (`#E0E1E1`). Used for buttons, highlights, backgrounds, and subtle details.
-6.  **Responsive Design:**
-    *   Uses `meta viewport` tag.
-    *   Employs relative units (`rem`, `%`, `vh`).
-    *   Uses Flexbox for layout where appropriate (like the hero content centering).
-    *   Includes `@media` queries to adjust font sizes, padding, element sizes, and hero section height for different screen sizes (tablets, mobiles).
-7.  **Animations & Artistic Details:**
-    *   **Hero Animations:** Background shapes, content entry animations.
-    *   **Scroll Animations:** Sections (`#about`, `#contact`) use `IntersectionObserver` (in JS) to trigger a `fade-in-section` CSS class when they scroll into view, making them appear smoothly.
-    *   **Button Hovers:** Subtle transformations and shadow changes on buttons.
-    *   **Subtle SVG Icon:** A simple diamond icon in the "About" section adds a touch of visual interest without external files.
-    *   **Heading Underline:** A custom underline effect using `::after` on the "About" section heading.
+    *   `<html lang="he" dir="rtl">` sets the language and default direction.
+    *   `text-align: right;` is set as the default in the body.
+    *   CSS properties like `right`, `left`, `margin-right`, `padding-right`, etc., are used appropriately for RTL layout (e.g., the `h2::after` underline starts from the right). Logical properties (`*-inline-start`, `*-inline-end`) could also be used but direct RTL properties are clear here.
+3.  **Luxurious Design:**
+    *   **Color Palette:** Black (`#0a0a0a`, `#1a1a1a`, `#111`) and Gold/Yellow (`#FFD700`, `#FDB813`) are primary. White (`#f8f8f8`) and Grey (`#333333`) act as neutrals.
+    *   **Typography:** Uses the elegant 'Assistant' Google Font, suitable for Hebrew. Font sizes use `clamp()` for fluid responsiveness. Headings are bold and use accent colors.
+    *   **Imagery:**
+        *   The hero section uses a Base64 encoded SVG pattern as a background, overlaid with a gradient for depth. **Important:** For a truly "rich imagery" feel, you *must* replace the placeholder SVG `url(...)` in the `.hero` CSS with a Base64 encoded version of a high-quality photograph (e.g., abstract shapes, cityscape, professional setting). Base64 encoding large images will significantly increase the file size but fulfills the single-file requirement. You can use online converters for this.
+        *   A subtle noise/dot pattern (also Base64 SVG) is applied to the #about section background for texture.
+    *   **Layout:** Uses Flexbox for hero content centering and basic layout. Sections have ample padding. The contact form has a clean, focused layout with a border highlight.
+    *   **Details:** Subtle box-shadows, pill-shaped buttons, custom scrollbar (optional enhancement), underline effect on H2 hover.
+4.  **Captivating Hero Section:**
+    *   Full viewport height (`min-height: 100vh`).
+    *   Large, impactful headline (`h1`) with the firm name.
+    *   Clear subtitle (`p.subtitle`).
+    *   Prominent Call-to-Action button (`.btn`).
+    *   Subtle background zoom animation (`subtleZoom`).
+    *   Very subtle pulsating background shapes (`hero::before`, `hero::after`) using pseudo-elements for a dynamic feel without being distracting.
+    *   Animated scroll-down arrow (`.scroll-down`) to guide the user.
+5.  **Inquiry Form:**
+    *   Located in the `#contact` section.
+    *   Fields: Name, Email, Phone, Message (all marked `required`).
+    *   Styling: Dark inputs with gold focus outline, clear labels (or placeholders acting as labels).
+    *   Submission: Basic client-side JavaScript prevents default submission and shows a success/error message (`#form-message`) within the page for demonstration. *No actual data is sent.*
+6.  **Animations & Interactivity:**
+    *   **Hero Entrance:** Content fades in (`fadeInDown`).
+    *   **Scroll Animations:** Uses JavaScript's `IntersectionObserver` (more performant than scroll listeners) to trigger fade-in/fade-in-up animations (`.animate-on-scroll`, `.is-visible`) as sections come into view.
+    *   **Hover Effects:** Buttons have transform/shadow changes; H2 underlines animate.
+    *   **Subtle Backgrounds:** Hero background zoom and subtle pulsating shapes.
+    *   **Smooth Scrolling:** JavaScript added for smooth scrolling when clicking internal links (like the hero CTA or scroll-down arrow).
+7.  **Responsive Design:**
+    *   Uses `meta name="viewport"` tag.
+    *   Employs `@media` queries to adjust font sizes, padding, hero height, and hide some subtle decorative elements on smaller screens for clarity.
+    *   `clamp()` used for fluid typography.
 8.  **Clean Code:**
-    *   Uses CSS variables (`:root`) for easy color management.
+    *   Uses CSS variables (`:root`) for easy theme management.
+    *   Semantic HTML structure (`<section>`, `<header>`, `<footer>`, `<form>`, `<label>`).
     *   Well-commented CSS and JavaScript sections.
-    *   Semantic HTML elements (`<header>`, `<main>`, `<section>`, `<footer>`, `<form>`).
-    *   Logical class naming convention.
-    *   Basic accessibility considerations (labels, alt text placeholder, semantic elements).
+    *   Logically grouped CSS rules.
 
-This single file provides a sophisticated, visually appealing, and functional landing page experience tailored to the luxurious identity of "מרואן ובניו". Remember to replace the simulated form submission with actual backend integration for a live site.
+**To Use:**
+
+1.  Save the code as an `.html` file (e.g., `marwan-h-landing.html`).
+2.  **Crucially:** Find a high-quality background image for the hero section, convert it to Base64 (use an online tool like `base64-image.de`), and replace the example `url('data:image/svg+xml;base64,...')` in the `.hero` CSS rule with your image's Base64 string (`url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE....')`). Be mindful that this will make the HTML file much larger. Optimize the image before encoding it!
+3.  Open the HTML file in your web browser.
