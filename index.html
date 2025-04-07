@@ -1,84 +1,72 @@
+Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מרואן ח." (Marwan H.), incorporating all your requirements.
+
 ```html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>.מרואן ח - ייעוץ עסקי פורץ דרך</title>
+    <title>מרואן ח. - ייעוץ עסקי יוקרתי | מצוינות אסטרטגית</title>
+    <meta name="description" content="מרואן ח. מציע ייעוץ עסקי יוקרתי ואסטרטגיות צמיחה מותאמות אישית לעסקים מובילים בישראל. גלה כיצד נוכל להוביל את העסק שלך להצלחה יוצאת דופן.">
     <style>
-        /* Reset and Base Styles */
-        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap');
-
-        :root {
-            --primary-black: #0a0a0a;
-            --primary-gold: #FFD700; /* Classic Gold */
-            --accent-yellow: #FDB813; /* Richer Yellow/Orange Gold */
-            --neutral-white: #f8f8f8;
-            --neutral-grey: #333333;
-            --dark-grey: #1a1a1a;
-            --font-primary: 'Assistant', sans-serif;
-            --transition-speed: 0.3s;
-        }
-
-        * {
+        /* --- Global Resets & Base Styles --- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: var(--font-primary);
-            background-color: var(--primary-black);
-            color: var(--neutral-white);
-            line-height: 1.6;
+            font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* Fallback font */
+            /* Consider adding a specific elegant Hebrew font via @import if needed, e.g., Google Fonts 'Assistant' or 'Heebo' */
+            background-color: #0a0a0a; /* Very dark base */
+            color: #e0e0e0; /* Light grey for text */
+            line-height: 1.7;
             overflow-x: hidden; /* Prevent horizontal scroll */
-            direction: rtl; /* Ensure RTL context */
-            text-align: right; /* Default text alignment for RTL */
+            direction: rtl; /* Right-to-left layout */
         }
 
-        /* Custom Scrollbar (Optional - for a more luxurious feel) */
-        body::-webkit-scrollbar {
-            width: 8px;
-        }
-        body::-webkit-scrollbar-track {
-            background: var(--dark-grey);
-        }
-        body::-webkit-scrollbar-thumb {
-            background-color: var(--primary-gold);
-            border-radius: 10px;
-            border: 2px solid var(--dark-grey);
+        /* --- Color Palette --- */
+        :root {
+            --color-primary-black: #050505;
+            --color-primary-yellow: #FFD700; /* Gold */
+            --color-secondary-dark: #1a1a1a;
+            --color-accent-light: #f0f0f0;
+            --color-accent-grey: #cccccc;
+            --color-complementary-blue: #0f2c59; /* Deep blue for subtle accents */
+            --color-complementary-purple: #4a0d66; /* Deep purple for subtle accents */
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Headings */
-        h1, h2, h3 {
-            font-weight: 700;
-            line-height: 1.2;
+        /* --- Typography --- */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Times New Roman', Times, serif; /* More elegant serif font for headings */
+            /* Or use a specific Hebrew display font */
+            font-weight: bold;
+            line-height: 1.3;
+            color: var(--color-accent-light);
             margin-bottom: 1rem;
+            letter-spacing: 0.5px; /* Subtle spacing */
         }
 
         h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
-            color: var(--primary-gold);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            font-size: 3.5rem;
+            color: var(--color-primary-yellow);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         h2 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            color: var(--accent-yellow);
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: var(--color-primary-yellow);
+            margin-bottom: 1.5rem;
+            text-align: center;
             position: relative;
-            display: inline-block;
             padding-bottom: 0.5rem;
         }
 
@@ -87,353 +75,496 @@
             content: '';
             position: absolute;
             bottom: 0;
-            right: 0; /* Adjusted for RTL */
-            width: 50px;
+            left: 50%;
+            transform: translateX(50%); /* Correct for RTL */
+            width: 60px;
             height: 3px;
-            background-color: var(--primary-gold);
-            transition: width var(--transition-speed) ease-in-out;
+            background-color: var(--color-primary-yellow);
+            border-radius: 2px;
         }
 
-        h2:hover::after {
-            width: 100%;
+        h3 {
+            font-size: 1.8rem;
+            color: var(--color-accent-light);
         }
 
         p {
             margin-bottom: 1rem;
             font-size: 1.1rem;
-            font-weight: 300;
+            color: var(--color-accent-grey);
         }
 
         a {
-            color: var(--primary-gold);
+            color: var(--color-primary-yellow);
             text-decoration: none;
-            transition: color var(--transition-speed) ease;
+            transition: color 0.3s ease;
         }
 
-        a:hover {
-            color: var(--accent-yellow);
+        a:hover, a:focus {
+            color: #fff;
+            text-decoration: underline;
         }
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-gold);
-            color: var(--primary-black);
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 50px; /* Pill shape */
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-            letter-spacing: 0.5px;
+        /* --- Layout & Structure --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .btn:hover {
-            background-color: var(--accent-yellow);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(253, 184, 19, 0.4);
+        section {
+            padding: 80px 0;
+            overflow: hidden; /* Contain animations */
+            position: relative; /* For pseudo-elements or absolute positioning */
         }
 
-        /* Hero Section */
-        .hero {
+        section:nth-of-type(odd) {
+            background-color: var(--color-secondary-dark);
+        }
+        section:nth-of-type(even) {
+            background-color: var(--color-primary-black);
+        }
+
+        /* Subtle background patterns or textures can be added here */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Example: Subtle geometric pattern or gradient */
+            /* background-image: linear-gradient(45deg, rgba(255, 215, 0, 0.02) 25%, transparent 25%), linear-gradient(-45deg, rgba(255, 215, 0, 0.02) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255, 215, 0, 0.02) 75%), linear-gradient(-45deg, transparent 75%, rgba(255, 215, 0, 0.02) 75%);
+            background-size: 20px 20px; */
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+
+        /* --- Hero Section --- */
+        #hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             text-align: center;
-            padding: 40px 20px;
-            overflow: hidden; /* Contain pseudo-elements */
-            /* Base64 Encoded Hero Background Image - Replace with your high-quality image encoded */
-            /* Example using a dark abstract pattern (smaller size for demo) */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzExMSIvPjxnIHN0cm9rZT0iI0ZGRDcwMCIgc3Ryb2tlLXdpZHRoPSIwLjMiPjxwYXRoIGQ9Ik0tMjAwIDgwMEw4MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDcwMEw3MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDYwMEw2MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDUwMEw1MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDQwMEw0MDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDMwMEwzMDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDIwMEwyMDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDEwMEwxMDAgLTIwMCIvPjxwYXRoIGQ9Ik0tMjAwIDBMMCAtMjAwIi8+PHBhdGggZD0iTS0yMDAgLTEwMEwtMTAwIC0yMDAiLz48cGF0aCBkPSJNMCA4MDBMODEwMCAwIi8+PHBhdGggZD0iTTEwMCA4MDBNMTIwMCAwIi8+PHBhdGggZD0iTTIwMCA4MDBNMTMwMCAwIi8+PHBhdGggZD0iTTMwMCA4MDBNMTQwMCAwIi8+PHBhdGggZD0iTTQwMCA4MDBNMTUwMCAwIi8+PHBhdGggZD0iTTUwMCA4MDBNMTYwMCAwIi8+PHBhdGggZD0iTTYwMCA4MDBNMTcwMCAwIi8+PHBhdGggZD0iTTcwMCA4MDBNMTgwMCAwIi8+PHBhdGggZD0iTTgwMCA4MDBNMTkwMCAwIi8+PHBhdGggZD0iTTkwMCA4MDBNMjAwMCAwIi8+PHBhdGggZD0iTTEwMDAgODAwTTIxMDAgMCIvPjwvZz48L3N2Zz4=');
-            background-size: cover; /* Use 'cover' for images, adjust for patterns */
-            background-position: center center;
-            background-repeat: repeat; /* Use 'repeat' for patterns like this SVG */
-            animation: subtleZoom 40s infinite alternate ease-in-out;
+            padding: 100px 20px;
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80') no-repeat center center/cover;
+            /* Alt image: https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80 */
+            color: #fff;
         }
 
-        @keyframes subtleZoom {
-            from { background-size: 100% 100%; }
-            to { background-size: 110% 110%; }
+        #hero::before { /* Dark overlay */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+            z-index: 1;
         }
 
         .hero-content {
-            max-width: 800px;
             position: relative;
             z-index: 2;
-            animation: fadeInDown 1s ease-out;
+            max-width: 800px;
+            animation: fadeIn HeroAnimation 1.5s ease-out forwards;
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem); /* Larger for hero */
-            margin-bottom: 0.5rem;
-            font-weight: 700; /* Bolder for emphasis */
+        .logo {
+            font-family: 'Georgia', serif; /* Example elegant font */
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #fff; /* White logo on dark bg */
+            margin-bottom: 1rem;
             letter-spacing: 1px;
+            display: inline-block;
+            border: 2px solid var(--color-primary-yellow);
+            padding: 10px 25px;
+            border-radius: 5px;
+            background-color: rgba(0,0,0,0.3);
+            cursor: default; /* Not clickable */
         }
 
-        .hero .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--neutral-white);
-            font-weight: 300;
+        .hero-content h1 {
+            font-size: 4rem; /* Larger for hero */
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: slideInUp 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            color: var(--color-accent-grey);
+            font-weight: 300;
+            animation: slideInUp 1s ease-out 0.8s forwards;
+            opacity: 0;
         }
 
-        /* Animated background shapes (subtle) */
-        .hero::before, .hero::after {
-            content: '';
-            position: absolute;
-            background-color: var(--primary-gold);
-            opacity: 0.05; /* Very subtle */
-            border-radius: 50%;
-            z-index: 1;
-            animation: pulse 8s infinite ease-in-out alternate;
-        }
-
-        .hero::before {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 15%; /* Adjusted for RTL visual balance */
-            animation-delay: 0s;
-        }
-
-        .hero::after {
-            width: 150px;
-            height: 150px;
-            bottom: 15%;
-            right: 20%; /* Adjusted for RTL */
-            animation-delay: 2s;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.03; }
-            100% { transform: scale(1.1); opacity: 0.07; }
-        }
-
-        /* Scroll Down Arrow (Interactive Element) */
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            animation: bounce 2s infinite;
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary-yellow);
+            color: var(--color-primary-black);
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            animation: slideInUp 1s ease-out 1.1s forwards;
+            opacity: 0;
+            text-align: center;
         }
 
-        .scroll-down a {
-            display: block;
-            padding: 10px;
+        .cta-button:hover, .cta-button:focus {
+            background-color: #fff;
+            color: var(--color-primary-black);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            text-decoration: none;
         }
 
-        .scroll-down span {
-            display: block;
-            width: 24px;
-            height: 24px;
-            border-left: 2px solid var(--primary-gold);
-            border-bottom: 2px solid var(--primary-gold);
-            transform: rotate(-45deg);
-            opacity: 0.8;
+        /* Interactive element - subtle particle effect or similar could be added with JS */
+        /* Placeholder for interactive element: subtle pulse on logo */
+        .logo {
+            animation: subtlePulse 3s infinite ease-in-out 2s;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-            40% { transform: translate(-50%, -15px); }
-            60% { transform: translate(-50%, -7px); }
+        /* --- About Section --- */
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        /* Content Section Base */
-        .content-section {
-            padding: 80px 0;
+        #about img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+            max-height: 450px;
+        }
+
+        /* --- Services Section --- */
+        #services {
+             background: linear-gradient(rgba(15, 44, 89, 0.1), rgba(15, 44, 89, 0.1)), var(--color-secondary-dark); /* Subtle blue hint */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .service-item {
+            background-color: var(--color-primary-black);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-primary-yellow); /* RTL: Border on the left */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            overflow: hidden; /* Helps contain animations */
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0, 0.3);
         }
 
-        /* Alternate Background for Contrast */
-        .content-section.bg-dark {
-            background-color: var(--dark-grey);
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
         }
 
-         /* About/Intro Section (Optional but good) */
-         #about {
-            /* Add a subtle background texture/pattern if desired */
-            /* Example using a subtle noise pattern */
-             background-image: linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz48ZyBmaWxsLW9wYWNpdHk9IjAuMSIgZmlsbD0iI0ZGRDcwMCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjMwIiB5PSIzMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjQwIiB5PSI0MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjYwIiB5PSI2MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjcwIiB5PSI3MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjkwIiB5PSI5MCIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjUiIHk9IjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIxNSIgeT0iMTUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIyNSIgeT0iMjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIzNSIgeT0iMzUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI0NSIgeT0iNDUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI1NSIgeT0iNTUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI2NSIgeT0iNjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI3NSIgeT0iNzUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI4NSIgeT0iODUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI5NSIgeT0iOTUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48L2c+PC9zdmc+');
-             background-repeat: repeat;
+        .service-item h3 {
+            margin-bottom: 1rem;
+            color: var(--color-primary-yellow);
+            font-size: 1.5rem;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: var(--color-accent-grey);
+        }
+
+        /* Optional: Service icons */
+        .service-item::before {
+            content: ''; /* Add icon here e.g. using background-image or font icon */
+            /* Example: content: '\f085'; font-family: 'Font Awesome 5 Free'; font-weight: 900; */
+            position: absolute;
+            top: 20px;
+            right: 20px; /* RTL */
+            font-size: 2.5rem;
+            color: rgba(255, 215, 0, 0.1);
+            z-index: 0;
+        }
+
+
+        /* --- Why Us Section --- */
+        #why-us {
+            background: linear-gradient(to bottom, var(--color-primary-black), var(--color-secondary-dark));
+        }
+
+        .why-us-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+         .why-us-image img {
+             width: 100%;
+             height: auto;
+             border-radius: 8px;
+             object-fit: cover;
+             filter: grayscale(50%) brightness(0.8);
+             transition: filter 0.5s ease;
+         }
+         .why-us-image:hover img {
+             filter: grayscale(0%) brightness(1);
          }
 
-        /* Contact Form Section */
+
+        .why-us-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-us-list li {
+            margin-bottom: 1.5rem;
+            padding-right: 35px; /* RTL */
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .why-us-list li::before {
+            content: '✔'; /* Checkmark */
+            position: absolute;
+            right: 0; /* RTL */
+            top: 0;
+            color: var(--color-primary-yellow);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+
+        /* --- Contact Section --- */
         #contact {
-            background-color: var(--primary-black); /* Same as body or slightly different dark */
+            background-color: var(--color-secondary-dark);
+            padding-bottom: 100px; /* Extra padding at bottom */
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
+            margin-top: 3rem;
+            background: var(--color-primary-black);
             padding: 40px;
-            background-color: var(--dark-grey);
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border-top: 5px solid var(--primary-gold);
-            animation: fadeInUp 1s ease-out;
-            animation-fill-mode: both; /* Keep state after animation */
-            opacity: 0; /* Start hidden for animation */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
-            position: relative; /* For potential icon positioning */
+            margin-bottom: 1.8rem;
+            text-align: right; /* RTL */
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--accent-yellow);
-            font-size: 0.9rem;
-            opacity: 0.8;
+            color: var(--color-accent-light);
+            font-weight: bold;
+            font-size: 1rem;
         }
 
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
+        .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--neutral-grey);
-            background-color: var(--primary-black);
-            color: var(--neutral-white);
+            padding: 15px;
+            background-color: var(--color-secondary-dark);
+            border: 1px solid #444;
             border-radius: 5px;
-            font-family: var(--font-primary);
+            color: var(--color-accent-light);
             font-size: 1rem;
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus,
-        .form-group input[type="tel"]:focus,
+        .form-group input:focus,
         .form-group textarea:focus {
-            border-color: var(--primary-gold);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+            border-color: var(--color-primary-yellow);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 150px;
             resize: vertical;
         }
 
-        /* Adjust placeholder color */
-        .form-group ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: var(--neutral-grey);
-            opacity: 0.7;
-        }
-        .form-group :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: var(--neutral-grey);
-        }
-        .form-group ::-ms-input-placeholder { /* Microsoft Edge */
-            color: var(--neutral-grey);
-        }
-
-        .form-group .btn {
-            width: 100%;
-            margin-top: 1rem;
-            padding: 15px 30px; /* Larger padding for main action */
+        .submit-button {
+            display: inline-block;
+            background-color: var(--color-primary-yellow);
+            color: var(--color-primary-black);
+            padding: 15px 40px;
             font-size: 1.1rem;
-        }
-
-        #form-message {
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             margin-top: 1rem;
-            text-align: center;
-            font-weight: 600;
-            display: none; /* Hidden initially */
-        }
-        #form-message.success {
-            color: #4CAF50; /* Green */
-        }
-        #form-message.error {
-            color: #f44336; /* Red */
         }
 
-        /* Footer */
+        .submit-button:hover, .submit-button:focus {
+            background-color: #fff;
+            color: var(--color-primary-black);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            outline: none;
+        }
+
+
+        /* --- Footer --- */
         footer {
-            padding: 30px 0;
+            background-color: var(--color-primary-black);
+            color: var(--color-accent-grey);
             text-align: center;
+            padding: 25px 20px;
             font-size: 0.9rem;
-            color: var(--neutral-grey);
-            background-color: var(--dark-grey);
-            margin-top: 50px; /* Ensure spacing */
-            border-top: 1px solid var(--neutral-grey);
+            border-top: 1px solid #333;
         }
 
-        footer span {
-             color: var(--primary-gold);
-             font-weight: 600;
+        footer p {
+            margin: 0;
+            color: var(--color-accent-grey);
         }
 
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* --- Animations --- */
+        @keyframes fadeInHeroAnimation {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        /* Class for triggering animations on scroll */
+        @keyframes subtlePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+        }
+
+        /* Scroll Animations Placeholder Class */
         .animate-on-scroll {
             opacity: 0;
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .animate-on-scroll.fade-in {
-            opacity: 0;
+            opacity: 1;
         }
-        .animate-on-scroll.fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
+
+        .animate-on-scroll.slide-in-right { /* For RTL, this slides from left */
+             transform: translateX(-50px);
         }
-        /* Add more animation types as needed (e.g., fade-in-right for RTL) */
-        .animate-on-scroll.fade-in-right {
-             opacity: 0;
-             transform: translateX(-40px); /* Move from left in RTL */
-        }
+         .animate-on-scroll.slide-in-left { /* For RTL, this slides from right */
+             transform: translateX(50px);
+         }
 
         .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translate(0, 0);
+             opacity: 1;
+             transform: translateX(0);
         }
 
 
-        /* Responsive Design */
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            .hero-content h1 { font-size: 3.2rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.6rem; }
+            p { font-size: 1rem; }
+
+            #about .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+             #about img {
+                margin-bottom: 30px; /* Space below image on mobile */
+                max-height: 350px;
+             }
+
+            .why-us-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+             .why-us-image {
+                 margin-bottom: 30px;
+                 order: -1; /* Show image first */
+             }
+              .why-us-list li {
+                padding-right: 30px; /* Adjust padding */
+                text-align: right; /* Ensure text aligns right */
+             }
+             .why-us-list li::before {
+                right: 0; /* Adjust position */
+            }
+
+             h2::after { /* Center the underline on mobile */
+                left: 50%;
+                transform: translateX(50%);
+             }
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: clamp(2rem, 10vw, 3rem); }
-            h2 { font-size: clamp(1.5rem, 8vw, 2rem); }
-            .hero .subtitle { font-size: clamp(1rem, 4vw, 1.3rem); }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content .subtitle { font-size: 1.3rem; }
+            .cta-button, .submit-button { padding: 12px 30px; font-size: 1rem; }
+            section { padding: 60px 0; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
 
-            .hero { min-height: 80vh; /* Adjust height on smaller screens */ }
-            .hero::before, .hero::after { display: none; /* Hide subtle shapes on mobile */ }
-
-            .content-section { padding: 60px 0; }
-            .contact-form { padding: 30px 20px; }
-
-            .btn { padding: 10px 25px; font-size: 0.9rem; }
-            .form-group .btn { padding: 12px 25px; font-size: 1rem; }
+            .services-grid {
+                grid-template-columns: 1fr; /* Stack services */
+            }
+            .service-item {
+                text-align: right; /* Ensure text aligns right on single column */
+            }
+             .service-item::before {
+                 /* Adjust icon position if needed */
+             }
         }
 
-        @media (max-width: 480px) {
-             .container { padding: 0 15px; }
-             .hero h1 { letter-spacing: 0; } /* Reduce spacing on very small screens */
-             footer { font-size: 0.8rem; }
+        @media (max-width: 576px) {
+             html { font-size: 15px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content .subtitle { font-size: 1.1rem; }
+            .logo { font-size: 2rem; padding: 8px 20px; }
+            h1 { font-size: 2rem; }
+             h2 { font-size: 1.8rem; }
+             h2::after { width: 50px; }
+
+             .contact-form { padding: 30px 20px; }
+             .form-group input, .form-group textarea { padding: 12px; }
         }
 
     </style>
@@ -441,63 +572,114 @@
 <body>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="hero">
         <div class="hero-content">
-            <h1>.מרואן ח</h1>
-            <p class="subtitle">ייעוץ עסקי אסטרטגי שמוביל לתוצאות יוצאות דופן.</p>
-            <a href="#contact" class="btn">בואו נדבר על ההצלחה שלכם</a>
+            <div class="logo">מרואן ח.</div>
+            <h1>מנווטים את העסק שלך להצלחה יוצאת דופן</h1>
+            <p class="subtitle">ייעוץ עסקי יוקרתי ופתרונות אסטרטגיים מותאמים אישית לעסקים מובילים השואפים לצמיחה, חדשנות והשפעה מתמשכת.</p>
+            <a href="#contact" class="cta-button">קבע פגישת ייעוץ ראשונית</a>
         </div>
-        <div class="scroll-down">
-             <a href="#about"><span></span></a>
-        </div>
+        <!-- Potential subtle background animation/particles could go here -->
     </section>
 
-    <!-- About Section (Brief Intro) -->
-    <section id="about" class="content-section bg-dark">
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-             <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="animate-on-scroll fade-in-up">
-                <h2 >מגדירים מחדש הצלחה עסקית</h2>
-                <p style="font-size: 1.2rem; color: var(--neutral-white); opacity: 0.9;">
-                    אנו ב<span>.מרואן ח</span> מתמחים בליווי חברות ועסקים שאפתניים אל עבר צמיחה משמעותית ויתרון תחרותי. עם ניסיון עשיר, ראייה אסטרטגית ויצירתיות פורצת דרך, אנו בונים פתרונות מותאמים אישית שמניבים ערך אמיתי ובר-קיימא.
-                </p>
-                 <p style="font-weight: 600; color: var(--accent-yellow);">
-                    ההצלחה שלכם היא המטרה שלנו.
-                 </p>
+            <div class="about-image animate-on-scroll slide-in-left">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="צוות יועצים בפגישה אסטרטגית">
+            </div>
+            <div class="about-text animate-on-scroll slide-in-right">
+                <h2>מי אנחנו: שותפים למצוינות שלך</h2>
+                <p><strong>מרואן ח.</strong> אינה עוד חברת ייעוץ. אנו שותפים אסטרטגיים, מחויבים להצלחה ארוכת הטווח של לקוחותינו. אנו מביאים לשולחן שילוב ייחודי של ניסיון רב-שנים, תובנות עמוקות וגישה חדשנית, המותאמים באופן אישי לאתגרים ולהזדמנויות הספציפיים של העסק שלך.</p>
+                <p>המומחיות שלנו משתרעת על פני מגזרים מגוונים, ואנו מתמחים בליווי עסקים בצמתי קבלת החלטות קריטיים, בגיבוש אסטרטגיות צמיחה פורצות דרך ובהטמעת תהליכים המובילים למצוינות תפעולית ופיננסית. אנו מאמינים בשקיפות, דיסקרטיות ובניית יחסי אמון איתנים.</p>
+                <p><strong>החזון שלנו:</strong> להעצים עסקים מובילים להגיע לפוטנציאל המלא שלהם ולהפוך למובילי שוק בתחומם.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="content-section">
+    <!-- Services Section -->
+    <section id="services">
         <div class="container">
-            <div style="text-align: center;" class="animate-on-scroll fade-in-up">
-                <h2>מוכנים לשלב הבא?</h2>
-                <p style="max-width: 600px; margin: 0 auto 2rem auto; color: var(--neutral-white); opacity: 0.8;">
-                    מלאו את הפרטים ונציג מטעמנו ייצור עמכם קשר בהקדם لبحث كيف يمكنנו לקדם את העסק שלכם.
-                </p>
+            <h2>שירותי הייעוץ שלנו: פתרונות יוקרה מותאמים אישית</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto; color: var(--color-accent-grey);">אנו מציעים מגוון רחב של שירותי ייעוץ אסטרטגי, המתוכננים לספק ערך מדיד ולהניע צמיחה בת קיימא.</p>
+            <div class="services-grid">
+                <div class="service-item animate-on-scroll fade-in">
+                    <h3>אסטרטגיה עסקית ופיתוח שווקים</h3>
+                    <p>גיבוש חזון ואסטרטגיה עסקית ארוכת טווח, זיהוי הזדמנויות צמיחה חדשות, ניתוח שווקים ותחרות, ובניית מודלים עסקיים חדשניים.</p>
+                </div>
+                <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.2s;">
+                    <h3>טרנספורמציה דיגיטלית וחדשנות</h3>
+                    <p>ליווי תהליכי שינוי דיגיטלי מקיפים, הטמעת טכנולוגיות מתקדמות, פיתוח תרבות ארגונית של חדשנות ושיפור חווית הלקוח בעידן הדיגיטלי.</p>
+                </div>
+                <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.4s;">
+                    <h3>אופטימיזציה תפעולית ומצוינות</h3>
+                    <p>שיפור יעילות תהליכים עסקיים, ניהול שרשרת אספקה, ייעול מבנים ארגוניים והטמעת מתודולוגיות לשיפור מתמיד (Lean, Six Sigma).</p>
+                </div>
+                <div class="service-item animate-on-scroll fade-in">
+                    <h3>ייעוץ פיננסי ואסטרטגיות השקעה</h3>
+                    <p>ניתוח ביצועים פיננסיים, תכנון תקציבי, גיוס הון, הערכות שווי, ליווי עסקאות מיזוג ורכישה (M&A) ובניית אסטרטגיות השקעה.</p>
+                </div>
+                 <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.2s;">
+                    <h3>פיתוח מנהיגות והון אנושי</h3>
+                    <p>תוכניות לפיתוח מנהלים, ליווי אישי לבכירים (Executive Coaching), אבחון ופיתוח ארגוני, וגיבוש אסטרטגיות לניהול טאלנטים.</p>
+                </div>
+                 <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.4s;">
+                    <h3>ניהול סיכונים וממשל תאגידי</h3>
+                    <p>זיהוי והערכת סיכונים עסקיים, פיתוח תוכניות התמודדות, הטמעת מסגרות ממשל תאגידי אפקטיביות והבטחת ציות רגולטורי.</p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <form id="contact-form" class="contact-form animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                 <div id="form-message" role="alert"></div> <!-- For Success/Error Messages -->
-                <div class="form-group">
-                    <label for="name">שם מלא</label>
-                    <input type="text" id="name" name="name" placeholder="השם שלך" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">דוא&quot;ל</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">טלפון</label>
-                    <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">הודעה</label>
-                    <textarea id="message" name="message" placeholder="איך נוכל לעזור?" rows="5" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn">שליחת פנייה</button>
-                </div>
+     <!-- Why Us Section -->
+    <section id="why-us">
+        <div class="container">
+             <h2 class="animate-on-scroll fade-in">מדוע לבחור במרואן ח.?</h2>
+             <div class="why-us-content">
+                 <div class="why-us-image animate-on-scroll slide-in-left">
+                     <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="ניתוח נתונים וקבלת החלטות מושכלת">
+                 </div>
+                 <div class="why-us-text animate-on-scroll slide-in-right">
+                     <h3>היתרונות הייחודיים שלנו</h3>
+                     <ul class="why-us-list">
+                        <li><strong>גישה מותאמת אישית:</strong> אנו לא מאמינים בפתרונות מדף. כל אסטרטגיה ותוכנית פעולה נתפרת במדויק למידותיו, צרכיו ומטרותיו הייחודיות של העסק שלך.</li>
+                        <li><strong>ניסיון מוכח ותוצאות:</strong> רקורד עשיר של הצלחות בליווי חברות מובילות במגוון תעשיות, תוך השגת שיפורים מדידים בביצועים העסקיים והפיננסיים.</li>
+                        <li><strong>תובנות אסטרטגיות עמוקות:</strong> יכולת ניתוח יוצאת דופן, הבנה מעמיקה של מגמות שוק וראייה רחבה המאפשרת לנו לזהות הזדמנויות וסיכונים שאחרים מפספסים.</li>
+                        <li><strong>דיסקרטיות ואמון מוחלט:</strong> אנו פועלים ברמת הדיסקרטיות הגבוהה ביותר ומחויבים לבניית יחסי אמון ארוכי טווח המבוססים על יושרה ושקיפות.</li>
+                        <li><strong>רשת קשרים ענפה:</strong> גישה לרשת קשרים מקצועית רחבה בישראל ובעולם, היכולה לסייע בפתיחת דלתות ויצירת שיתופי פעולה אסטרטגיים.</li>
+                         <li><strong>מחויבות בלתי מתפשרת להצלחה:</strong> ההצלחה שלך היא ההצלחה שלנו. אנו מלווים אותך יד ביד, כשותפים מלאים, בכל שלבי התהליך ועד להשגת היעדים.</li>
+                     </ul>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2 class="animate-on-scroll fade-in">מוכנים לקחת את העסק שלכם לשלב הבא?</h2>
+            <p class="animate-on-scroll fade-in" style="animation-delay: 0.2s;">אנו מזמינים אתכם ליצור קשר לפגישת ייעוץ ראשונית, דיסקרטית וללא התחייבות. נשמח לשמוע על האתגרים והשאיפות שלכם, ולבחון יחד כיצד נוכל לתרום להצלחתכם.</p>
+
+            <form action="#" method="POST" class="contact-form animate-on-scroll fade-in" style="animation-delay: 0.4s;">
+                 <!-- Note: The form action="#" is a placeholder. Real implementation needs a server-side script or service like Formspree/Netlify Forms -->
+                 <div class="form-group">
+                     <label for="name">שם מלא</label>
+                     <input type="text" id="name" name="name" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="email">דואר אלקטרוני</label>
+                     <input type="email" id="email" name="email" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="phone">מספר טלפון</label>
+                     <input type="tel" id="phone" name="phone" required>
+                 </div>
+                 <div class="form-group">
+                     <label for="message">הודעה (פרטו בקצרה על נושא הפנייה)</label>
+                     <textarea id="message" name="message" rows="5" required></textarea>
+                 </div>
+                 <button type="submit" class="submit-button">שלח פנייה</button>
             </form>
         </div>
     </section>
@@ -505,172 +687,154 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; <span id="current-year"></span> <span>.מרואן ח</span> | ייעוץ עסקי יוקרתי. כל הזכויות שמורות.</p>
-            <!-- You could add subtle social links here if desired -->
+            <p>&copy; <span id="current-year"></span> מרואן ח. ייעוץ עסקי יוקרתי בע"מ. כל הזכויות שמורות.</p>
+            <!-- Optional: Add social media links or other footer info here -->
         </div>
     </footer>
 
-    <!-- Embedded JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // --- Simple JavaScript for Enhancements ---
 
-            // Set Current Year in Footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+        // 1. Set Current Year in Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // --- Intersection Observer for Scroll Animations ---
-            const observerOptions = {
-                root: null, // relative to document viewport
-                rootMargin: '0px',
-                threshold: 0.1 // trigger when 10% of the element is visible
-            };
-
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Stop observing once animated
-                    }
-                });
-            };
-
-            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-
-            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-            elementsToAnimate.forEach(el => {
-                 // Add initial animation class based on data attribute or specific class
-                if (el.classList.contains('contact-form') || el.querySelector('h2')?.textContent.includes('מוכנים')) {
-                   el.classList.add('fade-in-up');
-                } else if (el.querySelector('h2')?.textContent.includes('מגדירים')) {
-                     el.classList.add('fade-in-up'); // or fade-in-right for variety
-                } else {
-                     el.classList.add('fade-in'); // Default animation
+        // 2. Smooth Scrolling for internal links (if any added later, useful for CTA)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
-                scrollObserver.observe(el);
             });
+        });
 
+        // 3. Simple Scroll Animation Trigger
+        const scrollElements = document.querySelectorAll('.animate-on-scroll');
 
-            // --- Simple Form Handling (Client-Side Demo) ---
-            const contactForm = document.getElementById('contact-form');
-            const formMessage = document.getElementById('form-message');
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
 
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Prevent actual form submission
-
-                    // Basic validation check (HTML5 required attribute handles most)
-                    const name = document.getElementById('name').value.trim();
-                    const email = document.getElementById('email').value.trim();
-                    const phone = document.getElementById('phone').value.trim();
-                    const message = document.getElementById('message').value.trim();
-
-                    if (name && email && phone && message) {
-                        // Simulate successful submission
-                        formMessage.textContent = 'תודה על פנייתך! ניצור קשר בהקדם.';
-                        formMessage.className = 'success'; // Apply success style
-                        formMessage.style.display = 'block';
-                        contactForm.reset(); // Clear the form
-
-                        // Hide the message after a few seconds
-                        setTimeout(() => {
-                            formMessage.style.display = 'none';
-                            formMessage.textContent = '';
-                            formMessage.className = '';
-                        }, 5000);
-
-                    } else {
-                        // Show a generic error if fields are missing (though 'required' should prevent this)
-                        formMessage.textContent = 'אנא מלא את כל השדות הנדרשים.';
-                        formMessage.className = 'error'; // Apply error style
-                         formMessage.style.display = 'block';
-                          setTimeout(() => {
-                            formMessage.style.display = 'none';
-                            formMessage.textContent = '';
-                             formMessage.className = '';
-                        }, 4000);
-                    }
-
-                    // In a real application, you would send the data to a server here using fetch() or XMLHttpRequest.
-                    // Example:
-                    // const formData = new FormData(contactForm);
-                    // fetch('/your-server-endpoint', { method: 'POST', body: formData })
-                    //   .then(response => response.json())
-                    //   .then(data => { console.log('Success:', data); /* Show success message */ })
-                    //   .catch((error) => { console.error('Error:', error); /* Show error message */ });
-                });
+        const displayScrollElement = (element) => {
+            element.classList.add('is-visible');
+             // Determine animation type based on existing classes
+            if (element.classList.contains('fade-in')) {
+                // Already handled by is-visible opacity transition
+            } else if (element.classList.contains('slide-in-right') || element.classList.contains('slide-in-left')) {
+                // Transform is handled by is-visible class
             }
+            // Add more animation types here if needed
+        };
 
-            // --- Smooth scrolling for internal links ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const hrefAttribute = this.getAttribute('href');
-                    // Ensure it's not just a hash '#' link
-                    if (hrefAttribute.length > 1) {
-                        const targetElement = document.querySelector(hrefAttribute);
-                        if (targetElement) {
-                            e.preventDefault();
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start' // Align to top is usually best
-                            });
-                        }
+        const hideScrollElement = (element) => {
+            // Optional: Hide element again when scrolled out of view
+            // element.classList.remove('is-visible');
+        }
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.15)) { // Trigger slightly before element is fully in view
+                    displayScrollElement(el);
+                } else {
+                    // hideScrollElement(el); // Uncomment if you want elements to hide again
+                }
+            })
+        }
+
+        // Initial check on load
+        handleScrollAnimation();
+        // Listen for scroll events
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // 4. Basic Form Validation Indication (Optional - more robust validation is recommended)
+        const form = document.querySelector('.contact-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // Basic check - real validation is more complex
+                let isValid = true;
+                form.querySelectorAll('input[required], textarea[required]').forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = 'red'; // Indicate error
+                    } else {
+                         input.style.borderColor = '#444'; // Reset border
+                         if(input.type === 'email' && !validateEmail(input.value)){
+                             isValid = false;
+                             input.style.borderColor = 'red';
+                         }
                     }
                 });
+
+                if (!isValid) {
+                    e.preventDefault(); // Prevent submission if invalid
+                    alert('אנא מלא את כל שדות החובה בצורה תקינה.');
+                } else {
+                    // Optionally show a success message or disable button after submission attempt
+                    // Since this is front-end only, we can just log it.
+                    console.log('Form submitted (simulated)');
+                    // You might want to prevent actual submission for this demo:
+                     e.preventDefault();
+                     alert('הפנייה נשלחה (סימולציה). תודה רבה!');
+                     form.reset(); // Clear form
+                }
             });
+        }
 
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
 
-        }); // End DOMContentLoaded
     </script>
 
 </body>
 </html>
 ```
 
-**Explanation and Features:**
+**Explanation and Key Features:**
 
-1.  **Single File Structure:** All HTML, CSS (`<style>` block in `<head>`), and JavaScript (`<script>` block before `</body>` end) are contained within this single `.html` file.
+1.  **Single File:** All HTML structure, CSS styling (`<style>` tag in `<head>`), and JavaScript (`<script>` tag before `</body>`) are contained within this single `.html` file.
 2.  **Hebrew & RTL:**
-    *   `<html lang="he" dir="rtl">` sets the language and default direction.
-    *   `text-align: right;` is set as the default in the body.
-    *   CSS properties like `right`, `left`, `margin-right`, `padding-right`, etc., are used appropriately for RTL layout (e.g., the `h2::after` underline starts from the right). Logical properties (`*-inline-start`, `*-inline-end`) could also be used but direct RTL properties are clear here.
+    *   `lang="he"` and `dir="rtl"` set on the `<html>` tag.
+    *   `direction: rtl;` applied to the `body`.
+    *   CSS properties like `margin-left`, `padding-right`, `border-left`, `text-align: right`, `right: 0` (for absolute positioning) are used to ensure correct layout for Hebrew.
+    *   All copywriting is in professional, persuasive Hebrew.
 3.  **Luxurious Design:**
-    *   **Color Palette:** Black (`#0a0a0a`, `#1a1a1a`, `#111`) and Gold/Yellow (`#FFD700`, `#FDB813`) are primary. White (`#f8f8f8`) and Grey (`#333333`) act as neutrals.
-    *   **Typography:** Uses the elegant 'Assistant' Google Font, suitable for Hebrew. Font sizes use `clamp()` for fluid responsiveness. Headings are bold and use accent colors.
-    *   **Imagery:**
-        *   The hero section uses a Base64 encoded SVG pattern as a background, overlaid with a gradient for depth. **Important:** For a truly "rich imagery" feel, you *must* replace the placeholder SVG `url(...)` in the `.hero` CSS with a Base64 encoded version of a high-quality photograph (e.g., abstract shapes, cityscape, professional setting). Base64 encoding large images will significantly increase the file size but fulfills the single-file requirement. You can use online converters for this.
-        *   A subtle noise/dot pattern (also Base64 SVG) is applied to the #about section background for texture.
-    *   **Layout:** Uses Flexbox for hero content centering and basic layout. Sections have ample padding. The contact form has a clean, focused layout with a border highlight.
-    *   **Details:** Subtle box-shadows, pill-shaped buttons, custom scrollbar (optional enhancement), underline effect on H2 hover.
+    *   **Color Palette:** Primarily Black (`#050505`, `#1a1a1a`) and Gold/Yellow (`#FFD700`), accented with light greys (`#e0e0e0`, `#f0f0f0`, `#cccccc`) for text and potentially subtle hints of deep blue/purple (though kept minimal here for focus).
+    *   **Typography:** Uses a combination of a standard sans-serif (Arial fallback) and a more elegant serif (Times New Roman fallback) for headings. *For a truly premium feel, you'd ideally embed a specific high-quality Hebrew font via `@import`*. Letter spacing and shadows add sophistication.
+    *   **Imagery:** High-quality, professional placeholder images from Unsplash are used for the hero, about, and why-us sections. These evoke strategy, collaboration, and professionalism.
+    *   **Layout:** Clean structure with clear sections, ample whitespace (`padding`), and centered content (`container` class). Uses CSS Grid for flexible layouts in 'About' and 'Services'.
 4.  **Captivating Hero Section:**
     *   Full viewport height (`min-height: 100vh`).
-    *   Large, impactful headline (`h1`) with the firm name.
-    *   Clear subtitle (`p.subtitle`).
-    *   Prominent Call-to-Action button (`.btn`).
-    *   Subtle background zoom animation (`subtleZoom`).
-    *   Very subtle pulsating background shapes (`hero::before`, `hero::after`) using pseudo-elements for a dynamic feel without being distracting.
-    *   Animated scroll-down arrow (`.scroll-down`) to guide the user.
+    *   Striking background image with a dark overlay for text contrast.
+    *   Elegant logo treatment (bordered text).
+    *   Large, impactful headline in gold.
+    *   Clear subtitle explaining the value proposition.
+    *   Prominent Call-to-Action (CTA) button with hover effects.
+    *   Subtle entrance animations (`fadeIn`, `slideInUp`) for content.
+    *   Subtle pulse animation on the logo for interactivity.
 5.  **Inquiry Form:**
     *   Located in the `#contact` section.
-    *   Fields: Name, Email, Phone, Message (all marked `required`).
-    *   Styling: Dark inputs with gold focus outline, clear labels (or placeholders acting as labels).
-    *   Submission: Basic client-side JavaScript prevents default submission and shows a success/error message (`#form-message`) within the page for demonstration. *No actual data is sent.*
-6.  **Animations & Interactivity:**
-    *   **Hero Entrance:** Content fades in (`fadeInDown`).
-    *   **Scroll Animations:** Uses JavaScript's `IntersectionObserver` (more performant than scroll listeners) to trigger fade-in/fade-in-up animations (`.animate-on-scroll`, `.is-visible`) as sections come into view.
-    *   **Hover Effects:** Buttons have transform/shadow changes; H2 underlines animate.
-    *   **Subtle Backgrounds:** Hero background zoom and subtle pulsating shapes.
-    *   **Smooth Scrolling:** JavaScript added for smooth scrolling when clicking internal links (like the hero CTA or scroll-down arrow).
-7.  **Responsive Design:**
+    *   Includes fields for Name (`שם מלא`), Email (`דואר אלקטרוני`), Phone (`מספר טלפון`), and Message (`הודעה`).
+    *   Styled consistently with the luxurious theme (dark inputs, gold focus highlights, pill-shaped submit button).
+    *   Basic client-side validation is included in the JavaScript to check for required fields and basic email format (shows an alert and prevents submission if invalid - real submission requires backend).
+6.  **Responsive Design:**
     *   Uses `meta name="viewport"` tag.
-    *   Employs `@media` queries to adjust font sizes, padding, hero height, and hide some subtle decorative elements on smaller screens for clarity.
-    *   `clamp()` used for fluid typography.
-8.  **Clean Code:**
-    *   Uses CSS variables (`:root`) for easy theme management.
-    *   Semantic HTML structure (`<section>`, `<header>`, `<footer>`, `<form>`, `<label>`).
-    *   Well-commented CSS and JavaScript sections.
-    *   Logically grouped CSS rules.
+    *   Employs relative units (rem, %) and media queries (`@media`) to adjust layout, font sizes, and spacing for tablets and mobile devices. Layouts stack vertically on smaller screens.
+7.  **Animations & Details:**
+    *   **Entrance Animations:** Sections and elements fade/slide in on scroll using JavaScript (Intersection Observer logic implemented simply).
+    *   **Hover Effects:** Buttons and service items have subtle transformations (`translateY`, `box-shadow`) on hover.
+    *   **Subtle Touches:** Border accents (`border-left` on service items), H2 underline effect, slight text shadows.
+8.  **Professional Copywriting:** Text is crafted to be persuasive, highlight expertise (אסטרטגיה, טרנספורמציה דיגיטלית, אופטימיזציה), core values (שותפות, דיסקרטיות, מצוינות), and service offerings in clear, professional Hebrew.
+9.  **Clean Code:** HTML is semantically structured (`<section>`, `<header>`, `<footer>`, etc.). CSS is organized with comments and uses variables (`:root`) for colors. JavaScript is minimal, commented, and placed at the end of the body.
 
-**To Use:**
-
-1.  Save the code as an `.html` file (e.g., `marwan-h-landing.html`).
-2.  **Crucially:** Find a high-quality background image for the hero section, convert it to Base64 (use an online tool like `base64-image.de`), and replace the example `url('data:image/svg+xml;base64,...')` in the `.hero` CSS rule with your image's Base64 string (`url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE....')`). Be mindful that this will make the HTML file much larger. Optimize the image before encoding it!
-3.  Open the HTML file in your web browser.
+This single file provides a comprehensive and visually stunning landing page experience tailored to the high-end business consulting market in Israel. Remember to replace placeholder images and the form `action` attribute for a live deployment.
