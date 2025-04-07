@@ -1,0 +1,421 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Springs Spa - Relax & Rejuvenate</title>
+    <style>
+        /* Basic Reset & Defaults */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            font-size: 16px; /* Base font size */
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            background-color: #f8f9fa; /* Light background */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5a8a84; /* Calming teal/green */
+        }
+
+        a:hover {
+            color: #3e605c;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #3e605c; /* Darker teal for headings */
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.4rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-2 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-3 { padding-top: 3rem; padding-bottom: 3rem; }
+        .py-4 { padding-top: 4rem; padding-bottom: 4rem; }
+        .my-1 { margin-top: 1rem; margin-bottom: 1rem; }
+        .my-2 { margin-top: 2rem; margin-bottom: 2rem; }
+
+
+        /* Header & Navigation */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3e605c;
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 25px;
+        }
+
+        .main-nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://via.placeholder.com/1500x800.png?text=Relaxing+Spa+Background') no-repeat center center/cover;
+            /* Replace placeholder URL with your actual image */
+            color: #333; /* Text color adjusted for lighter background overlay */
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: #3e605c; /* Ensure heading is readable */
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            color: #444; /* Slightly darker paragraph text */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #5a8a84;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #3e605c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        #services {
+            background-color: #eef3f2; /* Very light teal */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+        }
+
+        .service-card i { /* Placeholder for icon */
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #5a8a84;
+            /* Example using Font Awesome: <i class="fas fa-spa"></i> - Requires Font Awesome library */
+            /* Using simple unicode for now: */
+            display: inline-block; /* Needed for unicode styles */
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #fff;
+        }
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .about-content img {
+             width: 200px; /* Adjust size as needed */
+             height: 200px;
+             border-radius: 50%;
+             object-fit: cover;
+             margin-bottom: 1.5rem;
+             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #eef3f2; /* Very light teal */
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .contact-info strong {
+            color: #3e605c;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #3e605c;
+            color: #eef3f2;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem; /* Ensure separation */
+        }
+
+        .main-footer p {
+            color: #eef3f2;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+         /* Social Icons Placeholder - Style as needed */
+        .social-icons {
+            margin-top: 0.5rem;
+        }
+        .social-icons a {
+            color: #eef3f2;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-nav ul {
+                margin-top: 1rem;
+                padding-left: 0; /* Reset padding for centered list */
+                 flex-wrap: wrap; /* Allow wrapping on small screens */
+                 justify-content: center;
+            }
+            .main-nav ul li {
+                margin: 0 10px 10px 10px; /* Adjust spacing */
+            }
+
+            .hero {
+                height: auto; /* Adjust height */
+                min-height: 50vh;
+                padding: 4rem 1rem; /* Add padding */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Stack cards */
+            }
+
+            .about-content {
+                 padding: 0 1rem; /* Add padding on mobile */
+            }
+        }
+         @media (max-width: 480px) {
+              h1 { font-size: 2rem; }
+              .hero h1 { font-size: 2.2rem; }
+              .hero p { font-size: 1rem; }
+              .btn { padding: 10px 20px; font-size: 0.9rem;}
+         }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">Serenity Springs</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact" class="btn btn-small">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero py-4">
+        <div class="container">
+            <h1>Find Your Inner Peace</h1>
+            <p>Escape the everyday and discover tranquility at Serenity Springs Spa. Indulge in treatments designed to relax your body and renew your spirit.</p>
+            <a href="#contact" class="btn">Book Your Escape</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- Services Section -->
+        <section id="services" class="py-4">
+            <div class="container">
+                <h2 class="text-center my-2">Our Signature Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon" style="font-size: 3rem;">&#x1F9D8;</span> <!-- Yogi emoji as placeholder -->
+                        <h3>Relaxing Massages</h3>
+                        <p>From Swedish to Deep Tissue, let our expert therapists melt away your tension and stress.</p>
+                    </div>
+                    <div class="service-card">
+                         <span class="service-icon" style="font-size: 3rem;">&#x1F486;</span> <!-- Face massage emoji -->
+                        <h3>Revitalizing Facials</h3>
+                        <p>Customized facial treatments using premium products to leave your skin glowing and refreshed.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon" style="font-size: 3rem;">&#x1F33F;</span> <!-- Herb emoji -->
+                        <h3>Body Treatments</h3>
+                        <p>Indulge in luxurious body wraps and scrubs designed to detoxify, hydrate, and soothe your skin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-4">
+            <div class="container about-content">
+                 <img src="https://via.placeholder.com/200x200.png?text=Spa+Interior" alt="Calm spa interior element">
+                <h2 class="my-2">Your Sanctuary for Wellness</h2>
+                <p>At Serenity Springs Spa, we believe in the power of holistic healing and self-care. Our tranquil environment and dedicated therapists provide a peaceful escape where you can focus on your well-being. We are committed to using natural, high-quality products and personalized techniques to ensure a truly restorative experience.</p>
+                <p>Come visit us and embark on a journey to relaxation and rejuvenation.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-4">
+            <div class="container text-center">
+                <h2 class="my-2">Book Your Appointment</h2>
+                <p>Ready to experience serenity? Contact us today to schedule your visit.</p>
+                <div class="contact-info my-2">
+                    <p><strong>Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:booking@serenitysprings.com">booking@serenitysprings.com</a></p>
+                    <p><strong>Address:</strong> 123 Wellness Way, Tranquil Town, CA 90210</p>
+                </div>
+                <a href="tel:+1234567890" class="btn my-1">Call to Book</a>
+                <!-- Optional: Add a link to an external booking system if you have one -->
+                <!-- <a href="YOUR_BOOKING_LINK_HERE" class="btn my-1" target="_blank">Book Online</a> -->
+
+                <!-- Note: A functional contact form requires backend code (PHP, Node.js, etc.) which cannot be included in a single HTML file -->
+                 <p class="my-2" style="font-size: 0.9rem; color: #666;">(Online booking link or form can be added here)</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> Serenity Springs Spa. All Rights Reserved.</p>
+            <div class="social-icons">
+                <!-- Replace # with actual links -->
+                <a href="#" aria-label="Facebook">F</a> <!-- Placeholder -->
+                <a href="#" aria-label="Instagram">I</a> <!-- Placeholder -->
+                <a href="#" aria-label="Twitter">T</a> <!-- Placeholder -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimal JS for potential future use (e.g., smooth scroll already handled by CSS) -->
+    <!-- <script>
+        // Example: Smooth scroll for browsers that don't support scroll-behavior
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //     anchor.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         document.querySelector(this.getAttribute('href')).scrollIntoView({
+        //             behavior: 'smooth'
+        //         });
+        //     });
+        // });
+    </script> -->
+
+</body>
+</html>
+```
