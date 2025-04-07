@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elysian Realm Spa & Wellness - Transcend the Ordinary</title>
+    <title>WonderSpark Toys - Unlock Worlds of Play & Imagination!</title>
     <style>
-        /* Reset and Base Styles */
+        /* --- CSS Reset & Basic Setup --- */
         *,
         *::before,
         *::after {
@@ -16,88 +16,77 @@
         }
 
         :root {
-            /* Colors */
-            --color-background: #1a1a1a; /* Deep Charcoal */
-            --color-surface: #2b2b2b; /* Slightly Lighter Charcoal */
-            --color-text-primary: #f0eadd; /* Warm Cream */
-            --color-text-secondary: #b8b8b8; /* Soft Grey */
-            --color-accent-gold: #c4a77d; /* Muted Gold */
-            --color-accent-teal: #5F9EA0; /* Muted Teal (optional accent) */
-            --color-overlay: rgba(26, 26, 26, 0.7); /* Dark overlay for contrast */
-            --color-button-hover: #d4b88d;
+            /* Color Palette */
+            --clr-primary: #00BFA6; /* Bright Teal */
+            --clr-secondary: #FFD600; /* Sunny Yellow */
+            --clr-accent1: #FF7066; /* Playful Coral */
+            --clr-accent2: #3A506B; /* Deep Blue */
+            --clr-light: #F8F9FA; /* Off-white */
+            --clr-dark: #333333; /* Dark Grey */
+            --clr-text: #444444;
+            --clr-white: #ffffff;
 
-            /* Typography */
-            --font-primary: 'Cormorant Garamond', serif;
-            --font-secondary: 'Lato', sans-serif;
-            --font-size-base: 16px;
-            --line-height-base: 1.7;
+            /* Fonts */
+            --font-heading: 'Nunito', 'Arial Rounded MT Bold', sans-serif;
+            --font-body: 'Open Sans', 'Verdana', sans-serif;
 
             /* Spacing */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 4rem;
-            --spacing-xl: 6rem;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
 
-            /* Transitions */
-            --transition-speed: 0.3s;
-            --transition-ease: ease-in-out;
-
-            /* Borders */
-            --border-radius: 5px;
-            --border-subtle: 1px solid rgba(240, 234, 221, 0.15);
+            /* Effects */
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.15);
+            --border-radius-sm: 8px;
+            --border-radius-md: 15px;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
 
         html {
             scroll-behavior: smooth;
-            font-size: var(--font-size-base);
+            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: var(--font-secondary);
-            background-color: var(--color-background);
-            color: var(--color-text-primary);
-            line-height: var(--line-height-base);
+            font-family: var(--font-body);
+            color: var(--clr-text);
+            background-color: var(--clr-light);
+            line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-primary);
-            color: var(--color-accent-gold);
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-        h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-        h4 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
-
-        p {
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-text-secondary);
-            max-width: 70ch; /* Improve readability */
-        }
-
-        a {
-            color: var(--color-accent-gold);
-            text-decoration: none;
-            transition: color var(--transition-speed) var(--transition-ease);
-        }
-
-        a:hover, a:focus {
-            color: var(--color-button-hover);
         }
 
         img, svg {
+            display: block;
             max-width: 100%;
             height: auto;
-            display: block;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-accent2);
+            margin-bottom: var(--space-sm);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+        h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+        h3 { font-size: clamp(1.4rem, 4vw, 2rem); }
+
+        p {
+            margin-bottom: var(--space-md);
+        }
+
+        a {
+            color: var(--clr-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover, a:focus {
+            color: var(--clr-accent1);
+            text-decoration: underline;
         }
 
         .container {
@@ -105,936 +94,1021 @@
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
-            padding: var(--spacing-lg) 0;
+            padding-left: var(--space-sm);
+            padding-right: var(--space-sm);
         }
 
         .section {
-            padding: var(--spacing-lg) 0;
-            overflow: hidden; /* Contain potential overflows */
+            padding: var(--space-lg) 0;
         }
 
-        .section--dark { background-color: var(--color-background); }
-        .section--light { background-color: var(--color-surface); }
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
 
-        .text-center { text-align: center; }
-        .text-gold { color: var(--color-accent-gold); }
+        .text-center {
+            text-align: center;
+        }
 
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* --- Buttons --- */
         .btn {
             display: inline-block;
-            padding: var(--spacing-sm) var(--spacing-md);
-            font-family: var(--font-secondary);
+            padding: 0.9em 1.8em;
+            font-family: var(--font-heading);
             font-weight: 700;
             font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: background-color var(--transition-speed) var(--transition-ease),
-                        transform var(--transition-speed) var(--transition-ease),
-                        box-shadow var(--transition-speed) var(--transition-ease);
+            text-align: center;
+            text-decoration: none;
             border: none;
+            border-radius: 50px; /* Pill shape */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
         }
 
-        .btn--primary {
-            background-color: var(--color-accent-gold);
-            color: var(--color-background);
-            box-shadow: 0 4px 15px rgba(196, 167, 125, 0.2);
+        .btn-primary {
+            background-color: var(--clr-accent1);
+            color: var(--clr-white);
         }
 
-        .btn--primary:hover,
-        .btn--primary:focus {
-            background-color: var(--color-button-hover);
-            color: var(--color-background);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(196, 167, 125, 0.3);
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #E55A50; /* Darker Coral */
+            color: var(--clr-white);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: var(--shadow-medium);
+            text-decoration: none;
         }
 
-        .btn--secondary {
-            background-color: transparent;
-            color: var(--color-accent-gold);
-            border: 1px solid var(--color-accent-gold);
+        .btn-secondary {
+            background-color: var(--clr-secondary);
+            color: var(--clr-accent2);
         }
 
-        .btn--secondary:hover,
-        .btn--secondary:focus {
-            background-color: rgba(196, 167, 125, 0.1);
-            color: var(--color-button-hover);
-            border-color: var(--color-button-hover);
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: #E6C000; /* Darker Yellow */
+            color: var(--clr-accent2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        .btn-small {
+            padding: 0.5em 1em;
+            font-size: 0.9rem;
         }
 
         /* --- Hero Section --- */
         .hero {
-            min-height: 100vh;
+            background-color: var(--clr-primary); /* Fallback color */
+            /* Placeholder comment for banner image/illustration */
+            /* background-image: linear-gradient(rgba(0, 191, 166, 0.8), rgba(0, 191, 166, 0.9)), url('placeholder-hero-banner.jpg'); */
+            background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
+            background-size: cover;
+            background-position: center;
+            color: var(--clr-white);
+            padding: var(--space-xl) 0;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            padding: var(--spacing-lg) var(--spacing-sm);
-            /* Placeholder for background image/video */
-            background: linear-gradient(45deg, #1f2d30, #3a4a4f); /* Suggestive gradient */
-            /* background-image: url('placeholder-hero-background.jpg'); */
-            /* background-size: cover; */
-            /* background-position: center; */
-            /* background-attachment: fixed; /* Optional parallax effect */
+            overflow: hidden;
         }
 
-        .hero__overlay {
+        .hero::before, .hero::after { /* Decorative shapes */
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .hero::before {
+            width: 150px;
+            height: 150px;
+            background-color: var(--clr-white);
+            bottom: 10%;
+            left: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero::after {
+            width: 80px;
+            height: 80px;
+            background-color: var(--clr-accent1);
+            top: 15%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite 1s; /* Delay second shape */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            color: var(--clr-white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--space-md);
+            opacity: 0.95;
+        }
+
+        .hero .btn-primary {
+            font-size: 1.2rem;
+            padding: 1em 2.5em;
+        }
+
+        /* Subtle animation for hero elements */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Placeholder for CSS character */
+        .hero-character {
+            width: 80px;
+            height: 100px;
+            background: var(--clr-accent1);
+            border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; /* Simple blob shape */
+            position: absolute;
+            bottom: 10px;
+            right: 5%;
+            transform: rotate(-15deg);
+            z-index: 2;
+            box-shadow: var(--shadow-light);
+            animation: peek 10s ease-in-out infinite;
+            display: none; /* Hidden on small screens by default */
+        }
+        .hero-character::before { /* Eye */
+            content:'';
+            position: absolute;
+            width: 15px; height: 15px; background: var(--clr-white); border-radius: 50%;
+            top: 30%; left: 30%;
+        }
+        .hero-character::after { /* Eye */
+            content:'';
+            position: absolute;
+            width: 15px; height: 15px; background: var(--clr-white); border-radius: 50%;
+            top: 30%; right: 30%;
+        }
+
+        @keyframes peek {
+            0%, 100% { transform: translateY(30px) rotate(-15deg); opacity: 0.7;}
+            50% { transform: translateY(0) rotate(-10deg); opacity: 1;}
+        }
+
+        @media (min-width: 768px) {
+            .hero { min-height: 80vh; }
+            .hero-character { display: block; }
+        }
+        @media (min-width: 1024px) {
+            .hero { min-height: 90vh; }
+            .hero-character { width: 120px; height: 150px; bottom: 20px; right: 8%; }
+            .hero-character::before, .hero-character::after { width: 20px; height: 20px; }
+        }
+
+
+        /* --- Discover Section (Categories/Age) --- */
+        .discover {
+            background-color: var(--clr-white);
+        }
+
+        .discover-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .discover-card {
+            background-color: var(--clr-light);
+            padding: var(--space-md) var(--space-sm);
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            text-decoration: none;
+            color: var(--clr-text);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discover-card:hover, .discover-card:focus {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: var(--shadow-medium);
+            background-color: var(--clr-secondary);
+            color: var(--clr-accent2);
+        }
+
+        .discover-card::before { /* Fun background pattern on hover */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(var(--clr-primary) 15%, transparent 16%);
+            background-size: 30px 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .discover-card:hover::before, .discover-card:focus::before {
+            opacity: 0.1;
+        }
+
+
+        .discover-card-icon {
+            font-size: 2.5rem; /* Placeholder for icon */
+            margin-bottom: var(--space-sm);
+            display: block;
+            color: var(--clr-primary);
+            transition: color 0.3s ease;
+            position: relative; /* Ensure icon is above pseudo-element */
+            z-index: 2;
+        }
+
+        .discover-card:hover .discover-card-icon,
+        .discover-card:focus .discover-card-icon {
+            color: var(--clr-accent1);
+            transform: rotate(10deg) scale(1.1); /* Playful rotation */
+        }
+
+        .discover-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: var(--clr-accent2);
+            position: relative; /* Ensure text is above pseudo-element */
+            z-index: 2;
+        }
+
+        .discover-card:hover h3, .discover-card:focus h3 {
+             color: var(--clr-accent2);
+        }
+
+        /* --- Featured Products Section --- */
+        .featured {
+            background-color: var(--clr-light);
+            overflow: hidden; /* Needed for horizontal scrollbar */
+        }
+
+        .featured h2 { margin-bottom: var(--space-md); }
+
+        .featured-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: var(--space-md);
+            padding: var(--space-sm) 0 var(--space-lg) 0; /* Add padding for scrollbar and shadow */
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: var(--clr-primary) var(--clr-light); /* Firefox */
+        }
+
+        /* Webkit Scrollbar Styles */
+        .featured-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .featured-scroll-container::-webkit-scrollbar-track {
+            background: var(--clr-light);
+            border-radius: 10px;
+        }
+        .featured-scroll-container::-webkit-scrollbar-thumb {
+            background-color: var(--clr-primary);
+            border-radius: 10px;
+            border: 2px solid var(--clr-light);
+        }
+
+        .product-card {
+            flex: 0 0 calc(80% - var(--space-md)); /* Show most of one card, hint of next */
+            max-width: 280px; /* Max width for larger screens */
+            background-color: var(--clr-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .product-image-placeholder {
+            height: 200px;
+            background-color: var(--clr-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clr-accent2);
+            font-weight: bold;
+            /* Placeholder for actual image */
+            /* background-image: url('placeholder-product1.jpg'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+            font-size: 0.9rem;
+            text-align: center;
+            padding: var(--space-sm);
+        }
+
+        .product-info {
+            padding: var(--space-md);
+        }
+
+        .product-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--clr-accent2);
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+            min-height: 3em; /* Ensure consistent card height */
+        }
+
+        .product-info .btn-small {
+             display: block;
+             width: 100%;
+             margin-top: auto; /* Push button to bottom if using flex column */
+        }
+
+        @media (min-width: 600px) {
+            .product-card {
+                flex-basis: calc(45% - var(--space-md)); /* Show more cards */
+            }
+        }
+
+        @media (min-width: 992px) {
+            .featured-scroll-container {
+                /* Switch to grid on larger screens if preferred */
+                 display: grid;
+                 grid-template-columns: repeat(4, 1fr);
+                 overflow-x: visible;
+                 padding-bottom: var(--space-sm);
+            }
+             .product-card {
+                 flex-basis: auto; /* Reset flex basis for grid */
+                 max-width: none;
+             }
+        }
+
+        /* --- Why Choose Us Section --- */
+        .promise {
+            background-color: #E0F2F7; /* Light Blue/Teal background */
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+
+        @media (min-width: 576px) {
+            .promise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 992px) {
+            .promise-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .promise-item {
+            text-align: center;
+        }
+
+        .promise-icon {
+            display: inline-block;
+            font-size: 3rem; /* Placeholder size */
+            margin-bottom: var(--space-sm);
+            color: var(--clr-primary);
+            /* Placeholder - Replace with actual icons (SVG/FontAwesome) */
+            width: 60px;
+            height: 60px;
+            background-color: var(--clr-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--shadow-light);
+        }
+        /* Example Icon Placeholders (Unicode - may vary by browser/OS) */
+        .icon-quality::after { content: '⭐'; } /* Star */
+        .icon-safety::after { content: '✔️'; } /* Checkmark */
+        .icon-learning::after { content: '💡'; } /* Lightbulb */
+        .icon-curated::after { content: '✨'; } /* Sparkles */
+
+        .promise-item h3 {
+            font-size: 1.2rem;
+            color: var(--clr-accent2);
+        }
+
+        .promise-item p {
+            font-size: 0.95rem;
+            color: var(--clr-text);
+        }
+
+
+        /* --- Imagination Hub Section --- */
+        .imagination-hub {
+            background-color: var(--clr-secondary); /* Yellow background */
+            color: var(--clr-accent2);
+            padding: var(--space-lg) 0;
+            position: relative;
+        }
+
+        .imagination-hub::before { /* Wavy top border */
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: var(--color-overlay);
-            z-index: 1;
-        }
-
-        .hero__content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeInHero 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInHero {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero__logo-placeholder { /* Optional logo */
-            width: 100px;
-            height: 50px;
-            /* background-color: var(--color-accent-gold); */
-            /* -webkit-mask-image: url('logo.svg'); mask-image: url('logo.svg'); */
-            /* -webkit-mask-size: contain; mask-size: contain; */
-            /* -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; */
-            /* -webkit-mask-position: center; mask-position: center; */
-            margin: 0 auto var(--spacing-md);
-            border: 1px dashed var(--color-accent-gold);
-            display: flex; align-items: center; justify-content: center; font-size: 0.8rem; opacity: 0.5;
-        }
-
-        .hero__headline {
-            margin-bottom: var(--spacing-sm);
-            font-weight: 700;
-        }
-
-        .hero__subheadline {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            color: var(--color-text-primary);
-            margin-bottom: var(--spacing-md);
-            font-weight: 300;
-        }
-
-        .hero__cta {
-            margin-top: var(--spacing-md);
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: var(--spacing-md);
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            width: 30px;
-            height: 50px;
-            opacity: 0.7;
-            cursor: pointer; /* Indicate it's clickable (though it's just visual) */
-        }
-
-        .scroll-hint::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background-color: var(--color-accent-gold);
-            transform: translateX(-50%);
-            animation: scrollHintLine 2s infinite ease-out;
-        }
-
-        .scroll-hint::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            border-right: 2px solid var(--color-accent-gold);
-            border-bottom: 2px solid var(--color-accent-gold);
-            transform: translateX(-50%) rotate(45deg);
-            animation: scrollHintArrow 2s infinite ease-out;
-        }
-
-        @keyframes scrollHintLine {
-            0% { height: 0; top: 0; opacity: 0; }
-            50% { height: 100%; top: 0; opacity: 1; }
-            100% { height: 0; top: 100%; opacity: 0; }
-        }
-
-        @keyframes scrollHintArrow {
-            0% { opacity: 0; transform: translateX(-50%) rotate(45deg) translateY(-10px); }
-            50% { opacity: 1; }
-            100% { opacity: 0; transform: translateX(-50%) rotate(45deg) translateY(10px); }
-        }
-
-        /* --- Philosophy Section --- */
-        .philosophy {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--spacing-lg);
-            align-items: center;
-        }
-
-        .philosophy__shape {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--color-accent-gold), rgba(196, 167, 125, 0.3));
-            border-radius: 50% 30% 60% 40% / 40% 60% 30% 50%; /* Organic shape */
-            margin: 0 auto var(--spacing-md);
-            animation: morphShape 15s infinite ease-in-out alternate;
-        }
-
-        @keyframes morphShape {
-            0%, 100% { border-radius: 50% 30% 60% 40% / 40% 60% 30% 50%; transform: rotate(0deg) scale(1); }
-            50% { border-radius: 30% 50% 40% 60% / 60% 40% 50% 30%; transform: rotate(180deg) scale(1.1); }
-        }
-
-        .philosophy__content h2 {
-            margin-bottom: var(--spacing-md);
-        }
-        .philosophy__content p {
-            max-width: 65ch;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- Signature Journeys (Services) --- */
-        .journeys__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
-        }
-
-        .journey-card {
-            background-color: var(--color-surface);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: transform var(--transition-speed) var(--transition-ease),
-                        box-shadow var(--transition-speed) var(--transition-ease);
-            border: var(--border-subtle);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .journey-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .journey-card__image-placeholder {
-            height: 200px;
-            background-color: #444; /* Placeholder color */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-secondary);
-            font-style: italic;
-            position: relative;
-            overflow: hidden;
-            /* Add comment for real image: background-image: url('journey-image.jpg'); background-size: cover; background-position: center; */
-        }
-
-        .journey-card__image-placeholder::before {
-             content: 'High-Quality Image Placeholder';
-        }
-
-        .journey-card:hover .journey-card__image-placeholder::after { /* Subtle hover zoom effect */
-            content: '';
-            position: absolute;
-            top:0; left: 0; right: 0; bottom: 0;
-            background: inherit; /* Inherit the background (image or color) */
+            height: 50px; /* Adjust height */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' style='fill:%23e0f2f7;'%3E%3C/path%3E%3C/svg%3E"); /* SVG Background using previous section color*/
+            background-repeat: no-repeat;
             background-size: cover;
-            background-position: center;
-            transform: scale(1.05);
-            transition: transform 0.5s var(--transition-ease);
+            background-position: bottom;
+            transform: translateY(-99%); /* Position above */
         }
 
 
-        .journey-card__content {
-            padding: var(--spacing-md);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .journey-card__title {
-            color: var(--color-accent-gold);
-            font-size: 1.4rem;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .journey-card__description {
-            color: var(--color-text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: var(--spacing-md);
-            flex-grow: 1;
-        }
-
-        .journey-card__cta {
-            align-self: flex-start;
-            font-size: 0.9rem;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            margin-top: auto; /* Push to bottom */
-        }
-
-        /* --- Ambiance Section --- */
-        .ambiance {
-            position: relative;
-            /* Placeholder for parallax background image */
-             background-color: #333; /* Fallback */
-            /* background-image: url('placeholder-ambiance-bg.jpg'); */
-            /* background-attachment: fixed; */
-            /* background-position: center; */
-            /* background-repeat: no-repeat; */
-            /* background-size: cover; */
-            z-index: 0;
-        }
-        .ambiance::before { /* Overlay for text readability */
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(26, 26, 26, 0.8); /* Darker overlay for parallax */
-            z-index: -1;
-        }
-
-        .ambiance .container {
-            position: relative;
-            z-index: 1;
+        .hub-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--spacing-lg);
+            gap: var(--space-lg);
+            align-items: center;
         }
 
-        .ambiance__text {
-             max-width: 60ch;
-             margin: 0 auto; /* Center text if single column */
-        }
-        .ambiance__text h2 {
-            text-align: center;
-            margin-bottom: var(--spacing-md);
+        @media (min-width: 768px) {
+            .hub-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        .ambiance__image-placeholders {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
-        }
-
-        .ambiance__image {
-            height: 180px;
-            background-color: #555;
-            border-radius: var(--border-radius);
+        .hub-image-placeholder {
+            height: 300px;
+            background-color: var(--clr-accent1); /* Coral placeholder */
+            border-radius: var(--border-radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-text-secondary);
-            font-style: italic;
-            font-size: 0.9rem;
+            color: var(--clr-white);
+            font-weight: bold;
             text-align: center;
-            border: var(--border-subtle);
-            /* Add comment for real image: background-image: url('ambiance-detail.jpg'); background-size: cover; background-position: center; */
+            padding: var(--space-sm);
+            /* background-image: url('placeholder-hub-image.jpg'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+            box-shadow: var(--shadow-medium);
         }
+
+        .hub-text h3 {
+            color: var(--clr-accent2); /* Override default heading color */
+        }
+        .hub-text p {
+            color: var(--clr-accent2); /* Use accent color for text here */
+            font-size: 1.05rem;
+        }
+
 
         /* --- Testimonials Section --- */
         .testimonials {
-             background-color: var(--color-surface);
+             background-color: var(--clr-white);
         }
-        .testimonials__grid {
+
+        .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-md);
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+         @media (min-width: 1024px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .testimonial-card {
-            background-color: var(--color-background);
-            padding: var(--spacing-md);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--color-accent-gold);
+            background-color: var(--clr-light);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
             position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid var(--clr-primary);
         }
 
-        .testimonial-card__quote {
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--color-text-primary);
-            margin-bottom: var(--spacing-md);
-            position: relative;
-            padding-left: 30px; /* Space for quote mark */
-        }
-
-        .testimonial-card__quote::before {
+        .testimonial-card::before { /* Quote symbol */
             content: '“';
+            font-family: serif;
+            font-size: 4rem;
+            color: var(--clr-primary);
+            opacity: 0.2;
             position: absolute;
-            left: 0;
-            top: -10px;
-            font-size: 3rem;
-            color: var(--color-accent-gold);
-            opacity: 0.5;
-            font-family: var(--font-primary);
+            top: 5px;
+            left: 15px;
+            line-height: 1;
         }
 
-        .testimonial-card__author {
-            display: flex;
-            align-items: center;
-            margin-top: var(--spacing-md);
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+            position: relative; /* Ensure text is above quote symbol */
+            z-index: 1;
         }
 
-        .testimonial-card__author-img-placeholder {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #444;
-            margin-right: var(--spacing-sm);
-            flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--color-text-secondary); text-align: center;
-            /* Placeholder text */
-            line-height: 1.1;
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--clr-accent2);
+            font-size: 0.9rem;
+            text-align: right;
         }
-        .testimonial-card__author-img-placeholder::before {
-            content: 'Portrait';
+        .testimonial-author span {
+             display: block;
+             font-weight: normal;
+             font-size: 0.8rem;
+             color: var(--clr-text);
+             opacity: 0.8;
         }
 
 
-        .testimonial-card__author-name {
-            font-weight: 700;
-            color: var(--color-text-primary);
-        }
-
-        /* --- Offers & Gifting --- */
-        .offers {
-             background-color: var(--color-background);
-        }
-        .offers__grid {
-             display: grid;
-             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-             gap: var(--spacing-md);
-             margin-top: var(--spacing-md);
-             margin-bottom: var(--spacing-lg);
-        }
-         .offer-item {
-            border: var(--border-subtle);
-            padding: var(--spacing-md);
-            border-radius: var(--border-radius);
-            background-color: var(--color-surface);
-         }
-         .offer-item h4 {
-            color: var(--color-accent-gold);
-            margin-bottom: var(--spacing-sm);
-         }
-         .offer-item p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-         }
-
-        .gifting-cta {
-            background-color: var(--color-surface);
-            padding: var(--spacing-lg);
-            border-radius: var(--border-radius);
+        /* --- Newsletter Section --- */
+        .newsletter {
+            background-color: var(--clr-accent1); /* Coral background */
+            color: var(--clr-white);
+            padding: var(--space-lg) 0;
             text-align: center;
-            border: 1px solid var(--color-accent-gold);
-            margin-top: var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
         }
-        .gifting-cta h3 {
-            margin-bottom: var(--spacing-sm);
+
+        /* Add some playful background elements */
+        .newsletter::before, .newsletter::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            animation: float 7s ease-in-out infinite alternate;
         }
-        .gifting-cta p {
-            margin-bottom: var(--spacing-md);
-            max-width: 50ch;
+        .newsletter::before {
+            width: 120px; height: 120px;
+            top: -30px; left: 10%;
+        }
+        .newsletter::after {
+            width: 70px; height: 70px;
+            bottom: -20px; right: 15%;
+            animation-delay: 1.5s;
+        }
+
+
+        .newsletter h2 {
+            color: var(--clr-white);
+            margin-bottom: var(--space-xs);
+        }
+
+        .newsletter p {
+            margin-bottom: var(--space-md);
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
-
-        /* --- Booking & Contact Section --- */
-        .booking {
-            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), var(--color-surface);
-            /* Optional subtle texture overlay */
-            /* background-image: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('subtle-texture.png'); */
-        }
-
-        .booking .container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--spacing-lg);
-        }
-
-        .booking__cta-section {
-            text-align: center;
-            margin-bottom: var(--spacing-lg);
-        }
-        .booking__cta-section h2 {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .booking__details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-lg);
-        }
-
-        .booking__info h4, .booking__form-section h4 {
-            color: var(--color-accent-gold);
-            margin-bottom: var(--spacing-md);
-        }
-        .booking__info ul {
-            list-style: none;
-            padding: 0;
-        }
-        .booking__info li {
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-text-secondary);
-        }
-        .booking__info li strong {
-            color: var(--color-text-primary);
-            display: block;
-            margin-bottom: 0.2rem;
-            font-weight: 400;
-        }
-
-        .map-placeholder {
-            height: 250px;
-            background-color: #444;
-            border-radius: var(--border-radius);
+        .newsletter-form {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-secondary);
-            font-style: italic;
-            margin-top: var(--spacing-md);
-            border: var(--border-subtle);
-            /* filter: grayscale(80%) brightness(90%); /* Suggestive styling */
+            flex-direction: column;
+            gap: var(--space-sm);
+            max-width: 450px;
+            margin: 0 auto;
         }
-         .map-placeholder::before {
-            content: 'Stylized Map Placeholder';
+
+        @media (min-width: 576px) {
+            .newsletter-form {
+                flex-direction: row;
+            }
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.8em 1.2em;
+            border: 1px solid var(--clr-white);
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--clr-dark);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+         .newsletter-input::placeholder {
+            color: #999;
+            opacity: 1;
          }
 
-        .booking-form label {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-        }
-
-        .booking-form input[type="text"],
-        .booking-form input[type="email"],
-        .booking-form input[type="date"],
-        .booking-form input[type="time"],
-        .booking-form select,
-        .booking-form textarea {
-            width: 100%;
-            padding: var(--spacing-sm);
-            margin-bottom: var(--spacing-sm);
-            background-color: var(--color-surface);
-            border: 1px solid rgba(240, 234, 221, 0.2);
-            border-radius: var(--border-radius);
-            color: var(--color-text-primary);
-            font-family: var(--font-secondary);
+        .newsletter-submit {
+             /* Use btn styles but customize colors */
+            display: inline-block;
+            padding: 0.9em 1.8em;
+            font-family: var(--font-heading);
+            font-weight: 700;
             font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            background-color: var(--clr-accent2); /* Deep Blue */
+            color: var(--clr-white);
+            flex-shrink: 0; /* Prevent shrinking in flex row */
         }
 
-        .booking-form input[type="text"]:focus,
-        .booking-form input[type="email"]:focus,
-        .booking-form input[type="date"]:focus,
-        .booking-form input[type="time"]:focus,
-        .booking-form select:focus,
-        .booking-form textarea:focus {
-            outline: none;
-            border-color: var(--color-accent-gold);
-            box-shadow: 0 0 0 2px rgba(196, 167, 125, 0.3);
+        .newsletter-submit:hover, .newsletter-submit:focus {
+            background-color: #2C3E50; /* Darker Blue */
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
-        .booking-form select {
-           appearance: none; /* For custom arrow */
-           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C4A77D' d='M6 8L0 2l1.4-1.4L6 5.2l4.6-4.6L12 2z'/%3E%3C/svg%3E");
-           background-repeat: no-repeat;
-           background-position: right var(--spacing-sm) center;
-           padding-right: calc(var(--spacing-sm) * 2.5); /* Space for arrow */
-        }
-
-
-        .booking-form button[type="submit"] {
-            width: 100%;
-            margin-top: var(--spacing-sm);
-        }
 
         /* --- Footer --- */
         .footer {
-            background-color: var(--color-background);
-            padding: var(--spacing-md) 0;
-            border-top: var(--border-subtle);
+            background-color: var(--clr-accent2); /* Deep Blue */
+            color: var(--clr-light);
+            padding: var(--space-lg) 0 var(--space-md) 0;
             font-size: 0.9rem;
-            color: var(--color-text-secondary);
         }
 
-        .footer .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .footer a {
+            color: var(--clr-secondary); /* Yellow links */
+            text-decoration: none;
+        }
+
+        .footer a:hover, .footer a:focus {
+            color: var(--clr-white);
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
             text-align: center;
-            padding-top: var(--spacing-md);
-            padding-bottom: var(--spacing-md);
         }
 
-        .footer__logo-placeholder {
-            width: 80px;
-            height: 40px;
-            border: 1px dashed var(--color-text-secondary);
-            display: flex; align-items: center; justify-content: center; font-size: 0.7rem; opacity: 0.5;
-            margin-bottom: var(--spacing-sm);
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+                gap: var(--space-lg);
+            }
+            .footer-copyright {
+                 grid-column: 1 / -1; /* Span full width */
+                 text-align: center;
+                 margin-top: var(--space-md);
+                 padding-top: var(--space-md);
+                 border-top: 1px solid rgba(255, 255, 255, 0.1);
+             }
         }
 
-        .footer__links {
+
+        .footer-links ul, .footer-contact ul, .footer-info ul {
             list-style: none;
             padding: 0;
-            margin: var(--spacing-sm) 0;
-            display: flex;
-            gap: var(--spacing-md);
+            margin: 0;
         }
 
-        .footer__links a {
-            color: var(--color-text-secondary);
-        }
-        .footer__links a:hover {
-            color: var(--color-accent-gold);
+        .footer-links li, .footer-contact li, .footer-info li {
+            margin-bottom: var(--space-xs);
         }
 
-        .footer__social {
-            margin: var(--spacing-sm) 0;
-            display: flex;
-            gap: var(--spacing-md);
+        .footer h4 {
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
         }
 
-        .footer__social a {
-            color: var(--color-text-secondary);
-            font-size: 1.2rem; /* Placeholder size */
-            /* Replace text with actual icons (SVG/Font Awesome) */
+        .footer-social, .footer-payments {
+            margin-top: var(--space-sm);
         }
-        .footer__social a:hover {
-            color: var(--color-accent-gold);
-            transform: scale(1.1);
+        .footer-social span, .footer-payments span {
+             display: block;
+             margin-bottom: var(--space-xs);
+             font-weight: bold;
         }
-
-        .footer__copyright {
-            margin-top: var(--spacing-sm);
+        .footer-payments span:last-child { /* Placeholder for payment logos */
+             font-size: 1.5rem;
+             letter-spacing: 5px;
+             color: var(--clr-secondary);
+             /* Example: Replace with actual logos/icons */
         }
+         .footer-social a { /* Placeholder for social icons */
+             display: inline-block;
+             margin: 0 var(--space-xs);
+             font-size: 1.4rem;
+         }
+         .footer-social a::before {
+             /* Placeholder Icons (Replace with actual SVGs/FontAwesome) */
+             display: inline-block; font-family: sans-serif; width: 30px; height: 30px; line-height: 30px; text-align: center; background: var(--clr-primary); color: var(--clr-white); border-radius: 50%; font-size: 0.9rem; font-weight: bold; margin: 0 2px;
+         }
+         .footer-social a[href*="facebook"]::before { content: 'f'; }
+         .footer-social a[href*="instagram"]::before { content: 'i'; }
+         .footer-social a[href*="pinterest"]::before { content: 'p'; }
 
-        /* --- Responsive Adjustments --- */
-        @media (min-width: 768px) {
-            .container { width: 85%; }
-            .section { padding: var(--spacing-xl) 0; }
-
-            .philosophy {
-                 grid-template-columns: 1fr 2fr; /* Shape | Text */
-                 gap: var(--spacing-xl);
-                 text-align: left;
-            }
-            .philosophy__shape { margin: 0; width: 200px; height: 200px; }
-            .philosophy__content p { margin-left: 0; margin-right: 0; }
-
-            .ambiance .container { grid-template-columns: 1fr 1fr; align-items: center; }
-            .ambiance__text { margin: 0; }
-            .ambiance__text h2 { text-align: left; }
-
-            .booking .container { grid-template-columns: 1fr; } /* Keep booking layout flexible */
-            .booking__details { grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); } /* Side by side info & form */
-
-            .footer .container {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                text-align: left;
-            }
-            .footer__logo-placeholder { margin-bottom: 0; margin-right: auto;}
-            .footer__links { margin: 0; }
-            .footer__social { margin: 0; }
-            .footer__copyright { margin-top: 0; margin-left: var(--spacing-lg);}
+        .footer-copyright {
+             margin-top: var(--space-lg);
+             padding-top: var(--space-md);
+             border-top: 1px solid rgba(255, 255, 255, 0.1);
+             text-align: center;
+             font-size: 0.85rem;
+             opacity: 0.8;
         }
 
-        @media (min-width: 1024px) {
-            .container { width: 80%; }
-            .journeys__grid { grid-template-columns: repeat(4, 1fr); } /* 4 cards on large screens */
-            .philosophy { grid-template-columns: 1fr 3fr; }
-        }
+         @media (max-width: 767px) { /* Center copyright on mobile */
+             .footer-copyright {
+                 grid-column: 1 / -1; /* Ensure it's centered below others */
+             }
+         }
 
 
     </style>
+    <!-- Consider linking Google Fonts if needed, placed here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Hero Section -->
+    <!-- ===== Hero Section ===== -->
     <header class="hero" id="home">
-        <div class="hero__overlay"></div>
-        <div class="hero__content">
-            <!-- <div class="hero__logo-placeholder">Logo</div> Optional -->
-            <h1 class="hero__headline">Elysian Realm: Transcend the Ordinary. Rediscover You.</h1>
-            <p class="hero__subheadline">Your exclusive haven for bespoke wellness journeys and profound tranquility in the heart of the city.</p>
-            <a href="#booking" class="btn btn--primary hero__cta">Reserve Your Sanctuary</a>
+        <div class="hero-content container">
+            <h1>WonderSpark: Unlock Worlds of Play & Imagination!</h1>
+            <p>Curated, quality toys that inspire creativity, learning, and endless fun. Let the adventure begin!</p>
+            <a href="#featured" class="btn btn-primary">Explore the Wonder!</a>
         </div>
-        <a href="#philosophy" class="scroll-hint" aria-label="Scroll down"></a>
+        <!-- Placeholder for friendly character -->
+        <div class="hero-character" aria-hidden="true"></div>
+        <!-- Placeholder Comment for optimal hero image:
+             Use a bright, high-quality landscape image (approx 1920x1080 or similar aspect ratio)
+             featuring diverse children joyfully engaged in imaginative play with abstract or stylized toy shapes.
+             Ensure focus is central and it looks good with the text overlay.
+             Example: <img src="images/wonderspark-hero-banner.jpg" alt="Children playing creatively with WonderSpark toys">
+             Alternatively, use a vibrant illustration.
+        -->
     </header>
 
     <main>
 
-        <!-- The Elysian Philosophy Section -->
-        <section id="philosophy" class="section section--light philosophy">
-            <div class="container">
-                 <div class="philosophy__shape" aria-hidden="true"></div>
-                 <div class="philosophy__content">
-                    <h2>The Elysian Philosophy</h2>
-                    <p>At Elysian Realm, we believe true wellness is a harmonious blend of mindful restoration and scientific innovation. More than just a spa, we are a sanctuary devoted to your complete revitalization. Our philosophy centers on bespoke care, tailoring every experience to your unique needs and aspirations.</p>
-                    <p>Guided by expert therapists and enveloped in serene luxury, we fuse ancient wisdom with cutting-edge wellness technologies. Step away from the everyday and into a realm where profound tranquility allows you to reconnect with your inner balance and emerge renewed.</p>
+        <!-- ===== Discover Section (Categories/Age) ===== -->
+        <section class="section discover" id="discover">
+            <div class="container text-center">
+                <h2>Discover Your Next Adventure</h2>
+                <p>Find the perfect playtime treasures by age or interest.</p>
+                <div class="discover-grid">
+                    <a href="#category-0-2" class="discover-card">
+                        <span class="discover-card-icon">🧸</span> <!-- Placeholder Icon -->
+                        <h3>Ages 0-2: Little Explorers</h3>
+                    </a>
+                    <a href="#category-3-5" class="discover-card">
+                        <span class="discover-card-icon">🚀</span> <!-- Placeholder Icon -->
+                        <h3>Ages 3-5: Big Imaginations</h3>
+                    </a>
+                    <a href="#category-6-8" class="discover-card">
+                         <span class="discover-card-icon">🎨</span> <!-- Placeholder Icon -->
+                        <h3>Ages 6-8: Growing Minds</h3>
+                    </a>
+                    <a href="#category-stem" class="discover-card">
+                        <span class="discover-card-icon">🔬</span> <!-- Placeholder Icon -->
+                        <h3>STEM & Learning</h3>
+                    </a>
+                    <a href="#category-creative" class="discover-card">
+                        <span class="discover-card-icon">🎭</span> <!-- Placeholder Icon -->
+                        <h3>Creative Corner</h3>
+                    </a>
+                    <a href="#category-outdoor" class="discover-card">
+                        <span class="discover-card-icon">🌳</span> <!-- Placeholder Icon -->
+                        <h3>Outdoor Fun</h3>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Signature Journeys Section -->
-        <section id="journeys" class="section section--dark">
+        <!-- ===== Featured Products Section ===== -->
+        <section class="section featured" id="featured">
             <div class="container">
-                <h2 class="text-center">Signature Journeys</h2>
-                <p class="text-center" style="max-width: 70ch; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-lg);">Curated experiences designed to restore harmony and elevate your well-being.</p>
-                <div class="journeys__grid">
-                    <!-- Journey Card 1 -->
-                    <article class="journey-card">
-                        <div class="journey-card__image-placeholder" aria-label="Luminous facial treatment concept">
-                           <!-- Image placeholder text -->
-                        </div>
-                        <div class="journey-card__content">
-                            <h3 class="journey-card__title">The Lumina Radiance Facial</h3>
-                            <p class="journey-card__description">Illuminate from within. A bespoke facial harnessing potent botanicals and light therapy to reveal your skin's ultimate luminosity and vitality.</p>
-                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                <h2 class="text-center">Sparking Smiles Now!</h2>
+                <p class="text-center">Check out our latest arrivals and playtime favorites.</p>
+                <div class="featured-scroll-container">
+                    <!-- Product Card 1 -->
+                    <article class="product-card">
+                        <div class="product-image-placeholder">Bright Product Shot 1 Placeholder</div>
+                        <div class="product-info">
+                            <h4>Rainbow Stacker Supreme</h4>
+                            <p>Build amazing worlds! Colorful, open-ended fun.</p>
+                            <a href="#product1" class="btn btn-secondary btn-small">Learn More</a>
                         </div>
                     </article>
-                    <!-- Journey Card 2 -->
-                    <article class="journey-card">
-                        <div class="journey-card__image-placeholder" aria-label="Person floating peacefully in water">
-                           <!-- Image placeholder text -->
-                        </div>
-                        <div class="journey-card__content">
-                            <h3 class="journey-card__title">Zero Gravity Flotation Therapy</h3>
-                            <p class="journey-card__description">Dissolve stress, float into bliss. Experience profound relaxation and mental clarity as you float effortlessly in a sensory-managed, mineral-rich environment.</p>
-                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                    <!-- Product Card 2 -->
+                    <article class="product-card">
+                        <div class="product-image-placeholder">Bright Product Shot 2 Placeholder</div>
+                        <div class="product-info">
+                            <h4>Cozy Critter Puppets</h4>
+                            <p>Creative fun for hours! Tell silly stories together.</p>
+                            <a href="#product2" class="btn btn-secondary btn-small">Shop Now</a>
                         </div>
                     </article>
-                    <!-- Journey Card 3 -->
-                    <article class="journey-card">
-                        <div class="journey-card__image-placeholder" aria-label="Warm Himalayan salt stones on back">
-                            <!-- Image placeholder text -->
-                        </div>
-                        <div class="journey-card__content">
-                            <h3 class="journey-card__title">Himalayan Salt Stone Ritual</h3>
-                            <p class="journey-card__description">Detoxify, re-energize, find balance. Warm, mineral-rich salt stones combine with expert massage to melt tension, soothe muscles, and restore equilibrium.</p>
-                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                    <!-- Product Card 3 -->
+                    <article class="product-card">
+                        <div class="product-image-placeholder">Bright Product Shot 3 Placeholder</div>
+                        <div class="product-info">
+                            <h4>Future Builder Block Set</h4>
+                            <p>Engineering starts here! Develop spatial skills.</p>
+                            <a href="#product3" class="btn btn-secondary btn-small">Learn More</a>
                         </div>
                     </article>
-                    <!-- Journey Card 4 -->
-                    <article class="journey-card">
-                        <div class="journey-card__image-placeholder" aria-label="Abstract concept of body rhythm synchronization">
-                            <!-- Image placeholder text -->
+                    <!-- Product Card 4 -->
+                    <article class="product-card">
+                        <div class="product-image-placeholder">Bright Product Shot 4 Placeholder</div>
+                        <div class="product-info">
+                            <h4>Adventure Art Easel</h4>
+                            <p>Unleash their inner artist! Double-sided creativity.</p>
+                            <a href="#product4" class="btn btn-secondary btn-small">Shop Now</a>
                         </div>
-                        <div class="journey-card__content">
-                            <h3 class="journey-card__title">Chrono-Wellness Body Wrap</h3>
-                            <p class="journey-card__description">Synchronize your body's rhythm. An advanced wrap using bio-adaptive ingredients to support cellular renewal and circadian harmony for deep restoration.</p>
-                            <a href="#booking" class="btn btn--secondary btn--small journey-card__cta">Discover More</a>
+                    </article>
+                     <!-- Product Card 5 (Example) -->
+                    <article class="product-card">
+                        <div class="product-image-placeholder">Bright Product Shot 5 Placeholder</div>
+                        <div class="product-info">
+                            <h4>Garden Explorer Kit</h4>
+                            <p>Discover nature's wonders! Outdoor adventures await.</p>
+                            <a href="#product5" class="btn btn-secondary btn-small">Learn More</a>
+                        </div>
+                    </article>
+                     <!-- Product Card 6 (Example) -->
+                    <article class="product-card">
+                        <div class="product-image-placeholder">Bright Product Shot 6 Placeholder</div>
+                        <div class="product-info">
+                            <h4>Melody Maker Music Set</h4>
+                            <p>Make joyful noise! Introduce rhythm and sound.</p>
+                            <a href="#product6" class="btn btn-secondary btn-small">Shop Now</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- The Ambiance Section -->
-        <section id="ambiance" class="section ambiance">
-            <div class="container">
-                <div class="ambiance__text">
-                    <h2>Immerse Your Senses</h2>
-                    <p>From the moment you enter Elysian Realm, the city fades away. Be enveloped by an atmosphere meticulously crafted for tranquility. Experience the gentle cascade of water features, the subtle diffusion of calming aromatherapy blends, and the touch of luxurious natural textures.</p>
-                    <p>Soft, ambient lighting complements serene spaces designed for ultimate comfort and privacy. Every detail is considered, allowing you to fully surrender to relaxation and focus entirely on your well-being.</p>
-                </div>
-                <div class="ambiance__image-placeholders">
-                    <div class="ambiance__image" aria-label="Serene water feature detail">Serene Water Feature</div>
-                    <div class="ambiance__image" aria-label="Soft lighting in relaxation lounge">Softly Lit Lounge Area</div>
-                    <div class="ambiance__image" aria-label="Plush textures and natural materials detail">Luxurious Textures</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="section section--light testimonials">
-            <div class="container">
-                <h2 class="text-center">Words of Wellness</h2>
-                <p class="text-center" style="max-width: 70ch; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-lg);">Hear from those who have found their sanctuary at Elysian Realm.</p>
-                <div class="testimonials__grid">
-                    <!-- Testimonial 1 -->
-                    <figure class="testimonial-card">
-                        <blockquote class="testimonial-card__quote">
-                            <p>An absolute oasis. From the moment I walked in, the stress melted away. The bespoke facial was transformative, and the attention to detail is unparalleled. I left feeling completely renewed.</p>
-                        </blockquote>
-                        <figcaption class="testimonial-card__author">
-                            <div class="testimonial-card__author-img-placeholder" aria-hidden="true"></div>
-                            <cite class="testimonial-card__author-name">Eleanor Vance</cite>
-                        </figcaption>
-                    </figure>
-                    <!-- Testimonial 2 -->
-                    <figure class="testimonial-card">
-                        <blockquote class="testimonial-card__quote">
-                            <p>The Flotation Therapy was unlike anything I've experienced. Pure bliss and mental clarity. The ambiance is incredibly calming, a true escape within the city. Highly recommend Elysian Realm for genuine restoration.</p>
-                        </blockquote>
-                        <figcaption class="testimonial-card__author">
-                            <div class="testimonial-card__author-img-placeholder" aria-hidden="true"></div>
-                            <cite class="testimonial-card__author-name">James Chen</cite>
-                        </figcaption>
-                    </figure>
-                     <!-- Testimonial 3 -->
-                     <figure class="testimonial-card">
-                        <blockquote class="testimonial-card__quote">
-                            <p>Every visit feels like a personalized retreat. The therapists are incredibly knowledgeable and intuitive. The Himalayan Salt Stone Ritual was deeply relaxing and energizing. This is my essential escape.</p>
-                        </blockquote>
-                        <figcaption class="testimonial-card__author">
-                            <div class="testimonial-card__author-img-placeholder" aria-hidden="true"></div>
-                            <cite class="testimonial-card__author-name">Sophia Moreau</cite>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- Curated Offers & Gifting Section -->
-        <section id="offers" class="section section--dark offers">
-             <div class="container">
-                 <h2 class="text-center">Curated Experiences & Gifting</h2>
-                 <p class="text-center" style="max-width: 70ch; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-lg);">Explore seasonal offerings, membership advantages, and the gift of profound relaxation.</p>
-
-                 <div class="offers__grid">
-                    <div class="offer-item">
-                        <h4>Seasonal Radiance Package</h4>
-                        <p>Embrace the season with a curated journey featuring our Lumina Facial and a revitalizing body scrub. [Placeholder for details/price].</p>
+        <!-- ===== Why Choose Us Section (The WonderSpark Promise) ===== -->
+        <section class="section promise" id="promise">
+            <div class="container text-center">
+                <h2>The WonderSpark Promise</h2>
+                <p>We believe playtime should be joyful, enriching, and worry-free.</p>
+                <div class="promise-grid">
+                    <div class="promise-item">
+                        <span class="promise-icon icon-quality" aria-hidden="true">⭐</span>
+                        <h3>Quality & Durability</h3>
+                        <p>Built for endless play, using safe, sustainable materials whenever possible.</p>
                     </div>
-                     <div class="offer-item">
-                        <h4>Elysian Membership</h4>
-                        <p>Unlock exclusive benefits, priority booking, and special members-only events. Elevate your wellness routine. [Placeholder for details].</p>
+                    <div class="promise-item">
+                        <span class="promise-icon icon-safety" aria-hidden="true">✔️</span>
+                        <h3>Safety Tested</h3>
+                        <p>Peace of mind for you. All our toys meet or exceed rigorous safety standards.</p>
                     </div>
-                     <div class="offer-item">
-                        <h4>Introductory Escape</h4>
-                        <p>New guests are invited to experience Elysian Realm with a special offer on their first Signature Journey. [Placeholder for details].</p>
+                    <div class="promise-item">
+                        <span class="promise-icon icon-learning" aria-hidden="true">💡</span>
+                        <h3>Learning Through Play</h3>
+                        <p>Sparking curious minds and fostering crucial developmental skills naturally.</p>
                     </div>
+                    <div class="promise-item">
+                        <span class="promise-icon icon-curated" aria-hidden="true">✨</span>
+                        <h3>Expertly Curated</h3>
+                        <p>Thoughtfully selected by play experts for maximum fun and engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Imagination Hub Section ===== -->
+        <section class="section imagination-hub" id="inspiration">
+            <div class="container">
+                 <div class="hub-content">
+                     <div class="hub-text">
+                        <h2>Imagination Hub</h2>
+                        <h3>The Magic of Make-Believe</h3>
+                        <p>This week, let's explore the power of pretend play! From dress-up adventures to building magnificent forts, imaginative play helps kids develop social skills, creativity, and problem-solving abilities. Grab a cape, build a den, and let the stories unfold!</p>
+                        <a href="#blog-post" class="btn btn-secondary">Get More Play Ideas</a>
+                     </div>
+                     <div class="hub-image-placeholder" aria-label="Inspiring image of children engaged in make-believe play">
+                         Inspiring Play Image Placeholder
+                     </div>
                  </div>
-
-                 <div class="gifting-cta">
-                    <h3>Give the Gift of Elysian Calm</h3>
-                    <p>Present someone special with an unforgettable escape. Our elegantly packaged gift cards offer access to any of our transformative treatments and journeys.</p>
-                    <a href="#" class="btn btn--primary">Purchase Gift Card</a>
-                </div>
-             </div>
+            </div>
         </section>
 
-        <!-- Reserve Your Moment (Booking & Contact) Section -->
-        <section id="booking" class="section booking">
+        <!-- ===== Testimonials Section ===== -->
+        <section class="section testimonials" id="reviews">
             <div class="container">
-                <div class="booking__cta-section">
-                    <h2>Reserve Your Moment</h2>
-                    <p>Your journey towards profound tranquility and revitalization begins now. Secure your preferred time and experience the Elysian difference.</p>
-                    <a href="#booking-form-anchor" class="btn btn--primary">Secure Your Transformation</a>
+                <h2 class="text-center">Hear From Happy Playgrounds!</h2>
+                <div class="testimonial-grid">
+                    <blockquote class="testimonial-card">
+                        <p class="testimonial-quote">"The quality is fantastic! My daughter hasn't stopped playing with her WonderSpark building blocks since they arrived. So much creativity!"</p>
+                        <cite class="testimonial-author">Sarah K. <span>- Austin, TX</span></cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p class="testimonial-quote">"Finally, toys that aren't just plastic junk! These feel built to last, and my son is actually learning while he plays. Highly recommend!"</p>
+                        <cite class="testimonial-author">Mike P. <span>- Chicago, IL</span></cite>
+                    </blockquote>
+                    <blockquote class="testimonial-card">
+                        <p class="testimonial-quote">"I love the curation. It's so easy to find age-appropriate, engaging toys without being overwhelmed. WonderSpark is my new go-to for gifts."</p>
+                        <cite class="testimonial-author">Jessica L. <span>- Seattle, WA</span></cite>
+                    </blockquote>
                 </div>
+            </div>
+        </section>
 
-                <div class="booking__details">
-                    <div class="booking__info">
-                        <h4>Contact & Location</h4>
-                        <ul>
-                            <li><strong>Address:</strong> 123 Serenity Plaza, Suite 500, Metropolis, ST 90210</li>
-                            <li><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></li>
-                            <li><strong>Email:</strong> <a href="mailto:concierge@elysianrealm.com">concierge@elysianrealm.com</a></li>
-                            <li><strong>Hours:</strong><br>
-                                Monday - Friday: 9:00 AM - 8:00 PM<br>
-                                Saturday - Sunday: 10:00 AM - 7:00 PM</li>
-                        </ul>
-                         <div class="map-placeholder" aria-label="Placeholder map showing spa location">
-                             <!-- Embedded map (e.g., Google Maps iframe) would go here -->
-                         </div>
-                    </div>
-
-                    <div class="booking__form-section" id="booking-form-anchor">
-                         <h4>Request Your Appointment</h4>
-                         <p>Submit your preferences, and our concierge will contact you shortly to confirm your booking.</p>
-                         <form action="#" method="POST" class="booking-form">
-                             <div>
-                                 <label for="name">Full Name</label>
-                                 <input type="text" id="name" name="name" required placeholder="Your Name">
-                             </div>
-                             <div>
-                                 <label for="email">Email Address</label>
-                                 <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                             </div>
-                             <div>
-                                <label for="phone">Phone Number (Optional)</label>
-                                <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
-                            </div>
-                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm);">
-                                 <div>
-                                     <label for="date">Preferred Date</label>
-                                     <input type="date" id="date" name="date">
-                                 </div>
-                                 <div>
-                                    <label for="time">Preferred Time</label>
-                                    <input type="time" id="time" name="time">
-                                </div>
-                             </div>
-                             <div>
-                                 <label for="service">Service of Interest</label>
-                                 <select id="service" name="service">
-                                     <option value="">Select a Journey (Optional)</option>
-                                     <option value="lumina_facial">The Lumina Radiance Facial</option>
-                                     <option value="flotation_therapy">Zero Gravity Flotation Therapy</option>
-                                     <option value="salt_stone_ritual">Himalayan Salt Stone Ritual</option>
-                                     <option value="chrono_wrap">Chrono-Wellness Body Wrap</option>
-                                     <option value="other">Other / Unsure</option>
-                                 </select>
-                             </div>
-                             <div>
-                                <label for="message">Additional Notes (Optional)</label>
-                                <textarea id="message" name="message" rows="3" placeholder="Any specific requests or questions?"></textarea>
-                            </div>
-                             <button type="submit" class="btn btn--primary">Submit Inquiry</button>
-                             <p style="font-size: 0.8rem; color: var(--color-text-secondary); margin-top: var(--spacing-sm);">Please note: This form submits an inquiry. Your appointment is confirmed only after contact from our concierge.</p>
-                         </form>
-                    </div>
-                </div>
+        <!-- ===== Newsletter Section ===== -->
+        <section class="section newsletter" id="wonderclub">
+            <div class="container">
+                <h2>Join the WonderClub!</h2>
+                <p>Get Play Ideas, Exclusive Offers & Sneak Peeks delivered right to your inbox!</p>
+                <form action="#" method="post" class="newsletter-form">
+                     <label for="email-newsletter" class="visually-hidden">Email Address</label>
+                     <input type="email" id="email-newsletter" name="email" placeholder="Enter your email address" required class="newsletter-input">
+                     <button type="submit" class="newsletter-submit">Spark Me Up!</button>
+                </form>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
+    <!-- ===== Footer ===== -->
     <footer class="footer">
-        <div class="container">
-             <div class="footer__logo-placeholder" aria-hidden="true">Logo</div>
-            <ul class="footer__links">
-                <li><a href="#privacy">Privacy Policy</a></li>
-                <li><a href="#terms">Terms of Service</a></li>
-                <li><a href="#journeys">Our Journeys</a></li>
-            </ul>
-            <div class="footer__social">
-                <a href="#" aria-label="Facebook">FB</a> <!-- Replace with actual Icon -->
-                <a href="#" aria-label="Instagram">IG</a> <!-- Replace with actual Icon -->
-                <a href="#" aria-label="LinkedIn">LI</a> <!-- Replace with actual Icon -->
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h4>WonderSpark Toys</h4>
+                <p>Igniting imagination, one toy at a time. Curated quality for endless fun and learning.</p>
+                 <div class="footer-social">
+                     <span>Follow the Fun:</span>
+                     <!-- Placeholder Social Links -->
+                     <a href="#" aria-label="WonderSpark Toys on Facebook"><span class="visually-hidden">Facebook</span></a>
+                     <a href="#" aria-label="WonderSpark Toys on Instagram"><span class="visually-hidden">Instagram</span></a>
+                     <a href="#" aria-label="WonderSpark Toys on Pinterest"><span class="visually-hidden">Pinterest</span></a>
+                 </div>
             </div>
-            <p class="footer__copyright">&copy; 2025 Elysian Realm Spa & Wellness. All Rights Reserved.</p>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Shop All Toys</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#inspiration">Play Ideas Blog</a></li>
+                    <li><a href="#promise">Our Promise</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                 <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+                 <div class="footer-payments">
+                     <span>Secure Payments:</span>
+                     <span>💳 VISA MC AMEX PayPal</span> <!-- Placeholder -->
+                 </div>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 WonderSpark Toys. All Rights Reserved. Let's Play!
+            </div>
         </div>
     </footer>
 
