@@ -1,25 +1,22 @@
+Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מרואן ובניו" (Marwan & Sons), designed with Hebrew and RTL conventions in mind.
+
 ```html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מרואן ובניו - אסטרטגיה עסקית</title>
+    <meta name="description" content="מרואן ובניו - ייעוץ עסקי יוקרתי להצלחה מתמשכת. פתרונות אסטרטגיים מתקדמים לעסקים מובילים.">
+    <title>מרואן ובניו | ייעוץ עסקי יוקרתי</title>
+
+    <!-- Google Fonts (Elegant Hebrew Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&family=Frank+Ruhl+Libre:wght@700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-primary-dark-blue: #001f3f; /* Navy */
-            --color-primary-white: #FFFFFF;
-            --color-accent-blue: #0047AB; /* Cobalt Blue */
-            --font-heading: 'Frank Ruhl Libre', serif;
-            --font-body: 'Assistant', sans-serif;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
 
-        *,
-        *::before,
-        *::after {
+    <style>
+        /* --- Reset & Base Styles --- */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -27,412 +24,427 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: var(--font-body);
-            background-color: var(--color-primary-dark-blue);
-            color: var(--color-primary-white);
+            font-family: 'Assistant', sans-serif; /* Modern sans-serif for body */
             line-height: 1.7;
-            font-size: 16px;
-            direction: rtl;
-            text-align: right;
+            color: #333; /* Dark gray for readability */
+            background-color: #FFFFFF; /* Primary White */
             overflow-x: hidden; /* Prevent horizontal scroll */
+            direction: rtl; /* Ensure RTL */
+            text-align: right; /* Default text alignment */
         }
 
-        h1, h2, h3 {
-            font-family: var(--font-heading);
-            font-weight: 900; /* Boldest for drama */
+        /* --- Color Palette --- */
+        :root {
+            --primary-blue: #0A2342; /* Deep Navy Blue */
+            --secondary-blue: #2E5A88; /* Lighter, sophisticated blue */
+            --accent-gold: #BDA55D; /* Muted Gold */
+            --accent-silver: #E0E1E1; /* Light Silver/Gray */
+            --text-light: #F8F9FA;
+            --text-dark: #212529;
+            --background-light: #FFFFFF;
+            --background-dark: var(--primary-blue);
+            --form-border: #CED4DA;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Frank Ruhl Libre', serif; /* Elegant serif for headings */
+            font-weight: 700;
             line-height: 1.3;
+            color: var(--primary-blue);
             margin-bottom: 1rem;
-            color: var(--color-primary-white);
         }
 
-        h1 {
-            font-size: calc(2.5rem + 2vw); /* Responsive heading */
-            font-weight: 900;
-        }
-
-        h2 {
-            font-size: calc(1.8rem + 1.5vw);
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        h3 {
-            font-size: calc(1.2rem + 0.5vw);
-            font-weight: 700;
-            color: var(--color-accent-blue); /* Use accent for service titles? Or keep white? Let's try white first */
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-weight: 300; /* Lighter body text */
-            max-width: 65ch; /* Improve readability */
-        }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.75rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.1rem; color: #555; }
 
         a {
-            color: var(--color-accent-blue);
+            color: var(--secondary-blue);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
-        a:hover, a:focus {
-            color: var(--color-primary-white);
+        a:hover {
+            color: var(--accent-gold);
         }
 
+        /* --- Layout & Containers --- */
         .container {
             width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 0; /* Generous vertical padding */
+            padding: 0 15px;
         }
 
         section {
-            padding: 5rem 0;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden; /* Contain animations/shapes */
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* --- Helper Classes --- */
+        .text-center { text-align: center; }
+        .text-light { color: var(--text-light); }
+        .mb-0 { margin-bottom: 0; }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-family: 'Assistant', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-align: center;
-            background-color: var(--color-primary-dark-blue);
-            padding: 2rem;
-             /* Optional subtle texture/gradient */
-            /* background-image: radial-gradient(circle at top right, rgba(0, 71, 171, 0.1), var(--color-primary-dark-blue) 70%); */
+            border-radius: 50px; /* Rounded for modern look */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-gold), #caa14e); /* Subtle gold gradient */
+            color: var(--background-light);
+            box-shadow: 0 4px 15px rgba(189, 165, 93, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(189, 165, 93, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--background-light);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: var(--text-light);
+            text-align: center;
+            padding: 0; /* Remove default section padding */
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        }
+
+        .hero::before { /* Abstract background shapes */
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 45% 55% 70% 30% / 30% 50% 50% 70%;
+            animation: morph 15s infinite linear alternate, moveBg 30s infinite linear alternate;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .hero::after { /* Another abstract shape */
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            background: rgba(189, 165, 93, 0.1); /* Subtle Gold */
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morph 18s infinite linear, moveBgAlt 35s infinite linear alternate-reverse;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .hero h1 {
-            color: var(--color-primary-white);
-            margin-bottom: 0.5rem;
-             /* Optional subtle text shadow for depth */
-            /* text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); */
-        }
-
-        .hero .headline {
-            font-size: calc(1.5rem + 1vw);
+            font-size: 4.5rem; /* Larger for impact */
+            color: var(--background-light);
             font-weight: 700;
-            color: var(--color-primary-white);
             margin-bottom: 1rem;
-            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            animation: slideInUp 1s ease-out 0.3s backwards;
         }
 
-        .hero .tagline {
-            font-size: calc(1rem + 0.5vw);
+        .hero .subtitle {
+            font-size: 1.5rem;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
-        }
-
-        /* About Section */
-        #about {
-            background-color: var(--color-primary-white);
-            color: var(--color-primary-dark-blue);
-        }
-        #about h2 {
-            color: var(--color-primary-dark-blue);
-            text-align: center;
-        }
-        #about p {
-            color: #333; /* Darker gray for readability on white */
-            font-weight: 400;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* <!-- Image Placeholder: High-contrast abstract texture or architectural detail --> */
-
-
-        /* Services Section */
-        #services {
-            background-color: var(--color-primary-dark-blue);
-        }
-        #services h2 {
-            text-align: center;
-            color: var(--color-primary-white);
-        }
-        .services-list {
-            list-style: none;
-            padding: 0;
-            max-width: 700px;
-            margin: 2rem auto 0 auto;
-        }
-        .service-item {
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Minimalist divider */
-        }
-        .service-item:last-child {
-            border-bottom: none;
-        }
-        .service-item h3 {
-            color: var(--color-primary-white); /* Keep service titles white for contrast */
-            margin-bottom: 0.75rem;
-        }
-        .service-item p {
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 300;
-            margin-bottom: 0;
-        }
-
-        /* Clients/Testimonial Section */
-        #clients {
-            background-color: var(--color-primary-white);
-            color: var(--color-primary-dark-blue);
-            text-align: center;
-        }
-        #clients h2 {
-             color: var(--color-primary-dark-blue);
-        }
-        .testimonial-quote {
-            font-family: var(--font-heading); /* Use heading font for impact */
-            font-size: calc(1.3rem + 0.8vw);
-            font-weight: 700;
-            /* font-style: italic; /* Only if font supports well */
-            color: var(--color-primary-dark-blue);
-            max-width: 800px;
-            margin: 1rem auto;
-            line-height: 1.5;
-            position: relative;
-            padding: 0 2rem;
-        }
-        .testimonial-quote::before,
-        .testimonial-quote::after {
-            content: '"';
-            font-size: 4rem;
-            color: var(--color-accent-blue);
-            opacity: 0.4;
-            position: absolute;
-            line-height: 1;
-        }
-        .testimonial-quote::before {
-            content: '“';
-            top: -0.5rem;
-            right: -0.5rem; /* RTL */
-        }
-        .testimonial-quote::after {
-            content: '”';
-            bottom: -1.5rem;
-            left: -0.5rem; /* RTL */
-        }
-        .testimonial-attribution {
-            display: block;
-            margin-top: 1.5rem;
-            font-size: 1rem;
-            font-weight: 400;
-            color: #555;
-        }
-
-        /* Contact CTA Section */
-        #contact-cta {
-            background-color: var(--color-primary-dark-blue);
-            text-align: center;
-        }
-         #contact-cta h2 {
-             color: var(--color-primary-white);
-             margin-bottom: 1rem;
-         }
-         #contact-cta p {
-            color: rgba(255, 255, 255, 0.85);
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--accent-silver);
             margin-bottom: 2.5rem;
-         }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--color-accent-blue);
-            color: var(--color-primary-white);
-            font-family: var(--font-body);
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 4px; /* Subtle rounding */
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            margin: 0.5rem; /* Allow stacking on small screens */
+            animation: slideInUp 1s ease-out 0.6s backwards;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-button:hover, .cta-button:focus {
-            background-color: #0056b3; /* Slightly darker accent blue on hover */
-            transform: translateY(-2px);
-            outline: none;
+        .hero .btn {
+            animation: slideInUp 1s ease-out 0.9s backwards;
+            padding: 15px 40px;
+            font-size: 1.2rem;
         }
 
-        /* Footer */
-        footer {
-            background-color: #001428; /* Slightly darker blue for footer */
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
-        }
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-        footer a {
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0 0.75rem;
-            font-weight: 400;
-        }
-        footer a:hover, footer a:focus {
-            color: var(--color-primary-white);
-        }
-
-        /* Pop-up Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 31, 63, 0.85); /* Semi-transparent dark blue */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background-color: var(--color-primary-dark-blue);
-            padding: 3rem;
-            border-radius: 5px;
-            position: relative;
-            width: 90%;
-            max-width: 550px;
-            transform: scale(0.9);
-            transition: transform 0.4s ease;
-             /* Optional subtle shadow for depth */
-             box-shadow: 0 10px 30px rgba(0,0,0, 0.4);
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            transition-delay: 0s;
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-close-btn {
+        /* --- Animated Down Arrow (Optional) --- */
+        .scroll-down {
             position: absolute;
-            top: 1rem;
-            left: 1.5rem; /* RTL adjustment - place on left */
-            background: none;
-            border: none;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+        .scroll-down a {
+            color: var(--accent-gold);
             font-size: 2rem;
-            color: var(--color-primary-white);
-            cursor: pointer;
-            line-height: 1;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        .modal-close-btn:hover {
-             opacity: 1;
         }
 
-        .modal-content h2 {
+        /* --- About/Intro Section --- */
+        #about {
+            background-color: var(--background-light);
+        }
+        #about .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--color-primary-white);
-            font-size: calc(1.6rem + 1vw);
         }
 
-        /* Custom Form Styling */
-        .contact-form .form-group {
+        #about h2 {
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        /* Underline effect */
+        #about h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        #about p {
+            max-width: 700px;
+            color: #444;
+            font-size: 1.15rem;
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            /* Simple SVG Diamond Icon */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* --- Contact Form Section --- */
+        #contact {
+            background-color: var(--accent-silver); /* Light gray background */
+            padding-bottom: 100px; /* More space below form */
+        }
+        #contact .container {
+            max-width: 800px; /* Limit form width */
+        }
+        #contact h2 {
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        .contact-form {
+            background-color: var(--background-light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out forwards; /* Animate form appearance */
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        .form-group {
             margin-bottom: 1.5rem;
+            position: relative; /* For potential floating labels or icons */
         }
 
-        .contact-form label {
+        .form-group label {
             display: block;
-            font-weight: 400;
             margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            color: var(--primary-blue);
             font-size: 0.95rem;
         }
 
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
+        .form-control {
             width: 100%;
-            padding: 0.8rem 1rem;
-            background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            color: var(--color-primary-white);
-            font-family: var(--font-body);
+            padding: 12px 15px;
             font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Assistant', sans-serif;
+            line-height: 1.5;
+            color: var(--text-dark);
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid var(--form-border);
+            border-radius: 5px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .form-control:focus {
+            border-color: var(--secondary-blue);
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(46, 90, 136, 0.25);
         }
 
-        .contact-form input[type="text"]::placeholder,
-        .contact-form input[type="email"]::placeholder,
-        .contact-form textarea::placeholder {
-             color: rgba(255, 255, 255, 0.5);
-             font-weight: 300;
-             font-size: 0.95rem;
-        }
-
-
-        .contact-form input[type="text"]:focus,
-        .contact-form input[type="email"]:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--color-accent-blue);
-            box-shadow: 0 0 0 2px rgba(0, 71, 171, 0.5); /* Subtle focus ring with accent color */
-        }
-
-        .contact-form textarea {
+        textarea.form-control {
             min-height: 120px;
             resize: vertical;
         }
 
-        .contact-form .submit-button {
+        .form-submit-btn {
             display: block;
             width: 100%;
-            background-color: var(--color-accent-blue);
-            color: var(--color-primary-white);
-            font-family: var(--font-body);
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 0.9rem 2rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 15px;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        #form-status {
+            margin-top: 1.5rem;
             text-align: center;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            min-height: 24px; /* Prevent layout shift */
+        }
+        .status-success { color: green; }
+        .status-error { color: red; }
+
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--accent-silver);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer p {
+            margin-bottom: 0;
+            color: var(--accent-silver);
         }
 
-        .contact-form .submit-button:hover,
-        .contact-form .submit-button:focus {
-            background-color: #0056b3; /* Darker accent */
-            transform: translateY(-1px);
-            outline: none;
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Responsive Adjustments (Basic) */
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* Background Shape Animations */
+        @keyframes morph {
+            0% { border-radius: 45% 55% 70% 30% / 30% 50% 50% 70%; }
+            50% { border-radius: 30% 70% 40% 60% / 70% 40% 60% 30%; }
+            100% { border-radius: 45% 55% 70% 30% / 30% 50% 50% 70%; }
+        }
+        @keyframes moveBg {
+            from { transform: translate(-50px, -50px) rotate(0deg); }
+            to { transform: translate(50px, 50px) rotate(180deg); }
+        }
+        @keyframes moveBgAlt {
+             from { transform: translate(80px, 80px) rotate(0deg); }
+            to { transform: translate(-80px, -80px) rotate(-180deg); }
+        }
+
+        /* Scroll Fade In Effect Elements */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1.3rem; }
+            section { padding: 60px 0; }
+            .container { width: 95%; }
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: calc(2rem + 3vw); }
-            h2 { font-size: calc(1.5rem + 2vw); }
-            .container { padding: 2.5rem 0; }
-            section { padding: 3rem 0; }
-            .hero { min-height: 70vh; }
-            .testimonial-quote { font-size: calc(1.1rem + 1vw); }
-             .testimonial-quote::before { top: -1rem; right: -0.2rem; font-size: 3rem;}
-             .testimonial-quote::after { bottom: -1.8rem; left: -0.2rem; font-size: 3rem;}
-             .modal-content { padding: 2rem; width: 95%;}
-             .modal-close-btn { left: 1rem; top: 0.8rem;}
+            html { font-size: 15px; }
+            h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .hero { min-height: 600px; }
+            .contact-form { padding: 30px; }
+            .hero::before, .hero::after { /* Scale down background shapes */
+                width: 200px;
+                height: 200px;
+            }
+            .hero::after {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            html { font-size: 14px; }
+            body { line-height: 1.6; }
+            h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .hero .subtitle { font-size: 1.1rem; margin-bottom: 2rem;}
+            .btn { padding: 10px 25px; font-size: 1rem; }
+            .hero .btn { padding: 12px 30px; font-size: 1.1rem; }
+            .contact-form { padding: 25px; }
+            .form-control { padding: 10px 12px; }
+            textarea.form-control { min-height: 100px; }
+            .form-submit-btn { padding: 12px; }
+            .hero { height: auto; min-height: 90vh; padding: 100px 0 50px 0; } /* Adjust hero height on mobile */
+            .scroll-down { display: none; } /* Hide scroll arrow on small screens */
+             .hero::before { top: 10px; left: 10px; width: 150px; height: 150px;}
+            .hero::after { bottom: 10px; right: 10px; width: 180px; height: 180px;}
         }
 
     </style>
@@ -441,166 +453,186 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="container">
+        <div class="hero-content">
             <h1>מרואן ובניו</h1>
-            <p class="headline">אסטרטגיה פורצת דרך. תוצאות מדידות.</p>
-            <p class="tagline">אנו בונים את המחר של העסק שלך, ביחד. מחברים בין חזון למציאות באמצעות תובנות אסטרטגיות וביצוע מדויק.</p>
-            <!-- Optional Arrow Down or CTA -->
-            <!-- <a href="#about" class="cta-button hero-cta">גלו עוד</a> -->
+            <p class="subtitle">מייעצים לעתיד העסקי שלך. פתרונות אסטרטגיים יוקרתיים לתוצאות יוצאות דופן.</p>
+            <a href="#contact" class="btn btn-primary">התחל שיחה</a>
+        </div>
+        <div class="scroll-down">
+            <a href="#about" aria-label="גלול למטה">
+                <!-- Simple Arrow Down SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
         </div>
     </header>
 
-    <!-- Manifesto/Philosophy Section -->
-    <section id="about">
-        <div class="container">
-            <h2>הגישה שלנו</h2>
-            <p>אנו מאמינים בשילוב ייחודי של חשיבה אסטרטגית מעמיקה וביצוע מוקפד. המטרה שלנו היא לא רק לעמוד בציפיות, אלא לפרוץ אותן, תוך יצירת ערך בר-קיימא עבור לקוחותינו. המחויבות שלנו היא למצוינות, לחדשנות ולקשרים ארוכי טווח המבוססים על אמון ותוצאות מוכחות.</p>
-            <!-- Image Placeholder: High-contrast abstract texture or architectural detail -->
-            <!-- <div style="height: 300px; background: #eee; margin-top: 3rem; display:flex; align-items:center; justify-content: center; color: #999;">
-                <!-- Image Placeholder: High-contrast abstract texture or architectural detail -->
-            <!-- </div> -->
-        </div>
-    </section>
+    <main>
+        <!-- About Section -->
+        <section id="about" class="fade-in-section">
+            <div class="container">
+                 <!-- Simple SVG Diamond Icon -->
+                <svg class="about-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                    <path d="M12 1.793l-10.207 10.207 10.207 10.207 10.207-10.207zM6.414 12l5.586-5.586 5.586 5.586-5.586 5.586z"/>
+                </svg>
+                <h2>שותפים אסטרטגיים להצלחה</h2>
+                <p>
+                    ב"מרואן ובניו", אנו מאמינים שכדי להגיע לפסגה, צריך שותף שמבין את הדרך. אנו מציעים ייעוץ עסקי ברמה הגבוהה ביותר, המשלב ניסיון עשיר, חשיבה חדשנית ומחויבות בלתי מתפשרת להצלחת לקוחותינו. אנו מתמחים בפיתוח אסטרטגיות צמיחה, אופטימיזציה תפעולית וליווי מנהלים בכירים בצמתים קריטיים.
+                </p>
+                 <a href="#contact" class="btn btn-secondary">למידע נוסף וייעוץ ראשוני</a>
+            </div>
+        </section>
 
-    <!-- Signature Services Overview -->
-    <section id="services">
-        <div class="container">
-            <h2>שירותי הדגל שלנו</h2>
-            <ul class="services-list">
-                <li class="service-item">
-                    <h3>ייעוץ אסטרטגי ופיתוח עסקי</h3>
-                    <p>ניתוח שוק מעמיק, גיבוש אסטרטגיות צמיחה מותאמות אישית וליווי צמוד בתהליך היישום להשגת יעדים מדידים.</p>
-                </li>
-                <li class="service-item">
-                    <h3>טרנספורמציה דיגיטלית</h3>
-                    <p>אופטימיזציה של תהליכים עסקיים, הטמעת טכנולוגיות חדשניות ושיפור חווית הלקוח בעידן הדיגיטלי.</p>
-                </li>
-                <li class="service-item">
-                    <h3>מיתוג ותקשורת שיווקית</h3>
-                    <p>בניית נרטיב מותגי עוצמתי, פיתוח וביצוע קמפיינים שיווקיים ממוקדים וניהול מוניטין אפקטיבי.</p>
-                </li>
-                 <li class="service-item">
-                    <h3>ניהול פרויקטים מורכבים</h3>
-                    <p>תכנון מדוקדק, בקרה הדוקה והוצאה לפועל מוצלחת של פרויקטים אסטרטגיים ורחבי היקף.</p>
-                </li>
-            </ul>
-             <!-- Image Placeholder: Deep space/ocean abstract adaptable to blue/white -->
-             <!-- <div style="height: 200px; background: rgba(255,255,255,0.05); margin-top: 4rem; display:flex; align-items:center; justify-content: center; color: #aaa;">
-                 <!-- Image Placeholder: Deep space/ocean abstract adaptable to blue/white -->
-             <!-- </div> -->
-        </div>
-    </section>
-
-    <!-- Clientele/Testimonial Snippet -->
-    <section id="clients">
-        <div class="container">
-            <h2>על לקוחותינו</h2>
-            <blockquote class="testimonial-quote">
-                "השותפות עם מרואן ובניו היוותה נקודת מפנה אסטרטגית עבורנו. המקצועיות הבלתי מתפשרת, הירידה לפרטים והראייה הרחבה הובילו אותנו לתוצאות יוצאות דופן שלא יכולנו להשיג לבד."
-                <cite class="testimonial-attribution">— מנכ"ל, חברה מובילה בתחומה</cite>
-            </blockquote>
-            <!-- Placeholder for logos if needed, styled minimally -->
-            <!-- <div style="margin-top: 3rem; color: #aaa;"> <!-- Placeholder: Minimalist client logo area --> </div> -->
-        </div>
-    </section>
-
-    <!-- Point of Contact/Invitation -->
-    <section id="contact-cta">
-        <div class="container">
-            <h2>בואו נדבר</h2>
-            <p>מוכנים לקחת את העסק שלכם לשלב הבא? אנו מזמינים אתכם לשיחה ראשונית, ללא התחייבות, לבחינת הדרך שבה נוכל לסייע לכם להגשים את הפוטנציאל העסקי שלכם.</p>
-            <button class="cta-button" id="open-modal-btn">לתאום פגישה אסטרטגית</button>
-        </div>
-    </section>
+        <!-- Contact Form Section -->
+        <section id="contact" class="fade-in-section">
+            <div class="container">
+                <h2 class="mb-5">יצירת קשר</h2>
+                <div class="contact-form">
+                    <form id="inquiryForm">
+                        <div class="form-group">
+                            <label for="name">שם מלא</label>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="הקלד/י את שמך המלא">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">כתובת דוא"ל</label>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">מספר טלפון</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required placeholder="05X-XXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">הודעה</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required placeholder="כיצד נוכל לסייע?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit-btn">שלח פנייה</button>
+                    </form>
+                    <div id="form-status"></div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <div class="container" style="padding: 2rem 0;">
-            <p>© <span id="current-year"></span> מרואן ובניו. כל הזכויות שמורות.</p>
-            <nav>
-                <a href="#privacy">מדיניות פרטיות</a>
-                <a href="#terms">תנאי שימוש</a>
-            </nav>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> מרואן ובניו | כל הזכויות שמורות.</p>
+             <p style="font-size: 0.8em; opacity: 0.7; margin-top: 5px;">עיצוב ופיתוח יוקרתי</p>
         </div>
     </footer>
 
-    <!-- Pop-up Contact Form Modal -->
-    <div class="modal-overlay" id="contact-modal">
-        <div class="modal-content">
-            <button class="modal-close-btn" id="close-modal-btn" aria-label="סגור">&times;</button>
-            <h2>יצירת קשר</h2>
-            <form class="contact-form" action="#" method="post"> <!-- Replace # with form handler URL -->
-                <div class="form-group">
-                    <label for="fullname">שם מלא</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="הקלד/י את שמך המלא" required>
-                </div>
-                <div class="form-group">
-                    <label for="company">חברה (אופציונלי)</label>
-                    <input type="text" id="company" name="company" placeholder="שם החברה או הארגון">
-                </div>
-                <div class="form-group">
-                    <label for="email">דוא"ל</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">הודעה</label>
-                    <textarea id="message" name="message" placeholder="כיצד נוכל לסייע?" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">שלח</button>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // Minimal JS for Modal functionality
-        const modal = document.getElementById('contact-modal');
-        const openBtn = document.getElementById('open-modal-btn');
-        const closeBtn = document.getElementById('close-modal-btn');
+        // --- Simple Fade-In on Scroll ---
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
 
-        function openModal() {
-            modal.classList.add('active');
-            // Optional: Trap focus inside modal for accessibility
-        }
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the element is visible
+        };
 
-        function closeModal() {
-            modal.classList.remove('active');
-        }
-
-        if (openBtn && modal && closeBtn) {
-            openBtn.addEventListener('click', openModal);
-            closeBtn.addEventListener('click', closeModal);
-
-            // Close modal if clicking on the overlay background
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal();
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
                 }
             });
+        }, observerOptions);
 
-            // Close modal on Escape key press
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
-                }
-            });
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Form Handling ---
+        const form = document.getElementById('inquiryForm');
+        const formStatus = document.getElementById('form-status');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default page reload
+
+            // Basic Validation (Front-end only for this example)
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !phone || !message) {
+                showFormStatus('אנא מלא/י את כל השדות.', 'error');
+                return;
+            }
+
+            // --- Simulate Form Submission ---
+            // In a real application, you would send this data to a server using fetch() or XMLHttpRequest
+            console.log('Form Data Submitted:');
+            console.log({ name, email, phone, message });
+
+            // Show success message (simulation)
+            showFormStatus('הפנייה נשלחה בהצלחה! ניצור קשר בהקדם.', 'success');
+            form.reset(); // Clear the form
+
+            // Optionally hide the success message after a few seconds
+            setTimeout(() => {
+                formStatus.textContent = '';
+                formStatus.className = '';
+            }, 5000);
+        });
+
+        function showFormStatus(message, type) {
+            formStatus.textContent = message;
+            formStatus.className = type === 'success' ? 'status-success' : 'status-error';
         }
 
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Prevent default form submission for demo purposes
-        const form = document.querySelector('.contact-form');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('טופס נשלח (סימולציה). תודה!'); // Placeholder action
-                closeModal();
-                form.reset(); // Clear form
-            });
-        }
+        // --- Footer Current Year ---
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
     </script>
 
 </body>
 </html>
 ```
+
+**Explanation and Features:**
+
+1.  **Single File Structure:** All HTML, CSS (`<style>`), and JavaScript (`<script>`) are contained within this single `.html` file.
+2.  **Hebrew & RTL:**
+    *   `<html lang="he" dir="rtl">`: Sets the language to Hebrew and direction to Right-to-Left.
+    *   CSS: Properties like `text-align: right`, and the natural flow of RTL handle most layout aspects. Specific adjustments (like form label positioning) implicitly work well with `display: block`.
+    *   Fonts: Uses Google Fonts ('Assistant' for body, 'Frank Ruhl Libre' for headings) known for good Hebrew support and an elegant feel.
+3.  **Luxurious Hero Section:**
+    *   **Full Viewport Height:** Takes up the initial screen (`height: 100vh`).
+    *   **Gradient Background:** Uses a sophisticated `linear-gradient` from deep navy to a secondary blue.
+    *   **Abstract Animated Shapes:** Uses `::before` and `::after` pseudo-elements with CSS animations (`morph`, `moveBg`, `moveBgAlt`) to create subtle, non-distracting, dynamic background elements, adding a unique and artistic touch.
+    *   **Elegant Typography:** Large, bold serif heading (`Frank Ruhl Libre`) and a clear sans-serif subtitle (`Assistant`).
+    *   **Color Palette:** Primarily white text on the dark blue background, with gold (`--accent-gold`) used for the primary CTA button and subtle accents (like the animated shapes' opacity).
+    *   **Interactive CTA:** A prominent button (`.btn-primary`) with a gold gradient, hover effects (lift and shadow), linking to the contact form.
+    *   **Entry Animations:** Content elements fade/slide in using CSS animations (`fadeIn`, `slideInUp`) for a smooth entrance.
+    *   **Scroll Down Hint:** An optional animated arrow suggests scrolling (can be removed if preferred).
+4.  **Inquiry Form:**
+    *   **Clear Structure:** Uses standard form elements (`<label>`, `<input>`, `<textarea>`).
+    *   **Styling:** Clean input fields with focus states, clear labels, and a submit button styled consistently with the primary CTA.
+    *   **Placement:** Contained within a visually distinct card (`.contact-form`) with a subtle shadow on a light silver background (`--accent-silver`) for separation.
+    *   **Basic JS Validation:** Simple client-side checks for empty fields.
+    *   **Simulated Submission:** Logs data to the console and displays a success/error message (`#form-status`). **Note:** For actual use, you need backend code to receive this data.
+5.  **Color Palette:**
+    *   **Primary:** White (`#FFFFFF`) and Deep Navy Blue (`#0A2342`).
+    *   **Secondary:** Lighter Blue (`#2E5A88`).
+    *   **Accents (Luxury):** Muted Gold (`#BDA55D`), Light Silver/Gray (`#E0E1E1`). Used for buttons, highlights, backgrounds, and subtle details.
+6.  **Responsive Design:**
+    *   Uses `meta viewport` tag.
+    *   Employs relative units (`rem`, `%`, `vh`).
+    *   Uses Flexbox for layout where appropriate (like the hero content centering).
+    *   Includes `@media` queries to adjust font sizes, padding, element sizes, and hero section height for different screen sizes (tablets, mobiles).
+7.  **Animations & Artistic Details:**
+    *   **Hero Animations:** Background shapes, content entry animations.
+    *   **Scroll Animations:** Sections (`#about`, `#contact`) use `IntersectionObserver` (in JS) to trigger a `fade-in-section` CSS class when they scroll into view, making them appear smoothly.
+    *   **Button Hovers:** Subtle transformations and shadow changes on buttons.
+    *   **Subtle SVG Icon:** A simple diamond icon in the "About" section adds a touch of visual interest without external files.
+    *   **Heading Underline:** A custom underline effect using `::after` on the "About" section heading.
+8.  **Clean Code:**
+    *   Uses CSS variables (`:root`) for easy color management.
+    *   Well-commented CSS and JavaScript sections.
+    *   Semantic HTML elements (`<header>`, `<main>`, `<section>`, `<footer>`, `<form>`).
+    *   Logical class naming convention.
+    *   Basic accessibility considerations (labels, alt text placeholder, semantic elements).
+
+This single file provides a sophisticated, visually appealing, and functional landing page experience tailored to the luxurious identity of "מרואן ובניו". Remember to replace the simulated form submission with actual backend integration for a live site.
