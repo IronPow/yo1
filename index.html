@@ -4,33 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus AI Dynamics | Amplify Intelligence. Architect Your Advantage.</title>
+    <title>Apex Poker Club - Master the Felt</title>
     <style>
-        /* --- Global Styles & Variables --- */
-        :root {
-            --primary-color: #4a4ae4; /* Electric Blue */
-            --secondary-color: #8e44ad; /* Vibrant Purple */
-            --dark-bg: #12121f; /* Deep Charcoal/Navy */
-            --medium-bg: #1a1a2e;
-            --light-bg: #2a2a3e;
-            --text-light: #f0f0f0;
-            --text-medium: #c0c0c0;
-            --text-dark: #1a1a2e;
-            --accent-glow: rgba(74, 74, 228, 0.5);
-            --border-color: rgba(240, 240, 240, 0.2);
-            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --font-primary: 'Poppins', 'Arial', sans-serif; /* Using Poppins, provide fallback */
-            --transition-speed: 0.3s;
-            --container-width: 1200px;
-        }
-
-        /* Basic Reset & Font Loading (Simulated - Use @import or link for real fonts) */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        * {
+        /* --- CSS Reset --- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
@@ -39,93 +21,185 @@
         }
 
         body {
-            font-family: var(--font-primary);
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
             overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        input, button, textarea, select {
+            font: inherit;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            line-height: 1.2;
+            margin-bottom: 0.75em;
+            color: var(--color-heading);
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--color-primary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-hover);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Custom Properties (Variables) --- */
+        :root {
+            --color-background: #1a1a1a; /* Dark grey background */
+            --color-surface: #2c2c2c; /* Slightly lighter surface for cards/sections */
+            --color-text: #e0e0e0; /* Light grey text for readability */
+            --color-heading: #ffffff; /* White headings */
+            --color-primary: #d4af37; /* Gold primary color */
+            --color-primary-hover: #e6c35c; /* Lighter gold on hover */
+            --color-secondary-accent: #c0392b; /* Deep red for highlights/buttons */
+            --color-secondary-hover: #e74c3c; /* Brighter red on hover */
+            --color-success: #2ecc71; /* Green for success messages/indicators */
+            --color-border: #444444; /* Subtle border color */
+            --color-shadow: rgba(0, 0, 0, 0.5);
+            --color-glow: rgba(212, 175, 55, 0.6); /* Gold glow */
+
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-secondary: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+            --border-radius: 6px;
+            --shadow-sm: 0 2px 4px var(--color-shadow);
+            --shadow-md: 0 4px 8px var(--color-shadow);
+            --shadow-lg: 0 8px 16px var(--color-shadow);
+
+            --container-max-width: 1200px;
+            --section-padding: 4rem 1rem;
         }
 
         /* --- Utility Classes --- */
         .container {
-            width: 90%;
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 60px 0;
+            max-width: var(--container-max-width);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
-        h1, h2, h3, h4 {
-            line-height: 1.3;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: var(--text-light);
+        .text-center {
+            text-align: center;
         }
 
-        h1 { font-size: 2.8rem; }
-        h2 { font-size: 2.2rem; margin-bottom: 2.5rem; text-align: center; }
-        h3 { font-size: 1.6rem; }
-        h4 { font-size: 1.2rem; }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-medium);
+        .text-primary {
+            color: var(--color-primary);
         }
 
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color var(--transition-speed) ease;
+        .section {
+            padding: var(--section-padding);
         }
 
-        a:hover {
-            color: var(--secondary-color);
+        .section-dark {
+            background-color: var(--color-background);
         }
 
-        img { /* Basic responsive images */
-            max-width: 100%;
-            height: auto;
+        .section-light {
+            background-color: var(--color-surface);
         }
 
-        /* --- Button Styling --- */
+        /* --- Buttons --- */
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px; /* Pill shape */
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
             font-weight: 600;
             text-align: center;
             cursor: pointer;
-            transition: all var(--transition-speed) ease;
+            transition: all 0.3s ease;
             border: none;
             font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
         }
 
         .btn-primary {
-            background: var(--gradient-primary);
-            color: var(--text-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--color-primary);
+            color: var(--color-background);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--accent-glow);
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); /* Shift gradient */
-            color: var(--text-light); /* Ensure text stays light on hover */
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            color: #000; /* Darker text on hover for gold */
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            background-color: var(--color-secondary-accent);
+            color: var(--color-heading);
         }
 
         .btn-secondary:hover {
-            background: var(--primary-color);
-            color: var(--text-light);
+            background-color: var(--color-secondary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px var(--accent-glow);
+            box-shadow: var(--shadow-md);
+            color: var(--color-heading);
         }
 
-        /* --- Header / Hero Section --- */
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 8px var(--color-glow); }
+            50% { text-shadow: 0 0 16px var(--color-glow), 0 0 24px var(--color-glow); }
+        }
+
+        @keyframes slide-in-left {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slide-in-right {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- Hero Section --- */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -134,817 +208,908 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding: 40px 20px; /* Padding for smaller screens */
-            background-color: var(--dark-bg); /* Fallback */
-            background-image: linear-gradient(135deg, var(--dark-bg) 0%, #1f1f3f 50%, var(--dark-bg) 100%);
-            animation: animatedBackground 20s ease infinite;
-            background-size: 400% 400%;
+            /* Placeholder for premium background: dark texture, glowing elements */
+            background-color: #111; /* Dark base for background */
+            background-image:
+                /* Subtle noise texture */
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: var(--color-heading);
+            padding: 4rem 1rem;
         }
 
-        @keyframes animatedBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero::before { /* Subtle overlay pattern or dots - placeholder */
+        .hero::before {
+            /* Subtle overlay */
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.3;
-            pointer-events: none;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            z-index: 1;
+        }
+
+        /* Placeholder for subtle light streak animation */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0) 60%);
+            transform: translate(-50%, -50%);
+            animation: subtle-pulse 8s infinite ease-in-out;
+            z-index: 0;
+            opacity: 0.6;
         }
 
         .hero-content {
-            position: relative; /* Above pseudo-elements */
+            position: relative;
             z-index: 2;
             max-width: 800px;
+            animation: fade-in 1s ease-out;
         }
 
         .hero h1 {
-            font-size: 3rem; /* Slightly smaller on mobile */
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: inline-block; /* For typing animation */
-            /* Typing Animation - Apply via class or directly */
-            overflow: hidden; /* Ensures the content is not revealed until the animation */
-            white-space: nowrap; /* Keeps the content on a single line */
-            animation: typing 3.5s steps(40, end) forwards;
-                 /* border-right: .15em solid var(--primary-color); /* The typwriter cursor - optional */
-                 /* animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; */
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
+            margin-bottom: 0.5em;
+            color: var(--color-heading);
+            text-shadow: 2px 2px 8px var(--color-shadow);
         }
-
-        /* Typing animation */
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        /* Optional Blinking Cursor */
-        /* @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-color); }
-        } */
 
         .hero .sub-headline {
-            font-size: 1.3rem;
-            color: var(--text-medium);
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
             margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 3.5s forwards; /* Delay after typing */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero .btn-primary {
-             opacity: 0;
-             animation: fadeIn 1s ease 4s forwards; /* Delay after sub-headline */
-        }
-
-        /* --- Section Styling --- */
-        section {
-            padding: 80px 0;
-        }
-
-        section:nth-of-type(even) {
-            background-color: var(--medium-bg);
-        }
-
-        /* --- Intelligence Gap Section --- */
-        #problem { background-color: var(--medium-bg); }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .problem-item {
-            background-color: var(--light-bg);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-
-        .problem-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .problem-icon {
-            font-size: 2.5rem; /* Placeholder for actual icon */
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            /* Basic Placeholder Shape */
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            line-height: 50px; /* Center text if needed */
-            color: var(--text-light);
-            font-weight: bold;
-        }
-
-        .problem-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Capabilities Section --- */
-        #capabilities { background-color: var(--dark-bg); }
-
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .capability-card {
-            background-color: var(--medium-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            position: relative; /* Needed for absolute positioned description */
-            min-height: 250px; /* Ensure cards have some height */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center content vertically initially */
-            padding: 30px;
-            text-align: center;
-        }
-
-        .capability-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .capability-icon {
-            font-size: 3rem; /* Placeholder for actual icon */
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            transition: transform var(--transition-speed) ease;
-            /* Basic Placeholder Shape */
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--secondary-color);
-            border-radius: 12px; /* Squircle */
-            line-height: 56px; /* Center text if needed */
-            margin: 0 auto 1rem auto; /* Center the icon block */
-        }
-
-         .capability-card:hover .capability-icon {
-            transform: scale(1.1);
-         }
-
-        .capability-card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            transition: color var(--transition-speed) ease;
-        }
-
-        .capability-description {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
-            color: var(--text-medium);
-            font-size: 0.9rem;
-            margin-top: 10px; /* Add space when revealed */
-        }
-
-        .capability-card:hover .capability-description {
-            max-height: 150px; /* Adjust as needed */
-            opacity: 1;
-        }
-
-        .capability-card:hover h4 { /* Maybe shift title up slightly on hover */
-             /* transform: translateY(-5px); */
-        }
-
-        /* --- Process Section --- */
-        #process { background-color: var(--medium-bg); }
-
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            position: relative;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        }
-
-        /* Dashed line connecting steps (pseudo-element) */
-        .process-steps::before {
-            content: '';
-            position: absolute;
-            top: 40px; /* Adjust vertical position of the line */
-            left: 5%;
-            right: 5%;
-            height: 2px;
-            background-image: linear-gradient(to right, var(--primary-color) 50%, transparent 50%);
-            background-size: 20px 2px;
-            background-repeat: repeat-x;
-            z-index: 0;
-            display: none; /* Hide line on small screens initially */
-        }
-
-        .process-step {
-            flex-basis: calc(25% - 20px); /* 4 steps, adjust gap */
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            margin-bottom: 30px; /* Space for wrapping */
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            line-height: 76px; /* Adjust for border */
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            background-color: var(--medium-bg); /* Ensure it sits above the line */
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 auto 1rem auto;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .process-step:hover .step-number {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .process-step h4 {
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .process-step p {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-        }
-
-        /* --- Proof/Industries Section --- */
-        #proof { background-color: var(--dark-bg); }
-
-        .industries-logos, .client-logos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-top: 30px;
-            margin-bottom: 60px;
-            filter: grayscale(80%) opacity(0.7); /* Subtle look */
-            transition: filter var(--transition-speed) ease;
-        }
-         .industries-logos:hover, .client-logos:hover {
-             filter: grayscale(0%) opacity(1);
-         }
-
-
-        .logo-placeholder {
-            /* Placeholder styling */
-            padding: 10px 20px;
-            border: 1px dashed var(--border-color);
-            color: var(--text-medium);
-            font-size: 0.9rem;
-            min-width: 120px; /* Ensure some width */
-            text-align: center;
-        }
-
-        .testimonials {
-            margin-top: 60px;
-        }
-
-        .testimonial {
-            background-color: var(--medium-bg);
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--secondary-color);
-            position: relative;
-        }
-
-        .testimonial::before { /* Quote icon styling */
-            content: '“';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 4rem;
-            color: rgba(142, 68, 173, 0.2); /* Faded secondary color */
-            line-height: 1;
-        }
-
-        .testimonial blockquote {
-            font-style: italic;
-            margin-bottom: 1rem;
-            position: relative; /* Ensure text is above quote icon */
-            z-index: 1;
-            padding-left: 10px; /* Space from quote icon */
-        }
-
-        .testimonial cite {
-            font-weight: 600;
-            color: var(--primary-color);
-            display: block;
-            margin-top: 1rem;
-            text-align: right;
-        }
-
-        /* --- CTA Trigger Section --- */
-        #cta-trigger {
-            background: var(--gradient-primary);
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        #cta-trigger h2 {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        #cta-trigger p {
-            color: var(--text-light);
-            opacity: 0.9;
+            color: var(--color-text);
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 2rem;
         }
 
-        #cta-trigger .btn {
-             background: var(--text-light);
-             color: var(--primary-color);
-             padding: 15px 40px;
-             font-size: 1.1rem;
+        .hero .cta-group {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
         }
-         #cta-trigger .btn:hover {
-             background: var(--dark-bg);
-             color: var(--text-light);
-             transform: translateY(-3px) scale(1.05);
-             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+        .hero .btn-primary {
+             box-shadow: 0 0 15px var(--color-glow); /* Initial glow */
+        }
+
+        .hero .btn-primary:hover {
+            box-shadow: 0 0 25px var(--color-glow), 0 4px 8px var(--color-shadow); /* Enhanced glow on hover */
+        }
+
+        .hero .btn-secondary-cta {
+             background: transparent;
+             border: 1px solid rgba(255, 255, 255, 0.7);
+             color: rgba(255, 255, 255, 0.9);
+             padding: 0.7rem 1.5rem;
+        }
+         .hero .btn-secondary-cta:hover {
+             background: rgba(255, 255, 255, 0.1);
+             border-color: #fff;
+             color: #fff;
+             transform: translateY(-2px);
          }
 
+        /* --- Choose Your Game Section --- */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
-        /* --- CSS Pop-Up Modal --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(18, 18, 31, 0.9); /* Dark semi-transparent bg */
+        .game-card {
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            /* For 3D flip effect */
+            perspective: 1000px;
+        }
+
+        .game-card .card-content {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+             transform-style: preserve-3d; /* Ensure children are part of the 3D space */
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 20px var(--color-glow), var(--shadow-lg);
+        }
+
+        /* Optional Flip Effect on Hover */
+        /*
+        .game-card:hover .card-content {
+            transform: rotateY(180deg);
+        }
+        .game-card .card-back {
+             position: absolute;
+             top: 0; left: 0; right: 0; bottom: 0;
+             background-color: var(--color-primary);
+             color: var(--color-background);
+             padding: 1.5rem;
+             border-radius: var(--border-radius);
+             transform: rotateY(180deg);
+             backface-visibility: hidden;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+        }
+        .game-card .card-front {
+             backface-visibility: hidden;
+             transform: rotateY(0deg);
+        }
+        */
+
+        .game-icon {
+            /* Placeholder for game icon - use text or background image */
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+            /* Example: Placeholder using text symbols */
+            display: inline-block; /* Needed for size */
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity var(--transition-speed) ease, visibility 0s linear var(--transition-speed);
+            margin: 0 auto 1rem auto;
+        }
+        .game-icon-holdem::before { content: ' H '; font-weight: bold; }
+        .game-icon-omaha::before { content: ' O '; font-weight: bold; }
+        .game-icon-fast::before { content: ' F '; font-weight: bold; }
+        .game-icon-sng::before { content: 'SNG'; font-size: 1.5rem; font-weight: bold;}
+        .game-icon-mtt::before { content: 'MTT'; font-size: 1.5rem; font-weight: bold;}
+
+
+        .game-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
-        .modal-content {
-            background-color: var(--medium-bg);
-            padding: 40px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 600px;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9);
-            transition: transform var(--transition-speed) ease;
+        .game-card p {
+            font-size: 0.9rem;
+            color: var(--color-text);
         }
 
-        /* Show modal using :target */
-        .modal-overlay:target {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity var(--transition-speed) ease;
+        /* --- Apex Advantage Section --- */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .modal-overlay:target .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: var(--text-medium);
-            font-size: 1.8rem;
-            font-weight: bold;
-            line-height: 1;
-            text-decoration: none;
-            transition: color var(--transition-speed) ease;
-        }
-
-        .modal-close:hover {
-            color: var(--primary-color);
-        }
-
-        .modal-content h3 {
-            color: var(--primary-color);
+        .advantage-item {
+            background-color: transparent;
+            padding: 1.5rem;
             text-align: center;
-            margin-bottom: 1.5rem;
         }
 
-        .modal-content p {
+        .advantage-icon {
+            /* Placeholder for icon */
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+             /* Example: Placeholder using text symbols */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+         .advantage-item:hover .advantage-icon {
+             transform: rotate(360deg) scale(1.1);
+             background-color: rgba(212, 175, 55, 0.1);
+         }
+
+        .icon-software::before { content: '⚙️'; } /* Example emoji, replace with font icon/SVG */
+        .icon-prizes::before { content: '🏆'; }
+        .icon-security::before { content: '🛡️'; }
+        .icon-support::before { content: '🎧'; }
+        .icon-community::before { content: '👥'; }
+
+        .advantage-item h3 {
+            color: var(--color-heading);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .advantage-item p {
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        /* --- Major Tournament Section --- */
+        .tournament-showdown {
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+            position: relative;
+             overflow: hidden;
+        }
+         /* Placeholder for banner background */
+         .tournament-showdown::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(192, 57, 43, 0.1));
+            opacity: 0.5;
+            z-index: 0;
+         }
+         .tournament-content {
+            position: relative;
+            z-index: 1;
+         }
+
+
+        .tournament-showdown h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tournament-prize-pool {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: bold;
+            color: var(--color-success);
+            margin-bottom: 1rem;
+            animation: glow 3s infinite ease-in-out; /* Subtle glow on prize pool */
+            line-height: 1;
+        }
+
+        .tournament-details {
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- New Player Bonus Section --- */
+        .bonus-section {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-accent));
+            color: var(--color-heading);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+             margin-top: 2rem;
+        }
+
+        .bonus-section h2 {
+            color: var(--color-heading);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .bonus-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bonus-section .terms {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+        }
+
+        .bonus-section .btn-primary {
+             background-color: #fff;
+             color: var(--color-secondary-accent);
+        }
+         .bonus-section .btn-primary:hover {
+             background-color: #eee;
+             color: var(--color-secondary-hover);
+         }
+
+        /* --- Security & Fair Play Section --- */
+        .security-section {
+            background-color: var(--color-surface);
+            border-top: 4px solid var(--color-primary);
+            border-bottom: 4px solid var(--color-primary);
+        }
+
+        .security-section h2 {
+            color: var(--color-primary);
             text-align: center;
             margin-bottom: 2rem;
-            font-size: 0.9rem;
         }
 
-        /* Form styling */
-        .modal-form .form-group {
-            margin-bottom: 1.5rem;
+        .security-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .modal-form label {
+        .security-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .security-logos {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .security-logo {
+            /* Placeholder for logos */
+            text-align: center;
+            color: var(--color-text);
+            opacity: 0.8;
+        }
+        .security-logo span {
             display: block;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        .security-logo .icon {
+            font-size: 2.5rem;
+            line-height: 1;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-medium);
+            color: var(--color-success); /* Green for trust */
+        }
+        /* Example Placeholders */
+        .icon-rng::before { content: '🎲'; } /* Dice for RNG */
+        .icon-ssl::before { content: '🔒'; } /* Lock for SSL */
+        .icon-license::before { content: '📜'; } /* Scroll for License */
+        .icon-responsible::before { content: '🔞'; color: var(--color-secondary-accent);} /* 18+ for Responsible Gaming */
+
+        .responsible-gaming {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-border);
+        }
+        .responsible-gaming p {
+            margin-bottom: 0.5rem;
+        }
+        .responsible-gaming a {
+            font-weight: bold;
+            color: var(--color-secondary-accent);
+            text-decoration: underline;
+        }
+         .responsible-gaming a:hover {
+             color: var(--color-secondary-hover);
+         }
+
+        /* --- Beyond the Tables Section --- */
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
         }
 
-        .modal-form input[type="text"],
-        .modal-form input[type="email"],
-        .modal-form textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid var(--border-color);
-            background-color: var(--light-bg);
-            color: var(--text-light);
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        .feature-item {
+            background-color: var(--color-surface);
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            color: var(--color-primary);
+            border: 1px solid var(--color-border);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+         .feature-item:hover {
+             background-color: var(--color-primary);
+             color: var(--color-background);
+         }
 
-        .modal-form input[type="text"]:focus,
-        .modal-form input[type="email"]:focus,
-        .modal-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 8px var(--accent-glow);
+        /* --- Get in the Game Section --- */
+        .download-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-
-        .modal-form textarea {
-            resize: vertical;
-            min-height: 100px;
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
         }
-
-        .modal-form .btn-submit { /* Placeholder button */
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: var(--gradient-primary);
-            color: var(--text-light);
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
+        .download-button {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             gap: 0.5rem;
+             padding: 1rem 1.5rem;
+             background-color: var(--color-surface);
+             border-radius: var(--border-radius);
+             color: var(--color-text);
+             border: 1px solid var(--color-border);
+             transition: all 0.3s ease;
+             min-width: 120px;
         }
+         .download-button:hover {
+             transform: translateY(-3px);
+             box-shadow: var(--shadow-md);
+             border-color: var(--color-primary);
+             color: var(--color-primary);
+         }
+        .download-icon {
+            /* Placeholder for OS Icon */
+            font-size: 2rem;
+            line-height: 1;
+        }
+        /* Example Placeholders */
+        .icon-desktop::before { content: '💻'; }
+        .icon-ios::before { content: ''; }
+        .icon-android::before { content: '🤖'; }
 
-        .modal-form .btn-submit:hover {
-             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-             box-shadow: 0 6px 15px var(--accent-glow);
-             transform: translateY(-2px);
+        .final-cta {
+            text-align: center;
+            margin-top: 3rem;
         }
 
         /* --- Footer --- */
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--text-medium);
-            padding: 40px 0 20px 0;
+        .footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 3rem 1rem;
             font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            width: 90%;
-            max-width: var(--container-width);
+            max-width: var(--container-max-width);
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: start;
         }
 
-        .footer-left p {
+        .footer-column h4 {
+            color: var(--color-heading);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links li {
             margin-bottom: 0.5rem;
         }
 
         .footer-links a {
-            margin-left: 15px;
-            color: var(--text-medium);
-            transition: color var(--transition-speed) ease;
+            color: #aaa;
         }
 
         .footer-links a:hover {
-            color: var(--primary-color);
+            color: var(--color-primary);
+            text-decoration: underline;
         }
 
-        .footer-social a {
-            margin-left: 10px;
-            font-size: 1.2rem; /* Placeholder size */
-            color: var(--text-medium);
-            /* Basic Placeholder Icon Shape */
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            border: 1px solid var(--text-medium);
-            border-radius: 50%;
+        .footer-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
         }
 
-        .footer-social a:hover {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            transform: scale(1.1);
+        .footer-logo {
+            /* Placeholder for payment/org logos */
+            height: 25px;
+            opacity: 0.7;
+            filter: grayscale(80%);
+            transition: opacity 0.3s, filter 0.3s;
+            padding: 5px;
+            background-color: #555; /* Placeholder bg */
+            color: #fff;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
         }
-
-        /* --- Responsiveness --- */
-        @media (max-width: 992px) {
-            .container { padding: 40px 0; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero .sub-headline { font-size: 1.1rem; }
-
-            .process-steps::before { display: none; } /* Hide line on smaller screens */
-            .process-step { flex-basis: calc(50% - 20px); } /* 2 steps per row */
-        }
-
-        @media (max-width: 768px) {
-            html { font-size: 15px; }
-            h1 { font-size: 2rem; }
-            .hero { min-height: 80vh; }
-            .hero h1 { animation: none; white-space: normal; border: none; font-size: 2rem; } /* Disable typing on small screens for simplicity */
-            .hero .sub-headline { animation: none; opacity: 1; }
-            .hero .btn-primary { animation: none; opacity: 1; }
-
-            .problem-grid, .capabilities-grid { grid-template-columns: 1fr; } /* Stack items */
-            .process-step { flex-basis: 100%; } /* Stack steps */
-
-            .footer-content { flex-direction: column; text-align: center; }
-            .footer-links { margin-top: 10px; margin-bottom: 10px; }
-            .footer-links a { margin: 0 8px; }
-            .footer-social { margin-top: 10px; }
-        }
-
-         @media (max-width: 480px) {
-             html { font-size: 14px; }
-             .container { width: 95%; }
-             .hero { padding: 60px 15px; min-height: 70vh;}
-             .hero h1 { font-size: 1.8rem; }
-             .hero .sub-headline { font-size: 1rem; }
-             .btn { padding: 10px 20px; font-size: 0.9rem; }
-             .modal-content { padding: 30px 20px; width: 95%; }
-             .modal-form input[type="text"],
-             .modal-form input[type="email"],
-             .modal-form textarea { padding: 10px; }
-             .footer-links a { display: block; margin: 5px 0; }
+         .footer-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
          }
 
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+         .footer-bottom p {
+             margin-bottom: 0.5rem;
+         }
+         .footer-licensing {
+             opacity: 0.7;
+             font-size: 0.8rem;
+         }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                 font-size: 2.5rem;
+            }
+            .hero .sub-headline {
+                font-size: 1.1rem;
+            }
+            .hero .cta-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero .btn {
+                width: 80%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .game-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .advantage-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                 gap: 1rem;
+            }
+
+             .tournament-showdown {
+                 padding: 2rem;
+             }
+             .tournament-prize-pool {
+                 font-size: 2.5rem;
+             }
+
+            .security-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .security-logos {
+                margin-top: 2rem;
+                justify-content: center;
+            }
+
+            .download-options {
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr; /* Stack columns on mobile */
+                text-align: center;
+            }
+            .footer-column {
+                margin-bottom: 1.5rem;
+            }
+            .footer-logos {
+                 justify-content: center;
+            }
+        }
 
     </style>
 </head>
 <body>
 
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Nexus AI: Amplify Intelligence. Architect Your Advantage.</h1>
-            <p class="sub-headline">Leveraging bespoke Artificial Intelligence to solve complex challenges and unlock unprecedented growth for your business.</p>
-            <a href="#capabilities" class="btn btn-primary">Explore AI Solutions</a>
-            <!-- Alternative CTA if preferred: <a href="#modal-popup" class="btn btn-primary">Request a Strategic Demo</a> -->
+    <header class="hero section" id="home">
+        <!-- Background elements like glowing chips/cards or light streaks would be applied via CSS background properties -->
+        <!-- Placeholder comment: Consider adding subtle animated elements here -->
+        <div class="hero-content container">
+            <h1>Apex Poker: <span class="text-primary">Master the Felt.</span> Claim Your Victory.</h1>
+            <p class="sub-headline">Experience Premier Online Poker: Unrivaled Action, Massive Tournaments & Fortified Security.</p>
+            <div class="cta-group">
+                <a href="#signup" class="btn btn-primary btn-lg">Hit the Tables Now!</a>
+                <a href="#download" class="btn btn-secondary-cta btn-small">Download the App</a>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- The Intelligence Gap (Problem/Challenge) Section -->
-        <section id="problem">
+
+        <!-- Choose Your Game Section -->
+        <section id="games" class="section section-light">
             <div class="container">
-                <h2>Bridging the Intelligence Gap</h2>
-                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">Businesses today face unprecedented complexity. Legacy systems struggle, data remains untapped, and critical opportunities are missed. Nexus AI provides the clarity and capability to overcome these modern challenges.</p>
-                <div class="problem-grid">
-                    <div class="problem-item">
-                        <div class="problem-icon">📊</div> <!-- Placeholder Icon -->
-                        <h4>Data Overload & Underutilization</h4>
-                        <p>Transform vast datasets from noise into actionable, predictive insights that drive strategic decisions.</p>
+                <h2 class="text-center">Choose Your Arena</h2>
+                <p class="text-center" style="margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--color-text);">Dive into the world's favorite poker variants. From classic Hold'em showdowns to fast-paced action and high-stakes tournaments, your perfect game awaits.</p>
+                <div class="game-grid">
+                    <!-- Game Card 1: Texas Hold'em -->
+                    <article class="game-card">
+                         <div class="card-content card-front">
+                             <div class="game-icon game-icon-holdem"></div>
+                             <h3>Texas Hold'em</h3>
+                             <p>The king of poker. Strategy, skill, and nerve define the winner. Available in No-Limit, Pot-Limit, and Fixed-Limit.</p>
+                         </div>
+                         <!-- Optional Back Side for Flip Effect
+                         <div class="card-back">
+                            <h4>Texas Hold'em</h4>
+                            <p>Stakes: $0.01/$0.02 - $100/$200+</p>
+                            <a href="#" class="btn btn-small btn-outline" style="margin-top: 1rem; border-color: var(--color-background); color: var(--color-background);">Play Now</a>
+                         </div>
+                         -->
+                    </article>
+                    <!-- Game Card 2: Pot-Limit Omaha -->
+                    <article class="game-card">
+                         <div class="card-content card-front">
+                             <div class="game-icon game-icon-omaha"></div>
+                             <h3>Pot-Limit Omaha</h3>
+                             <p>Four hole cards, endless possibilities. Experience the thrill of big pots and complex strategies in PLO.</p>
+                         </div>
+                    </article>
+                    <!-- Game Card 3: Fast-Fold Poker -->
+                    <article class="game-card">
+                         <div class="card-content card-front">
+                             <div class="game-icon game-icon-fast"></div>
+                             <h3>Velocity Poker</h3>
+                             <p>Non-stop action! Fold your hand and instantly move to a new table with new cards. Maximum hands per hour.</p>
+                         </div>
+                    </article>
+                    <!-- Game Card 4: Sit & Go -->
+                    <article class="game-card">
+                         <div class="card-content card-front">
+                             <div class="game-icon game-icon-sng"></div>
+                             <h3>Sit & Go Tournaments</h3>
+                             <p>Quick, single-table tournaments starting as soon as enough players register. Perfect for fast competition.</p>
+                         </div>
+                    </article>
+                    <!-- Game Card 5: Multi-Table Tournaments -->
+                    <article class="game-card">
+                         <div class="card-content card-front">
+                             <div class="game-icon game-icon-mtt"></div>
+                             <h3>Multi-Table Tournaments</h3>
+                             <p>Compete for massive prize pools in our scheduled MTTs. Daily, weekly, and major championship events.</p>
+                         </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Apex Advantage Section -->
+        <section id="advantage" class="section section-dark">
+            <div class="container">
+                <h2 class="text-center">The <span class="text-primary">Apex</span> Advantage</h2>
+                <p class="text-center" style="margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--color-text);">Why choose Apex Poker Club? We deliver a world-class poker experience built on cutting-edge technology, security, and player focus.</p>
+                <div class="advantage-grid">
+                    <div class="advantage-item">
+                        <div class="advantage-icon icon-software"></div>
+                        <h3>State-of-the-Art Software</h3>
+                        <p>Seamless, intuitive gameplay on a stable, feature-rich platform. Optimized for desktop and mobile.</p>
                     </div>
-                    <div class="problem-item">
-                        <div class="problem-icon">⚙️</div> <!-- Placeholder Icon -->
-                        <h4>Operational Inefficiencies</h4>
-                        <p>Automate repetitive tasks, optimize workflows, and free up your human talent for high-value activities.</p>
+                    <div class="advantage-item">
+                        <div class="advantage-icon icon-prizes"></div>
+                        <h3>Massive Prize Pools</h3>
+                        <p>Compete in daily & weekly guaranteed tournaments with life-changing payouts. Your shot at glory awaits.</p>
                     </div>
-                    <div class="problem-item">
-                        <div class="problem-icon">🎯</div> <!-- Placeholder Icon -->
-                        <h4>Missed Growth Opportunities</h4>
-                        <p>Identify emerging trends, personalize customer experiences, and uncover new revenue streams with AI-driven analysis.</p>
+                    <div class="advantage-item">
+                        <div class="advantage-icon icon-security"></div>
+                        <h3>Ironclad Security</h3>
+                        <p>RNG Certified for fair play. Encrypted connections & secure funds protection. Play with complete peace of mind.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon icon-support"></div>
+                        <h3>Dedicated 24/7 Support</h3>
+                        <p>Our expert support team is always available via live chat, email, or phone to assist you anytime.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon icon-community"></div>
+                        <h3>Vibrant Player Community</h3>
+                        <p>Connect with fellow players, join leaderboards, participate in exclusive promotions, and conquer the tables together.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Nexus Capabilities (Solutions/Services) Section -->
-        <section id="capabilities">
+        <!-- Major Tournament Showdown Section -->
+        <section id="tournaments" class="section section-light">
             <div class="container">
-                <h2>Our Nexus Capabilities</h2>
-                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">We architect and deploy cutting-edge AI solutions tailored to your unique business landscape. Explore how we empower transformation:</p>
-                <div class="capabilities-grid">
-                    <div class="capability-card">
-                        <div class="capability-icon">📈</div> <!-- Placeholder Icon -->
-                        <h4>Predictive Analytics & Forecasting</h4>
-                        <p class="capability-description">Anticipate market shifts, optimize inventory, and forecast demand with unparalleled accuracy. Benefit: Proactive decision-making.</p>
-                    </div>
-                    <div class="capability-card">
-                        <div class="capability-icon">🤖</div> <!-- Placeholder Icon -->
-                        <h4>Intelligent Process Automation (IPA)</h4>
-                        <p class="capability-description">Streamline complex workflows, reduce manual effort, and enhance operational speed using AI-powered automation. Benefit: Increased efficiency & cost savings.</p>
-                    </div>
-                    <div class="capability-card">
-                        <div class="capability-icon">💬</div> <!-- Placeholder Icon -->
-                        <h4>Natural Language Understanding (NLU)</h4>
-                        <p class="capability-description">Extract insights from text, power intelligent chatbots, and analyze sentiment across customer interactions. Benefit: Deeper customer understanding.</p>
-                    </div>
-                    <div class="capability-card">
-                        <div class="capability-icon">👁️</div> <!-- Placeholder Icon -->
-                        <h4>Computer Vision Systems</h4>
-                        <p class="capability-description">Analyze images and video for quality control, object detection, security monitoring, and more. Benefit: Enhanced visual intelligence.</p>
-                    </div>
-                     <div class="capability-card">
-                        <div class="capability-icon">🧬</div> <!-- Placeholder Icon -->
-                        <h4>Custom AI Model Development</h4>
-                        <p class="capability-description">Building bespoke algorithms and machine learning models engineered specifically for your unique data and challenges. Benefit: Tailored competitive edge.</p>
-                    </div>
-                     <div class="capability-card">
-                        <div class="capability-icon">🔗</div> <!-- Placeholder Icon -->
-                        <h4>AI Integration & Strategy</h4>
-                        <p class="capability-description">Seamlessly integrate AI into your existing infrastructure and develop a strategic roadmap for long-term AI adoption. Benefit: Sustainable intelligent transformation.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- The Nexus Blueprint (Process) Section -->
-        <section id="process">
-            <div class="container">
-                <h2>The Nexus Blueprint: Our Approach</h2>
-                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">We follow a collaborative and transparent process to ensure your AI solution delivers tangible value and integrates seamlessly.</p>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h4>Discovery & Strategy</h4>
-                        <p>Deep dive into your challenges, goals, and data landscape to define a clear, impactful AI strategy.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h4>Bespoke Development</h4>
-                        <p>Architecting and training custom AI models using state-of-the-art techniques tailored to your needs.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h4>Seamless Integration</h4>
-                        <p>Expertly integrating the AI solution into your existing workflows and systems with minimal disruption.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h4>Continuous Optimization</h4>
-                        <p>Monitoring performance, refining models, and ensuring long-term value generation and adaptation.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Transforming Industries (Proof/Applications) Section -->
-        <section id="proof">
-            <div class="container">
-                <h2>Transforming Industries with AI</h2>
-                 <p style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">Our expertise spans across diverse sectors, delivering bespoke AI solutions that drive innovation and competitive advantage.</p>
-                <!-- Placeholder: Industries Served -->
-                <div class="industries-logos">
-                    <div class="logo-placeholder">Finance</div>
-                    <div class="logo-placeholder">Healthcare</div>
-                    <div class="logo-placeholder">E-commerce</div>
-                    <div class="logo-placeholder">Manufacturing</div>
-                    <div class="logo-placeholder">Logistics</div>
-                    <div class="logo-placeholder">Energy</div>
-                </div>
-
-                <!-- Placeholder: Client Logos -->
-                 <h3 style="text-align:center; margin-top: 60px; margin-bottom: 30px; color: var(--text-medium);">Trusted by Visionary Leaders</h3>
-                 <div class="client-logos">
-                    <div class="logo-placeholder">Client Logo 1</div>
-                    <div class="logo-placeholder">Client Logo 2</div>
-                    <div class="logo-placeholder">Client Logo 3</div>
-                    <div class="logo-placeholder">Client Logo 4</div>
+                 <div class="tournament-showdown">
+                     <div class="tournament-content">
+                        <h2>Featured Event: The Apex Summit Series</h2>
+                        <div class="tournament-prize-pool">$1,000,000 Guaranteed!</div>
+                        <p class="tournament-details">Qualifier satellites running daily | Main Event: May 15th, 18:00 GMT</p>
+                        <a href="#schedule" class="btn btn-secondary">View Full Schedule</a>
+                     </div>
                  </div>
+            </div>
+        </section>
 
-                <!-- Testimonials -->
-                <div class="testimonials">
-                     <h3 style="text-align:center; margin-bottom: 40px;">What Our Partners Say</h3>
-                    <div class="testimonial">
-                        <blockquote>"Nexus AI didn't just provide a solution; they architected a new way for us to operate. Their predictive models have fundamentally improved our forecasting accuracy."</blockquote>
-                        <cite>– CTO, Global Finance Corp (Placeholder)</cite>
+        <!-- Your Winning Hand (New Player Bonus) Section -->
+        <section id="bonus" class="section section-dark">
+            <div class="container">
+                <div class="bonus-section">
+                    <h2>Your Winning Hand Starts Here!</h2>
+                    <p>New to Apex Poker Club? Kickstart your journey with a massive <strong>100% Match Bonus up to $600</strong> on your first deposit!</p>
+                    <a href="#signup" class="btn btn-primary">Claim Your Bonus Now!</a>
+                    <p class="terms">Placeholder: Minimum deposit $20. Bonus released in $5 increments for every 150 Apex Points earned. 60-day expiry. T&Cs apply.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Play with Confidence (Security & Fair Play) Section -->
+        <section id="security" class="section security-section">
+            <div class="container">
+                <h2>Play with <span class="text-primary">Confidence</span></h2>
+                <div class="security-content">
+                    <div class="security-text">
+                        <h3>Your Security is Our Top Priority</h3>
+                        <p>At Apex Poker Club, we are committed to providing a secure, fair, and responsible gaming environment. Our platform utilizes advanced security measures, certified Random Number Generators (RNGs), and strict protocols to ensure the integrity of every hand dealt.</p>
+                        <div class="responsible-gaming">
+                            <p>We champion responsible gaming. Set limits, understand the risks, and play responsibly.</p>
+                            <a href="#responsible-gaming">Learn More About Responsible Gaming Tools</a>
+                        </div>
                     </div>
-                    <div class="testimonial">
-                        <blockquote>"The intelligent automation implemented by Nexus AI Dynamics has significantly reduced our processing times and operational costs. A truly transformative partnership."</blockquote>
-                        <cite>– Head of Operations, HealthTech Innovators (Placeholder)</cite>
+                    <div class="security-logos">
+                        <div class="security-logo">
+                            <div class="icon icon-rng"></div>
+                            <span>RNG Certified</span>
+                            <!-- Placeholder: Add official RNG Cert logo here -->
+                        </div>
+                        <div class="security-logo">
+                            <div class="icon icon-ssl"></div>
+                            <span>SSL Secure Connection</span>
+                            <!-- Placeholder: Add SSL details/logo here -->
+                        </div>
+                        <div class="security-logo">
+                            <div class="icon icon-license"></div>
+                            <span>Licensed & Regulated</span>
+                            <!-- Placeholder: Add Licensing Authority logo/text -->
+                        </div>
+                        <div class="security-logo">
+                             <div class="icon icon-responsible"></div>
+                             <span>Responsible Gaming</span>
+                             <!-- Placeholder: Add GamCare/BeGambleAware logo -->
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Initiate Transformation (Pop-Up Form Trigger) -->
-        <section id="cta-trigger">
-            <div class="container">
-                <h2>Ready to Initiate Your Transformation?</h2>
-                <p>Let's discuss how bespoke AI can address your specific challenges and unlock new potential. Request your complimentary strategic consultation today.</p>
-                <a href="#modal-popup" class="btn">Get Your Custom AI Roadmap</a>
+        <!-- Beyond the Tables Section -->
+        <section id="features" class="section section-light">
+            <div class="container text-center">
+                <h2>Beyond the <span class="text-primary">Felt</span></h2>
+                <p style="margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Enhance your experience with tools and features designed for serious players.</p>
+                <div class="features-list">
+                    <span class="feature-item">Track Your Progress & Stats</span>
+                    <span class="feature-item">Climb the Leaderboards</span>
+                    <span class="feature-item">Engage in Player Chat</span>
+                    <span class="feature-item">Exclusive VIP Club Perks</span>
+                    <span class="feature-item">Customizable Table Settings</span>
+                </div>
             </div>
         </section>
+
+        <!-- Get in the Game (Download/Sign Up) Section -->
+        <section id="download" class="section section-dark">
+            <div class="container">
+                <h2 class="text-center">Get in the <span class="text-primary">Game</span> Now</h2>
+                <div class="download-options">
+                    <a href="#download-desktop" class="download-button">
+                        <div class="download-icon icon-desktop"></div>
+                        <span>Desktop App</span>
+                    </a>
+                    <a href="#download-ios" class="download-button">
+                        <div class="download-icon icon-ios"></div>
+                        <span>iOS App</span>
+                    </a>
+                    <a href="#download-android" class="download-button">
+                        <div class="download-icon icon-android"></div>
+                        <span>Android App</span>
+                    </a>
+                </div>
+                <div class="final-cta" id="signup">
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Ready to challenge the best? Sign up and start playing in minutes.</p>
+                    <a href="#register" class="btn btn-primary btn-lg">Sign Up & Play Now</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
-            <div class="footer-left">
-                <p>&copy; 2025 Nexus AI Dynamics. All Rights Reserved.</p>
-                <p>Architects of Intelligent Transformation.</p>
-                 <p>Email: <a href="mailto:inquire@nexusai.dynamic">inquire@nexusai.dynamic</a> | Phone: +1 (555) 123-4567 (Placeholder)</p>
+            <div class="footer-column">
+                <h4>Apex Poker Club</h4>
+                <p>The premier destination for online poker enthusiasts seeking top-tier action and unwavering security.</p>
+                 <!-- Placeholder: Add Apex Logo element here if desired -->
             </div>
-            <div class="footer-right">
-                <div class="footer-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
-                    <a href="#ethics">Ethical AI Statement</a>
-                    <a href="#careers">Careers</a>
-                </div>
-                <div class="footer-social">
-                    <!-- Placeholder Social Icons (Replace with actual SVGs/FontAwesome later) -->
-                    <a href="#linkedin" aria-label="LinkedIn">Li</a>
-                    <a href="#twitter" aria-label="Twitter">Tw</a>
-                    <!-- <a href="#medium" aria-label="Medium">M</a> -->
-                </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#tournaments">Tournaments</a></li>
+                    <li><a href="#bonus">Promotions</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
             </div>
+            <div class="footer-column">
+                <h4>Support & Security</h4>
+                <ul class="footer-links">
+                    <li><a href="#security">Security Details</a></li>
+                    <li><a href="#responsible-gaming">Responsible Gaming</a></li>
+                    <li><a href="#terms">Terms & Conditions</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect & Play</h4>
+                 <p>Download our apps:</p>
+                 <div class="footer-logos">
+                     <!-- Placeholder Logos -->
+                     <span class="footer-logo">Desktop</span>
+                     <span class="footer-logo">iOS</span>
+                     <span class="footer-logo">Android</span>
+                 </div>
+                 <h4 style="margin-top: 1rem;">Accepted Payments</h4>
+                 <div class="footer-logos">
+                     <!-- Placeholder Logos -->
+                     <span class="footer-logo">Visa</span>
+                     <span class="footer-logo">MC</span>
+                     <span class="footer-logo">PayPal</span>
+                     <span class="footer-logo">Skrill</span>
+                     <span class="footer-logo">BTC</span>
+                 </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+             <p class="footer-licensing">
+                Placeholder: Apex Poker Club is operated by [Company Name], registered address [Address]. Licensed and regulated by the [Licensing Authority Name] under license number [License Number]. Issued on [Date].
+            </p>
+            <p>
+                Always play responsibly. For help with problem gambling, visit [Responsible Gaming Org Link] or call [Helpline Number]. Must be 18+ (or legal age in jurisdiction) to play.
+            </p>
+             <div class="footer-logos" style="justify-content: center; margin-bottom: 1rem;">
+                 <!-- Placeholder Logos -->
+                 <span class="footer-logo">18+</span>
+                 <span class="footer-logo">GamCare</span>
+                 <span class="footer-logo">BeGambleAware</span>
+             </div>
+            <p>&copy; 2025 Apex Poker Club. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- CSS Pop-Up Modal -->
-    <div id="modal-popup" class="modal-overlay">
-        <div class="modal-content">
-            <a href="#" class="modal-close" aria-label="Close Modal">&times;</a>
-            <h3>Start Your AI Journey</h3>
-            <p>Complete the form below, and one of our AI strategists will contact you shortly to discuss your vision.</p>
-            <form action="#" method="POST" class="modal-form"> <!-- Replace # with your form endpoint -->
-                <div class="form-group">
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="e.g., Jane Doe" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Work Email</label>
-                    <input type="email" id="email" name="email" placeholder="e.g., jane.doe@company.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="company">Company Name</label>
-                    <input type="text" id="company" name="company" placeholder="e.g., Acme Corporation" required>
-                </div>
-                 <div class="form-group">
-                    <label for="role">Your Role</label>
-                    <input type="text" id="role" name="role" placeholder="e.g., CTO, Innovation Manager">
-                </div>
-                <div class="form-group">
-                    <label for="challenge">Brief Description of Challenge/Interest</label>
-                    <textarea id="challenge" name="challenge" placeholder="Tell us briefly about the challenges you're facing or the AI solutions you're interested in..." required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Submit Inquiry</button>
-            </form>
-        </div>
-        <!-- Allow clicking backdrop to close -->
-        <a href="#" class="modal-close-backdrop" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></a>
-    </div>
 
 </body>
 </html>
