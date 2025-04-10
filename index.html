@@ -4,417 +4,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serenity Spa - Your Oasis of Calm</title>
+    <title>Snake Game</title>
     <style>
-        :root {
-            --primary-color: #87CEEB; /* Sky Blue */
-            --secondary-color: #E0FFFF; /* Light Cyan */
-            --accent-color: #98FB98; /* Pale Green */
-            --text-color: #333;
-            --light-text: #fff;
-            --background-color: #f8f8f8;
-            --footer-bg: #dcdcdc; /* Gainsboro */
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
         body {
-            font-family: var(--font-family);
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            margin-top: 0.5rem;
-        }
-
-        nav a {
-            color: var(--light-text);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--secondary-color);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(135, 206, 235, 0.7), rgba(135, 206, 235, 0.7)), url('https://via.placeholder.com/1500x600.png?text=Relaxing+Spa+Background') no-repeat center center/cover;
-            color: var(--light-text);
-            text-align: center;
-            padding: 5rem 1rem;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 60vh;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            flex-direction: column;
+            font-family: 'Courier New', Courier, monospace;
+            color: #fff;
         }
-
-        .hero h2 {
-            font-size: 3em;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        #gameCanvas {
+            border: 1px solid #444;
+            background-color: #000;
         }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        #score {
+            margin-top: 10px;
+            font-size: 1.5em;
         }
-
-        .cta-button {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 12px 25px;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1.1em;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: var(--box-shadow);
-        }
-
-        .cta-button:hover {
-            background-color: #7fdd7f; /* Darker Pale Green */
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            background-color: #fff;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-
-        section h3 {
-            color: var(--primary-color);
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-         section h3::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 0.5rem auto 0;
-         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .service-item {
-            background-color: var(--secondary-color);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-item h4 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 1.3em;
-        }
-
-        .service-item p {
-            font-size: 0.95em;
-            color: #555;
-        }
-
-        .testimonials blockquote {
-            background-color: var(--background-color);
-            border-left: 5px solid var(--accent-color);
-            margin: 1.5rem 0;
-            padding: 1rem 1.5rem;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonials cite {
-            display: block;
-            text-align: right;
-            margin-top: 0.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        #contact form {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        #contact label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-
-        #contact input,
-        #contact textarea,
-        #contact select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: var(--border-radius);
-            box-sizing: border-box; /* Important for width calculation */
-            font-family: var(--font-family);
-            font-size: 1em;
-        }
-
-        #contact textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        #contact button[type="submit"] {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            padding: 12px 20px;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: fit-content;
-            justify-self: center; /* Center button in grid cell */
-        }
-
-        #contact button[type="submit"]:hover {
-            background-color: #6caed8; /* Darker Sky Blue */
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-        }
-         .contact-info p {
-            margin: 0.5rem 0;
-            font-size: 1.1em;
-         }
-
-        footer {
-            background-color: var(--footer-bg);
-            color: var(--text-color);
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
+        #controls {
+            margin-top: 15px;
             font-size: 0.9em;
+            color: #aaa;
         }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.5em;
-            }
-            .hero p {
-                font-size: 1.1em;
-            }
-            nav a {
-                margin: 0 10px;
-            }
-            .container {
-                padding: 0 0.5rem;
-            }
-            section {
-                padding: 1.5rem;
-            }
+        #gameOver {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: red;
+            font-size: 2em;
+            display: none; /* Hidden by default */
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
         }
-
-         @media (max-width: 480px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .hero {
-                padding: 3rem 1rem;
-            }
-            .hero h2 {
-                font-size: 2em;
-            }
-             .hero p {
-                font-size: 1em;
-            }
-            .cta-button {
-                font-size: 1em;
-                padding: 10px 20px;
-            }
-             section h3 {
-                font-size: 1.8em;
-            }
-            .services-grid {
-                grid-template-columns: 1fr; /* Stack services on small screens */
-            }
+         #gameOver button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 0.8em;
+            cursor: pointer;
          }
-
     </style>
 </head>
 <body>
+    <div id="score">Score: 0</div>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="controls">Use Arrow Keys to Move</div>
+    <div id="gameOver">
+        Game Over!
+        <div id="finalScore"></div>
+        <button onclick="restartGame()">Restart</button>
+    </div>
 
-    <header>
-        <h1>Serenity Spa</h1>
-        <nav>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Book Now</a>
-        </nav>
-    </header>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const gameOverElement = document.getElementById('gameOver');
+        const finalScoreElement = document.getElementById('finalScore');
 
-    <main>
-        <section class="hero">
-            <h2>Find Your Inner Peace</h2>
-            <p>Escape the everyday and discover tranquility at Serenity Spa. We offer a sanctuary for relaxation and rejuvenation.</p>
-            <a href="#contact" class="cta-button">Book Your Escape</a>
-        </section>
+        const gridSize = 20; // Size of each square in the grid
+        const canvasSize = canvas.width; // Assumes square canvas
+        const tileCount = canvasSize / gridSize; // Number of tiles in width/height
 
-        <div class="container">
-            <section id="about">
-                <h3>Welcome to Serenity Spa</h3>
-                <p>Nestled in the heart of tranquility, Serenity Spa offers a peaceful retreat from the hustle and bustle of daily life. Our expert therapists are dedicated to providing personalized treatments designed to relax your body, calm your mind, and renew your spirit. We use only the finest natural ingredients and proven techniques to ensure a truly blissful experience. Come unwind and let us pamper you.</p>
-            </section>
+        // Game state
+        let snake = [
+            { x: 10, y: 10 } // Initial position (center-ish)
+        ];
+        let dx = 0; // Direction x
+        let dy = 0; // Direction y
+        let food = { x: 15, y: 15 };
+        let score = 0;
+        let changingDirection = false; // Prevent rapid direction changes
+        let gameLoopInterval;
+        let gameSpeed = 100; // Milliseconds between updates
 
-            <section id="services">
-                <h3>Our Signature Services</h3>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <h4>Relaxing Massage</h4>
-                        <p>Choose from Swedish, Deep Tissue, or Hot Stone massages to melt away tension and stress.</p>
-                    </div>
-                    <div class="service-item">
-                        <h4>Rejuvenating Facials</h4>
-                        <p>Customized facials using premium products to cleanse, exfoliate, and hydrate your skin.</p>
-                    </div>
-                    <div class="service-item">
-                        <h4>Body Wraps & Scrubs</h4>
-                        <p>Detoxify and nourish your skin with our luxurious body treatments for a radiant glow.</p>
-                    </div>
-                     <div class="service-item">
-                        <h4>Manicures & Pedicures</h4>
-                        <p>Pamper your hands and feet with our meticulous nail care services in a serene setting.</p>
-                    </div>
-                     <div class="service-item">
-                        <h4>Aromatherapy</h4>
-                        <p>Enhance your well-being with the therapeutic benefits of essential oils integrated into your service.</p>
-                    </div>
-                     <div class="service-item">
-                        <h4>Spa Packages</h4>
-                        <p>Indulge in our curated packages combining multiple treatments for ultimate relaxation.</p>
-                    </div>
-                </div>
-            </section>
+        function main() {
+            if (isGameOver()) {
+                clearInterval(gameLoopInterval);
+                finalScoreElement.textContent = `Final Score: ${score}`;
+                gameOverElement.style.display = 'block';
+                return;
+            }
 
-            <section id="testimonials">
-                <h3>What Our Clients Say</h3>
-                <div class="testimonials">
-                    <blockquote>
-                        <p>"An absolute oasis! From the moment I walked in, I felt relaxed. The massage was incredible, and the staff were so welcoming. I left feeling completely renewed."</p>
-                        <cite>– Jessica M.</cite>
-                    </blockquote>
-                    <blockquote>
-                        <p>"The best facial I've ever had! My skin feels amazing. The atmosphere is so calming. Highly recommend Serenity Spa for anyone needing a break."</p>
-                        <cite>– David R.</cite>
-                    </blockquote>
-                     <blockquote>
-                        <p>"My go-to place for unwinding. Consistent quality and a truly serene environment. The spa packages are great value."</p>
-                        <cite>– Sarah L.</cite>
-                    </blockquote>
-                </div>
-            </section>
+            changingDirection = false;
+            setTimeout(() => {
+                clearCanvas();
+                drawFood();
+                moveSnake();
+                drawSnake();
+                main(); // Recursive call for the next frame
+            }, gameSpeed);
+        }
 
-            <section id="contact">
-                <h3>Book Your Appointment</h3>
-                <p style="text-align: center; margin-bottom: 2rem;">Ready to experience serenity? Fill out the form below or give us a call to schedule your visit.</p>
-                <form action="#" method="post"> <!-- Replace # with your form processing endpoint -->
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+        function startGame() {
+            // Reset game state
+            snake = [{ x: 10, y: 10 }];
+            dx = 0;
+            dy = 0;
+            score = 0;
+            scoreElement.textContent = `Score: ${score}`;
+            gameOverElement.style.display = 'none';
+            changingDirection = false;
+            generateFood();
+            // Start the game loop if it's not already running
+            if (gameLoopInterval) clearInterval(gameLoopInterval); // Clear previous interval if restarting
+            gameLoopInterval = setTimeout(main, gameSpeed); // Use setTimeout for initial call
+        }
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+        function restartGame() {
+            startGame();
+        }
 
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone">
+        function clearCanvas() {
+            ctx.fillStyle = '#000'; // Black background
+            ctx.fillRect(0, 0, canvasSize, canvasSize);
+        }
 
-                    <label for="service">Preferred Service:</label>
-                    <select id="service" name="service">
-                        <option value="">-- Select a Service --</option>
-                        <option value="massage">Relaxing Massage</option>
-                        <option value="facial">Rejuvenating Facial</option>
-                        <option value="body_treatment">Body Wrap/Scrub</option>
-                        <option value="nails">Manicure/Pedicure</option>
-                        <option value="package">Spa Package</option>
-                        <option value="other">Other/Unsure</option>
-                    </select>
+        function drawSnakePart(snakePart) {
+            ctx.fillStyle = '#00FF00'; // Green snake
+            ctx.strokeStyle = '#004400'; // Darker green border
+            ctx.fillRect(snakePart.x * gridSize, snakePart.y * gridSize, gridSize, gridSize);
+            ctx.strokeRect(snakePart.x * gridSize, snakePart.y * gridSize, gridSize, gridSize);
+        }
 
-                    <label for="date">Preferred Date:</label>
-                    <input type="date" id="date" name="date">
+        function drawSnake() {
+            snake.forEach(drawSnakePart);
+        }
 
-                     <label for="message">Message (Optional):</label>
-                    <textarea id="message" name="message" rows="4"></textarea>
+        function moveSnake() {
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            snake.unshift(head); // Add new head
 
-                    <button type="submit">Request Booking</button>
-                </form>
-                <div class="contact-info">
-                    <p><strong>Or Contact Us Directly:</strong></p>
-                    <p>Phone: (123) 456-7890</p>
-                    <p>Email: booking@serenityspa.example.com</p>
-                    <p>Address: 123 Relaxation Ave, Calm City, ST 12345</p>
-                </div>
-            </section>
-        </div>
-    </main>
+            // Check if food is eaten
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                scoreElement.textContent = `Score: ${score}`;
+                generateFood();
+                // Increase speed slightly (optional)
+                // gameSpeed = Math.max(50, gameSpeed - 1);
+            } else {
+                snake.pop(); // Remove tail if no food eaten
+            }
+        }
 
-    <footer>
-        <p>&copy; 2025 Serenity Spa. All Rights Reserved.</p>
-    </footer>
+        function changeDirection(event) {
+            if (changingDirection) return;
+            changingDirection = true;
 
+            const keyPressed = event.key;
+            const goingUp = dy === -1;
+            const goingDown = dy === 1;
+            const goingLeft = dx === -1;
+            const goingRight = dx === 1;
+
+            if (keyPressed === 'ArrowLeft' && !goingRight) {
+                dx = -1;
+                dy = 0;
+            } else if (keyPressed === 'ArrowUp' && !goingDown) {
+                dx = 0;
+                dy = -1;
+            } else if (keyPressed === 'ArrowRight' && !goingLeft) {
+                dx = 1;
+                dy = 0;
+            } else if (keyPressed === 'ArrowDown' && !goingUp) {
+                dx = 0;
+                dy = 1;
+            }
+        }
+
+        function generateFood() {
+            food.x = Math.floor(Math.random() * tileCount);
+            food.y = Math.floor(Math.random() * tileCount);
+
+            // Ensure food doesn't spawn on the snake
+            snake.forEach(part => {
+                if (part.x === food.x && part.y === food.y) {
+                    generateFood(); // Regenerate if conflict
+                }
+            });
+        }
+
+        function drawFood() {
+            ctx.fillStyle = '#FF0000'; // Red food
+            ctx.strokeStyle = '#8B0000'; // Dark red border
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+            ctx.strokeRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+        }
+
+        function isGameOver() {
+            // Check wall collision
+            const hitLeftWall = snake[0].x < 0;
+            const hitRightWall = snake[0].x >= tileCount;
+            const hitTopWall = snake[0].y < 0;
+            const hitBottomWall = snake[0].y >= tileCount;
+
+            if (hitLeftWall || hitRightWall || hitTopWall || hitBottomWall) {
+                return true;
+            }
+
+            // Check self collision (start checking from the 4th segment)
+            for (let i = 4; i < snake.length; i++) {
+                if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Event Listener for keyboard input
+        document.addEventListener('keydown', changeDirection);
+
+        // Start the game initially
+        startGame();
+
+    </script>
 </body>
 </html>
 ```
