@@ -4,537 +4,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniCraft 3D</title>
+    <title>Green Acres Farm - Fresh From Our Fields</title>
     <style>
-        body { margin: 0; overflow: hidden; background-color: #87CEEB; }
-        canvas { display: block; }
-        #blocker {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #508550;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #077a07 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            float: right;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header nav {
+            margin-top: 10px;
+        }
+        #hero {
+            min-height: 400px;
+            background: url('https://via.placeholder.com/1500x400?text=Farm+Landscape') no-repeat 0 -200px;
+            background-size: cover;
+            text-align: center;
+            color: #fff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-shadow: 2px 2px 4px #000;
         }
-        #instructions {
-            width: 50%;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
+        #hero h1 {
+            margin-top: 0;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        #hero p {
+            font-size: 20px;
+            max-width: 600px;
+        }
+        .button {
+            display: inline-block;
+            background: #e8491d;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background: #333;
+        }
+        #about, #products, #contact {
+            padding: 40px 0;
+        }
+        #about h2, #products h2, #contact h2 {
             text-align: center;
-            font-family: sans-serif;
+            margin-bottom: 30px;
+            color: #508550;
+        }
+        #products .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        #products .product-item {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #products .product-item img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        #products .product-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #contact label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        #contact input[type="text"],
+        #contact input[type="email"],
+        #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        #contact textarea {
+            height: 150px;
+        }
+        #contact button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #508550;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             font-size: 18px;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
-        #crosshair {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 10px;
-            height: 10px;
-            border: 1px solid white;
-            background-color: rgba(0,0,0,0.5);
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            pointer-events: none; /* Important so it doesn't interfere with raycasting */
-            display: none; /* Hidden until pointer lock */
+        #contact button:hover {
+            background: #365a36;
         }
-        #block-selector {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 5px;
-            border-radius: 5px;
-            display: flex;
-            gap: 5px;
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
         }
-        .block-option {
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-            border: 2px solid grey;
-            cursor: pointer;
+        footer p {
+            margin: 0;
         }
-        .block-option.selected {
-            border-color: white;
+
+        /* Responsive Design */
+        @media(max-width: 768px){
+            header #branding,
+            header nav,
+            header nav li {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+            header nav ul {
+                margin-top: 10px;
+            }
+            header nav li {
+                 display: block;
+                 padding: 10px 0;
+            }
+            #hero h1 {
+                font-size: 40px;
+            }
+             #hero p {
+                font-size: 18px;
+            }
+            .container {
+                width: 95%;
+            }
+            #products .product-grid {
+                grid-template-columns: 1fr; /* Stack items on smaller screens */
+            }
+            #contact form {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="blocker">
-        <div id="instructions">
-            <h1>MiniCraft 3D</h1>
-            <p>Click to play</p>
-            <p>(W, A, S, D = Move, SPACE = Jump, SHIFT = Down, MOUSE = Look, CLICK = Place Block, RIGHT CLICK = Break Block)</p>
-            <p>Use 1, 2, 3, 4 to select block type</p>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><a href="#">Green Acres Farm</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Our Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
-    <div id="crosshair"></div>
-    <div id="block-selector"></div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Freshness Delivered, From Our Farm to Your Table</h1>
+            <p>Experience the taste of naturally grown produce, cultivated with care and passion. Supporting local farming means better food for you and a healthier planet.</p>
+            <a href="#products" class="button">Explore Our Harvest</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Green Acres Farm</h2>
+            <p>Welcome to Green Acres Farm, a family-owned farm dedicated to sustainable agriculture and providing our community with the freshest, highest-quality produce. Nestled in the heart of the countryside, we've been tending this land for generations, using time-honored techniques combined with modern sustainable practices. We believe in transparency, quality, and the simple goodness of food grown with respect for nature. Come visit us or find our products at local markets!</p>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/100?text=Vegetables" alt="Fresh Vegetables">
+                    <h3>Seasonal Vegetables</h3>
+                    <p>Crisp lettuce, juicy tomatoes, vibrant peppers, and more, harvested at peak ripeness.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/100?text=Fruits" alt="Fresh Fruits">
+                    <h3>Orchard Fruits</h3>
+                    <p>Sweet apples, delicious berries, and seasonal fruits straight from our trees and bushes.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/100?text=Eggs" alt="Farm Fresh Eggs">
+                    <h3>Farm Fresh Eggs</h3>
+                    <p>Golden-yolked eggs from our happy, free-range chickens.</p>
+                </div>
+                 <div class="product-item">
+                    <img src="https://via.placeholder.com/100?text=Honey" alt="Local Honey">
+                    <h3>Local Honey</h3>
+                    <p>Pure, raw honey harvested from bees foraging on our farm's wildflowers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Have questions or want to place an order? Contact us!</p>
+            <form action="#" method="post">
+                 <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                 </div>
+                 <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                 </div>
+                 <div>
+                     <label for="message">Message:</label>
+                     <textarea id="message" name="message" required></textarea>
+                 </div>
+                 <button type="submit" class="button">Send Message</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">Or visit us at: 123 Farm Road, Countryside, ST 54321 | Phone: (555) 123-4567</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; 2025 Green Acres Farm. All Rights Reserved.</p>
+            <p>Follow us on social media! (Links placeholder)</p>
+        </div>
+    </footer>
 
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
-            }
-        }
-    </script>
-
-    <script type="module">
-        import * as THREE from 'three';
-        import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
-
-        let scene, camera, renderer, controls;
-        let objects = []; // Store interactable blocks
-        let worldObjects = new Map(); // Map position string to mesh
-        let playerVelocity = new THREE.Vector3();
-        let playerOnGround = false;
-        let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false, moveUp = false, moveDown = false;
-        const movementSpeed = 5.0;
-        const jumpVelocity = 7.0;
-        const gravity = -19.8;
-        const playerHeight = 1.8;
-        const playerWidth = 0.4; // Half-width for collision detection
-
-        const clock = new THREE.Clock();
-        const raycaster = new THREE.Raycaster();
-        const pointer = new THREE.Vector2(); // Mouse position not needed for pointer lock center
-
-        // Block placement/removal helpers
-        let currentBlockType = 'grass'; // Default block
-        const rollOverGeo = new THREE.BoxGeometry(1, 1, 1);
-        const rollOverMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, opacity: 0.5, transparent: true });
-        const rollOverMesh = new THREE.Mesh(rollOverGeo, rollOverMaterial);
-
-        // Textures
-        const textureLoader = new THREE.TextureLoader();
-        const textures = {
-            'grass_top': textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/minecraft/grass_top.png'),
-            'grass_side': textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/minecraft/grass_side.png'),
-            'dirt': textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/minecraft/dirt.png'),
-            'stone': textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/minecraft/cobblestone.png'),
-            'wood': textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/minecraft/oak_log.png'),
-            'leaves': textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/minecraft/oak_leaves.png'),
-        };
-
-        // Make textures pixelated
-        for (const key in textures) {
-            textures[key].magFilter = THREE.NearestFilter;
-            textures[key].minFilter = THREE.NearestFilter; // Use NearestFilter for crisp pixels
-        }
-
-        const blockMaterials = {
-             'grass': [
-                new THREE.MeshLambertMaterial({ map: textures['grass_side'] }), // right
-                new THREE.MeshLambertMaterial({ map: textures['grass_side'] }), // left
-                new THREE.MeshLambertMaterial({ map: textures['grass_top'] }),  // top
-                new THREE.MeshLambertMaterial({ map: textures['dirt'] }),      // bottom
-                new THREE.MeshLambertMaterial({ map: textures['grass_side'] }), // front
-                new THREE.MeshLambertMaterial({ map: textures['grass_side'] })  // back
-            ],
-            'dirt': new THREE.MeshLambertMaterial({ map: textures['dirt'] }),
-            'stone': new THREE.MeshLambertMaterial({ map: textures['stone'] }),
-            'wood': new THREE.MeshLambertMaterial({ map: textures['wood'] }),
-            'leaves': new THREE.MeshLambertMaterial({ map: textures['leaves'], transparent: true, side: THREE.DoubleSide }), // Enable transparency
-        };
-
-        const blockTypes = ['grass', 'dirt', 'stone', 'wood', 'leaves'];
-        let selectedBlockIndex = 0;
-
-
-        init();
-        animate();
-
-        function init() {
-            // Scene
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x87CEEB); // Sky blue
-            scene.fog = new THREE.Fog(0x87CEEB, 0, 100);
-
-            // Camera
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(0, playerHeight + 5, 10); // Start slightly above ground
-
-            // Renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            document.body.appendChild(renderer.domElement);
-
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0xcccccc, 0.8);
-            scene.add(ambientLight);
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
-            directionalLight.position.set(50, 50, 50);
-            directionalLight.castShadow = true; // Not implemented fully yet
-            scene.add(directionalLight);
-
-            // Controls
-            controls = new PointerLockControls(camera, document.body);
-            const blocker = document.getElementById('blocker');
-            const instructions = document.getElementById('instructions');
-            const crosshair = document.getElementById('crosshair');
-
-            instructions.addEventListener('click', () => {
-                controls.lock();
-            });
-
-            controls.addEventListener('lock', () => {
-                instructions.style.display = 'none';
-                blocker.style.display = 'none';
-                crosshair.style.display = 'block';
-            });
-
-            controls.addEventListener('unlock', () => {
-                blocker.style.display = 'flex';
-                instructions.style.display = 'block';
-                crosshair.style.display = 'none';
-            });
-
-            scene.add(controls.getObject()); // Add camera holder to scene
-
-            // Ground Plane (initial blocks)
-            const worldSize = 20; // Size of the flat world grid
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
-            for (let x = -worldSize / 2; x < worldSize / 2; x++) {
-                for (let z = -worldSize / 2; z < worldSize / 2; z++) {
-                   addBlock(x, 0, z, 'grass'); // Ground level
-                   if (Math.random() < 0.05 && x !== 0 && z !== 0) { // Add some simple trees
-                       addTree(x, 1, z);
-                   }
-                }
-            }
-
-            // Roll-over helper
-            scene.add(rollOverMesh);
-
-            // Event Listeners
-            document.addEventListener('keydown', onKeyDown);
-            document.addEventListener('keyup', onKeyUp);
-            document.addEventListener('mousedown', onMouseDown);
-            window.addEventListener('resize', onWindowResize);
-
-             // Block Selector UI
-            const blockSelector = document.getElementById('block-selector');
-            blockTypes.forEach((type, index) => {
-                const option = document.createElement('div');
-                option.classList.add('block-option');
-                option.dataset.type = type;
-                option.style.backgroundImage = `url(${textures[type === 'grass' ? 'grass_side' : type === 'wood' ? 'wood' : type === 'leaves' ? 'leaves' : type].image.src})`;
-                if (index === selectedBlockIndex) {
-                    option.classList.add('selected');
-                }
-                option.addEventListener('click', () => {
-                    selectBlock(index);
-                });
-                blockSelector.appendChild(option);
-            });
-            selectBlock(0); // Initialize selection
-        }
-
-        function addBlock(x, y, z, type) {
-            const posKey = `${Math.round(x)},${Math.round(y)},${Math.round(z)}`;
-            if (worldObjects.has(posKey)) return; // Don't place if already exists
-
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
-            let material;
-            if (type === 'grass' && blockMaterials[type]) {
-                 material = blockMaterials[type];
-            } else if (blockMaterials[type]) {
-                 material = blockMaterials[type];
-            } else {
-                 material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff }); // Fallback random color
-            }
-
-            const mesh = new THREE.Mesh(geometry, material);
-            mesh.position.set(Math.round(x) + 0.5, Math.round(y) + 0.5, Math.round(z) + 0.5); // Center block on grid
-            mesh.userData = { type: type, isBlock: true }; // Add custom data
-            scene.add(mesh);
-            objects.push(mesh); // Add to list for raycasting and collision
-            worldObjects.set(posKey, mesh);
-        }
-
-         function removeBlock(object) {
-            if (!object || !object.userData.isBlock) return;
-
-            const pos = object.position.clone().floor();
-            const posKey = `${pos.x},${pos.y},${pos.z}`;
-
-            scene.remove(object);
-            objects.splice(objects.indexOf(object), 1);
-            worldObjects.delete(posKey);
-             // Properly dispose of geometry and material to free memory (optional but good practice)
-             if (object.geometry) object.geometry.dispose();
-             // Check if material is an array (like grass)
-             if (Array.isArray(object.material)) {
-                 object.material.forEach(mat => mat.dispose());
-             } else if (object.material) {
-                 object.material.dispose();
-             }
-        }
-
-        function addTree(x, y, z) {
-            const trunkHeight = Math.floor(Math.random() * 3) + 3; // 3 to 5 blocks high
-            // Trunk
-            for (let i = 0; i < trunkHeight; i++) {
-                addBlock(x, y + i, z, 'wood');
-            }
-            // Leaves canopy
-            const canopyRadius = 2;
-            const canopyHeight = y + trunkHeight;
-            for (let lx = -canopyRadius; lx <= canopyRadius; lx++) {
-                 for (let ly = -1; ly <= 1; ly++) { // Make canopy thicker
-                     for (let lz = -canopyRadius; lz <= canopyRadius; lz++) {
-                         const distSq = lx*lx + ly*ly + lz*lz;
-                         // Place leaves in a roughly spherical shape, not hollow
-                         if (distSq <= canopyRadius * canopyRadius && Math.random() > 0.2) {
-                              // Avoid placing leaves directly inside trunk column
-                              if (lx !== 0 || lz !== 0 || ly >= 0 ) {
-                                 addBlock(x + lx, canopyHeight + ly, z + lz, 'leaves');
-                              }
-                         }
-                     }
-                 }
-            }
-             // Top leaf layer
-             addBlock(x, canopyHeight + 2, z, 'leaves');
-        }
-
-        function selectBlock(index) {
-            selectedBlockIndex = index;
-            currentBlockType = blockTypes[selectedBlockIndex];
-            // Update UI selection indicator
-            const options = document.querySelectorAll('.block-option');
-            options.forEach((opt, i) => {
-                if (i === index) {
-                    opt.classList.add('selected');
-                } else {
-                    opt.classList.remove('selected');
-                }
-            });
-            console.log("Selected block:", currentBlockType);
-        }
-
-        function onKeyDown(event) {
-            switch (event.code) {
-                case 'KeyW': moveForward = true; break;
-                case 'KeyA': moveLeft = true; break;
-                case 'KeyS': moveBackward = true; break;
-                case 'KeyD': moveRight = true; break;
-                case 'Space': if (playerOnGround) playerVelocity.y = jumpVelocity; break;
-                case 'ShiftLeft': case 'KeyC': moveDown = true; break; // Shift or C for down
-                 case 'Digit1': selectBlock(0); break;
-                 case 'Digit2': selectBlock(1); break;
-                 case 'Digit3': selectBlock(2); break;
-                 case 'Digit4': selectBlock(3); break;
-                 case 'Digit5': selectBlock(4); break; // Assuming 5 block types now
-            }
-        }
-
-        function onKeyUp(event) {
-            switch (event.code) {
-                case 'KeyW': moveForward = false; break;
-                case 'KeyA': moveLeft = false; break;
-                case 'KeyS': moveBackward = false; break;
-                case 'KeyD': moveRight = false; break;
-                case 'ShiftLeft': case 'KeyC': moveDown = false; break;
-            }
-        }
-
-        function onMouseDown(event) {
-            if (!controls.isLocked) return;
-
-            // Use center of screen for raycasting in PointerLockControls
-            pointer.x = 0;
-            pointer.y = 0;
-
-            raycaster.setFromCamera(pointer, camera);
-            const intersects = raycaster.intersectObjects(objects, false); // Don't check descendants
-
-            if (intersects.length > 0) {
-                const intersect = intersects[0];
-
-                // Ensure we didn't click *through* something transparent potentially
-                 if (intersect.distance > 0.1) { // Small tolerance
-
-                    if (event.button === 2 || event.ctrlKey) { // Right click or Ctrl+click to remove
-                        // Check if intersection point is on the face of the block
-                        if (intersect.object.userData.isBlock) {
-                             removeBlock(intersect.object);
-                        }
-                    } else if (event.button === 0) { // Left click to add
-                        // Place block adjacent to the clicked face
-                        const placementPos = intersect.point.add(intersect.face.normal.multiplyScalar(0.5)).floor();
-
-                        // Check for collision with player before placing
-                        const playerPos = controls.getObject().position;
-                        const playerBox = new THREE.Box3(
-                            new THREE.Vector3(playerPos.x - playerWidth, playerPos.y - playerHeight, playerPos.z - playerWidth),
-                            new THREE.Vector3(playerPos.x + playerWidth, playerPos.y, playerPos.z + playerWidth)
-                        );
-                        const blockBox = new THREE.Box3(
-                            new THREE.Vector3(placementPos.x, placementPos.y, placementPos.z),
-                            new THREE.Vector3(placementPos.x + 1, placementPos.y + 1, placementPos.z + 1)
-                        );
-
-                        if (!playerBox.intersectsBox(blockBox)) {
-                            addBlock(placementPos.x, placementPos.y, placementPos.z, currentBlockType);
-                        }
-                    }
-                }
-            }
-        }
-
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        function updatePlayer(delta) {
-            if (!controls.isLocked) return;
-
-            const moveSpeed = movementSpeed * delta;
-            const verticalSpeed = (moveUp ? moveSpeed : 0) - (moveDown ? moveSpeed : 0); // Use moveUp/Down for fly mode/crouch
-
-            const moveDirection = new THREE.Vector3();
-            camera.getWorldDirection(moveDirection); // Get camera's forward direction
-            moveDirection.y = 0; // Keep movement horizontal
-            moveDirection.normalize();
-
-            const rightDirection = new THREE.Vector3();
-            rightDirection.crossVectors(camera.up, moveDirection).normalize(); // Get camera's right direction
-
-            const currentVelocity = playerVelocity.clone(); // Store current Y velocity
-
-             // Calculate intended movement vector based on input
-            const moveVector = new THREE.Vector3(0, 0, 0);
-            if (moveForward) moveVector.add(moveDirection);
-            if (moveBackward) moveVector.sub(moveDirection);
-            if (moveLeft) moveVector.sub(rightDirection);
-            if (moveRight) moveVector.add(rightDirection);
-
-            // Apply movement speed, ensure diagonal movement isn't faster
-            if (moveVector.lengthSq() > 0) {
-                moveVector.normalize().multiplyScalar(moveSpeed);
-            }
-
-
-            // Collision Detection & Resolution
-            const playerPos = controls.getObject().position;
-            const potentialPos = playerPos.clone().add(moveVector); // Potential horizontal position
-             potentialPos.y += (playerVelocity.y + gravity * delta) * delta; // Apply vertical velocity and gravity
-
-
-            // Simplified Collision Box (Axis-Aligned Bounding Box - AABB)
-             const playerBox = new THREE.Box3();
-             const targetBox = new THREE.Box3();
-
-             // Check X collision
-             playerBox.setFromCenterAndSize(
-                 new THREE.Vector3(potentialPos.x, playerPos.y, playerPos.z),
-                 new THREE.Vector3(playerWidth * 2, playerHeight, playerWidth * 2)
-             );
-             let collisionX = false;
-             worldObjects.forEach(obj => {
-                 targetBox.setFromObject(obj);
-                 if (playerBox.intersectsBox(targetBox)) collisionX = true;
-             });
-             if (collisionX) moveVector.x = 0; // Stop X movement if collision
-
-            // Check Z collision
-             playerBox.setFromCenterAndSize(
-                  new THREE.Vector3(playerPos.x + moveVector.x, playerPos.y, potentialPos.z), // Use resolved X pos
-                 new THREE.Vector3(playerWidth * 2, playerHeight, playerWidth * 2)
-             );
-              let collisionZ = false;
-             worldObjects.forEach(obj => {
-                 targetBox.setFromObject(obj);
-                 if (playerBox.intersectsBox(targetBox)) collisionZ = true;
-             });
-             if (collisionZ) moveVector.z = 0; // Stop Z movement if collision
-
-
-             // Apply horizontal movement *after* collision checks
-             controls.moveRight(moveVector.x); // Note: moveRight/moveForward are camera relative
-             controls.moveForward(moveVector.z); // So we use them directly here
-
-
-            // Vertical movement and collision
-            playerVelocity.y += gravity * delta; // Apply gravity
-            let verticalMove = playerVelocity.y * delta;
-
-             playerBox.setFromCenterAndSize(
-                  new THREE.Vector3(playerPos.x + moveVector.x, playerPos.y + verticalMove, playerPos.z + moveVector.z),
-                  new THREE.Vector3(playerWidth * 2, playerHeight, playerWidth * 2)
-             );
-
-             playerOnGround = false;
-             let collisionY = false;
-             worldObjects.forEach(obj => {
-                 targetBox.setFromObject(obj);
-                 if (playerBox.intersectsBox(targetBox)) {
-                     collisionY = true;
-                     // If falling onto block
-                     if (playerVelocity.y < 0) {
-                         playerOnGround = true;
-                         playerVelocity.y = 0;
-                         // Adjust position exactly on top of the block
-                         verticalMove = targetBox.max.y - (playerPos.y - playerHeight/2) ; // Difference to top surface
-                     } else { // If jumping into block from below
-                         playerVelocity.y = 0; // Stop upward movement
-                         verticalMove = targetBox.min.y - (playerPos.y + playerHeight/2) ; // Difference to bottom surface
-                     }
-                 }
-             });
-
-             controls.getObject().position.y += verticalMove; // Apply vertical movement
-
-
-            // Prevent falling through the world floor (y=0 plane in this simple setup)
-            if (controls.getObject().position.y < playerHeight / 2) { // Adjust check for center pivot
-                playerVelocity.y = 0;
-                controls.getObject().position.y = playerHeight / 2;
-                playerOnGround = true;
-            }
-
-
-            // Update rollover mesh position
-            raycaster.setFromCamera(pointer, camera); // Use center screen pointer
-            const intersects = raycaster.intersectObjects(objects, false);
-
-            if (intersects.length > 0) {
-                const intersect = intersects[0];
-                 if (intersect.distance > 0.1 && intersect.face) {
-                     // Position rollover cube adjacent to the intersected face
-                     const pos = intersect.point.add(intersect.face.normal.multiplyScalar(-0.5)).floor().addScalar(0.5);
-                     rollOverMesh.position.copy(pos);
-                     rollOverMesh.visible = true;
-                 } else {
-                     rollOverMesh.visible = false;
-                 }
-            } else {
-                rollOverMesh.visible = false;
-            }
-        }
-
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            const delta = clock.getDelta();
-
-            updatePlayer(delta);
-
-            renderer.render(scene, camera);
-        }
-
-    </script>
 </body>
 </html>
 ```
