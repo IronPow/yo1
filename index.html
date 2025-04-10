@@ -1,840 +1,236 @@
-Okay, here is a luxurious, ultra-creative, single-file HTML landing page for "מרואן ח." (Marwan H.), incorporating all your requirements.
-
 ```html
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מרואן ח. - ייעוץ עסקי יוקרתי | מצוינות אסטרטגית</title>
-    <meta name="description" content="מרואן ח. מציע ייעוץ עסקי יוקרתי ואסטרטגיות צמיחה מותאמות אישית לעסקים מובילים בישראל. גלה כיצד נוכל להוביל את העסק שלך להצלחה יוצאת דופן.">
+    <title>ToyWonder - Your World of Fun!</title>
     <style>
-        /* --- Global Resets & Base Styles --- */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
+        body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
         }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px; /* Base font size */
-        }
-
-        body {
-            font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* Fallback font */
-            /* Consider adding a specific elegant Hebrew font via @import if needed, e.g., Google Fonts 'Assistant' or 'Heebo' */
-            background-color: #0a0a0a; /* Very dark base */
-            color: #e0e0e0; /* Light grey for text */
-            line-height: 1.7;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            direction: rtl; /* Right-to-left layout */
-        }
-
-        /* --- Color Palette --- */
-        :root {
-            --color-primary-black: #050505;
-            --color-primary-yellow: #FFD700; /* Gold */
-            --color-secondary-dark: #1a1a1a;
-            --color-accent-light: #f0f0f0;
-            --color-accent-grey: #cccccc;
-            --color-complementary-blue: #0f2c59; /* Deep blue for subtle accents */
-            --color-complementary-purple: #4a0d66; /* Deep purple for subtle accents */
-        }
-
-        /* --- Typography --- */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Times New Roman', Times, serif; /* More elegant serif font for headings */
-            /* Or use a specific Hebrew display font */
-            font-weight: bold;
-            line-height: 1.3;
-            color: var(--color-accent-light);
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px; /* Subtle spacing */
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: var(--color-primary-yellow);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            color: var(--color-primary-yellow);
-            margin-bottom: 1.5rem;
+        header {
+            background-color: #ff6347; /* Tomato */
+            color: white;
+            padding: 1rem 0;
             text-align: center;
-            position: relative;
-            padding-bottom: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
-        /* Underline effect for H2 */
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(50%); /* Correct for RTL */
-            width: 60px;
-            height: 3px;
-            background-color: var(--color-primary-yellow);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            color: var(--color-accent-light);
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            color: var(--color-accent-grey);
-        }
-
-        a {
-            color: var(--color-primary-yellow);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover, a:focus {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        /* --- Layout & Structure --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            overflow: hidden; /* Contain animations */
-            position: relative; /* For pseudo-elements or absolute positioning */
-        }
-
-        section:nth-of-type(odd) {
-            background-color: var(--color-secondary-dark);
-        }
-        section:nth-of-type(even) {
-            background-color: var(--color-primary-black);
-        }
-
-        /* Subtle background patterns or textures can be added here */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Example: Subtle geometric pattern or gradient */
-            /* background-image: linear-gradient(45deg, rgba(255, 215, 0, 0.02) 25%, transparent 25%), linear-gradient(-45deg, rgba(255, 215, 0, 0.02) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255, 215, 0, 0.02) 75%), linear-gradient(-45deg, transparent 75%, rgba(255, 215, 0, 0.02) 75%);
-            background-size: 20px 20px; */
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-
-        /* --- Hero Section --- */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-            background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80') no-repeat center center/cover;
-            /* Alt image: https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80 */
-            color: #fff;
-        }
-
-        #hero::before { /* Dark overlay */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Darker overlay */
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            animation: fadeIn HeroAnimation 1.5s ease-out forwards;
-        }
-
-        .logo {
-            font-family: 'Georgia', serif; /* Example elegant font */
-            font-size: 2.8rem;
-            font-weight: bold;
-            color: #fff; /* White logo on dark bg */
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-            display: inline-block;
-            border: 2px solid var(--color-primary-yellow);
-            padding: 10px 25px;
-            border-radius: 5px;
-            background-color: rgba(0,0,0,0.3);
-            cursor: default; /* Not clickable */
-        }
-
-        .hero-content h1 {
-            font-size: 4rem; /* Larger for hero */
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            animation: slideInUp 1s ease-out 0.5s forwards;
-            opacity: 0;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--color-accent-grey);
-            font-weight: 300;
-            animation: slideInUp 1s ease-out 0.8s forwards;
-            opacity: 0;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--color-primary-yellow);
-            color: var(--color-primary-black);
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px; /* Pill shape */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            animation: slideInUp 1s ease-out 1.1s forwards;
-            opacity: 0;
-            text-align: center;
-        }
-
-        .cta-button:hover, .cta-button:focus {
-            background-color: #fff;
-            color: var(--color-primary-black);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            text-decoration: none;
-        }
-
-        /* Interactive element - subtle particle effect or similar could be added with JS */
-        /* Placeholder for interactive element: subtle pulse on logo */
-        .logo {
-            animation: subtlePulse 3s infinite ease-in-out 2s;
-        }
-
-        /* --- About Section --- */
-        #about .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        #about img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            object-fit: cover;
-            max-height: 450px;
-        }
-
-        /* --- Services Section --- */
-        #services {
-             background: linear-gradient(rgba(15, 44, 89, 0.1), rgba(15, 44, 89, 0.1)), var(--color-secondary-dark); /* Subtle blue hint */
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 3rem;
-        }
-
-        .service-item {
-            background-color: var(--color-primary-black);
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 5px solid var(--color-primary-yellow); /* RTL: Border on the left */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0, 0.3);
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
-        }
-
-        .service-item h3 {
-            margin-bottom: 1rem;
-            color: var(--color-primary-yellow);
-            font-size: 1.5rem;
-        }
-
-        .service-item p {
-            font-size: 1rem;
-            color: var(--color-accent-grey);
-        }
-
-        /* Optional: Service icons */
-        .service-item::before {
-            content: ''; /* Add icon here e.g. using background-image or font icon */
-            /* Example: content: '\f085'; font-family: 'Font Awesome 5 Free'; font-weight: 900; */
-            position: absolute;
-            top: 20px;
-            right: 20px; /* RTL */
-            font-size: 2.5rem;
-            color: rgba(255, 215, 0, 0.1);
-            z-index: 0;
-        }
-
-
-        /* --- Why Us Section --- */
-        #why-us {
-            background: linear-gradient(to bottom, var(--color-primary-black), var(--color-secondary-dark));
-        }
-
-        .why-us-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-         .why-us-image img {
-             width: 100%;
-             height: auto;
-             border-radius: 8px;
-             object-fit: cover;
-             filter: grayscale(50%) brightness(0.8);
-             transition: filter 0.5s ease;
-         }
-         .why-us-image:hover img {
-             filter: grayscale(0%) brightness(1);
-         }
-
-
-        .why-us-list {
+        nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
-
-        .why-us-list li {
-            margin-bottom: 1.5rem;
-            padding-right: 35px; /* RTL */
-            position: relative;
-            font-size: 1.1rem;
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
         }
-
-        .why-us-list li::before {
-            content: '✔'; /* Checkmark */
-            position: absolute;
-            right: 0; /* RTL */
-            top: 0;
-            color: var(--color-primary-yellow);
-            font-size: 1.5rem;
+        nav ul li a {
+            color: white;
+            text-decoration: none;
             font-weight: bold;
         }
-
-
-        /* --- Contact Section --- */
-        #contact {
-            background-color: var(--color-secondary-dark);
-            padding-bottom: 100px; /* Extra padding at bottom */
+        nav ul li a:hover {
+            text-decoration: underline;
         }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://via.placeholder.com/1500x600?text=Colorful+Toy+Background') no-repeat center center/cover;
+            color: white;
             text-align: center;
+            padding: 100px 20px;
         }
-
-        .contact-form {
-            margin-top: 3rem;
-            background: var(--color-primary-black);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
-        .form-group {
-            margin-bottom: 1.8rem;
-            text-align: right; /* RTL */
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-accent-light);
+        .cta-button {
+            background-color: #ffcc00; /* Bright Yellow */
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
             font-weight: bold;
-            font-size: 1rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--color-secondary-dark);
-            border: 1px solid #444;
             border-radius: 5px;
-            color: var(--color-accent-light);
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
         }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary-yellow);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        .cta-button:hover {
+            background-color: #ffb700; /* Darker Yellow */
         }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-
-        .submit-button {
-            display: inline-block;
-            background-color: var(--color-primary-yellow);
-            color: var(--color-primary-black);
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .submit-button:hover, .submit-button:focus {
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
             background-color: #fff;
-            color: var(--color-primary-black);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            outline: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--color-primary-black);
-            color: var(--color-accent-grey);
+        .section h2 {
             text-align: center;
-            padding: 25px 20px;
-            font-size: 0.9rem;
-            border-top: 1px solid #333;
+            color: #ff6347;
+            margin-bottom: 30px;
+            font-size: 2rem;
         }
-
+        .features-grid, .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .feature-item, .category-item {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover, .category-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item img, .category-item img {
+             max-width: 100px; /* Placeholder for icons/images */
+             height: auto;
+             margin-bottom: 15px;
+             background-color: #ddd; /* Placeholder color */
+             border-radius: 50%;
+             padding: 10px;
+             display: inline-block;
+        }
+        .feature-item h3, .category-item h3 {
+            color: #007bff; /* Blue */
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
         footer p {
             margin: 0;
-            color: var(--color-accent-grey);
         }
-
-        /* --- Animations --- */
-        @keyframes fadeInHeroAnimation {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
+        /* Responsive adjustments */
+         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            to {
-                transform: translateY(0);
-                opacity: 1;
+            .hero p {
+                font-size: 1rem;
             }
-        }
-
-        @keyframes subtlePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
-            50% { transform: scale(1.02); box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-        }
-
-        /* Scroll Animations Placeholder Class */
-        .animate-on-scroll {
-            opacity: 0;
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .animate-on-scroll.fade-in {
-            opacity: 1;
-        }
-
-        .animate-on-scroll.slide-in-right { /* For RTL, this slides from left */
-             transform: translateX(-50px);
-        }
-         .animate-on-scroll.slide-in-left { /* For RTL, this slides from right */
-             transform: translateX(50px);
+            .features-grid, .categories-grid {
+                 grid-template-columns: 1fr;
+            }
+            nav ul li {
+                 display: block;
+                 margin: 10px 0;
+            }
          }
-
-        .animate-on-scroll.is-visible {
-             opacity: 1;
-             transform: translateX(0);
-        }
-
-
-        /* --- Responsiveness --- */
-        @media (max-width: 992px) {
-            h1 { font-size: 3rem; }
-            .hero-content h1 { font-size: 3.2rem; }
-            h2 { font-size: 2.2rem; }
-            h3 { font-size: 1.6rem; }
-            p { font-size: 1rem; }
-
-            #about .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-             #about img {
-                margin-bottom: 30px; /* Space below image on mobile */
-                max-height: 350px;
-             }
-
-            .why-us-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-             .why-us-image {
-                 margin-bottom: 30px;
-                 order: -1; /* Show image first */
-             }
-              .why-us-list li {
-                padding-right: 30px; /* Adjust padding */
-                text-align: right; /* Ensure text aligns right */
-             }
-             .why-us-list li::before {
-                right: 0; /* Adjust position */
-            }
-
-             h2::after { /* Center the underline on mobile */
-                left: 50%;
-                transform: translateX(50%);
-             }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content .subtitle { font-size: 1.3rem; }
-            .cta-button, .submit-button { padding: 12px 30px; font-size: 1rem; }
-            section { padding: 60px 0; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-
-            .services-grid {
-                grid-template-columns: 1fr; /* Stack services */
-            }
-            .service-item {
-                text-align: right; /* Ensure text aligns right on single column */
-            }
-             .service-item::before {
-                 /* Adjust icon position if needed */
-             }
-        }
-
-        @media (max-width: 576px) {
-             html { font-size: 15px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-content .subtitle { font-size: 1.1rem; }
-            .logo { font-size: 2rem; padding: 8px 20px; }
-            h1 { font-size: 2rem; }
-             h2 { font-size: 1.8rem; }
-             h2::after { width: 50px; }
-
-             .contact-form { padding: 30px 20px; }
-             .form-group input, .form-group textarea { padding: 12px; }
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-content">
-            <div class="logo">מרואן ח.</div>
-            <h1>מנווטים את העסק שלך להצלחה יוצאת דופן</h1>
-            <p class="subtitle">ייעוץ עסקי יוקרתי ופתרונות אסטרטגיים מותאמים אישית לעסקים מובילים השואפים לצמיחה, חדשנות והשפעה מתמשכת.</p>
-            <a href="#contact" class="cta-button">קבע פגישת ייעוץ ראשונית</a>
-        </div>
-        <!-- Potential subtle background animation/particles could go here -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">ToyWonder</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to ToyWonder!</h1>
+        <p>Discover a magical world of toys that spark imagination and bring endless joy.</p>
+        <a href="#categories" class="cta-button">Explore Our Toys</a>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="about-image animate-on-scroll slide-in-left">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="צוות יועצים בפגישה אסטרטגית">
-            </div>
-            <div class="about-text animate-on-scroll slide-in-right">
-                <h2>מי אנחנו: שותפים למצוינות שלך</h2>
-                <p><strong>מרואן ח.</strong> אינה עוד חברת ייעוץ. אנו שותפים אסטרטגיים, מחויבים להצלחה ארוכת הטווח של לקוחותינו. אנו מביאים לשולחן שילוב ייחודי של ניסיון רב-שנים, תובנות עמוקות וגישה חדשנית, המותאמים באופן אישי לאתגרים ולהזדמנויות הספציפיים של העסק שלך.</p>
-                <p>המומחיות שלנו משתרעת על פני מגזרים מגוונים, ואנו מתמחים בליווי עסקים בצמתי קבלת החלטות קריטיים, בגיבוש אסטרטגיות צמיחה פורצות דרך ובהטמעת תהליכים המובילים למצוינות תפעולית ופיננסית. אנו מאמינים בשקיפות, דיסקרטיות ובניית יחסי אמון איתנים.</p>
-                <p><strong>החזון שלנו:</strong> להעצים עסקים מובילים להגיע לפוטנציאל המלא שלהם ולהפוך למובילי שוק בתחומם.</p>
-            </div>
-        </div>
-    </section>
+    <div class="container">
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>שירותי הייעוץ שלנו: פתרונות יוקרה מותאמים אישית</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto; color: var(--color-accent-grey);">אנו מציעים מגוון רחב של שירותי ייעוץ אסטרטגי, המתוכננים לספק ערך מדיד ולהניע צמיחה בת קיימא.</p>
-            <div class="services-grid">
-                <div class="service-item animate-on-scroll fade-in">
-                    <h3>אסטרטגיה עסקית ופיתוח שווקים</h3>
-                    <p>גיבוש חזון ואסטרטגיה עסקית ארוכת טווח, זיהוי הזדמנויות צמיחה חדשות, ניתוח שווקים ותחרות, ובניית מודלים עסקיים חדשניים.</p>
+        <section id="features" class="section">
+            <h2>Why Choose ToyWonder?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/100?text=Quality" alt="Quality Icon">
+                    <h3>High Quality & Safe</h3>
+                    <p>We prioritize safety and durability in every toy we offer.</p>
                 </div>
-                <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.2s;">
-                    <h3>טרנספורמציה דיגיטלית וחדשנות</h3>
-                    <p>ליווי תהליכי שינוי דיגיטלי מקיפים, הטמעת טכנולוגיות מתקדמות, פיתוח תרבות ארגונית של חדשנות ושיפור חווית הלקוח בעידן הדיגיטלי.</p>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/100?text=Variety" alt="Variety Icon">
+                    <h3>Wide Selection</h3>
+                    <p>From classic toys to the latest trends, find something for every child.</p>
                 </div>
-                <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.4s;">
-                    <h3>אופטימיזציה תפעולית ומצוינות</h3>
-                    <p>שיפור יעילות תהליכים עסקיים, ניהול שרשרת אספקה, ייעול מבנים ארגוניים והטמעת מתודולוגיות לשיפור מתמיד (Lean, Six Sigma).</p>
-                </div>
-                <div class="service-item animate-on-scroll fade-in">
-                    <h3>ייעוץ פיננסי ואסטרטגיות השקעה</h3>
-                    <p>ניתוח ביצועים פיננסיים, תכנון תקציבי, גיוס הון, הערכות שווי, ליווי עסקאות מיזוג ורכישה (M&A) ובניית אסטרטגיות השקעה.</p>
-                </div>
-                 <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.2s;">
-                    <h3>פיתוח מנהיגות והון אנושי</h3>
-                    <p>תוכניות לפיתוח מנהלים, ליווי אישי לבכירים (Executive Coaching), אבחון ופיתוח ארגוני, וגיבוש אסטרטגיות לניהול טאלנטים.</p>
-                </div>
-                 <div class="service-item animate-on-scroll fade-in" style="animation-delay: 0.4s;">
-                    <h3>ניהול סיכונים וממשל תאגידי</h3>
-                    <p>זיהוי והערכת סיכונים עסקיים, פיתוח תוכניות התמודדות, הטמעת מסגרות ממשל תאגידי אפקטיביות והבטחת ציות רגולטורי.</p>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/100?text=Fun" alt="Fun Icon">
+                    <h3>Educational & Fun</h3>
+                    <p>Our toys are designed to entertain while encouraging learning and development.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-     <!-- Why Us Section -->
-    <section id="why-us">
-        <div class="container">
-             <h2 class="animate-on-scroll fade-in">מדוע לבחור במרואן ח.?</h2>
-             <div class="why-us-content">
-                 <div class="why-us-image animate-on-scroll slide-in-left">
-                     <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="ניתוח נתונים וקבלת החלטות מושכלת">
-                 </div>
-                 <div class="why-us-text animate-on-scroll slide-in-right">
-                     <h3>היתרונות הייחודיים שלנו</h3>
-                     <ul class="why-us-list">
-                        <li><strong>גישה מותאמת אישית:</strong> אנו לא מאמינים בפתרונות מדף. כל אסטרטגיה ותוכנית פעולה נתפרת במדויק למידותיו, צרכיו ומטרותיו הייחודיות של העסק שלך.</li>
-                        <li><strong>ניסיון מוכח ותוצאות:</strong> רקורד עשיר של הצלחות בליווי חברות מובילות במגוון תעשיות, תוך השגת שיפורים מדידים בביצועים העסקיים והפיננסיים.</li>
-                        <li><strong>תובנות אסטרטגיות עמוקות:</strong> יכולת ניתוח יוצאת דופן, הבנה מעמיקה של מגמות שוק וראייה רחבה המאפשרת לנו לזהות הזדמנויות וסיכונים שאחרים מפספסים.</li>
-                        <li><strong>דיסקרטיות ואמון מוחלט:</strong> אנו פועלים ברמת הדיסקרטיות הגבוהה ביותר ומחויבים לבניית יחסי אמון ארוכי טווח המבוססים על יושרה ושקיפות.</li>
-                        <li><strong>רשת קשרים ענפה:</strong> גישה לרשת קשרים מקצועית רחבה בישראל ובעולם, היכולה לסייע בפתיחת דלתות ויצירת שיתופי פעולה אסטרטגיים.</li>
-                         <li><strong>מחויבות בלתי מתפשרת להצלחה:</strong> ההצלחה שלך היא ההצלחה שלנו. אנו מלווים אותך יד ביד, כשותפים מלאים, בכל שלבי התהליך ועד להשגת היעדים.</li>
-                     </ul>
-                 </div>
-             </div>
-        </div>
-    </section>
+        <section id="categories" class="section">
+            <h2>Toy Categories</h2>
+            <div class="categories-grid">
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100?text=Blocks" alt="Building Blocks">
+                    <h3>Building Blocks</h3>
+                    <p>Creative construction sets for budding engineers.</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100?text=Dolls" alt="Dolls & Figures">
+                    <h3>Dolls & Action Figures</h3>
+                    <p>Characters for imaginative play and storytelling.</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100?text=Puzzles" alt="Puzzles & Games">
+                    <h3>Puzzles & Games</h3>
+                    <p>Engaging challenges for solo or group fun.</p>
+                </div>
+                 <div class="category-item">
+                    <img src="https://via.placeholder.com/100?text=Plush" alt="Plush Toys">
+                    <h3>Plush Toys</h3>
+                    <p>Soft and cuddly companions for all ages.</p>
+                </div>
+                 <div class="category-item">
+                    <img src="https://via.placeholder.com/100?text=Outdoor" alt="Outdoor Play">
+                    <h3>Outdoor Play</h3>
+                    <p>Toys for active fun in the sun.</p>
+                </div>
+                 <div class="category-item">
+                    <img src="https://via.placeholder.com/100?text=Learning" alt="Educational Toys">
+                    <h3>Educational Toys</h3>
+                    <p>Stimulate young minds with learning toys.</p>
+                </div>
+            </div>
+        </section>
 
+        <section id="about" class="section">
+            <h2>About ToyWonder</h2>
+            <p>Founded by passionate toy lovers, ToyWonder aims to bring smiles to children's faces worldwide. We believe in the power of play to inspire creativity, foster learning, and create lasting memories. Our curated collection features toys that are not only fun but also safe and enriching for kids of all ages. Join us in celebrating the magic of childhood!</p>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="contact-container">
-            <h2 class="animate-on-scroll fade-in">מוכנים לקחת את העסק שלכם לשלב הבא?</h2>
-            <p class="animate-on-scroll fade-in" style="animation-delay: 0.2s;">אנו מזמינים אתכם ליצור קשר לפגישת ייעוץ ראשונית, דיסקרטית וללא התחייבות. נשמח לשמוע על האתגרים והשאיפות שלכם, ולבחון יחד כיצד נוכל לתרום להצלחתכם.</p>
+    </div>
 
-            <form action="#" method="POST" class="contact-form animate-on-scroll fade-in" style="animation-delay: 0.4s;">
-                 <!-- Note: The form action="#" is a placeholder. Real implementation needs a server-side script or service like Formspree/Netlify Forms -->
-                 <div class="form-group">
-                     <label for="name">שם מלא</label>
-                     <input type="text" id="name" name="name" required>
-                 </div>
-                 <div class="form-group">
-                     <label for="email">דואר אלקטרוני</label>
-                     <input type="email" id="email" name="email" required>
-                 </div>
-                 <div class="form-group">
-                     <label for="phone">מספר טלפון</label>
-                     <input type="tel" id="phone" name="phone" required>
-                 </div>
-                 <div class="form-group">
-                     <label for="message">הודעה (פרטו בקצרה על נושא הפנייה)</label>
-                     <textarea id="message" name="message" rows="5" required></textarea>
-                 </div>
-                 <button type="submit" class="submit-button">שלח פנייה</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> מרואן ח. ייעוץ עסקי יוקרתי בע"מ. כל הזכויות שמורות.</p>
-            <!-- Optional: Add social media links or other footer info here -->
-        </div>
+    <footer id="contact">
+        <p>&copy; 2025 ToyWonder. All Rights Reserved.</p>
+        <p>Contact us: info@toywonder.example.com | 123-456-7890</p>
     </footer>
-
-    <script>
-        // --- Simple JavaScript for Enhancements ---
-
-        // 1. Set Current Year in Footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // 2. Smooth Scrolling for internal links (if any added later, useful for CTA)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 3. Simple Scroll Animation Trigger
-        const scrollElements = document.querySelectorAll('.animate-on-scroll');
-
-        const elementInView = (el, dividend = 1) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-            );
-        };
-
-        const displayScrollElement = (element) => {
-            element.classList.add('is-visible');
-             // Determine animation type based on existing classes
-            if (element.classList.contains('fade-in')) {
-                // Already handled by is-visible opacity transition
-            } else if (element.classList.contains('slide-in-right') || element.classList.contains('slide-in-left')) {
-                // Transform is handled by is-visible class
-            }
-            // Add more animation types here if needed
-        };
-
-        const hideScrollElement = (element) => {
-            // Optional: Hide element again when scrolled out of view
-            // element.classList.remove('is-visible');
-        }
-
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 1.15)) { // Trigger slightly before element is fully in view
-                    displayScrollElement(el);
-                } else {
-                    // hideScrollElement(el); // Uncomment if you want elements to hide again
-                }
-            })
-        }
-
-        // Initial check on load
-        handleScrollAnimation();
-        // Listen for scroll events
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-        });
-
-        // 4. Basic Form Validation Indication (Optional - more robust validation is recommended)
-        const form = document.querySelector('.contact-form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                // Basic check - real validation is more complex
-                let isValid = true;
-                form.querySelectorAll('input[required], textarea[required]').forEach(input => {
-                    if (!input.value.trim()) {
-                        isValid = false;
-                        input.style.borderColor = 'red'; // Indicate error
-                    } else {
-                         input.style.borderColor = '#444'; // Reset border
-                         if(input.type === 'email' && !validateEmail(input.value)){
-                             isValid = false;
-                             input.style.borderColor = 'red';
-                         }
-                    }
-                });
-
-                if (!isValid) {
-                    e.preventDefault(); // Prevent submission if invalid
-                    alert('אנא מלא את כל שדות החובה בצורה תקינה.');
-                } else {
-                    // Optionally show a success message or disable button after submission attempt
-                    // Since this is front-end only, we can just log it.
-                    console.log('Form submitted (simulated)');
-                    // You might want to prevent actual submission for this demo:
-                     e.preventDefault();
-                     alert('הפנייה נשלחה (סימולציה). תודה רבה!');
-                     form.reset(); // Clear form
-                }
-            });
-        }
-
-        function validateEmail(email) {
-            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-    </script>
 
 </body>
 </html>
 ```
-
-**Explanation and Key Features:**
-
-1.  **Single File:** All HTML structure, CSS styling (`<style>` tag in `<head>`), and JavaScript (`<script>` tag before `</body>`) are contained within this single `.html` file.
-2.  **Hebrew & RTL:**
-    *   `lang="he"` and `dir="rtl"` set on the `<html>` tag.
-    *   `direction: rtl;` applied to the `body`.
-    *   CSS properties like `margin-left`, `padding-right`, `border-left`, `text-align: right`, `right: 0` (for absolute positioning) are used to ensure correct layout for Hebrew.
-    *   All copywriting is in professional, persuasive Hebrew.
-3.  **Luxurious Design:**
-    *   **Color Palette:** Primarily Black (`#050505`, `#1a1a1a`) and Gold/Yellow (`#FFD700`), accented with light greys (`#e0e0e0`, `#f0f0f0`, `#cccccc`) for text and potentially subtle hints of deep blue/purple (though kept minimal here for focus).
-    *   **Typography:** Uses a combination of a standard sans-serif (Arial fallback) and a more elegant serif (Times New Roman fallback) for headings. *For a truly premium feel, you'd ideally embed a specific high-quality Hebrew font via `@import`*. Letter spacing and shadows add sophistication.
-    *   **Imagery:** High-quality, professional placeholder images from Unsplash are used for the hero, about, and why-us sections. These evoke strategy, collaboration, and professionalism.
-    *   **Layout:** Clean structure with clear sections, ample whitespace (`padding`), and centered content (`container` class). Uses CSS Grid for flexible layouts in 'About' and 'Services'.
-4.  **Captivating Hero Section:**
-    *   Full viewport height (`min-height: 100vh`).
-    *   Striking background image with a dark overlay for text contrast.
-    *   Elegant logo treatment (bordered text).
-    *   Large, impactful headline in gold.
-    *   Clear subtitle explaining the value proposition.
-    *   Prominent Call-to-Action (CTA) button with hover effects.
-    *   Subtle entrance animations (`fadeIn`, `slideInUp`) for content.
-    *   Subtle pulse animation on the logo for interactivity.
-5.  **Inquiry Form:**
-    *   Located in the `#contact` section.
-    *   Includes fields for Name (`שם מלא`), Email (`דואר אלקטרוני`), Phone (`מספר טלפון`), and Message (`הודעה`).
-    *   Styled consistently with the luxurious theme (dark inputs, gold focus highlights, pill-shaped submit button).
-    *   Basic client-side validation is included in the JavaScript to check for required fields and basic email format (shows an alert and prevents submission if invalid - real submission requires backend).
-6.  **Responsive Design:**
-    *   Uses `meta name="viewport"` tag.
-    *   Employs relative units (rem, %) and media queries (`@media`) to adjust layout, font sizes, and spacing for tablets and mobile devices. Layouts stack vertically on smaller screens.
-7.  **Animations & Details:**
-    *   **Entrance Animations:** Sections and elements fade/slide in on scroll using JavaScript (Intersection Observer logic implemented simply).
-    *   **Hover Effects:** Buttons and service items have subtle transformations (`translateY`, `box-shadow`) on hover.
-    *   **Subtle Touches:** Border accents (`border-left` on service items), H2 underline effect, slight text shadows.
-8.  **Professional Copywriting:** Text is crafted to be persuasive, highlight expertise (אסטרטגיה, טרנספורמציה דיגיטלית, אופטימיזציה), core values (שותפות, דיסקרטיות, מצוינות), and service offerings in clear, professional Hebrew.
-9.  **Clean Code:** HTML is semantically structured (`<section>`, `<header>`, `<footer>`, etc.). CSS is organized with comments and uses variables (`:root`) for colors. JavaScript is minimal, commented, and placed at the end of the body.
-
-This single file provides a comprehensive and visually stunning landing page experience tailored to the high-end business consulting market in Israel. Remember to replace placeholder images and the form `action` attribute for a live deployment.
