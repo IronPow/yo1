@@ -4,416 +4,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConsultPro - Business Consulting Agency</title>
+    <title>Shred Masters - Premium Skateboards</title>
     <style>
-        /* Basic Reset */
-        * {
+        body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            background-color: #f4f4f4;
             color: #333;
-            background-color: #f9f9f9;
+            line-height: 1.6;
         }
-
         .container {
             max-width: 1100px;
             margin: auto;
             overflow: hidden;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
-
-        /* Header */
         header {
             background: #333;
             color: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
         }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        header nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        header nav ul li a {
+        header a {
             color: #fff;
             text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #0779e4;
             font-weight: bold;
-            transition: color 0.3s ease;
+        }
+        header a:hover {
+            color: #ccc;
         }
 
-        header nav ul li a:hover {
-            color: #007bff;
-        }
-
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x600.png?text=Modern+Office+Background') no-repeat center center/cover;
+        #showcase {
+            min-height: 400px;
+            background: url('https://via.placeholder.com/1500x400?text=Awesome+Skateboarding+Action') no-repeat 0 -100px;
+            background-size: cover;
+            text-align: center;
             color: #fff;
-            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 1rem;
+            text-shadow: 2px 2px 4px #000;
         }
-
-        #hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        #showcase h1 {
+            margin-top: 0;
+            font-size: 55px;
+            margin-bottom: 10px;
         }
-
-        #hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
+        #showcase p {
+            font-size: 20px;
+            max-width: 700px;
+            margin-bottom: 30px;
         }
-
-        .btn {
+        .button {
             display: inline-block;
-            background: #007bff;
+            height: 38px;
+            padding: 0 30px;
             color: #fff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background: #0056b3;
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 0;
-        }
-
-        section h3 {
-            font-size: 2rem;
             text-align: center;
-            margin-bottom: 2.5rem;
-            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 38px;
+            letter-spacing: .1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            background-color: #0779e4;
+            border-radius: 4px;
+            border: 1px solid #0779e4;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .button:hover {
+            background-color: #0568bf;
+            border-color: #0568bf;
+            color: #fff;
         }
 
-        #services .service-grid,
-        #benefits .benefits-grid {
+        #features {
+            padding: 50px 0;
+            background: #fff;
+        }
+        #features h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        #features .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        #features .feature img {
+            max-width: 80px;
+            margin-bottom: 15px;
+        }
+        #features .feature h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        #products {
+            padding: 50px 0;
+            background: #f9f9f9;
+        }
+        #products h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        #products .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 30px;
+        }
+        #products .product-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        .service-item,
-        .benefit-item {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .service-item:hover,
-        .benefit-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-item i,
-        .benefit-item i {
-            font-size: 2.5rem;
-            color: #007bff;
-            margin-bottom: 1rem;
-        }
-
-        .service-item h4,
-        .benefit-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: #0056b3;
-        }
-
-        /* Testimonials */
-        #testimonials {
-            background-color: #e9ecef;
-        }
-
-        .testimonial {
-            background: #fff;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid #007bff;
+        #products .product-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
             border-radius: 5px;
-            font-style: italic;
         }
-
-        .testimonial p {
-            margin-bottom: 0.5rem;
+        #products .product-item h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
         }
-
-        .testimonial cite {
-            display: block;
-            text-align: right;
+        #products .product-item .price {
             font-weight: bold;
-            font-style: normal;
-            color: #555;
+            color: #0779e4;
+            margin-bottom: 15px;
         }
 
-        /* Contact Section */
-        #contact {
-            background-color: #fff;
-        }
-
-        #contact form {
-            max-width: 600px;
-            margin: auto;
-            padding: 2rem;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #contact .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        #contact label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #555;
-        }
-
-        #contact input[type="text"],
-        #contact input[type="email"],
-        #contact textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        #contact textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        #contact button[type="submit"] {
-            width: 100%;
-            padding: 1rem;
-        }
-
-        /* Footer */
-        footer {
+        #cta {
+            padding: 50px 0;
             background: #333;
             color: #fff;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
+        }
+        #cta h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        #cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
         }
 
-        /* Font Awesome Icons (using CDN for simplicity) */
-        /* Add this line if you want icons: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> */
-        /* Placeholder styling if Font Awesome isn't linked */
-         .service-item i, .benefit-item i {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            line-height: 40px; /* Center vertically */
-            text-align: center; /* Center horizontally */
-            font-style: normal; /* Prevent italic */
-            font-weight: bold;
-            font-size: 1.5rem; /* Adjust icon size */
+        footer {
+            padding: 30px 0;
+            color: #fff;
+            background-color: #222;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+        }
+        footer .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        footer .social-links a:hover {
+            color: #0779e4;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
+        @media(max-width: 768px) {
+            header #branding,
+            header nav,
+            header nav li {
+                float: none;
+                text-align: center;
+                width: 100%;
             }
             header nav ul {
-                margin-top: 1rem;
-                flex-direction: column;
-                align-items: center;
+                margin-top: 10px;
             }
-            header nav ul li {
-                margin: 0.5rem 0;
+            header nav li {
+                 display: block;
+                 padding: 10px 0;
             }
-            #hero h2 {
-                font-size: 2.5rem;
+            #showcase h1 {
+                font-size: 40px;
             }
-            #hero p {
-                font-size: 1rem;
+            #showcase p {
+                font-size: 18px;
             }
-            section h3 {
-                font-size: 1.8rem;
+            #features .feature-grid,
+            #products .product-grid {
+                grid-template-columns: 1fr;
             }
         }
+
     </style>
-    <!-- Add Font Awesome CDN link here if you want actual icons -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body>
-
     <header>
         <div class="container">
-            <h1>ConsultPro Agency</h1>
+            <div id="branding">
+                <h1><span class="highlight">Shred</span> Masters</h1>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#benefits">Why Us</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="current"><a href="#">Home</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#cta">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="hero">
-        <h2>Drive Your Business Forward</h2>
-        <p>Expert consulting services to help you achieve sustainable growth, improve efficiency, and navigate complex challenges.</p>
-        <a href="#contact" class="btn">Get Started Today</a>
+    <section id="showcase">
+        <div class="container">
+            <h1>Dominate the Streets</h1>
+            <p>High-quality skateboards built for performance and style. Find your perfect ride today.</p>
+            <a href="#products" class="button">Shop Now</a>
+        </div>
     </section>
 
-    <section id="services">
+    <section id="features">
         <div class="container">
-            <h3>Our Core Services</h3>
-            <div class="service-grid">
-                <div class="service-item">
-                    <!-- Placeholder icon -->
-                    <i>S</i>
-                    <h4>Strategic Planning</h4>
-                    <p>Develop clear, actionable strategies to reach your long-term business goals.</p>
+            <h2>Why Choose Shred Masters?</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <img src="https://via.placeholder.com/80x80?text=Deck" alt="Quality Deck Icon">
+                    <h3>Premium Decks</h3>
+                    <p>Durable 7-ply maple decks designed for maximum pop and longevity.</p>
                 </div>
-                <div class="service-item">
-                     <!-- Placeholder icon -->
-                    <i>O</i>
-                    <h4>Operational Efficiency</h4>
-                    <p>Streamline processes, reduce costs, and improve productivity across your organization.</p>
+                <div class="feature">
+                    <img src="https://via.placeholder.com/80x80?text=Design" alt="Custom Design Icon">
+                    <h3>Unique Graphics</h3>
+                    <p>Exclusive designs from talented artists to make your board stand out.</p>
                 </div>
-                <div class="service-item">
-                     <!-- Placeholder icon -->
-                    <i>M</i>
-                    <h4>Market Analysis</h4>
-                    <p>Gain deep insights into your market, competitors, and customer trends.</p>
-                </div>
-                 <div class="service-item">
-                     <!-- Placeholder icon -->
-                    <i>F</i>
-                    <h4>Financial Advisory</h4>
-                    <p>Optimize financial performance, manage risk, and secure funding.</p>
+                <div class="feature">
+                    <img src="https://via.placeholder.com/80x80?text=Truck" alt="Performance Parts Icon">
+                    <h3>Top Components</h3>
+                    <p>Reliable trucks, smooth bearings, and grippy wheels for the best ride.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="benefits" style="background-color: #f0f8ff;">
+    <section id="products">
         <div class="container">
-            <h3>Why Partner With Us?</h3>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <!-- Placeholder icon -->
-                    <i>E</i>
-                    <h4>Experienced Team</h4>
-                    <p>Our consultants bring decades of cross-industry experience to the table.</p>
+            <h2>Featured Boards</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200?text=Skateboard+1" alt="Street Slayer Model">
+                    <h4>Street Slayer Pro</h4>
+                    <p class="price">$129.99</p>
+                    <a href="#" class="button">View Details</a>
                 </div>
-                <div class="benefit-item">
-                    <!-- Placeholder icon -->
-                    <i>R</i>
-                    <h4>Results-Driven</h4>
-                    <p>We focus on delivering measurable outcomes and tangible improvements.</p>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200?text=Skateboard+2" alt="Cosmic Cruiser Model">
+                    <h4>Cosmic Cruiser</h4>
+                    <p class="price">$119.99</p>
+                    <a href="#" class="button">View Details</a>
                 </div>
-                <div class="benefit-item">
-                    <!-- Placeholder icon -->
-                    <i>C</i>
-                    <h4>Custom Solutions</h4>
-                    <p>Tailored strategies designed specifically for your unique business needs.</p>
-                </div>
-                 <div class="benefit-item">
-                    <!-- Placeholder icon -->
-                    <i>P</i>
-                    <h4>Proven Methodologies</h4>
-                    <p>Utilizing best practices and innovative approaches for optimal results.</p>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/300x200?text=Skateboard+3" alt="Urban Nomad Model">
+                    <h4>Urban Nomad Complete</h4>
+                    <p class="price">$149.99</p>
+                    <a href="#" class="button">View Details</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonials">
+    <section id="cta">
         <div class="container">
-            <h3>What Our Clients Say</h3>
-            <div class="testimonial">
-                <p>"ConsultPro transformed our approach to market entry. Their insights were invaluable and led to significant growth."</p>
-                <cite>- CEO, Tech Innovators Inc.</cite>
-            </div>
-            <div class="testimonial">
-                <p>"The operational efficiency program they implemented saved us over 20% in costs within the first year. Highly recommended!"</p>
-                <cite>- COO, Manufacturing Solutions Ltd.</cite>
-            </div>
-             <div class="testimonial">
-                <p>"Working with ConsultPro felt like adding an expert strategy department to our team. Their dedication was exceptional."</p>
-                <cite>- Founder, Creative Startups Co.</cite>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h3>Ready to Elevate Your Business?</h3>
-            <p style="text-align: center; margin-bottom: 2rem;">Contact us today for a free initial consultation.</p>
-            <form action="#" method="post"> <!-- Replace # with your form handler URL -->
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                 <div class="form-group">
-                    <label for="company">Company (Optional):</label>
-                    <input type="text" id="company" name="company">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+            <h2>Ready to Shred?</h2>
+            <p>Join the Shred Masters community and elevate your skating experience.</p>
+            <a href="#products" class="button">Browse All Boards</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 ConsultPro Agency. All Rights Reserved.</p>
-            <!-- Optional: Add social media links or more footer info here -->
+            <p>Shred Masters &copy; 2025</p>
+            <div class="social-links">
+                <!-- Replace # with actual links -->
+                <a href="#" aria-label="Facebook">F</a>
+                <a href="#" aria-label="Instagram">I</a>
+                <a href="#" aria-label="Twitter">T</a>
+            </div>
+             <p>123 Skate St, Grind City, USA | info@shredmasters.com</p>
         </div>
     </footer>
 
