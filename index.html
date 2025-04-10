@@ -4,231 +4,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToyWonder - Your World of Fun!</title>
+    <title>Serenity Spa - Your Oasis of Calm</title>
     <style>
+        :root {
+            --primary-color: #87CEEB; /* Sky Blue */
+            --secondary-color: #E0FFFF; /* Light Cyan */
+            --accent-color: #98FB98; /* Pale Green */
+            --text-color: #333;
+            --light-text: #fff;
+            --background-color: #f8f8f8;
+            --footer-bg: #dcdcdc; /* Gainsboro */
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-family);
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
         }
+
         header {
-            background-color: #ff6347; /* Tomato */
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--light-text);
             padding: 1rem 0;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
+
+        header h1 {
             margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
         }
-        nav ul li {
-            display: inline;
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
             margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
-        nav ul li a:hover {
-            text-decoration: underline;
+
+        nav a:hover {
+            color: var(--secondary-color);
         }
+
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://via.placeholder.com/1500x600?text=Colorful+Toy+Background') no-repeat center center/cover;
-            color: white;
+            background: linear-gradient(rgba(135, 206, 235, 0.7), rgba(135, 206, 235, 0.7)), url('https://via.placeholder.com/1500x600.png?text=Relaxing+Spa+Background') no-repeat center center/cover;
+            color: var(--light-text);
             text-align: center;
-            padding: 100px 20px;
+            padding: 5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
         }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
+
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.2em;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
         }
+
         .cta-button {
-            background-color: #ffcc00; /* Bright Yellow */
-            color: #333;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.1rem;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
             font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: var(--box-shadow);
         }
+
         .cta-button:hover {
-            background-color: #ffb700; /* Darker Yellow */
+            background-color: #7fdd7f; /* Darker Pale Green */
+            transform: translateY(-2px);
         }
+
         .container {
             max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
-        .section {
-            margin-bottom: 40px;
-            padding: 30px;
+
+        section {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
-        .section h2 {
+
+        section h3 {
+            color: var(--primary-color);
             text-align: center;
-            color: #ff6347;
-            margin-bottom: 30px;
-            font-size: 2rem;
+            font-size: 2em;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
         }
-        .features-grid, .categories-grid {
+
+         section h3::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
+         }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 1.5rem;
             text-align: center;
         }
-        .feature-item, .category-item {
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
+
+        .service-item {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .feature-item:hover, .category-item:hover {
+
+        .service-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        .feature-item img, .category-item img {
-             max-width: 100px; /* Placeholder for icons/images */
-             height: auto;
-             margin-bottom: 15px;
-             background-color: #ddd; /* Placeholder color */
-             border-radius: 50%;
-             padding: 10px;
-             display: inline-block;
+
+        .service-item h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.3em;
         }
-        .feature-item h3, .category-item h3 {
-            color: #007bff; /* Blue */
-            margin-bottom: 10px;
+
+        .service-item p {
+            font-size: 0.95em;
+            color: #555;
         }
-        footer {
-            background-color: #333;
-            color: #ccc;
+
+        .testimonials blockquote {
+            background-color: var(--background-color);
+            border-left: 5px solid var(--accent-color);
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonials cite {
+            display: block;
+            text-align: right;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        #contact form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        #contact input,
+        #contact textarea,
+        #contact select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            box-sizing: border-box; /* Important for width calculation */
+            font-family: var(--font-family);
+            font-size: 1em;
+        }
+
+        #contact textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        #contact button[type="submit"] {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: fit-content;
+            justify-self: center; /* Center button in grid cell */
+        }
+
+        #contact button[type="submit"]:hover {
+            background-color: #6caed8; /* Darker Sky Blue */
+        }
+
+        .contact-info {
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
         }
-        footer p {
-            margin: 0;
+         .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1em;
+         }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-size: 0.9em;
         }
+
         /* Responsive adjustments */
-         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5em;
             }
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1em;
             }
-            .features-grid, .categories-grid {
-                 grid-template-columns: 1fr;
+            nav a {
+                margin: 0 10px;
             }
-            nav ul li {
-                 display: block;
-                 margin: 10px 0;
+            .container {
+                padding: 0 0.5rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+         @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .hero {
+                padding: 3rem 1rem;
+            }
+            .hero h2 {
+                font-size: 2em;
+            }
+             .hero p {
+                font-size: 1em;
+            }
+            .cta-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+             section h3 {
+                font-size: 1.8em;
+            }
+            .services-grid {
+                grid-template-columns: 1fr; /* Stack services on small screens */
             }
          }
+
     </style>
 </head>
 <body>
 
     <header>
+        <h1>Serenity Spa</h1>
         <nav>
-            <ul>
-                <li><a href="#home">ToyWonder</a></li>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Book Now</a>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Welcome to ToyWonder!</h1>
-        <p>Discover a magical world of toys that spark imagination and bring endless joy.</p>
-        <a href="#categories" class="cta-button">Explore Our Toys</a>
-    </section>
-
-    <div class="container">
-
-        <section id="features" class="section">
-            <h2>Why Choose ToyWonder?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/100?text=Quality" alt="Quality Icon">
-                    <h3>High Quality & Safe</h3>
-                    <p>We prioritize safety and durability in every toy we offer.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/100?text=Variety" alt="Variety Icon">
-                    <h3>Wide Selection</h3>
-                    <p>From classic toys to the latest trends, find something for every child.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/100?text=Fun" alt="Fun Icon">
-                    <h3>Educational & Fun</h3>
-                    <p>Our toys are designed to entertain while encouraging learning and development.</p>
-                </div>
-            </div>
+    <main>
+        <section class="hero">
+            <h2>Find Your Inner Peace</h2>
+            <p>Escape the everyday and discover tranquility at Serenity Spa. We offer a sanctuary for relaxation and rejuvenation.</p>
+            <a href="#contact" class="cta-button">Book Your Escape</a>
         </section>
 
-        <section id="categories" class="section">
-            <h2>Toy Categories</h2>
-            <div class="categories-grid">
-                <div class="category-item">
-                    <img src="https://via.placeholder.com/100?text=Blocks" alt="Building Blocks">
-                    <h3>Building Blocks</h3>
-                    <p>Creative construction sets for budding engineers.</p>
-                </div>
-                <div class="category-item">
-                    <img src="https://via.placeholder.com/100?text=Dolls" alt="Dolls & Figures">
-                    <h3>Dolls & Action Figures</h3>
-                    <p>Characters for imaginative play and storytelling.</p>
-                </div>
-                <div class="category-item">
-                    <img src="https://via.placeholder.com/100?text=Puzzles" alt="Puzzles & Games">
-                    <h3>Puzzles & Games</h3>
-                    <p>Engaging challenges for solo or group fun.</p>
-                </div>
-                 <div class="category-item">
-                    <img src="https://via.placeholder.com/100?text=Plush" alt="Plush Toys">
-                    <h3>Plush Toys</h3>
-                    <p>Soft and cuddly companions for all ages.</p>
-                </div>
-                 <div class="category-item">
-                    <img src="https://via.placeholder.com/100?text=Outdoor" alt="Outdoor Play">
-                    <h3>Outdoor Play</h3>
-                    <p>Toys for active fun in the sun.</p>
-                </div>
-                 <div class="category-item">
-                    <img src="https://via.placeholder.com/100?text=Learning" alt="Educational Toys">
-                    <h3>Educational Toys</h3>
-                    <p>Stimulate young minds with learning toys.</p>
-                </div>
-            </div>
-        </section>
+        <div class="container">
+            <section id="about">
+                <h3>Welcome to Serenity Spa</h3>
+                <p>Nestled in the heart of tranquility, Serenity Spa offers a peaceful retreat from the hustle and bustle of daily life. Our expert therapists are dedicated to providing personalized treatments designed to relax your body, calm your mind, and renew your spirit. We use only the finest natural ingredients and proven techniques to ensure a truly blissful experience. Come unwind and let us pamper you.</p>
+            </section>
 
-        <section id="about" class="section">
-            <h2>About ToyWonder</h2>
-            <p>Founded by passionate toy lovers, ToyWonder aims to bring smiles to children's faces worldwide. We believe in the power of play to inspire creativity, foster learning, and create lasting memories. Our curated collection features toys that are not only fun but also safe and enriching for kids of all ages. Join us in celebrating the magic of childhood!</p>
-        </section>
+            <section id="services">
+                <h3>Our Signature Services</h3>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h4>Relaxing Massage</h4>
+                        <p>Choose from Swedish, Deep Tissue, or Hot Stone massages to melt away tension and stress.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Rejuvenating Facials</h4>
+                        <p>Customized facials using premium products to cleanse, exfoliate, and hydrate your skin.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Body Wraps & Scrubs</h4>
+                        <p>Detoxify and nourish your skin with our luxurious body treatments for a radiant glow.</p>
+                    </div>
+                     <div class="service-item">
+                        <h4>Manicures & Pedicures</h4>
+                        <p>Pamper your hands and feet with our meticulous nail care services in a serene setting.</p>
+                    </div>
+                     <div class="service-item">
+                        <h4>Aromatherapy</h4>
+                        <p>Enhance your well-being with the therapeutic benefits of essential oils integrated into your service.</p>
+                    </div>
+                     <div class="service-item">
+                        <h4>Spa Packages</h4>
+                        <p>Indulge in our curated packages combining multiple treatments for ultimate relaxation.</p>
+                    </div>
+                </div>
+            </section>
 
-    </div>
+            <section id="testimonials">
+                <h3>What Our Clients Say</h3>
+                <div class="testimonials">
+                    <blockquote>
+                        <p>"An absolute oasis! From the moment I walked in, I felt relaxed. The massage was incredible, and the staff were so welcoming. I left feeling completely renewed."</p>
+                        <cite>– Jessica M.</cite>
+                    </blockquote>
+                    <blockquote>
+                        <p>"The best facial I've ever had! My skin feels amazing. The atmosphere is so calming. Highly recommend Serenity Spa for anyone needing a break."</p>
+                        <cite>– David R.</cite>
+                    </blockquote>
+                     <blockquote>
+                        <p>"My go-to place for unwinding. Consistent quality and a truly serene environment. The spa packages are great value."</p>
+                        <cite>– Sarah L.</cite>
+                    </blockquote>
+                </div>
+            </section>
 
-    <footer id="contact">
-        <p>&copy; 2025 ToyWonder. All Rights Reserved.</p>
-        <p>Contact us: info@toywonder.example.com | 123-456-7890</p>
+            <section id="contact">
+                <h3>Book Your Appointment</h3>
+                <p style="text-align: center; margin-bottom: 2rem;">Ready to experience serenity? Fill out the form below or give us a call to schedule your visit.</p>
+                <form action="#" method="post"> <!-- Replace # with your form processing endpoint -->
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="service">Preferred Service:</label>
+                    <select id="service" name="service">
+                        <option value="">-- Select a Service --</option>
+                        <option value="massage">Relaxing Massage</option>
+                        <option value="facial">Rejuvenating Facial</option>
+                        <option value="body_treatment">Body Wrap/Scrub</option>
+                        <option value="nails">Manicure/Pedicure</option>
+                        <option value="package">Spa Package</option>
+                        <option value="other">Other/Unsure</option>
+                    </select>
+
+                    <label for="date">Preferred Date:</label>
+                    <input type="date" id="date" name="date">
+
+                     <label for="message">Message (Optional):</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+
+                    <button type="submit">Request Booking</button>
+                </form>
+                <div class="contact-info">
+                    <p><strong>Or Contact Us Directly:</strong></p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: booking@serenityspa.example.com</p>
+                    <p>Address: 123 Relaxation Ave, Calm City, ST 12345</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Serenity Spa. All Rights Reserved.</p>
     </footer>
 
 </body>
