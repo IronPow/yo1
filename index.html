@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ephemeral Visions - Art Gallery</title>
+    <title>Art Gallery Showcase</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap');
 
         :root {
-            --primary-bg: #1a1a1a; /* Dark charcoal */
-            --secondary-bg: #2a2a2a; /* Slightly lighter charcoal */
-            --text-color: #e0e0e0; /* Light grey */
-            --accent-color: #d4af37; /* Gold */
-            --hover-bg: #3a3a3a;
+            --background-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --primary-accent: #ff6b6b;
+            --secondary-accent: #4ecdc4;
+            --card-background: #2b2b2b;
             --shadow-color: rgba(0, 0, 0, 0.5);
             --font-heading: 'Playfair Display', serif;
-            --font-body: 'Roboto', sans-serif;
+            --font-body: 'Lato', sans-serif;
         }
 
         * {
@@ -25,121 +25,60 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: var(--font-body);
-            background-color: var(--primary-bg);
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
+            perspective: 1000px; /* For potential 3D effects */
         }
 
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-
-        /* Header */
-        .site-header {
-            background: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 26, 0.8));
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px var(--shadow-color);
-            border-bottom: 1px solid var(--accent-color);
-        }
-
-        .site-header .container {
-            display: flex;
-            justify-content: center; /* Center title */
-            align-items: center;
-        }
-
-        .site-title {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            text-shadow: 1px 1px 3px var(--shadow-color);
-            letter-spacing: 1px;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 60vh;
-            background: url('https://picsum.photos/1920/1080?grayscale&blur=2') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        header {
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            padding: 3rem 1rem 4rem 1rem;
             text-align: center;
-            color: #fff;
-            position: relative;
-            margin-bottom: 4rem;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-shadow: 2px 2px 5px var(--shadow-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: var(--text-color);
-        }
-
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 4rem 0;
-        }
-
-        .gallery-section h2 {
-            text-align: center;
-            font-family: var(--font-heading);
-            font-size: 2.8rem;
-            color: var(--accent-color);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             margin-bottom: 3rem;
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            overflow: hidden;
         }
 
-        .gallery-section h2::after {
+        header::before { /* Subtle pattern/texture */
             content: '';
-            display: block;
-            width: 60%;
-            height: 2px;
-            background-color: var(--accent-color);
-            margin: 0.5rem auto 0;
-            opacity: 0.7;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 10px 10px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--background-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--card-background);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
         .gallery-grid {
@@ -148,418 +87,298 @@
             gap: 2rem;
         }
 
-        .gallery-item {
-            background-color: var(--secondary-bg);
+        .art-item {
+            background-color: var(--card-background);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInItem 0.6s ease forwards;
+            position: relative;
         }
 
-        /* Staggered fade-in animation */
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
-        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
-        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
-        /* Add more if needed */
-
-        @keyframes fadeInItem {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .art-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px var(--shadow-color);
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px var(--shadow-color);
-        }
-
-        .gallery-item img {
+        .art-item img {
             display: block;
             width: 100%;
-            height: 250px; /* Fixed height for consistency */
-            object-fit: cover; /* Crop image nicely */
-            transition: transform 0.3s ease;
+            height: auto;
+            aspect-ratio: 1 / 1; /* Default aspect ratio, can vary per image */
+            object-fit: cover;
+            transition: opacity 0.4s ease-out;
         }
 
-        .gallery-item:hover img {
-             /* subtle zoom on hover */
-             /* transform: scale(1.05); */ /* Let's keep hover effect on the card itself */
+        .art-item:hover img {
+            opacity: 0.85;
         }
 
-        .item-info {
-            padding: 1rem 1.2rem;
+        .art-info {
+            padding: 1.5rem;
+            text-align: center;
         }
 
-        .item-title {
+        .art-info h3 {
             font-family: var(--font-heading);
-            font-size: 1.4rem;
-            color: var(--accent-color);
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            color: var(--primary-accent);
         }
 
-        .item-description {
-            font-size: 0.95rem;
+        .art-info p {
+            font-size: 0.9rem;
             color: var(--text-color);
-            opacity: 0.8;
-            line-height: 1.4;
-            /* Limit description length visually */
-             overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* Limit to 3 lines */
-            -webkit-box-orient: vertical;
+            font-weight: 300;
         }
 
-
-        /* Lightbox/Modal */
+        /* Lightbox Styles */
         .lightbox {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
-            z-index: 1001;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.95); /* Darker overlay */
-            animation: fadeInModal 0.4s ease;
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-         @keyframes fadeOutModal {
-            from { opacity: 1; }
-            to { opacity: 0; }
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .lightbox-content {
-            position: relative;
             margin: auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 80vh; /* Limit image height */
             display: block;
-            margin: 0 auto;
-            border: 5px solid var(--accent-color); /* Frame effect */
-            box-shadow: 0 0 25px var(--shadow-color);
-            animation: zoomInModal 0.4s ease;
-        }
-
-         @keyframes zoomInModal {
-            from { transform: scale(0.8); }
-            to { transform: scale(1); }
+            max-width: 85%;
+            max-height: 85%;
+            animation: zoomIn 0.6s ease-out;
         }
 
         .lightbox-caption {
-            margin-top: 15px;
+            margin: 15px auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
             color: var(--text-color);
+            padding: 10px 0;
             font-size: 1.1rem;
-        }
-
-        .lightbox-caption h3 {
             font-family: var(--font-heading);
-            color: var(--accent-color);
-            margin-bottom: 5px;
-            font-size: 1.8rem;
-        }
-
-        .lightbox-caption p {
-            font-size: 1rem;
-            line-height: 1.5;
-             max-width: 600px; /* Limit caption width */
-             margin-left: auto;
-             margin-right: auto;
+            letter-spacing: 1px;
         }
 
         .lightbox-close {
             position: absolute;
-            top: 15px;
+            top: 25px;
             right: 35px;
-            color: var(--accent-color);
+            color: var(--text-color);
             font-size: 40px;
             font-weight: bold;
             transition: 0.3s;
             cursor: pointer;
-            text-decoration: none;
         }
 
         .lightbox-close:hover,
         .lightbox-close:focus {
-            color: #bbb;
+            color: var(--primary-accent);
             text-decoration: none;
+            cursor: pointer;
         }
 
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
 
-        /* Footer */
-        .site-footer {
-            background-color: var(--secondary-bg);
-            color: var(--text-color);
+        footer {
             text-align: center;
-            padding: 2rem 0;
+            padding: 2rem 1rem;
             margin-top: 4rem;
-            border-top: 1px solid #444;
-        }
-
-        .site-footer p {
             font-size: 0.9rem;
-            opacity: 0.7;
-        }
-        .site-footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .site-footer a:hover {
-            color: #fff;
+            color: rgba(224, 224, 224, 0.6);
+            border-top: 1px solid var(--card-background);
         }
 
-        /* Responsive Design */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .site-title {
-                font-size: 2rem;
-            }
-            .hero h1 {
+            header h1 {
                 font-size: 2.5rem;
             }
-            .hero p {
-                font-size: 1rem;
+            header {
+                padding: 2rem 1rem 3rem 1rem;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
-             .gallery-section h2 {
-                font-size: 2.2rem;
-             }
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 1.5rem;
             }
-            .lightbox-content {
-                width: 95%;
-            }
-            .lightbox-close {
-                top: 10px;
-                right: 25px;
-                font-size: 35px;
+            .art-item:hover {
+                transform: translateY(-5px) scale(1.02);
             }
         }
 
         @media (max-width: 480px) {
-             .site-title {
-                font-size: 1.6rem;
-            }
-             .hero {
-                 height: 50vh;
-             }
-             .hero h1 {
+             header h1 {
                 font-size: 2rem;
             }
-             .gallery-section h2 {
-                font-size: 1.8rem;
-             }
+             header p {
+                font-size: 1rem;
+            }
             .gallery-grid {
-                grid-template-columns: 1fr; /* Single column on very small screens */
+                grid-template-columns: 1fr; /* Single column on small screens */
                 gap: 1rem;
             }
-             .item-title {
-                 font-size: 1.2rem;
-             }
-             .item-description {
-                 font-size: 0.9rem;
-             }
-             .lightbox-caption h3 {
-                 font-size: 1.5rem;
-             }
-             .lightbox-caption p {
-                 font-size: 0.9rem;
-             }
+             .art-item:hover {
+                transform: none; /* Disable hover transform on very small screens if needed */
+                 box-shadow: 0 10px 20px var(--shadow-color); /* Keep base shadow */
+            }
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+             .lightbox-close {
+                top: 15px;
+                right: 25px;
+                font-size: 30px;
+            }
         }
-
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container">
-            <div class="site-title">Ephemeral Visions</div>
-        </div>
+    <header>
+        <h1>Ephemeral Visions</h1>
+        <p>A Curated Collection of Digital Dreams & Abstract Realities</p>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-             <h1>Where Colors Speak Louder Than Words</h1>
-             <p>Explore a curated collection of contemporary art pieces that challenge perception and evoke emotion.</p>
+    <main class="gallery-container">
+        <div class="gallery-grid">
+            <figure class="art-item">
+                <img src="https://source.unsplash.com/random/600x600/?abstract,vibrant" alt="Abstract Vibrant Waves" data-title="Chromatic Flow" data-description="Digital Painting, 2024">
+                <figcaption class="art-info">
+                    <h3>Chromatic Flow</h3>
+                    <p>Digital Painting, 2024</p>
+                </figcaption>
+            </figure>
+
+            <figure class="art-item">
+                <img src="https://source.unsplash.com/random/600x600/?surreal,landscape" alt="Surreal Floating Island" data-title="Utopia Suspended" data-description="Mixed Media, 2023">
+                <figcaption class="art-info">
+                    <h3>Utopia Suspended</h3>
+                    <p>Mixed Media, 2023</p>
+                </figcaption>
+            </figure>
+
+            <figure class="art-item">
+                <img src="https://source.unsplash.com/random/600x600/?galaxy,nebula" alt="Cosmic Nebula" data-title="Stardust Echoes" data-description="Astrophotography Art, 2024">
+                <figcaption class="art-info">
+                    <h3>Stardust Echoes</h3>
+                    <p>Astrophotography Art, 2024</p>
+                </figcaption>
+            </figure>
+
+            <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?geometric,minimalist" alt="Minimalist Geometric Shapes" data-title="Order in Chaos" data-description="Generative Art, 2023">
+                <figcaption class="art-info">
+                    <h3>Order in Chaos</h3>
+                    <p>Generative Art, 2023</p>
+                </figcaption>
+            </figure>
+
+            <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?fantasy,forest" alt="Mystical Forest Path" data-title="Whispering Woods" data-description="Digital Illustration, 2024">
+                <figcaption class="art-info">
+                    <h3>Whispering Woods</h3>
+                    <p>Digital Illustration, 2024</p>
+                </figcaption>
+            </figure>
+
+             <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?cyberpunk,city" alt="Cyberpunk Cityscape" data-title="Neon Dreams" data-description="Concept Art, 2023">
+                <figcaption class="art-info">
+                    <h3>Neon Dreams</h3>
+                    <p>Concept Art, 2023</p>
+                </figcaption>
+            </figure>
+
+             <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?sculpture,modern" alt="Modern Abstract Sculpture" data-title="Fluid Form" data-description="3D Render, 2024">
+                <figcaption class="art-info">
+                    <h3>Fluid Form</h3>
+                    <p>3D Render, 2024</p>
+                </figcaption>
+            </figure>
+
+             <figure class="art-item">
+                <img src="https://source.unsplash.com/random/600x600/?portrait,colorful" alt="Colorful Abstract Portrait" data-title="Fractured Identity" data-description="Oil on Canvas (Digitized), 2022">
+                <figcaption class="art-info">
+                    <h3>Fractured Identity</h3>
+                    <p>Oil on Canvas (Digitized), 2022</p>
+                </figcaption>
+            </figure>
+
+             <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?nature,macro" alt="Macro shot of dew on leaf" data-title="Emerald Droplets" data-description="Macro Photography, 2024">
+                <figcaption class="art-info">
+                    <h3>Emerald Droplets</h3>
+                    <p>Macro Photography, 2024</p>
+                </figcaption>
+            </figure>
+
         </div>
-    </section>
-
-    <main>
-        <section id="gallery" class="gallery-section">
-            <div class="container">
-                <h2>Our Collection</h2>
-                <div class="gallery-grid">
-                    <!-- Gallery Item 1 -->
-                    <div class="gallery-item" data-title="Crimson Echo" data-description="An abstract exploration of passion and memory, rendered in bold acrylics.">
-                        <img src="https://picsum.photos/seed/picsumart1/600/400" alt="Crimson Echo Abstract Art">
-                        <div class="item-info">
-                            <h3 class="item-title">Crimson Echo</h3>
-                            <p class="item-description">An abstract exploration of passion and memory, rendered in bold acrylics.</p>
-                        </div>
-                    </div>
-                    <!-- Gallery Item 2 -->
-                    <div class="gallery-item" data-title="Azure Dreamscape" data-description="A surreal landscape where the sky meets the sea in a tranquil embrace. Watercolor on canvas.">
-                        <img src="https://picsum.photos/seed/picsumart2/600/400" alt="Azure Dreamscape Landscape">
-                        <div class="item-info">
-                            <h3 class="item-title">Azure Dreamscape</h3>
-                            <p class="item-description">A surreal landscape where the sky meets the sea in a tranquil embrace. Watercolor on canvas.</p>
-                        </div>
-                    </div>
-                    <!-- Gallery Item 3 -->
-                    <div class="gallery-item" data-title="Geometric Soul" data-description="Sharp lines and contrasting colors define this study of form and structure. Digital media.">
-                        <img src="https://picsum.photos/seed/picsumart3/600/400" alt="Geometric Soul Digital Art">
-                        <div class="item-info">
-                            <h3 class="item-title">Geometric Soul</h3>
-                            <p class="item-description">Sharp lines and contrasting colors define this study of form and structure. Digital media.</p>
-                        </div>
-                    </div>
-                    <!-- Gallery Item 4 -->
-                    <div class="gallery-item" data-title="Whispers in the Woods" data-description="Capturing the fleeting light and hidden life within a dense forest. Oil painting.">
-                        <img src="https://picsum.photos/seed/picsumart4/600/400" alt="Whispers in the Woods Oil Painting">
-                        <div class="item-info">
-                            <h3 class="item-title">Whispers in the Woods</h3>
-                            <p class="item-description">Capturing the fleeting light and hidden life within a dense forest. Oil painting.</p>
-                        </div>
-                    </div>
-                     <!-- Gallery Item 5 -->
-                    <div class="gallery-item" data-title="Urban Pulse" data-description="The vibrant energy and chaotic beauty of city life, expressed through mixed media collage.">
-                        <img src="https://picsum.photos/seed/picsumart5/600/400" alt="Urban Pulse Mixed Media">
-                        <div class="item-info">
-                            <h3 class="item-title">Urban Pulse</h3>
-                            <p class="item-description">The vibrant energy and chaotic beauty of city life, expressed through mixed media collage.</p>
-                        </div>
-                    </div>
-                     <!-- Gallery Item 6 -->
-                    <div class="gallery-item" data-title="Silent Watcher" data-description="A striking portrait capturing introspection and quiet strength. Charcoal on paper.">
-                        <img src="https://picsum.photos/seed/picsumart6/600/400" alt="Silent Watcher Charcoal Portrait">
-                        <div class="item-info">
-                            <h3 class="item-title">Silent Watcher</h3>
-                            <p class="item-description">A striking portrait capturing introspection and quiet strength. Charcoal on paper.</p>
-                        </div>
-                    </div>
-                     <!-- Gallery Item 7 -->
-                    <div class="gallery-item" data-title="Golden Hour Serenity" data-description="Impressionistic view of a field bathed in the warm glow of sunset. Pastel.">
-                        <img src="https://picsum.photos/seed/picsumart7/600/400" alt="Golden Hour Serenity Pastel Landscape">
-                        <div class="item-info">
-                            <h3 class="item-title">Golden Hour Serenity</h3>
-                            <p class="item-description">Impressionistic view of a field bathed in the warm glow of sunset. Pastel.</p>
-                        </div>
-                    </div>
-                     <!-- Gallery Item 8 -->
-                    <div class="gallery-item" data-title="Fragmented Reality" data-description="A deconstructed still life challenging traditional perspectives. Cubist influence.">
-                        <img src="https://picsum.photos/seed/picsumart8/600/400" alt="Fragmented Reality Cubist Still Life">
-                        <div class="item-info">
-                            <h3 class="item-title">Fragmented Reality</h3>
-                            <p class="item-description">A deconstructed still life challenging traditional perspectives. Cubist influence.</p>
-                        </div>
-                    </div>
-                    <!-- Add more gallery items as needed -->
-
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2025 Ephemeral Visions Art Gallery. All Rights Reserved.</p>
-            <p>Designed with <span style="color: var(--accent-color);">&hearts;</span></p>
-        </div>
+    <footer>
+        <p>&copy; 2025 Your Artist Name / Studio. All Rights Reserved.</p>
     </footer>
 
     <!-- Lightbox Structure -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" title="Close">&times;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="Enlarged Art Piece">
-            <div id="lightbox-caption" class="lightbox-caption">
-                <h3 id="lightbox-title"></h3>
-                <p id="lightbox-description"></p>
-            </div>
-        </div>
+    <div id="myLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <div class="lightbox-caption" id="caption"></div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxTitle = document.getElementById('lightbox-title');
-            const lightboxDescription = document.getElementById('lightbox-description');
+            const lightbox = document.getElementById('myLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const captionText = document.getElementById('caption');
             const closeBtn = document.querySelector('.lightbox-close');
+            const galleryItems = document.querySelectorAll('.art-item img');
 
             galleryItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    const imgSrc = item.querySelector('img').src;
-                    // Use high-res version if available, otherwise use grid image src
-                    // For picsum, we can request a larger size, e.g., 1200x800
-                    const highResSrc = imgSrc.replace('/600/400', '/1200/800');
-                    const title = item.dataset.title;
-                    const description = item.dataset.description;
-
-                    lightboxImg.src = highResSrc;
-                    lightboxImg.alt = title; // Update alt text
-                    lightboxTitle.textContent = title;
-                    lightboxDescription.textContent = description;
-
-                    lightbox.style.display = 'block';
+                    lightbox.style.display = 'flex'; // Use flex to center content
+                    lightboxImg.src = item.src;
+                    const title = item.getAttribute('data-title') || 'Artwork';
+                    const description = item.getAttribute('data-description') || '';
+                    captionText.innerHTML = `<strong>${title}</strong><br>${description}`;
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 });
             });
 
             function closeLightbox() {
-                lightbox.style.animation = 'fadeOutModal 0.4s ease forwards';
-                 setTimeout(() => {
-                    lightbox.style.display = 'none';
-                    lightbox.style.animation = ''; // Reset animation
-                    document.body.style.overflow = ''; // Restore scrolling
-                    // Clear content to prevent flash of old image if reopened quickly
-                    lightboxImg.src = "";
-                    lightboxTitle.textContent = "";
-                    lightboxDescription.textContent = "";
-                }, 400); // Match animation duration
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
             }
 
+            // Close lightbox when clicking the close button
             closeBtn.addEventListener('click', closeLightbox);
 
-            // Close lightbox if clicking outside the image/caption area
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
                     closeLightbox();
                 }
             });
 
-            // Close lightbox with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.style.display === 'block') {
+             // Close lightbox with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && lightbox.style.display === 'flex') {
                     closeLightbox();
                 }
             });
