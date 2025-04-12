@@ -4,20 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock Your Potential - [Your Name/Brand] Coaching</title>
+    <title>Apex Football - Elevate Your Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
-
         :root {
-            --primary-color: #4a90e2; /* Vibrant Blue */
-            --secondary-color: #f5a623; /* Warm Orange */
-            --dark-color: #333;
-            --light-color: #f8f9fa;
-            --text-color: #555;
-            --gradient-start: #4a90e2;
-            --gradient-end: #50e3c2; /* Teal */
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
+            --primary-color: #00a859; /* Vibrant Green */
+            --secondary-color: #1a1a1a; /* Dark Background */
+            --accent-color: #ffffff; /* White Text */
+            --text-color: #cccccc; /* Lighter Gray Text */
+            --font-family: 'Poppins', sans-serif;
+            --transition-speed: 0.3s;
         }
 
         * {
@@ -28,534 +27,554 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust for fixed header height */
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.7;
+            font-family: var(--font-family);
+            background-color: var(--secondary-color);
             color: var(--text-color);
-            background-color: var(--light-color);
+            line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--dark-color);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.8rem; }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--secondary-color);
-        }
-
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Navigation */
-        .navbar {
+        /* Header */
+        .main-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
             z-index: 1000;
-            transition: background 0.3s ease, padding 0.3s ease;
+            transition: background-color var(--transition-speed) ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 1);
-            padding: 0.8rem 0;
-        }
-
-        .navbar .container {
+        .main-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
+        .logo {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .logo span {
             color: var(--primary-color);
         }
-         .navbar .logo span {
-            color: var(--secondary-color);
-         }
 
-        .navbar nav ul {
-            display: flex;
+        .main-nav ul {
             list-style: none;
+            display: flex;
         }
 
-        .navbar nav ul li {
-            margin-left: 2rem;
+        .main-nav ul li {
+            margin-left: 30px;
         }
 
-        .navbar nav ul li a {
-            color: var(--dark-color);
+        .main-nav ul li a {
+            color: var(--accent-color);
+            text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
             position: relative;
             padding-bottom: 5px;
         }
 
-        .navbar nav ul li a::after {
-             content: '';
-             position: absolute;
-             bottom: 0;
-             left: 0;
-             width: 0;
-             height: 2px;
-             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-             transition: width 0.3s ease;
+        .main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed) ease;
         }
 
-         .navbar nav ul li a:hover::after,
-         .navbar nav ul li a.active::after {
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: var(--primary-color);
+        }
+
+        .main-nav ul li a:hover::after,
+        .main-nav ul li a.active::after {
             width: 100%;
         }
 
-        .navbar nav ul li a:hover,
-        .navbar nav ul li a.active {
-            color: var(--primary-color);
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            color: var(--accent-color);
+            cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1920&h=1080&fit=crop') no-repeat center center/cover;
-            background-blend-mode: multiply;
-            color: #fff;
+            min-height: 600px;
+            background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding-top: 80px; /* Account for fixed navbar */
-        }
-
-        .hero::before { /* Subtle overlay pattern */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); */
-            opacity: 0.1;
+            color: var(--accent-color);
         }
 
         .hero-content {
             max-width: 800px;
-            z-index: 1;
-            animation: fadeIn HeroAnimation 1s ease-out forwards;
+            animation: fadeIn HeroAnimation 1.5s ease-out forwards;
         }
 
-        @keyframes fadeInHeroAnimation {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-content h1 {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        .hero-content h1 span {
+            color: var(--primary-color);
         }
 
-         .hero .subtitle {
-            font-size: 1.5rem;
+        .hero-content p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: var(--accent-color);
             font-weight: 300;
-            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            box-shadow: 0 5px 15px rgba(0, 168, 89, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #008a48; /* Darker Green */
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-color);
+            font-size: 2em;
+            animation: bounce 2s infinite;
+        }
+
+        /* Sections General Styling */
+        .section {
+            padding: 100px 0;
+            overflow: hidden; /* For animation */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            opacity: 0; /* For animation */
+            transform: translateX(-50px); /* For animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .about-text h3 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+            opacity: 0; /* For animation */
+            transform: translateX(50px); /* For animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Services Section */
+        #services {
+            background-color: #222; /* Slightly lighter dark */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-item {
+            background-color: var(--secondary-color);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            opacity: 0; /* For animation */
+            transform: translateY(50px); /* For animation */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 168, 89, 0.2);
+        }
+
+        .service-item i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 120px; /* Space for dots */
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden; /* Ensure content stays within */
+        }
+        .testimonial-wrapper {
+             display: flex;
+             transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial {
+            min-width: 100%; /* Each testimonial takes full width */
+            padding: 40px;
+            text-align: center;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0; /* For animation */
+            transform: scale(0.9); /* For animation */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .testimonial blockquote {
+            font-size: 1.1em;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial cite {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .slider-dots {
+            text-align: center;
+            margin-top: 30px;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #555;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+        }
+
+
+        /* Call to Action Section */
+        #cta {
+            background: linear-gradient(rgba(0, 168, 89, 0.8), rgba(0, 168, 89, 0.9)), url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        #cta .container {
+             opacity: 0; /* For animation */
+            transform: translateY(50px); /* For animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        #cta h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        #cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 50px; /* Pill shape */
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--secondary-color);
-            color: var(--dark-color);
-            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: #e4940f; /* Darker orange */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-            margin-left: 1rem;
-        }
-
-        .btn-secondary:hover {
-             background: rgba(255, 255, 255, 0.1);
-             transform: translateY(-3px);
-        }
-
-        /* Section Base Styling */
-        .section {
-            padding: 6rem 0;
-            overflow: hidden; /* Contain animations */
-        }
-
-         .section-light { background-color: var(--light-color); }
-         .section-dark { background-color: var(--dark-color); color: var(--light-color); }
-         .section-gradient { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); color: #fff; }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary-color);
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
-
-        .section-dark .section-title,
-        .section-gradient .section-title { color: #fff; }
-        .section-dark h2, .section-dark h3, .section-dark p,
-        .section-gradient h2, .section-gradient h3, .section-gradient p { color: #fff; }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            display: block;
-            margin: 0 auto;
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: transform 0.5s ease;
-        }
-
-        .about-image:hover img {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-
-        }
-
-        .service-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Testimonials Section */
-        .testimonial-slider {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden; /* Hide non-active slides */
-            background: #fff;
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-slide {
-            display: none; /* Hide all slides initially */
-            text-align: center;
-            animation: fadeEffect 1.5s;
-        }
-        .testimonial-slide.active {
-             display: block; /* Show active slide */
-        }
-
-        @keyframes fadeEffect {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
-
-        .testimonial-quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding: 0 2rem;
-        }
-        .testimonial-quote::before, .testimonial-quote::after {
-            content: '"';
-            font-size: 4rem;
-            color: var(--primary-color);
-            opacity: 0.2;
-            position: absolute;
-            line-height: 1;
-        }
-        .testimonial-quote::before { top: -1rem; left: -0.5rem; }
-        .testimonial-quote::after { bottom: -2.5rem; right: -0.5rem; }
-
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--dark-color);
-            margin-top: 1rem;
-        }
-
-        .testimonial-author span {
-            display: block;
-            font-weight: 400;
-            font-size: 0.9rem;
-            color: var(--text-color);
-        }
-
-         .slider-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 1rem;
-        }
-
-        .slider-btn {
-            background-color: rgba(0,0,0,0.2);
-            color: white;
-            border: none;
-            padding: 0.8rem 1rem;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease;
-            z-index: 5; /* Ensure buttons are above quote marks */
-        }
-
-        .slider-btn:hover {
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        /* CTA Section */
-        #cta { text-align: center; }
-        #cta h2 { font-size: 2.8rem; }
-        #cta p { max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 1.1rem; }
-
-
         /* Footer */
-        .footer {
-            background-color: var(--dark-color);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 4rem 0 2rem;
+        .main-footer {
+            background-color: #111;
+            color: var(--text-color);
+            padding: 40px 0;
             text-align: center;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .footer-col h4 {
-            color: #fff;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
+        .footer-logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 15px;
         }
 
-        .footer-col h4::after {
-             content: '';
-             position: absolute;
-             bottom: 0;
-             left: 0;
-             width: 40px;
-             height: 2px;
-             background: var(--secondary-color);
+        .footer-logo span {
+             color: var(--primary-color);
         }
 
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: color 0.3s ease, padding-left 0.3s ease;
-        }
-
-        .footer-col ul li a:hover {
-            color: #fff;
-            padding-left: 5px;
+        .social-links {
+            margin-bottom: 20px;
         }
 
         .social-links a {
-            display: inline-block;
-            height: 40px;
-            width: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            margin: 0 10px 10px 0;
-            text-align: center;
-            line-height: 40px;
-            border-radius: 50%;
-            color: #ffffff;
-            transition: all 0.5s ease;
+            color: var(--text-color);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color var(--transition-speed) ease;
         }
 
         .social-links a:hover {
-            color: var(--dark-color);
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
+            color: var(--primary-color);
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            font-size: 0.9rem;
+        .footer-text {
+            font-size: 0.9em;
         }
 
-        /* Animation on Scroll */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes HeroAnimation {
+             from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
+
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Reveal Animation on Scroll */
+        .reveal {
+            opacity: 1 !important; /* Override initial opacity */
+            transform: none !important; /* Override initial transform */
+        }
+
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            h1 { font-size: 3rem; }
-            .hero h1 { font-size: 3.5rem; }
-            h2 { font-size: 2.2rem; }
-            .container { padding: 0 15px; }
-            .section { padding: 4rem 0; }
+            .hero-content h1 {
+                font-size: 3em;
+            }
+            .hero-content p {
+                font-size: 1.2em;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image {
+                 margin-top: 40px;
+            }
+             .about-text, .about-image {
+                 transform: none; /* Disable separate transforms on smaller screens */
+             }
+
+             /* Trigger animation for both on smaller screens */
+            #about.reveal .about-text,
+            #about.reveal .about-image {
+                 opacity: 1;
+            }
         }
 
         @media (max-width: 768px) {
-            .navbar .container { flex-direction: column; }
-            .navbar nav { margin-top: 1rem; }
-            .navbar nav ul li { margin: 0 0.8rem; }
-            .hero { height: auto; padding: 120px 0 60px 0; }
-            .hero h1 { font-size: 2.8rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            .about-content { grid-template-columns: 1fr; text-align: center; }
-            .about-image img { margin: 0 auto 2rem auto; transform: rotateY(0); }
-            .testimonial-slider { padding: 2rem 1rem; }
-            .slider-controls { position: static; margin-top: 1.5rem; text-align: center;}
-            .slider-btn { display: inline-block; margin: 0 10px; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-             .footer-col h4::after { margin: 0 auto; }
-             .social-links { text-align: center; }
-             .social-links a { margin: 0 5px 10px 5px; }
+            .main-nav {
+                display: none; /* Hide nav by default */
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: rgba(26, 26, 26, 0.95);
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main-nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 1em;
+            }
+            .section-title {
+                font-size: 2.2em;
+            }
+            .services-grid {
+                 grid-template-columns: 1fr; /* Stack services */
+            }
+             .testimonial-slider {
+                 max-width: 90%;
+             }
+
         }
 
-        @media (max-width: 576px) {
-            h1 { font-size: 2.5rem; }
-            .hero h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            .btn { padding: 0.8rem 1.8rem; font-size: 0.8rem;}
-            .navbar nav ul li { margin: 0 0.5rem; }
-            .navbar nav ul li a { font-size: 0.9rem; }
-            .hero .subtitle { font-size: 1.1rem; }
-            .services-grid { grid-template-columns: 1fr; }
-            .testimonial-quote { font-size: 1rem; }
-            .testimonial-quote::before { left: -1rem; }
-             .testimonial-quote::after { right: -1rem; }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2em;
+            }
+             .section {
+                 padding: 60px 0;
+             }
+             .section-title {
+                 font-size: 1.8em;
+             }
+             #cta h2 {
+                 font-size: 2em;
+             }
+             #cta p {
+                 font-size: 1em;
+             }
         }
+
     </style>
-    <!-- Font Awesome for Icons (Optional, replace with SVGs if preferred) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <header class="main-header" id="mainHeader">
         <div class="container">
-            <a href="#hero" class="logo">[Your Name]<span>.</span></a>
-            <nav>
+            <a href="#hero" class="logo">APEX<span>FOOTBALL</span></a>
+            <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -564,280 +583,262 @@
                     <li><a href="#cta">Contact</a></li>
                 </ul>
             </nav>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>Transform Your Life, Achieve Your Goals</h1>
-            <p class="subtitle">Partner with a dedicated coach to unlock your true potential and create lasting change. Let's build your success story together.</p>
-            <a href="#contact-form" class="btn btn-primary">Start Your Journey</a>
-            <a href="#services" class="btn btn-secondary">Learn More</a>
+            <h1>Dominate the Pitch with <span>Apex Football</span></h1>
+            <p>Unlock your potential with elite training, premium gear, and unparalleled expertise.</p>
+            <a href="#services" class="cta-button">Explore Our Services</a>
         </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section section-light">
+    <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Meet Your Coach</h2>
+            <h2 class="section-title">Who We Are</h2>
             <div class="about-content">
-                <div class="about-text animate-on-scroll">
-                    <h3>[Your Name] - Your Partner in Growth</h3>
-                    <p>Hi, I'm [Your Name], a certified training coach passionate about empowering individuals like you to break through barriers and achieve peak performance. With [X] years of experience in [Your Specialization, e.g., leadership development, fitness transformation, career strategy], I provide personalized guidance and proven strategies tailored to your unique aspirations.</p>
-                    <p>My approach combines [mention key aspects like: evidence-based techniques, empathetic listening, actionable planning, accountability] to help you gain clarity, build confidence, and create sustainable results. Whether you're aiming for a career change, improved well-being, or enhanced skills, I'm here to support and challenge you every step of the way.</p>
-                    <a href="#cta" class="btn btn-primary" style="background: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);">Let's Connect</a>
+                <div class="about-text">
+                    <h3>More Than Just a Game</h3>
+                    <p>At Apex Football, we live and breathe the beautiful game. Founded by passionate players and coaches, our mission is to provide aspiring athletes, teams, and enthusiasts with the tools, knowledge, and resources they need to excel. We believe in dedication, teamwork, and pushing boundaries.</p>
+                    <p>From state-of-the-art training programs to top-quality equipment and community events, we are your ultimate football partner. Join the Apex family and elevate your game to the next level.</p>
                 </div>
-                <div class="about-image animate-on-scroll">
-                    <!-- Replace with a professional photo of the coach -->
-                    <img src="https://via.placeholder.com/400x450/CCCCCC/FFFFFF?text=Your+Photo+Here" alt="[Your Name], Training Coach">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1553779801-613776830130?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Football players training">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <section class="section" id="services">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">How I Can Help You</h2>
+            <h2 class="section-title">What We Offer</h2>
             <div class="services-grid">
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Career Acceleration</h3>
-                    <p>Navigate career transitions, develop leadership skills, and achieve your professional goals faster.</p>
+                <div class="service-item">
+                    <i class="fas fa-futbol"></i>
+                    <h3>Elite Coaching</h3>
+                    <p>Personalized training sessions and camps led by certified coaches for all skill levels.</p>
                 </div>
-                <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
-                    <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                    <h3>Personal Wellness</h3>
-                    <p>Improve your physical and mental well-being, build healthy habits, and create a balanced lifestyle.</p>
+                <div class="service-item">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Premium Gear</h3>
+                    <p>Curated selection of high-performance boots, apparel, and equipment from top brands.</p>
                 </div>
-                <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
-                    <div class="service-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Mindset Mastery</h3>
-                    <p>Overcome limiting beliefs, build resilience, enhance focus, and cultivate a growth mindset.</p>
+                <div class="service-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Events & Tournaments</h3>
+                    <p>Organizing competitive leagues, tournaments, and community football events.</p>
                 </div>
-                 <div class="service-card animate-on-scroll" style="transition-delay: 0.3s;">
-                    <div class="service-icon"><i class="fas fa-comments"></i></div>
-                    <h3>Communication Skills</h3>
-                    <p>Enhance your interpersonal skills, improve public speaking, and build stronger relationships.</p>
+                 <div class="service-item">
+                    <i class="fas fa-video"></i>
+                    <h3>Performance Analysis</h3>
+                    <p>Utilizing cutting-edge technology for video analysis and performance tracking.</p>
+                </div>
+                 <div class="service-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Team Consulting</h3>
+                    <p>Strategic guidance and support for clubs and teams looking to improve.</p>
+                </div>
+                 <div class="service-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Workshops & Clinics</h3>
+                    <p>Specialized workshops focusing on specific skills, tactics, and sports science.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section section-gradient">
+    <section class="section" id="testimonials">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Success Stories</h2>
-            <div class="testimonial-slider animate-on-scroll">
-                <!-- Slides -->
-                <div class="testimonial-slide active">
-                    <p class="testimonial-quote">Working with [Your Name] was a game-changer. I gained clarity on my goals and developed actionable steps to achieve them. Highly recommended!</p>
-                    <p class="testimonial-author">Alex Johnson <span>- Marketing Manager</span></p>
-                </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-quote">I felt stuck before coaching, but [Your Name]'s guidance helped me unlock potential I didn't know I had. My confidence has soared.</p>
-                    <p class="testimonial-author">Samantha Lee <span>- Entrepreneur</span></p>
-                </div>
-                <div class="testimonial-slide">
-                     <p class="testimonial-quote">The personalized wellness plan created for me was realistic and effective. I've never felt healthier or more energetic.</p>
-                    <p class="testimonial-author">Michael Chen <span>- Software Engineer</span></p>
-                </div>
-
-                <!-- Navigation Buttons -->
-                 <div class="slider-controls">
-                     <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-                     <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
-                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="cta" class="section section-light">
-        <div class="container animate-on-scroll">
-            <h2 class="section-title">Ready to Elevate Your Life?</h2>
-            <p>Take the first step towards achieving your goals. Book a complimentary discovery call today to see how coaching can benefit you.</p>
-            <a href="#contact-form" class="btn btn-primary">Book Your Free Call</a>
-        </div>
-    </section>
-
-     <!-- Simple Contact Form Section Placeholder -->
-     <section id="contact-form" class="section">
-         <div class="container">
-             <h2 class="section-title animate-on-scroll">Get In Touch</h2>
-             <form class="animate-on-scroll" style="max-width: 600px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow);">
-                 <div style="margin-bottom: 1rem;">
-                     <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name:</label>
-                     <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
-                 </div>
-                 <div style="margin-bottom: 1rem;">
-                     <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email:</label>
-                     <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
-                 </div>
-                 <div style="margin-bottom: 1.5rem;">
-                     <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message:</label>
-                     <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif; resize: vertical;"></textarea>
-                 </div>
-                 <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);">Send Message</button>
-             </form>
-             <p style="text-align: center; margin-top: 1rem; font-size: 0.9em;">(Note: This is a visual template. Form submission functionality needs backend implementation.)</p>
-         </div>
-     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h4>[Your Name/Brand] Coaching</h4>
-                    <p>Empowering you to reach your full potential through personalized coaching and support.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#about">About Me</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#cta">Book a Call</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                         <li><i class="fas fa-envelope" style="margin-right: 8px; color:var(--secondary-color)"></i> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-                         <li><i class="fas fa-phone" style="margin-right: 8px; color:var(--secondary-color)"></i> <a href="tel:+1234567890">+1 (234) 567-890</a> (Optional)</li>
-                         <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:var(--secondary-color)"></i> City, Country (Optional)</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow Me</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <h2 class="section-title">Hear From Our Players</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-wrapper" id="testimonialWrapper">
+                    <div class="testimonial">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Player 1">
+                        <blockquote>"Apex Football transformed my game! The coaching is top-notch, and the focus on individual development really made a difference."</blockquote>
+                        <cite>Alex Johnson, Striker</cite>
+                    </div>
+                    <div class="testimonial">
+                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Player 2">
+                        <blockquote>"The gear selection is fantastic, and the staff genuinely know their stuff. Found the perfect boots here!"</blockquote>
+                        <cite>Maria Garcia, Midfielder</cite>
+                    </div>
+                    <div class="testimonial">
+                        <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Coach 1">
+                        <blockquote>"As a coach, I appreciate the resources Apex provides. Their team consulting helped us structure our training effectively."</blockquote>
+                        <cite>Coach David Lee</cite>
                     </div>
                 </div>
+             </div>
+             <div class="slider-dots" id="sliderDots">
+                </div>
+        </div>
+    </section>
+
+    <section class="section" id="cta">
+        <div class="container">
+            <h2>Ready to Elevate Your Game?</h2>
+            <p>Join the Apex Football community today. Sign up for our newsletter for updates, or contact us to discuss your specific needs.</p>
+            <a href="#" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <a href="#hero" class="footer-logo">APEX<span>FOOTBALL</span></a>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="footer-bottom">
-                &copy; <span id="year"></span> [Your Name/Brand] Coaching. All Rights Reserved.
-            </div>
+            <p class="footer-text">&copy; 2025 Apex Football. All Rights Reserved. | Elevate Your Game</p>
         </div>
     </footer>
 
     <script>
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                }
+                // Update active link state
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Header background change on scroll
+        const header = document.getElementById('mainHeader');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
+                header.style.backgroundColor = 'rgba(17, 17, 17, 0.95)'; /* Darker solid on scroll */
             } else {
-                navbar.classList.remove('scrolled');
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.9)'; /* Original transparent */
             }
         });
-
-        // Active Navigation Link Highlighting
-        const sections = document.querySelectorAll('section');
-        const navLi = document.querySelectorAll('.navbar nav ul li a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                 // Adjust offset based on navbar height if needed
-                if (pageYOffset >= (sectionTop - sectionHeight / 3 - 80)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLi.forEach(a => {
-                a.classList.remove('active');
-                 a.classList.remove('active');
-                if(a.getAttribute('href') === `#${current}`){
-                    a.classList.add('active');
-                }
-                 // Special case for home when at top
-                 if (!current && a.getAttribute('href') === '#hero') {
-                     a.classList.add('active');
-                 }
-            });
-        });
-
 
         // Testimonial Slider
-        let slideIndex = 1;
-        showSlides(slideIndex);
+        const wrapper = document.getElementById('testimonialWrapper');
+        const dotsContainer = document.getElementById('sliderDots');
+        const testimonials = wrapper.querySelectorAll('.testimonial');
+        let currentIndex = 0;
+        const totalTestimonials = testimonials.length;
 
-        function changeSlide(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("testimonial-slide");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                slides[i].classList.remove("active");
+        if (totalTestimonials > 0) {
+            // Create dots
+            for (let i = 0; i < totalTestimonials; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
             }
-            slides[slideIndex-1].style.display = "block";
-            slides[slideIndex-1].classList.add("active");
+            const dots = dotsContainer.querySelectorAll('.dot');
+
+            function updateSlider() {
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+            }
+
+            function nextSlide() {
+                 currentIndex = (currentIndex + 1) % totalTestimonials;
+                 updateSlider();
+            }
+
+            // Initial setup
+            updateSlider();
+
+            // Auto-slide (optional)
+            setInterval(nextSlide, 7000); // Change slide every 7 seconds
         }
 
-        // Smooth Scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                 const targetId = this.getAttribute('href');
-                 const targetElement = document.querySelector(targetId);
-                 if(targetElement) {
-                    // Calculate position considering fixed navbar height
-                     const navbarHeight = document.getElementById('navbar').offsetHeight;
-                     const elementPosition = targetElement.getBoundingClientRect().top;
-                     const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                 }
+         // Simple Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.about-text, .about-image, .service-item, .testimonial, #cta .container');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    // Optional: unobserve after revealing to save resources
+                    // observer.unobserve(entry.target);
+                }
+                 // Optional: Hide again when scrolling up
+                 // else {
+                 //    entry.target.classList.remove('reveal');
+                 // }
             });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
         });
 
-         // Animate on Scroll
-         const observerOptions = {
-             root: null, // relative to document viewport
-             rootMargin: '0px',
-             threshold: 0.1 // 10% visible
-         };
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
 
-         const observerCallback = (entries, observer) => {
-             entries.forEach(entry => {
-                 if (entry.isIntersecting) {
-                     entry.target.classList.add('animated');
-                     // Optional: Stop observing once animated
-                     // observer.unobserve(entry.target);
-                 } else {
-                    // Optional: Remove animation if element scrolls out of view
-                    // entry.target.classList.remove('animated');
-                 }
-             });
-         };
 
-         const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll('section[id]');
 
-         document.querySelectorAll('.animate-on-scroll').forEach(element => {
-             scrollObserver.observe(element);
-         });
+        window.addEventListener('scroll', navHighlighter);
 
-        // Update Footer Year
-        document.getElementById('year').textContent = new Date().getFullYear();
+        function navHighlighter() {
+          let scrollY = window.pageYOffset;
+
+          sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 100; // Adjusted for header height and trigger point
+            const sectionId = current.getAttribute('id');
+
+            if (
+              scrollY > sectionTop &&
+              scrollY <= sectionTop + sectionHeight
+            ){
+              document.querySelector('.main-nav a[href*=' + sectionId + ']').classList.add('active');
+            } else {
+              document.querySelector('.main-nav a[href*=' + sectionId + ']').classList.remove('active');
+            }
+          });
+
+          // Special case for Hero at the top
+           if (scrollY < sections[0].offsetTop - 100) {
+                document.querySelector('.main-nav a[href*="hero"]').classList.add('active');
+           } else {
+                 document.querySelector('.main-nav a[href*="hero"]').classList.remove('active');
+           }
+        }
+
 
     </script>
+
 </body>
 </html>
 ```
