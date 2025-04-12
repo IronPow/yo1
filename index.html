@@ -4,277 +4,697 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn AI Today - Master Artificial Intelligence</title>
+    <title>AI Masters Academy - Learn the Future</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --accent-color: #00f2fe;
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            overflow-x: hidden;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
         header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
             padding: 1rem 0;
-            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        nav {
-            background-color: #34495e;
-            padding: 0.5rem 0;
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+            letter-spacing: 1px;
         }
+         .logo span {
+             color: var(--text-color);
+         }
+
         nav ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
+            display: flex;
         }
+
         nav ul li {
-            display: inline-block;
-            margin: 0 15px;
+            margin-left: 2rem;
         }
+
         nav ul li a {
-            color: #ecf0f1;
             text-decoration: none;
-            font-weight: bold;
+            color: var(--text-color);
+            font-weight: 400;
             transition: color 0.3s ease;
         }
-        nav ul li a:hover {
-            color: #1abc9c;
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-color);
         }
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1500x600.png?text=AI+Background') no-repeat center center/cover;
-            color: #fff;
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 5rem 1rem;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" opacity="0.05"><defs><pattern id="p" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="%23e0e0e0"/></pattern></defs><rect width="100%" height="100%" fill="url(%23p)"/></svg>'), var(--bg-color);
+            background-size: cover, 100px 100px, cover; /* Pattern size */
+            color: var(--text-color);
+            padding-top: 80px; /* Adjust for fixed header */
+            position: relative;
+            overflow: hidden;
         }
-        .hero h2 {
-            font-size: 3rem;
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 1) 90%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textShine 5s linear infinite;
+            background-size: 200% auto;
         }
-        .hero p {
-            font-size: 1.2rem;
+
+        #hero p {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
+
         .cta-button {
-            background-color: #1abc9c;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
             cursor: pointer;
         }
+
         .cta-button:hover {
-            background-color: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
         }
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .section {
-            background-color: #fff;
-            padding: 3rem 1rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2.section-title {
             text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 4rem;
+            color: var(--accent-color);
+            position: relative;
         }
-        .section h3 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
         }
-        .features-grid {
+
+        /* Features Section */
+        #features .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            text-align: left;
         }
+
         .feature-item {
-            background-color: #ecf0f1;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            fill: var(--accent-color);
+        }
+
+        .feature-item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+        }
+
+        /* Courses Section */
+        #courses .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(30%) brightness(80%);
+            transition: filter 0.3s ease;
+        }
+        .course-card:hover img {
+             filter: grayscale(0%) brightness(100%);
+        }
+
+        .course-content {
             padding: 1.5rem;
-            border-radius: 5px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .feature-item h4 {
-            color: #34495e;
+
+        .course-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--accent-color);
         }
-        .testimonial {
+
+        .course-content p {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #888;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+         .course-meta span {
+             display: flex;
+             align-items: center;
+         }
+         .course-meta svg {
+             width: 16px;
+             height: 16px;
+             margin-right: 5px;
+             fill: #888;
+         }
+
+        .course-link {
+            display: inline-block;
+            background: none;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-top: 1rem; /* Added margin */
+            align-self: flex-start; /* Align button to start */
+        }
+
+        .course-link:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+
+        /* Testimonials Section */
+        #testimonials {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), var(--card-bg);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-item {
+            background-color: rgba(30, 30, 30, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary-color);
+            position: relative;
+        }
+        .testimonial-item::before { /* Quote icon */
+            content: '“';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(37, 117, 252, 0.2);
+            font-family: serif;
+            z-index: 0;
+        }
+
+
+        .testimonial-item p {
             font-style: italic;
-            color: #555;
+            margin-bottom: 1rem;
+            color: #ccc;
+            position: relative;
+             z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        .testimonial-author span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+
+        /* CTA Section */
+        #cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            text-align: center;
+            padding: 5rem 0;
+            color: #fff;
+        }
+
+        #cta h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-        .testimonial cite {
-            display: block;
-            font-style: normal;
-            font-weight: bold;
-            margin-top: 0.5rem;
-            color: #34495e;
+
+        #cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
         }
+
+        #cta .cta-button {
+             background: #fff;
+             color: var(--primary-color);
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+         #cta .cta-button:hover {
+             background: var(--accent-color);
+             color: var(--bg-color);
+              box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
+         }
+
+        /* Footer */
         footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
+            background-color: #0a0a0a;
+            padding: 2rem 0;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid var(--border-color);
         }
-        footer p {
-            margin: 0;
+
+        footer .container {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             gap: 1rem;
+        }
+
+         .footer-links a {
+             color: #aaa;
+             text-decoration: none;
+             margin: 0 0.5rem;
+             transition: color 0.3s ease;
+         }
+         .footer-links a:hover {
+             color: var(--accent-color);
+         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes textShine {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .section h3 {
-                font-size: 1.8rem;
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 992px) {
+            #hero h1 { font-size: 3rem; }
+            #hero p { font-size: 1.1rem; }
+            h2.section-title { font-size: 2.2rem; }
         }
-         @media (max-width: 480px) {
-             nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-             .hero {
-                padding: 3rem 1rem;
-            }
-             .hero h2 {
-                font-size: 2rem;
-            }
-            .cta-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-         }
+
+        @media (max-width: 768px) {
+             header .container { flex-direction: column; gap: 1rem; }
+             nav ul { justify-content: center; padding-top: 1rem;}
+             nav ul li { margin: 0 1rem; }
+
+             #hero { height: auto; padding: 10rem 0 5rem 0;}
+             #hero h1 { font-size: 2.5rem; }
+             #hero p { font-size: 1rem; }
+             .cta-button { font-size: 1rem; padding: 0.7rem 1.5rem;}
+
+             section { padding: 4rem 0; }
+             h2.section-title { font-size: 2rem; }
+
+             .features-grid, .courses-grid, .testimonial-grid {
+                 grid-template-columns: 1fr; /* Stack items on smaller screens */
+             }
+             .feature-item, .course-card, .testimonial-item {
+                 margin-bottom: 2rem; /* Add space between stacked items */
+             }
+        }
+
+        @media (max-width: 480px) {
+             .logo { font-size: 1.5rem; }
+             nav ul li { margin: 0 0.5rem; }
+             nav ul li a { font-size: 0.9rem;}
+
+             #hero h1 { font-size: 2rem; }
+             #hero p { font-size: 0.9rem; }
+
+             h2.section-title { font-size: 1.8rem; }
+             #cta h2 { font-size: 1.8rem;}
+             #cta p { font-size: 1rem;}
+        }
+
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Learn AI Today</h1>
+        <div class="container">
+            <a href="#hero" class="logo">AI Masters <span>Academy</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#cta">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About AI</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#features">Why Us?</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <h2>Unlock the Power of Artificial Intelligence</h2>
-        <p>Master AI concepts, tools, and techniques with our expert-led courses. Start your journey into the future, today.</p>
-        <a href="#courses" class="cta-button">Explore Our Courses</a>
-    </section>
-
-    <div class="container">
-        <section id="about" class="section">
-            <h3>What is AI and Why Learn It?</h3>
-            <p>Artificial Intelligence is transforming industries worldwide. Learning AI opens doors to exciting career opportunities in machine learning, data science, robotics, and more. Understand the fundamentals and advanced topics to stay ahead in the technological revolution.</p>
+    <main>
+        <section id="hero">
+            <div class="hero-content container">
+                <h1>Master Artificial Intelligence</h1>
+                <p>Unlock the power of AI with our expert-led courses. From foundational concepts to advanced machine learning, we guide you every step of the way.</p>
+                <a href="#courses" class="cta-button">Explore Courses</a>
+            </div>
         </section>
 
-        <section id="features" class="section">
-            <h3>Why Choose Learn AI Today?</h3>
+        <section id="features" class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
             <div class="features-grid">
                 <div class="feature-item">
-                    <h4>Expert Instructors</h4>
-                    <p>Learn from industry professionals and experienced AI researchers with real-world knowledge.</p>
+                     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-.5-13h1v6l5.25 3.15-.75 1.23-6-3.5V7z"/></svg>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals and renowned AI researchers with real-world experience.</p>
                 </div>
                 <div class="feature-item">
-                    <h4>Hands-On Projects</h4>
-                    <p>Apply what you learn through practical projects and build a portfolio showcasing your skills.</p>
+                     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                    <h3>Hands-On Projects</h3>
+                    <p>Apply your knowledge through practical projects that simulate real AI challenges.</p>
                 </div>
                 <div class="feature-item">
-                    <h4>Comprehensive Curriculum</h4>
-                    <p>Covering everything from basic Python for AI to advanced deep learning and NLP techniques.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Flexible Learning</h4>
-                    <p>Access course materials anytime, anywhere, and learn at your own pace with our online platform.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Career Support</h4>
-                    <p>Get guidance on building your resume, preparing for interviews, and finding jobs in the AI field.</p>
-                </div>
-                 <div class="feature-item">
-                    <h4>Community Access</h4>
-                    <p>Connect with fellow learners, instructors, and alumni in our exclusive online community.</p>
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.5 10.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zm5 0c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zm-10 0c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    <h3>Cutting-Edge Curriculum</h3>
+                    <p>Stay ahead with up-to-date content covering the latest advancements in AI and machine learning.</p>
                 </div>
             </div>
         </section>
 
-        <section id="courses" class="section">
-            <h3>Our AI Courses</h3>
-            <p>We offer a range of courses designed for different skill levels, from beginners to experienced developers.</p>
-            <!-- Placeholder for course listings -->
-            <div style="margin-top: 2rem; background-color:#f0f0f0; padding: 1rem; border-radius: 5px;">
-                <p><strong>Featured Course:</strong> Introduction to Machine Learning</p>
-                <p>Learn the core concepts of ML, including supervised and unsupervised learning, model evaluation, and popular algorithms.</p>
-                <a href="#" class="cta-button" style="background-color: #3498db;">Learn More</a>
+        <section id="courses" class="container">
+            <h2 class="section-title">Our Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="AI Fundamentals Course">
+                    <div class="course-content">
+                        <h3>AI Fundamentals</h3>
+                        <p>Grasp the core concepts of Artificial Intelligence, machine learning, and data science. Perfect for beginners.</p>
+                         <div class="course-meta">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 8 Weeks</span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03V6c0-.83-.67-1.5-1.5-1.5S11 5.17 11 6v1.97C9.52 8.71 8.5 10.23 8.5 12c0 1.77 1.02 3.29 2.5 4.03V18c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.97c1.48-.74 2.5-2.26 2.5-4.03zM13 16.5v-9c1.38.69 2.25 2.12 2.25 3.75S14.38 15.81 13 16.5z"/></svg> Beginner</span>
+                        </div>
+                        <a href="#" class="course-link">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                     <img src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Machine Learning Course">
+                    <div class="course-content">
+                        <h3>Machine Learning Deep Dive</h3>
+                        <p>Explore algorithms, models, and techniques for building intelligent systems that learn from data.</p>
+                         <div class="course-meta">
+                           <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 12 Weeks</span>
+                           <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03V6c0-.83-.67-1.5-1.5-1.5S11 5.17 11 6v1.97C9.52 8.71 8.5 10.23 8.5 12c0 1.77 1.02 3.29 2.5 4.03V18c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.97c1.48-.74 2.5-2.26 2.5-4.03zM13 16.5v-9c1.38.69 2.25 2.12 2.25 3.75S14.38 15.81 13 16.5z"/></svg> Intermediate</span>
+                        </div>
+                        <a href="#" class="course-link">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                     <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Deep Learning Course">
+                    <div class="course-content">
+                        <h3>Advanced Deep Learning</h3>
+                        <p>Master neural networks, CNNs, RNNs, and transformers. Build state-of-the-art AI applications.</p>
+                         <div class="course-meta">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 16 Weeks</span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03V6c0-.83-.67-1.5-1.5-1.5S11 5.17 11 6v1.97C9.52 8.71 8.5 10.23 8.5 12c0 1.77 1.02 3.29 2.5 4.03V18c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.97c1.48-.74 2.5-2.26 2.5-4.03zM13 16.5v-9c1.38.69 2.25 2.12 2.25 3.75S14.38 15.81 13 16.5z"/></svg> Advanced</span>
+                        </div>
+                        <a href="#" class="course-link">Learn More</a>
+                    </div>
+                </div>
             </div>
-             <div style="margin-top: 1rem; background-color:#f0f0f0; padding: 1rem; border-radius: 5px;">
-                <p><strong>Advanced Course:</strong> Deep Learning Specialization</p>
-                <p>Dive deep into neural networks, CNNs, RNNs, and their applications in computer vision and natural language processing.</p>
-                <a href="#" class="cta-button" style="background-color: #e74c3c;">Learn More</a>
-            </div>
-            <!-- Add more course previews as needed -->
         </section>
 
-         <section id="testimonials" class="section">
-            <h3>What Our Students Say</h3>
-             <div class="testimonial">
-                <p>"This course demystified AI for me. The hands-on projects were incredibly valuable!"</p>
-                <cite>- Alex Johnson</cite>
-            </div>
-             <div class="testimonial">
-                <p>"The instructors are knowledgeable and passionate. I landed a great job in data science after completing the specialization."</p>
-                <cite>- Priya Sharma</cite>
-            </div>
-             <div class="testimonial">
-                <p>"Highly recommend Learn AI Today! The content is up-to-date and relevant to the industry."</p>
-                <cite>- Ben Carter</cite>
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Students Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-item">
+                        <p>"The hands-on projects were invaluable. I went from knowing basic Python to building my own AI models. Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            Jane Doe
+                            <span>Software Engineer</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Instructors are incredibly knowledgeable and passionate. The curriculum is challenging but rewarding, pushing you to learn effectively."</p>
+                         <div class="testimonial-author">
+                            John Smith
+                            <span>Data Scientist</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"AI Masters Academy provided the perfect foundation for my career switch into AI. The community support is fantastic too."</p>
+                         <div class="testimonial-author">
+                            Alex Chen
+                            <span>AI Researcher</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <h3>Ready to Start Your AI Journey?</h3>
-            <p>Enroll now or contact us for more information about our courses and how we can help you achieve your AI goals.</p>
-            <a href="#" class="cta-button">Enroll Now</a>
-            <a href="mailto:info@learnaitoday.example.com" style="display:inline-block; margin-left: 1rem; color: #3498db; text-decoration: none;">Contact Us</a>
+        <section id="cta">
+            <div class="container">
+                <h2>Ready to Shape the Future with AI?</h2>
+                <p>Join thousands of learners and start your AI journey today. Enroll in a course or contact us for more information.</p>
+                <a href="#courses" class="cta-button">Get Started Now</a>
+            </div>
         </section>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Learn AI Today. All Rights Reserved.</p>
-        <p>Empowering the next generation of AI leaders.</p>
-        <!-- Add social media links or other footer info if needed -->
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Contact Us</a>
+            </div>
+             <p>&copy; 2025 AI Masters Academy. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Simple Intersection Observer for fade-in animation on scroll
+        const sections = document.querySelectorAll('section:not(#hero)'); // Exclude hero for initial load animation
+
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the section is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after animation
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: remove class if you want animation to repeat when scrolling back up
+                     // entry.target.classList.remove('visible');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active Nav Link Highlighting
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const pageSections = document.querySelectorAll('main section'); // Use main sections for highlighting
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            pageSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                 // Adjust offset based on header height if needed
+                const headerHeight = document.querySelector('header').offsetHeight;
+                if (pageYOffset >= sectionTop - headerHeight - 50) { // Added extra offset
+                    current = section.getAttribute('id');
+                }
+            });
+
+             // Handle hero section specifically if needed
+            if (pageYOffset < window.innerHeight * 0.5) { // If scrolled less than half the viewport height
+                current = 'hero';
+            }
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+             // Ensure Hero is active at top
+             if (!current && pageYOffset < 100) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                document.querySelector('nav ul li a[href="#hero"]').classList.add('active');
+            }
+        });
+
+    </script>
 
 </body>
 </html>
