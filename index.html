@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Masters Academy - Learn the Future</title>
+    <title>Harvest Haven Farms - Cultivating Freshness</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
 
         :root {
-            --primary-color: #6a11cb;
-            --secondary-color: #2575fc;
-            --accent-color: #00f2fe;
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --card-bg: #1e1e1e;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-color: #2c5e3f; /* Deep Green */
+            --secondary-color: #f5a623; /* Golden Yellow */
+            --accent-color: #d0021b; /* Ripe Red */
+            --light-bg: #f9f6f1; /* Creamy Beige */
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
         }
 
         * {
@@ -26,630 +27,758 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: var(--accent-color);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+        h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+
+        p {
+            margin-bottom: 1rem;
+            font-weight: 300;
+            max-width: 60ch; /* Improve readability */
+        }
+
+        a {
+            color: var(--secondary-color);
             text-decoration: none;
-            letter-spacing: 1px;
-        }
-         .logo span {
-             color: var(--text-color);
-         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 400;
             transition: color 0.3s ease;
         }
 
-        nav ul li a:hover,
-        nav ul li a.active {
+        a:hover {
             color: var(--accent-color);
         }
 
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" opacity="0.05"><defs><pattern id="p" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="%23e0e0e0"/></pattern></defs><rect width="100%" height="100%" fill="url(%23p)"/></svg>'), var(--bg-color);
-            background-size: cover, 100px 100px, cover; /* Pattern size */
-            color: var(--text-color);
-            padding-top: 80px; /* Adjust for fixed header */
-            position: relative;
-            overflow: hidden;
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
         }
 
-        #hero::before {
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem; /* Increased padding */
+        }
+
+        /* Header & Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden; /* For pseudo-element */
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero::before { /* Subtle texture overlay */
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse at center, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 1) 90%);
-            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><path fill="%23ffffff" fill-opacity="0.05" d="M1 3h1v1H1V3zm2-2h1v1H3V1z"></path></svg>');
+            pointer-events: none;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeIn 1.5s ease-out;
+
+        .hero h1 {
+            color: var(--light-text);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            animation: fadeInDown 1s ease-out;
         }
 
-        #hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: textShine 5s linear infinite;
-            background-size: 200% auto;
-        }
-
-        #hero p {
-            font-size: 1.3rem;
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
             margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 70ch;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.3s;
+            animation-fill-mode: backwards; /* Start animation state immediately */
+            font-weight: 400; /* Make hero subtitle slightly bolder */
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
             padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 700;
             font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: zoomIn 1s ease-out 0.6s;
+            animation-fill-mode: backwards;
+            border: 2px solid transparent;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--light-bg);
         }
 
-        /* Sections */
-        section {
-            padding: 6rem 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2.section-title {
+        /* Section Styling */
+        .content-section {
+            padding: 6rem 1rem; /* Generous vertical padding */
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 4rem;
-            color: var(--accent-color);
-            position: relative;
         }
 
-        h2.section-title::after {
+        .content-section:nth-child(even) {
+            background-color: #ffffff; /* Alternate background */
+        }
+
+        .section-title {
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after { /* Decorative underline */
             content: '';
             display: block;
             width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 4px;
+            background-color: var(--secondary-color);
             margin: 0.5rem auto 0;
             border-radius: 2px;
         }
 
-        /* Features Section */
-        #features .features-grid {
+        /* About Section */
+        #about {
+            background-color: var(--light-bg);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .about-text {
+            max-width: 700px;
+            margin: 0 auto; /* Center text block */
+            text-align: center;
+        }
+
+        .about-image {
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            margin-top: 2rem; /* Space above image on small screens */
+        }
+
+        /* Products Section */
+        #products {
+             background: linear-gradient(rgba(249, 246, 241, 0.8), rgba(249, 246, 241, 0.8)), url('https://images.unsplash.com/photo-1586778644811-4e91934d1b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+             background-attachment: fixed; /* Parallax effect */
+        }
+
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
-        .feature-item {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1.5rem;
-            fill: var(--accent-color);
-        }
-
-        .feature-item h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
-        }
-
-        .feature-item p {
-            font-size: 0.95rem;
-            color: #b0b0b0;
-        }
-
-        /* Courses Section */
-        #courses .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .course-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
+        .product-card {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
             overflow: hidden;
-            border: 1px solid var(--border-color);
+            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            opacity: 0; /* For animation */
+            transform: translateY(30px); /* For animation */
+            animation: fadeInUpCard 0.5s ease-out forwards;
         }
 
-        .course-card:hover {
+        /* Stagger animations */
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; } /* Add more if needed */
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+
+        .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .course-card img {
+        .product-card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            filter: grayscale(30%) brightness(80%);
-            transition: filter 0.3s ease;
-        }
-        .course-card:hover img {
-             filter: grayscale(0%) brightness(100%);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
         }
 
-        .course-content {
+        .product-info {
             padding: 1.5rem;
-            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.4rem; /* Slightly larger product titles */
+        }
+
+        .product-info p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Sustainability Section */
+        #sustainability {
+             background-color: #e8f5e9; /* Light Green */
+        }
+
+        .sustainability-content {
             display: flex;
             flex-direction: column;
-        }
-
-        .course-content h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
-        }
-
-        .course-content p {
-            font-size: 0.9rem;
-            color: #b0b0b0;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .course-meta {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
-            color: #888;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1rem;
-            margin-top: auto;
-        }
-         .course-meta span {
-             display: flex;
-             align-items: center;
-         }
-         .course-meta svg {
-             width: 16px;
-             height: 16px;
-             margin-right: 5px;
-             fill: #888;
-         }
-
-        .course-link {
-            display: inline-block;
-            background: none;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin-top: 1rem; /* Added margin */
-            align-self: flex-start; /* Align button to start */
+            gap: 3rem;
         }
 
-        .course-link:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-        }
-
-
-        /* Testimonials Section */
-        #testimonials {
-            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), var(--card-bg);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .sustainability-item {
+            display: flex;
+            align-items: center;
             gap: 2rem;
+            text-align: left;
+            max-width: 800px;
+            opacity: 0; /* For animation */
+            animation: fadeInUpItem 0.6s ease-out forwards;
         }
-
-        .testimonial-item {
-            background-color: rgba(30, 30, 30, 0.7);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 5px solid var(--secondary-color);
-            position: relative;
-        }
-        .testimonial-item::before { /* Quote icon */
-            content: '“';
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            font-size: 4rem;
-            color: rgba(37, 117, 252, 0.2);
-            font-family: serif;
-            z-index: 0;
-        }
+        /* Stagger animations */
+        .sustainability-item:nth-child(odd) { animation-delay: 0.2s; }
+        .sustainability-item:nth-child(even) { animation-delay: 0.4s; }
 
 
-        .testimonial-item p {
-            font-style: italic;
+        .sustainability-item:nth-child(even) {
+            flex-direction: row-reverse; /* Alternate layout */
+        }
+
+        .sustainability-icon {
+            font-size: 3rem; /* Use actual icons later */
+            color: var(--primary-color);
+            flex-shrink: 0; /* Prevent icon from shrinking */
+            background-color: rgba(44, 94, 63, 0.1); /* Light green circle bg */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .sustainability-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--primary-color);
+            color: var(--light-bg);
+        }
+
+        #contact .section-title {
+            color: var(--light-bg);
+        }
+        #contact .section-title::after {
+             background-color: var(--secondary-color);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-around;
+            align-items: flex-start; /* Align items to the top */
+             text-align: left;
+        }
+
+        .contact-info, .contact-form-container {
+            flex: 1;
+            min-width: 300px; /* Ensure minimum width */
+        }
+
+        .contact-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
             margin-bottom: 1rem;
-            color: #ccc;
-            position: relative;
-             z-index: 1;
+             color: var(--light-bg);
+             opacity: 0.9;
         }
 
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-        .testimonial-author span {
-            display: block;
-            font-weight: 400;
-            font-size: 0.9em;
-            color: #aaa;
-        }
-
-
-        /* CTA Section */
-        #cta {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .contact-info i { /* Style for icons */
+            margin-right: 0.8rem;
+            color: var(--secondary-color);
+            width: 20px; /* Align icons */
             text-align: center;
-            padding: 5rem 0;
-            color: #fff;
         }
 
-        #cta h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
             margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
         }
 
-        #cta p {
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        #cta .cta-button {
-             background: #fff;
-             color: var(--primary-color);
-             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .contact-form button:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+             transform: translateY(-2px);
         }
-         #cta .cta-button:hover {
-             background: var(--accent-color);
-             color: var(--bg-color);
-              box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
-         }
 
         /* Footer */
         footer {
-            background-color: #0a0a0a;
-            padding: 2rem 0;
+            background-color: var(--dark-text);
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
+            padding: 2rem 1rem;
             font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid var(--border-color);
         }
 
-        footer .container {
-             display: flex;
-             flex-direction: column;
-             align-items: center;
-             gap: 1rem;
+        .social-links {
+            margin-top: 1rem;
         }
 
-         .footer-links a {
-             color: #aaa;
-             text-decoration: none;
-             margin: 0 0.5rem;
-             transition: color 0.3s ease;
-         }
-         .footer-links a:hover {
-             color: var(--accent-color);
-         }
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0.7rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Scroll Top Button */
+         #scrollTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        #scrollTopBtn.show {
+             display: block;
+             opacity: 1;
+             visibility: visible;
+             transform: translateY(0);
+        }
+
+        #scrollTopBtn:hover {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            transform: scale(1.1);
+        }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes textShine {
-            0% { background-position: 200% center; }
-            100% { background-position: -200% center; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+         @keyframes fadeInUpCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+         @keyframes fadeInUpItem {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Add simple fade-in for sections on scroll (requires JS, but we can set initial state) */
+        .content-section {
+             /* Set initial state if JS intersection observer is not used */
+             /* Example only, might cause layout shift without JS */
+            /* opacity: 0; */
+            /* transition: opacity 0.8s ease-out; */
+        }
+        .content-section.visible {
+             opacity: 1;
+        }
+
+
         /* Responsive Design */
-        @media (max-width: 992px) {
-            #hero h1 { font-size: 3rem; }
-            #hero p { font-size: 1.1rem; }
-            h2.section-title { font-size: 2.2rem; }
+        @media (min-width: 768px) {
+            .about-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 3rem;
+            }
+            .about-text {
+                flex: 1;
+                text-align: left; /* Align text left on larger screens */
+                margin: 0; /* Reset margin */
+            }
+            .about-image {
+                flex: 1;
+                max-width: 450px; /* Control image size */
+                 margin-top: 0; /* Reset margin */
+            }
+             .sustainability-item {
+                 /* Styles already good, just ensure text aligns left */
+                 text-align: left;
+            }
         }
 
         @media (max-width: 768px) {
-             header .container { flex-direction: column; gap: 1rem; }
-             nav ul { justify-content: center; padding-top: 1rem;}
-             nav ul li { margin: 0 1rem; }
-
-             #hero { height: auto; padding: 10rem 0 5rem 0;}
-             #hero h1 { font-size: 2.5rem; }
-             #hero p { font-size: 1rem; }
-             .cta-button { font-size: 1rem; padding: 0.7rem 1.5rem;}
-
-             section { padding: 4rem 0; }
-             h2.section-title { font-size: 2rem; }
-
-             .features-grid, .courses-grid, .testimonial-grid {
-                 grid-template-columns: 1fr; /* Stack items on smaller screens */
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .container { padding: 3rem 0.5rem; }
+            .content-section { padding: 4rem 0.5rem; }
+            .product-grid { grid-template-columns: 1fr; gap: 2rem; } /* Stack products */
+            .sustainability-item, .sustainability-item:nth-child(even) {
+                flex-direction: column; /* Stack icon and text */
+                text-align: center;
+                gap: 1.5rem;
+            }
+             .sustainability-text {
+                text-align: center; /* Center text on mobile */
+            }
+             .contact-content {
+                flex-direction: column;
+                gap: 2.5rem;
              }
-             .feature-item, .course-card, .testimonial-item {
-                 margin-bottom: 2rem; /* Add space between stacked items */
+             .contact-info, .contact-form-container {
+                 text-align: center;
+                 width: 100%; /* Full width on mobile */
+             }
+              .contact-info p {
+                 text-align: center; /* Center text */
+             }
+             .contact-info i {
+                 display: block; /* Icons on separate lines maybe? Or keep inline-block */
+                 margin: 0 auto 0.5rem auto; /* Center icon if block */
+                 /* Or adjust margin if inline */
+                  margin-right: 0.5rem;
              }
         }
 
-        @media (max-width: 480px) {
-             .logo { font-size: 1.5rem; }
-             nav ul li { margin: 0 0.5rem; }
-             nav ul li a { font-size: 0.9rem;}
+         @media (max-width: 480px) {
+              html { font-size: 15px; } /* Slightly smaller base font on very small screens */
+               .hero h1 { font-size: 2.2rem; }
+               .hero p { font-size: 1rem; }
+               .cta-button { padding: 0.7rem 1.5rem; font-size: 1rem; }
+               h2 { font-size: 1.6rem; }
+               h3 { font-size: 1.1rem; }
+               .product-card img { height: 180px; }
+         }
 
-             #hero h1 { font-size: 2rem; }
-             #hero p { font-size: 0.9rem; }
-
-             h2.section-title { font-size: 1.8rem; }
-             #cta h2 { font-size: 1.8rem;}
-             #cta p { font-size: 1rem;}
-        }
 
     </style>
+    <!-- Font Awesome for Icons (optional but recommended) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <a href="#hero" class="logo">AI Masters <span>Academy</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#cta">Contact</a></li>
-                </ul>
-            </nav>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Harvest Haven Farms</h1>
+            <p>Cultivating Nature's Best, From Our Fields to Your Table. Experience the taste of freshness, grown with passion and sustainable practices.</p>
+            <a href="#products" class="cta-button">Explore Our Harvest</a>
         </div>
+         <!-- Optional: Add a subtle downward arrow -->
+         <a href="#about" aria-label="Scroll down" style="position: absolute; bottom: 30px; color: white; font-size: 2rem; animation: bounce 2s infinite;">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </header>
 
     <main>
-        <section id="hero">
-            <div class="hero-content container">
-                <h1>Master Artificial Intelligence</h1>
-                <p>Unlock the power of AI with our expert-led courses. From foundational concepts to advanced machine learning, we guide you every step of the way.</p>
-                <a href="#courses" class="cta-button">Explore Courses</a>
-            </div>
-        </section>
-
-        <section id="features" class="container">
-            <h2 class="section-title">Why Choose Us?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-.5-13h1v6l5.25 3.15-.75 1.23-6-3.5V7z"/></svg>
-                    <h3>Expert Instructors</h3>
-                    <p>Learn from industry professionals and renowned AI researchers with real-world experience.</p>
-                </div>
-                <div class="feature-item">
-                     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                    <h3>Hands-On Projects</h3>
-                    <p>Apply your knowledge through practical projects that simulate real AI challenges.</p>
-                </div>
-                <div class="feature-item">
-                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.5 10.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zm5 0c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zm-10 0c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                    <h3>Cutting-Edge Curriculum</h3>
-                    <p>Stay ahead with up-to-date content covering the latest advancements in AI and machine learning.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="courses" class="container">
-            <h2 class="section-title">Our Courses</h2>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="AI Fundamentals Course">
-                    <div class="course-content">
-                        <h3>AI Fundamentals</h3>
-                        <p>Grasp the core concepts of Artificial Intelligence, machine learning, and data science. Perfect for beginners.</p>
-                         <div class="course-meta">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 8 Weeks</span>
-                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03V6c0-.83-.67-1.5-1.5-1.5S11 5.17 11 6v1.97C9.52 8.71 8.5 10.23 8.5 12c0 1.77 1.02 3.29 2.5 4.03V18c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.97c1.48-.74 2.5-2.26 2.5-4.03zM13 16.5v-9c1.38.69 2.25 2.12 2.25 3.75S14.38 15.81 13 16.5z"/></svg> Beginner</span>
-                        </div>
-                        <a href="#" class="course-link">Learn More</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                     <img src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Machine Learning Course">
-                    <div class="course-content">
-                        <h3>Machine Learning Deep Dive</h3>
-                        <p>Explore algorithms, models, and techniques for building intelligent systems that learn from data.</p>
-                         <div class="course-meta">
-                           <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 12 Weeks</span>
-                           <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03V6c0-.83-.67-1.5-1.5-1.5S11 5.17 11 6v1.97C9.52 8.71 8.5 10.23 8.5 12c0 1.77 1.02 3.29 2.5 4.03V18c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.97c1.48-.74 2.5-2.26 2.5-4.03zM13 16.5v-9c1.38.69 2.25 2.12 2.25 3.75S14.38 15.81 13 16.5z"/></svg> Intermediate</span>
-                        </div>
-                        <a href="#" class="course-link">Learn More</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                     <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Deep Learning Course">
-                    <div class="course-content">
-                        <h3>Advanced Deep Learning</h3>
-                        <p>Master neural networks, CNNs, RNNs, and transformers. Build state-of-the-art AI applications.</p>
-                         <div class="course-meta">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 16 Weeks</span>
-                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03V6c0-.83-.67-1.5-1.5-1.5S11 5.17 11 6v1.97C9.52 8.71 8.5 10.23 8.5 12c0 1.77 1.02 3.29 2.5 4.03V18c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.97c1.48-.74 2.5-2.26 2.5-4.03zM13 16.5v-9c1.38.69 2.25 2.12 2.25 3.75S14.38 15.81 13 16.5z"/></svg> Advanced</span>
-                        </div>
-                        <a href="#" class="course-link">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
+        <!-- About Us Section -->
+        <section id="about" class="content-section">
             <div class="container">
-                <h2 class="section-title">What Our Students Say</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-item">
-                        <p>"The hands-on projects were invaluable. I went from knowing basic Python to building my own AI models. Highly recommend!"</p>
-                        <div class="testimonial-author">
-                            Jane Doe
-                            <span>Software Engineer</span>
+                <h2 class="section-title">Rooted in Tradition, Growing for the Future</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Welcome to Harvest Haven Farms, where the soil tells a story and every seed holds a promise. Nestled in the heart of fertile lands, we've been dedicated to sustainable farming for generations. Our mission is simple: to grow nutritious, delicious produce while nurturing the land that sustains us.</p>
+                        <p>We believe in transparency, community, and the simple goodness of food grown with care. From sunrise till sunset, our hands work the earth, combining time-honored techniques with innovative, eco-friendly practices.</p>
+                         <a href="#contact" class="cta-button" style="background-color: var(--primary-color); color: var(--light-text); margin-top: 1rem;">Learn More & Visit Us</a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Farmer holding fresh vegetables" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Our Bountiful Harvest</h2>
+                <p style="max-width: 60ch; margin: 0 auto 3rem auto;">Discover the seasonal delights straight from our fields. We offer a wide range of fresh, high-quality produce.</p>
+                <div class="product-grid">
+                    <!-- Product Card 1 -->
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Fresh Tomatoes">
+                        <div class="product-info">
+                            <h3>Vine-Ripened Tomatoes</h3>
+                            <p>Juicy, sweet, and bursting with flavor. Perfect for salads, sauces, or eating fresh off the vine.</p>
                         </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p>"Instructors are incredibly knowledgeable and passionate. The curriculum is challenging but rewarding, pushing you to learn effectively."</p>
-                         <div class="testimonial-author">
-                            John Smith
-                            <span>Data Scientist</span>
+                    <!-- Product Card 2 -->
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1597362925123-98b8c138837b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Crisp Lettuce">
+                        <div class="product-info">
+                            <h3>Crisp Leafy Greens</h3>
+                            <p>A variety of lettuces and greens, harvested daily for maximum freshness and crunch.</p>
                         </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p>"AI Masters Academy provided the perfect foundation for my career switch into AI. The community support is fantastic too."</p>
-                         <div class="testimonial-author">
-                            Alex Chen
-                            <span>AI Researcher</span>
+                    <!-- Product Card 3 -->
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1587402613301-b00c6c814e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Sweet Berries">
+                        <div class="product-info">
+                            <h3>Seasonal Sweet Berries</h3>
+                            <p>Deliciously sweet strawberries, blueberries, and raspberries, picked at their peak ripeness.</p>
+                        </div>
+                    </div>
+                     <!-- Product Card 4 -->
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Root Vegetables">
+                        <div class="product-info">
+                            <h3>Earthy Root Vegetables</h3>
+                            <p>Hearty carrots, potatoes, and beets, grown in rich soil for exceptional taste and nutrition.</p>
+                        </div>
+                    </div>
+                    <!-- Product Card 5 -->
+                    <div class="product-card">
+                         <img src="https://images.unsplash.com/photo-1615485925451-a8d45447f140?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Farm Fresh Eggs">
+                         <div class="product-info">
+                            <h3>Farm Fresh Eggs</h3>
+                            <p>Golden yolks from our happy, free-range chickens. Taste the difference quality feed and care makes.</p>
+                         </div>
+                    </div>
+                     <!-- Product Card 6 -->
+                    <div class="product-card">
+                         <img src="https://images.unsplash.com/photo-1628248879558-6d55e63e76c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Artisanal Honey">
+                         <div class="product-info">
+                            <h3>Local Artisanal Honey</h3>
+                            <p>Pure, raw honey harvested from our own beehives. A sweet taste of our local flora.</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability Section -->
+        <section id="sustainability" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Nurturing the Land</h2>
+                <p style="max-width: 60ch; margin: 0 auto 3rem auto;">We are committed to sustainable and ethical farming practices that protect our environment for future generations.</p>
+                <div class="sustainability-content">
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon"><i class="fas fa-seedling"></i></div>
+                        <div class="sustainability-text">
+                            <h3>Organic Methods</h3>
+                            <p>We prioritize natural pest control, composting, and cover cropping to build healthy soil without synthetic chemicals.</p>
+                        </div>
+                    </div>
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon"><i class="fas fa-recycle"></i></div>
+                        <div class="sustainability-text">
+                            <h3>Water Conservation</h3>
+                            <p>Utilizing drip irrigation and water-wise techniques to conserve precious water resources and minimize waste.</p>
+                        </div>
+                    </div>
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon"><i class="fas fa-bee"></i></div>
+                        <div class="sustainability-text">
+                            <h3>Biodiversity Support</h3>
+                            <p>Planting native wildflowers and maintaining natural habitats to support pollinators and beneficial insects on the farm.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="cta">
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
             <div class="container">
-                <h2>Ready to Shape the Future with AI?</h2>
-                <p>Join thousands of learners and start your AI journey today. Enroll in a course or contact us for more information.</p>
-                <a href="#courses" class="cta-button">Get Started Now</a>
+                <h2 class="section-title">Get In Touch or Visit Us!</h2>
+                 <p style="max-width: 60ch; margin: -1rem auto 3rem auto; color: var(--light-bg); opacity: 0.9;">We'd love to hear from you! Reach out with questions or plan a visit to see the farm yourself.</p>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Contact Details</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Harvest Lane, Green Valley, CA 98765</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@harvesthavenfarms.com</p>
+                        <p><i class="fas fa-clock"></i> Farm Stand Hours: Wed-Sun, 9am - 5pm (Seasonal)</p>
+                         <!-- Placeholder for a simple map image or link -->
+                         <a href="#" target="_blank" title="View on map (placeholder)">
+                             <img src="https://via.placeholder.com/400x200.png?text=Simple+Map+Placeholder" alt="Map placeholder" style="margin-top: 1.5rem; border: 2px solid var(--secondary-color); padding: 5px; background: var(--light-bg);">
+                         </a>
+                    </div>
+                    <div class="contact-form-container">
+                         <h3>Send Us a Message</h3>
+                         <form action="#" method="POST" class="contact-form">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="cta-button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Terms of Service</a> |
-                <a href="#">Contact Us</a>
+        <div class="container" style="padding: 2rem 1rem;">
+            <p>&copy; 2025 Harvest Haven Farms. All Rights Reserved. Cultivated with Care.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
-             <p>&copy; 2025 AI Masters Academy. All rights reserved.</p>
         </div>
     </footer>
 
+     <!-- Scroll Top Button -->
+    <button id="scrollTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+
     <script>
-        // Simple Intersection Observer for fade-in animation on scroll
-        const sections = document.querySelectorAll('section:not(#hero)'); // Exclude hero for initial load animation
+        // Basic Scroll Top Button functionality
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                 scrollTopBtn.classList.remove('show');
+            }
+        }
+
+        scrollTopBtn.addEventListener('click', () => {
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Simple Intersection Observer for fade-in effect (Optional)
+        // Add 'visible' class to sections when they enter the viewport
+        // This part adds slightly more dynamic feel but might be omitted if strict no-JS is preferred.
+        // The CSS already handles the animation states.
+         const sections = document.querySelectorAll('.product-card, .sustainability-item'); // Select elements to animate
 
         const observerOptions = {
-            root: null, // relative to the viewport
+            root: null, // relative to document viewport
             rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the section is visible
+            threshold: 0.1 // trigger when 10% of the element is visible
         };
 
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Optional: unobserve after animation
-                    // observer.unobserve(entry.target);
-                } else {
-                    // Optional: remove class if you want animation to repeat when scrolling back up
-                     // entry.target.classList.remove('visible');
+                    // Element is in view, add 'visible' class - CSS handles the animation
+                    // Using style directly for immediate effect without needing .visible class
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Optional: Stop observing once animated
                 }
             });
         };
@@ -660,39 +789,15 @@
             observer.observe(section);
         });
 
-        // Active Nav Link Highlighting
-        const navLinks = document.querySelectorAll('nav ul li a');
-        const pageSections = document.querySelectorAll('main section'); // Use main sections for highlighting
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            pageSections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                 // Adjust offset based on header height if needed
-                const headerHeight = document.querySelector('header').offsetHeight;
-                if (pageYOffset >= sectionTop - headerHeight - 50) { // Added extra offset
-                    current = section.getAttribute('id');
-                }
-            });
-
-             // Handle hero section specifically if needed
-            if (pageYOffset < window.innerHeight * 0.5) { // If scrolled less than half the viewport height
-                current = 'hero';
+         // Simple bounce animation for hero arrow (CSS only)
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(`
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                40% { transform: translateY(-10px); }
+                60% { transform: translateY(-5px); }
             }
-
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-             // Ensure Hero is active at top
-             if (!current && pageYOffset < 100) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                document.querySelector('nav ul li a[href="#hero"]').classList.add('active');
-            }
-        });
+        `, styleSheet.cssRules.length);
 
     </script>
 
