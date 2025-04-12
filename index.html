@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harvest Haven Farms - Cultivating Freshness</title>
+    <title>Unlock Your Potential - [Your Name/Brand] Coaching</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
 
         :root {
-            --primary-color: #2c5e3f; /* Deep Green */
-            --secondary-color: #f5a623; /* Golden Yellow */
-            --accent-color: #d0021b; /* Ripe Red */
-            --light-bg: #f9f6f1; /* Creamy Beige */
-            --dark-text: #333333;
-            --light-text: #ffffff;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --primary-color: #4a90e2; /* Vibrant Blue */
+            --secondary-color: #f5a623; /* Warm Orange */
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+            --text-color: #555;
+            --gradient-start: #4a90e2;
+            --gradient-end: #50e3c2; /* Teal */
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --border-radius: 8px;
         }
 
@@ -27,780 +28,816 @@
 
         html {
             scroll-behavior: smooth;
-            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-text);
-            background-color: var(--light-bg);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-color);
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--primary-color);
+            color: var(--dark-color);
             margin-bottom: 1rem;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
-        h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
 
         p {
             margin-bottom: 1rem;
-            font-weight: 300;
-            max-width: 60ch; /* Improve readability */
         }
 
         a {
-            color: var(--secondary-color);
             text-decoration: none;
+            color: var(--primary-color);
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: var(--accent-color);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: var(--border-radius);
+            color: var(--secondary-color);
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 1rem; /* Increased padding */
+            padding: 0 20px;
         }
 
-        /* Header & Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: background 0.3s ease, padding 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 1);
+            padding: 0.8rem 0;
+        }
+
+        .navbar .container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            color: var(--light-text);
-            padding: 2rem;
-            position: relative;
-            overflow: hidden; /* For pseudo-element */
-            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2);
         }
 
-        .hero::before { /* Subtle texture overlay */
+        .navbar .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+         .navbar .logo span {
+            color: var(--secondary-color);
+         }
+
+        .navbar nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar nav ul li {
+            margin-left: 2rem;
+        }
+
+        .navbar nav ul li a {
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .navbar nav ul li a::after {
+             content: '';
+             position: absolute;
+             bottom: 0;
+             left: 0;
+             width: 0;
+             height: 2px;
+             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+             transition: width 0.3s ease;
+        }
+
+         .navbar nav ul li a:hover::after,
+         .navbar nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .navbar nav ul li a:hover,
+        .navbar nav ul li a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1920&h=1080&fit=crop') no-repeat center center/cover;
+            background-blend-mode: multiply;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Account for fixed navbar */
+        }
+
+        .hero::before { /* Subtle overlay pattern */
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><path fill="%23ffffff" fill-opacity="0.05" d="M1 3h1v1H1V3zm2-2h1v1H3V1z"></path></svg>');
-            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            /* background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); */
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            animation: fadeIn HeroAnimation 1s ease-out forwards;
+        }
+
+        @keyframes fadeInHeroAnimation {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
 
         .hero h1 {
-            color: var(--light-text);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-            animation: fadeInDown 1s ease-out;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
         }
 
-        .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            margin-bottom: 2rem;
-            max-width: 70ch;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease-out 0.3s;
-            animation-fill-mode: backwards; /* Start animation state immediately */
-            font-weight: 400; /* Make hero subtitle slightly bolder */
+         .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-button {
+        .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px; /* Pill shape */
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            animation: zoomIn 1s ease-out 0.6s;
-            animation-fill-mode: backwards;
-            border: 2px solid transparent;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            background-color: var(--accent-color);
-            color: var(--light-text);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            border-color: var(--light-bg);
+        .btn-primary {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
         }
 
-        /* Section Styling */
-        .content-section {
-            padding: 6rem 1rem; /* Generous vertical padding */
-            text-align: center;
+        .btn-primary:hover {
+            background: #e4940f; /* Darker orange */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.6);
         }
 
-        .content-section:nth-child(even) {
-            background-color: #ffffff; /* Alternate background */
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            margin-left: 1rem;
         }
+
+        .btn-secondary:hover {
+             background: rgba(255, 255, 255, 0.1);
+             transform: translateY(-3px);
+        }
+
+        /* Section Base Styling */
+        .section {
+            padding: 6rem 0;
+            overflow: hidden; /* Contain animations */
+        }
+
+         .section-light { background-color: var(--light-color); }
+         .section-dark { background-color: var(--dark-color); color: var(--light-color); }
+         .section-gradient { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); color: #fff; }
 
         .section-title {
-            margin-bottom: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
             position: relative;
-            display: inline-block;
         }
 
-        .section-title::after { /* Decorative underline */
+        .section-title::after {
             content: '';
             display: block;
             width: 60px;
             height: 4px;
-            background-color: var(--secondary-color);
-            margin: 0.5rem auto 0;
+            background: var(--secondary-color);
+            margin: 1rem auto 0;
             border-radius: 2px;
         }
 
+        .section-dark .section-title,
+        .section-gradient .section-title { color: #fff; }
+        .section-dark h2, .section-dark h3, .section-dark p,
+        .section-gradient h2, .section-gradient h3, .section-gradient p { color: #fff; }
+
         /* About Section */
-        #about {
-            background-color: var(--light-bg);
-        }
-
         .about-content {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
             align-items: center;
-            gap: 2rem;
-            text-align: left;
         }
 
-        .about-text {
-            max-width: 700px;
-            margin: 0 auto; /* Center text block */
-            text-align: center;
-        }
-
-        .about-image {
-            max-width: 500px;
+        .about-image img {
             width: 100%;
-            box-shadow: var(--shadow);
+            max-width: 400px;
+            height: auto;
             border-radius: var(--border-radius);
-            margin-top: 2rem; /* Space above image on small screens */
+            box-shadow: var(--shadow);
+            display: block;
+            margin: 0 auto;
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s ease;
         }
 
-        /* Products Section */
-        #products {
-             background: linear-gradient(rgba(249, 246, 241, 0.8), rgba(249, 246, 241, 0.8)), url('https://images.unsplash.com/photo-1586778644811-4e91934d1b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
-             background-attachment: fixed; /* Parallax effect */
+        .about-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
         }
 
-        .product-grid {
+        /* Services Section */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            gap: 2rem;
         }
 
-        .product-card {
-            background-color: #ffffff;
+        .service-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            text-align: center;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            overflow: hidden;
-            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0; /* For animation */
-            transform: translateY(30px); /* For animation */
-            animation: fadeInUpCard 0.5s ease-out forwards;
         }
 
-        /* Stagger animations */
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; } /* Add more if needed */
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
-        .product-card:nth-child(6) { animation-delay: 0.6s; }
-
-
-        .product-card:hover {
+        .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .product-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            font-size: 1.4rem; /* Slightly larger product titles */
-        }
-
-        .product-info p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* Sustainability Section */
-        #sustainability {
-             background-color: #e8f5e9; /* Light Green */
-        }
-
-        .sustainability-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .sustainability-item {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            text-align: left;
-            max-width: 800px;
-            opacity: 0; /* For animation */
-            animation: fadeInUpItem 0.6s ease-out forwards;
-        }
-        /* Stagger animations */
-        .sustainability-item:nth-child(odd) { animation-delay: 0.2s; }
-        .sustainability-item:nth-child(even) { animation-delay: 0.4s; }
-
-
-        .sustainability-item:nth-child(even) {
-            flex-direction: row-reverse; /* Alternate layout */
-        }
-
-        .sustainability-icon {
-            font-size: 3rem; /* Use actual icons later */
-            color: var(--primary-color);
-            flex-shrink: 0; /* Prevent icon from shrinking */
-            background-color: rgba(44, 94, 63, 0.1); /* Light green circle bg */
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .sustainability-text h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        #contact {
-            background-color: var(--primary-color);
-            color: var(--light-bg);
-        }
-
-        #contact .section-title {
-            color: var(--light-bg);
-        }
-        #contact .section-title::after {
-             background-color: var(--secondary-color);
-        }
-
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            justify-content: space-around;
-            align-items: flex-start; /* Align items to the top */
-             text-align: left;
-        }
-
-        .contact-info, .contact-form-container {
-            flex: 1;
-            min-width: 300px; /* Ensure minimum width */
-        }
-
-        .contact-info h3 {
-            color: var(--secondary-color);
+        .service-icon {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 1rem;
-             color: var(--light-bg);
-             opacity: 0.9;
-        }
-
-        .contact-info i { /* Style for icons */
-            margin-right: 0.8rem;
-            color: var(--secondary-color);
-            width: 20px; /* Align icons */
-            text-align: center;
-        }
-
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--border-radius);
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--light-text);
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .contact-form button {
+            color: var(--primary-color);
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-            border: none;
-            cursor: pointer;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+
         }
 
-        .contact-form button:hover {
-            background-color: var(--light-bg);
+        .service-card h3 {
             color: var(--primary-color);
-             transform: translateY(-2px);
+            margin-bottom: 1rem;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--dark-text);
-            color: rgba(255, 255, 255, 0.7);
+        /* Testimonials Section */
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden; /* Hide non-active slides */
+            background: #fff;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-slide {
+            display: none; /* Hide all slides initially */
             text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
+            animation: fadeEffect 1.5s;
+        }
+        .testimonial-slide.active {
+             display: block; /* Show active slide */
         }
 
-        .social-links {
+        @keyframes fadeEffect {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        .testimonial-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding: 0 2rem;
+        }
+        .testimonial-quote::before, .testimonial-quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            line-height: 1;
+        }
+        .testimonial-quote::before { top: -1rem; left: -0.5rem; }
+        .testimonial-quote::after { bottom: -2.5rem; right: -0.5rem; }
+
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
             margin-top: 1rem;
         }
 
-        .social-links a {
+        .testimonial-author span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+         .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 1rem;
+        }
+
+        .slider-btn {
+            background-color: rgba(0,0,0,0.2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            z-index: 5; /* Ensure buttons are above quote marks */
+        }
+
+        .slider-btn:hover {
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* CTA Section */
+        #cta { text-align: center; }
+        #cta h2 { font-size: 2.8rem; }
+        #cta p { max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 1.1rem; }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
             color: rgba(255, 255, 255, 0.7);
-            margin: 0 0.7rem;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h4::after {
+             content: '';
+             position: absolute;
+             bottom: 0;
+             left: 0;
+             width: 40px;
+             height: 2px;
+             background: var(--secondary-color);
+        }
+
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
         }
 
         .social-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Scroll Top Button */
-         #scrollTopBtn {
-            display: none; /* Hidden by default */
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 99;
-            border: none;
-            outline: none;
+            color: var(--dark-color);
             background-color: var(--secondary-color);
-            color: var(--primary-color);
-            cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
-            font-size: 18px;
-            width: 50px;
-            height: 50px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animation on Scroll */
+        .animate-on-scroll {
             opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        #scrollTopBtn.show {
-             display: block;
-             opacity: 1;
-             visibility: visible;
-             transform: translateY(0);
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        #scrollTopBtn:hover {
-            background-color: var(--accent-color);
-            color: var(--light-text);
-            transform: scale(1.1);
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-         @keyframes fadeInUpCard {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-         @keyframes fadeInUpItem {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* Add simple fade-in for sections on scroll (requires JS, but we can set initial state) */
-        .content-section {
-             /* Set initial state if JS intersection observer is not used */
-             /* Example only, might cause layout shift without JS */
-            /* opacity: 0; */
-            /* transition: opacity 0.8s ease-out; */
-        }
-        .content-section.visible {
-             opacity: 1;
-        }
-
 
         /* Responsive Design */
-        @media (min-width: 768px) {
-            .about-content {
-                flex-direction: row;
-                text-align: left;
-                gap: 3rem;
-            }
-            .about-text {
-                flex: 1;
-                text-align: left; /* Align text left on larger screens */
-                margin: 0; /* Reset margin */
-            }
-            .about-image {
-                flex: 1;
-                max-width: 450px; /* Control image size */
-                 margin-top: 0; /* Reset margin */
-            }
-             .sustainability-item {
-                 /* Styles already good, just ensure text aligns left */
-                 text-align: left;
-            }
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            .hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.2rem; }
+            .container { padding: 0 15px; }
+            .section { padding: 4rem 0; }
         }
 
         @media (max-width: 768px) {
+            .navbar .container { flex-direction: column; }
+            .navbar nav { margin-top: 1rem; }
+            .navbar nav ul li { margin: 0 0.8rem; }
+            .hero { height: auto; padding: 120px 0 60px 0; }
             .hero h1 { font-size: 2.8rem; }
-            .hero p { font-size: 1.1rem; }
-            .container { padding: 3rem 0.5rem; }
-            .content-section { padding: 4rem 0.5rem; }
-            .product-grid { grid-template-columns: 1fr; gap: 2rem; } /* Stack products */
-            .sustainability-item, .sustainability-item:nth-child(even) {
-                flex-direction: column; /* Stack icon and text */
-                text-align: center;
-                gap: 1.5rem;
-            }
-             .sustainability-text {
-                text-align: center; /* Center text on mobile */
-            }
-             .contact-content {
-                flex-direction: column;
-                gap: 2.5rem;
-             }
-             .contact-info, .contact-form-container {
-                 text-align: center;
-                 width: 100%; /* Full width on mobile */
-             }
-              .contact-info p {
-                 text-align: center; /* Center text */
-             }
-             .contact-info i {
-                 display: block; /* Icons on separate lines maybe? Or keep inline-block */
-                 margin: 0 auto 0.5rem auto; /* Center icon if block */
-                 /* Or adjust margin if inline */
-                  margin-right: 0.5rem;
-             }
+            .hero .subtitle { font-size: 1.2rem; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+            .about-image img { margin: 0 auto 2rem auto; transform: rotateY(0); }
+            .testimonial-slider { padding: 2rem 1rem; }
+            .slider-controls { position: static; margin-top: 1.5rem; text-align: center;}
+            .slider-btn { display: inline-block; margin: 0 10px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+             .footer-col h4::after { margin: 0 auto; }
+             .social-links { text-align: center; }
+             .social-links a { margin: 0 5px 10px 5px; }
         }
 
-         @media (max-width: 480px) {
-              html { font-size: 15px; } /* Slightly smaller base font on very small screens */
-               .hero h1 { font-size: 2.2rem; }
-               .hero p { font-size: 1rem; }
-               .cta-button { padding: 0.7rem 1.5rem; font-size: 1rem; }
-               h2 { font-size: 1.6rem; }
-               h3 { font-size: 1.1rem; }
-               .product-card img { height: 180px; }
-         }
-
-
+        @media (max-width: 576px) {
+            h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .btn { padding: 0.8rem 1.8rem; font-size: 0.8rem;}
+            .navbar nav ul li { margin: 0 0.5rem; }
+            .navbar nav ul li a { font-size: 0.9rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .testimonial-quote { font-size: 1rem; }
+            .testimonial-quote::before { left: -1rem; }
+             .testimonial-quote::after { right: -1rem; }
+        }
     </style>
-    <!-- Font Awesome for Icons (optional but recommended) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome for Icons (Optional, replace with SVGs if preferred) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Harvest Haven Farms</h1>
-            <p>Cultivating Nature's Best, From Our Fields to Your Table. Experience the taste of freshness, grown with passion and sustainable practices.</p>
-            <a href="#products" class="cta-button">Explore Our Harvest</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">[Your Name]<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#cta">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-         <!-- Optional: Add a subtle downward arrow -->
-         <a href="#about" aria-label="Scroll down" style="position: absolute; bottom: 30px; color: white; font-size: 2rem; animation: bounce 2s infinite;">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </header>
+    </nav>
 
-    <main>
-        <!-- About Us Section -->
-        <section id="about" class="content-section">
-            <div class="container">
-                <h2 class="section-title">Rooted in Tradition, Growing for the Future</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Welcome to Harvest Haven Farms, where the soil tells a story and every seed holds a promise. Nestled in the heart of fertile lands, we've been dedicated to sustainable farming for generations. Our mission is simple: to grow nutritious, delicious produce while nurturing the land that sustains us.</p>
-                        <p>We believe in transparency, community, and the simple goodness of food grown with care. From sunrise till sunset, our hands work the earth, combining time-honored techniques with innovative, eco-friendly practices.</p>
-                         <a href="#contact" class="cta-button" style="background-color: var(--primary-color); color: var(--light-text); margin-top: 1rem;">Learn More & Visit Us</a>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Farmer holding fresh vegetables" class="about-image">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Life, Achieve Your Goals</h1>
+            <p class="subtitle">Partner with a dedicated coach to unlock your true potential and create lasting change. Let's build your success story together.</p>
+            <a href="#contact-form" class="btn btn-primary">Start Your Journey</a>
+            <a href="#services" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-light">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Meet Your Coach</h2>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h3>[Your Name] - Your Partner in Growth</h3>
+                    <p>Hi, I'm [Your Name], a certified training coach passionate about empowering individuals like you to break through barriers and achieve peak performance. With [X] years of experience in [Your Specialization, e.g., leadership development, fitness transformation, career strategy], I provide personalized guidance and proven strategies tailored to your unique aspirations.</p>
+                    <p>My approach combines [mention key aspects like: evidence-based techniques, empathetic listening, actionable planning, accountability] to help you gain clarity, build confidence, and create sustainable results. Whether you're aiming for a career change, improved well-being, or enhanced skills, I'm here to support and challenge you every step of the way.</p>
+                    <a href="#cta" class="btn btn-primary" style="background: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);">Let's Connect</a>
+                </div>
+                <div class="about-image animate-on-scroll">
+                    <!-- Replace with a professional photo of the coach -->
+                    <img src="https://via.placeholder.com/400x450/CCCCCC/FFFFFF?text=Your+Photo+Here" alt="[Your Name], Training Coach">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Products Section -->
-        <section id="products" class="content-section">
-            <div class="container">
-                <h2 class="section-title">Our Bountiful Harvest</h2>
-                <p style="max-width: 60ch; margin: 0 auto 3rem auto;">Discover the seasonal delights straight from our fields. We offer a wide range of fresh, high-quality produce.</p>
-                <div class="product-grid">
-                    <!-- Product Card 1 -->
-                    <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Fresh Tomatoes">
-                        <div class="product-info">
-                            <h3>Vine-Ripened Tomatoes</h3>
-                            <p>Juicy, sweet, and bursting with flavor. Perfect for salads, sauces, or eating fresh off the vine.</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 2 -->
-                    <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1597362925123-98b8c138837b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Crisp Lettuce">
-                        <div class="product-info">
-                            <h3>Crisp Leafy Greens</h3>
-                            <p>A variety of lettuces and greens, harvested daily for maximum freshness and crunch.</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 3 -->
-                    <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1587402613301-b00c6c814e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Sweet Berries">
-                        <div class="product-info">
-                            <h3>Seasonal Sweet Berries</h3>
-                            <p>Deliciously sweet strawberries, blueberries, and raspberries, picked at their peak ripeness.</p>
-                        </div>
-                    </div>
-                     <!-- Product Card 4 -->
-                    <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Root Vegetables">
-                        <div class="product-info">
-                            <h3>Earthy Root Vegetables</h3>
-                            <p>Hearty carrots, potatoes, and beets, grown in rich soil for exceptional taste and nutrition.</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 5 -->
-                    <div class="product-card">
-                         <img src="https://images.unsplash.com/photo-1615485925451-a8d45447f140?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Farm Fresh Eggs">
-                         <div class="product-info">
-                            <h3>Farm Fresh Eggs</h3>
-                            <p>Golden yolks from our happy, free-range chickens. Taste the difference quality feed and care makes.</p>
-                         </div>
-                    </div>
-                     <!-- Product Card 6 -->
-                    <div class="product-card">
-                         <img src="https://images.unsplash.com/photo-1628248879558-6d55e63e76c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Artisanal Honey">
-                         <div class="product-info">
-                            <h3>Local Artisanal Honey</h3>
-                            <p>Pure, raw honey harvested from our own beehives. A sweet taste of our local flora.</p>
-                         </div>
-                    </div>
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">How I Can Help You</h2>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Career Acceleration</h3>
+                    <p>Navigate career transitions, develop leadership skills, and achieve your professional goals faster.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Personal Wellness</h3>
+                    <p>Improve your physical and mental well-being, build healthy habits, and create a balanced lifestyle.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="service-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Mindset Mastery</h3>
+                    <p>Overcome limiting beliefs, build resilience, enhance focus, and cultivate a growth mindset.</p>
+                </div>
+                 <div class="service-card animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="service-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Communication Skills</h3>
+                    <p>Enhance your interpersonal skills, improve public speaking, and build stronger relationships.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sustainability Section -->
-        <section id="sustainability" class="content-section">
-            <div class="container">
-                <h2 class="section-title">Nurturing the Land</h2>
-                <p style="max-width: 60ch; margin: 0 auto 3rem auto;">We are committed to sustainable and ethical farming practices that protect our environment for future generations.</p>
-                <div class="sustainability-content">
-                    <div class="sustainability-item">
-                        <div class="sustainability-icon"><i class="fas fa-seedling"></i></div>
-                        <div class="sustainability-text">
-                            <h3>Organic Methods</h3>
-                            <p>We prioritize natural pest control, composting, and cover cropping to build healthy soil without synthetic chemicals.</p>
-                        </div>
-                    </div>
-                    <div class="sustainability-item">
-                        <div class="sustainability-icon"><i class="fas fa-recycle"></i></div>
-                        <div class="sustainability-text">
-                            <h3>Water Conservation</h3>
-                            <p>Utilizing drip irrigation and water-wise techniques to conserve precious water resources and minimize waste.</p>
-                        </div>
-                    </div>
-                    <div class="sustainability-item">
-                        <div class="sustainability-icon"><i class="fas fa-bee"></i></div>
-                        <div class="sustainability-text">
-                            <h3>Biodiversity Support</h3>
-                            <p>Planting native wildflowers and maintaining natural habitats to support pollinators and beneficial insects on the farm.</p>
-                        </div>
-                    </div>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section section-gradient">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Success Stories</h2>
+            <div class="testimonial-slider animate-on-scroll">
+                <!-- Slides -->
+                <div class="testimonial-slide active">
+                    <p class="testimonial-quote">Working with [Your Name] was a game-changer. I gained clarity on my goals and developed actionable steps to achieve them. Highly recommended!</p>
+                    <p class="testimonial-author">Alex Johnson <span>- Marketing Manager</span></p>
                 </div>
-            </div>
-        </section>
+                <div class="testimonial-slide">
+                    <p class="testimonial-quote">I felt stuck before coaching, but [Your Name]'s guidance helped me unlock potential I didn't know I had. My confidence has soared.</p>
+                    <p class="testimonial-author">Samantha Lee <span>- Entrepreneur</span></p>
+                </div>
+                <div class="testimonial-slide">
+                     <p class="testimonial-quote">The personalized wellness plan created for me was realistic and effective. I've never felt healthier or more energetic.</p>
+                    <p class="testimonial-author">Michael Chen <span>- Software Engineer</span></p>
+                </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="content-section">
-            <div class="container">
-                <h2 class="section-title">Get In Touch or Visit Us!</h2>
-                 <p style="max-width: 60ch; margin: -1rem auto 3rem auto; color: var(--light-bg); opacity: 0.9;">We'd love to hear from you! Reach out with questions or plan a visit to see the farm yourself.</p>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Contact Details</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Harvest Lane, Green Valley, CA 98765</p>
-                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                        <p><i class="fas fa-envelope"></i> info@harvesthavenfarms.com</p>
-                        <p><i class="fas fa-clock"></i> Farm Stand Hours: Wed-Sun, 9am - 5pm (Seasonal)</p>
-                         <!-- Placeholder for a simple map image or link -->
-                         <a href="#" target="_blank" title="View on map (placeholder)">
-                             <img src="https://via.placeholder.com/400x200.png?text=Simple+Map+Placeholder" alt="Map placeholder" style="margin-top: 1.5rem; border: 2px solid var(--secondary-color); padding: 5px; background: var(--light-bg);">
-                         </a>
-                    </div>
-                    <div class="contact-form-container">
-                         <h3>Send Us a Message</h3>
-                         <form action="#" method="POST" class="contact-form">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                            <input type="email" name="email" placeholder="Your Email" required>
-                            <textarea name="message" placeholder="Your Message" required></textarea>
-                            <button type="submit" class="cta-button">Send Message</button>
-                        </form>
-                    </div>
-                </div>
+                <!-- Navigation Buttons -->
+                 <div class="slider-controls">
+                     <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                     <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="section section-light">
+        <div class="container animate-on-scroll">
+            <h2 class="section-title">Ready to Elevate Your Life?</h2>
+            <p>Take the first step towards achieving your goals. Book a complimentary discovery call today to see how coaching can benefit you.</p>
+            <a href="#contact-form" class="btn btn-primary">Book Your Free Call</a>
+        </div>
+    </section>
+
+     <!-- Simple Contact Form Section Placeholder -->
+     <section id="contact-form" class="section">
+         <div class="container">
+             <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+             <form class="animate-on-scroll" style="max-width: 600px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                 <div style="margin-bottom: 1rem;">
+                     <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name:</label>
+                     <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                 </div>
+                 <div style="margin-bottom: 1rem;">
+                     <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email:</label>
+                     <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif;">
+                 </div>
+                 <div style="margin-bottom: 1.5rem;">
+                     <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message:</label>
+                     <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins', sans-serif; resize: vertical;"></textarea>
+                 </div>
+                 <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);">Send Message</button>
+             </form>
+             <p style="text-align: center; margin-top: 1rem; font-size: 0.9em;">(Note: This is a visual template. Form submission functionality needs backend implementation.)</p>
+         </div>
+     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container" style="padding: 2rem 1rem;">
-            <p>&copy; 2025 Harvest Haven Farms. All Rights Reserved. Cultivated with Care.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>[Your Name/Brand] Coaching</h4>
+                    <p>Empowering you to reach your full potential through personalized coaching and support.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#cta">Book a Call</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                         <li><i class="fas fa-envelope" style="margin-right: 8px; color:var(--secondary-color)"></i> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+                         <li><i class="fas fa-phone" style="margin-right: 8px; color:var(--secondary-color)"></i> <a href="tel:+1234567890">+1 (234) 567-890</a> (Optional)</li>
+                         <li><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:var(--secondary-color)"></i> City, Country (Optional)</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> [Your Name/Brand] Coaching. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-     <!-- Scroll Top Button -->
-    <button id="scrollTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-
     <script>
-        // Basic Scroll Top Button functionality
-        const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-        window.onscroll = function() {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollTopBtn.classList.add('show');
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                 scrollTopBtn.classList.remove('show');
+                navbar.classList.remove('scrolled');
             }
-        }
-
-        scrollTopBtn.addEventListener('click', () => {
-             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Simple Intersection Observer for fade-in effect (Optional)
-        // Add 'visible' class to sections when they enter the viewport
-        // This part adds slightly more dynamic feel but might be omitted if strict no-JS is preferred.
-        // The CSS already handles the animation states.
-         const sections = document.querySelectorAll('.product-card, .sustainability-item'); // Select elements to animate
+        // Active Navigation Link Highlighting
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('.navbar nav ul li a');
 
-        const observerOptions = {
-            root: null, // relative to document viewport
-            rootMargin: '0px',
-            threshold: 0.1 // trigger when 10% of the element is visible
-        };
-
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Element is in view, add 'visible' class - CSS handles the animation
-                    // Using style directly for immediate effect without needing .visible class
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target); // Optional: Stop observing once animated
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                 // Adjust offset based on navbar height if needed
+                if (pageYOffset >= (sectionTop - sectionHeight / 3 - 80)) {
+                    current = section.getAttribute('id');
                 }
             });
-        };
 
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                 a.classList.remove('active');
+                if(a.getAttribute('href') === `#${current}`){
+                    a.classList.add('active');
+                }
+                 // Special case for home when at top
+                 if (!current && a.getAttribute('href') === '#hero') {
+                     a.classList.add('active');
+                 }
+            });
         });
 
-         // Simple bounce animation for hero arrow (CSS only)
-        const styleSheet = document.styleSheets[0];
-        styleSheet.insertRule(`
-            @keyframes bounce {
-                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-                40% { transform: translateY(-10px); }
-                60% { transform: translateY(-5px); }
+
+        // Testimonial Slider
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("testimonial-slide");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                slides[i].classList.remove("active");
             }
-        `, styleSheet.cssRules.length);
+            slides[slideIndex-1].style.display = "block";
+            slides[slideIndex-1].classList.add("active");
+        }
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                 const targetId = this.getAttribute('href');
+                 const targetElement = document.querySelector(targetId);
+                 if(targetElement) {
+                    // Calculate position considering fixed navbar height
+                     const navbarHeight = document.getElementById('navbar').offsetHeight;
+                     const elementPosition = targetElement.getBoundingClientRect().top;
+                     const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                 }
+            });
+        });
+
+         // Animate on Scroll
+         const observerOptions = {
+             root: null, // relative to document viewport
+             rootMargin: '0px',
+             threshold: 0.1 // 10% visible
+         };
+
+         const observerCallback = (entries, observer) => {
+             entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                     entry.target.classList.add('animated');
+                     // Optional: Stop observing once animated
+                     // observer.unobserve(entry.target);
+                 } else {
+                    // Optional: Remove animation if element scrolls out of view
+                    // entry.target.classList.remove('animated');
+                 }
+             });
+         };
+
+         const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+         document.querySelectorAll('.animate-on-scroll').forEach(element => {
+             scrollObserver.observe(element);
+         });
+
+        // Update Footer Year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
     </script>
-
 </body>
 </html>
 ```
