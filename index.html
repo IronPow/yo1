@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Gallery Carousel - Enhanced</title>
+    <title>Art Gallery Carousel - Enhanced++</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap');
 
@@ -19,7 +19,8 @@
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
             --carousel-transition-speed: 0.5s;
-            --section-spacing: 4rem; /* Added variable for consistent section spacing */
+            --section-spacing: 4rem; /* Variable for consistent section spacing */
+            --focus-outline-color: var(--secondary-accent); /* Added for focus states */
         }
 
         * {
@@ -29,7 +30,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Added smooth scroll */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -38,19 +39,41 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            perspective: 1000px; /* For potential 3D effects */
+            perspective: 1000px;
         }
 
+        /* --- Focus Visible --- */
+        /* Add a distinct outline for keyboard navigation */
+        :focus-visible {
+            outline: 3px solid var(--focus-outline-color);
+            outline-offset: 2px;
+        }
+        /* Remove default outline when focus is not visible (mouse clicks) */
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+        /* Specific adjustments for elements where default might look odd */
+         .carousel-button:focus-visible {
+             outline-offset: -4px; /* Offset inside button */
+         }
+         .carousel-dot:focus-visible {
+              outline-offset: 3px;
+         }
+          #backToTopBtn:focus-visible {
+              outline-offset: 1px;
+          }
+
+
         /* --- Section Titles --- */
-        .section-title { /* Consolidated section title style */
+        .section-title {
              font-family: var(--font-heading);
              font-size: 2.5rem;
              text-align: center;
-             margin-bottom: 2.5rem; /* Space below title */
+             margin-bottom: 2.5rem;
              position: relative;
              padding-bottom: 0.5rem;
         }
-        .section-title::after { /* Underline for section title */
+        .section-title::after {
             content: '';
             position: absolute;
             width: 80px;
@@ -58,16 +81,16 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--primary-accent); /* Default underline */
+            background-color: var(--primary-accent);
         }
 
         /* --- Navigation --- */
         nav {
             background-color: var(--nav-background);
             padding: 0.8rem 1rem;
-            position: sticky; /* Make nav sticky */
+            position: sticky;
             top: 0;
-            z-index: 900; /* Ensure nav is below lightbox but above content */
+            z-index: 900;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             border-bottom: 1px solid var(--card-background);
         }
@@ -75,27 +98,27 @@
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center; /* Center nav items */
+            justify-content: center;
             align-items: center;
-            max-width: 1200px; /* Limit nav width */
-            margin: 0 auto; /* Center the ul */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         nav ul li {
-            margin: 0 1.2rem; /* Slightly adjusted spacing */
+            margin: 0 1.2rem;
         }
 
         nav ul li a {
             color: var(--text-color);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: 400; /* Slightly bolder */
-            padding: 0.5rem 0; /* Add padding for larger clickable area */
+            font-weight: 400;
+            padding: 0.5rem 0;
             position: relative;
             transition: color 0.3s ease;
         }
 
-        nav ul li a::after { /* Underline effect */
+        nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -108,7 +131,7 @@
         }
 
         nav ul li a:hover,
-        nav ul li a.active { /* Style for hover and potential active state */
+        nav ul li a.active {
             color: var(--primary-accent);
         }
 
@@ -121,15 +144,15 @@
         /* --- Header --- */
         header {
             background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-            padding: 4rem 1rem 5rem 1rem; /* Adjusted padding */
+            padding: 4rem 1rem 5rem 1rem;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: var(--section-spacing); /* Use variable */
+            margin-bottom: var(--section-spacing);
             position: relative;
             overflow: hidden;
         }
 
-        header::before { /* Subtle pattern/texture */
+        header::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -142,94 +165,127 @@
 
         header h1 {
             font-family: var(--font-heading);
-            font-size: 3.8rem; /* Slightly larger */
+            font-size: 3.8rem;
             color: var(--background-color);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 0.75rem; /* Increased margin */
+            margin-bottom: 0.75rem;
             position: relative;
             z-index: 1;
-            animation: fadeInDown 1s ease-out; /* Added intro animation */
+            animation: fadeInDown 1s ease-out;
         }
 
         header p {
-            font-size: 1.2rem; /* Slightly larger */
+            font-size: 1.2rem;
             color: var(--card-background);
-            max-width: 650px; /* Slightly wider */
+            max-width: 650px;
             margin: 0 auto;
             font-weight: 300;
             position: relative;
             z-index: 1;
-            animation: fadeInUp 1s ease-out 0.3s; /* Added intro animation with delay */
-            animation-fill-mode: backwards; /* Start animation from hidden state */
+            animation: fadeInUp 1s ease-out 0.3s;
+            animation-fill-mode: backwards;
         }
+
+        /* --- Generic Section Styling & Animations --- */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animated-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Stagger children animation */
+        .animated-section.visible .testimonial-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .animated-section.visible .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .animated-section.visible .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .animated-section.visible .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+        .animated-section.visible .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+        /* Add more if needed */
+
 
         /* --- Gallery Section --- */
         .gallery-container {
-            max-width: 1200px; /* Max width for the whole section including title */
-            margin: var(--section-spacing) auto; /* Use variable */
+            max-width: 1200px;
+            margin: var(--section-spacing) auto;
             padding: 0 1rem;
-            width: 90%; /* Adjust width as needed */
+            width: 90%;
+            position: relative; /* Needed for observer margin */
         }
 
-        /* Use .section-title for gallery */
         .gallery-title {
              color: var(--secondary-accent);
-             /* Inherits from .section-title */
         }
         .gallery-title::after {
-             background-color: var(--secondary-accent); /* Specific underline color */
+             background-color: var(--secondary-accent);
         }
 
         /* --- Carousel Styles --- */
         .carousel-container {
-            position: relative; /* Needed for absolute positioning of buttons */
+            position: relative;
             width: 100%;
-            margin: 0 auto; /* Center the carousel container */
+            margin: 0 auto;
+            /* Add focus styles for container if needed for accessibility */
         }
 
         .carousel-wrapper {
             overflow: hidden;
-            width: 100%; /* Take full width of the container */
+            width: 100%;
             border-radius: 12px;
-             box-shadow: 0 8px 20px var(--shadow-color); /* Shadow on the wrapper */
+            box-shadow: 0 8px 20px var(--shadow-color);
+            cursor: grab; /* Indicate draggable */
+        }
+        .carousel-wrapper.grabbing {
+             cursor: grabbing;
         }
 
         .carousel-track {
             display: flex;
             transition: transform var(--carousel-transition-speed) ease-in-out;
             /* Width will be set by JS */
+            /* Add aria-live for screen reader announcements */
+            aria-live: polite;
+            user-select: none; /* Prevent text selection during drag */
+             -webkit-user-drag: none; /* Prevent image dragging */
         }
 
         .carousel-slide {
-            flex: 0 0 100%; /* Each slide takes full width of the wrapper */
-            width: 100%; /* Ensure width is set for calculation */
+            flex: 0 0 100%;
+            width: 100%;
             background-color: var(--card-background);
-            /* Removed border-radius here, apply to wrapper or content */
-            overflow: hidden; /* Ensure content fits */
-            /* Removed box-shadow here, apply to wrapper */
-            cursor: pointer;
+            overflow: hidden;
+            cursor: pointer; /* Pointer cursor for opening lightbox */
             position: relative;
-            opacity: 0; /* Start hidden for load animation */
-            transform: translateX(20px); /* Start slightly offset for load animation */
-            animation: fadeInSlideRight 0.8s ease-out forwards; /* General slide load animation */
-            animation-delay: 0.2s; /* Delay slightly */
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInSlideRight 0.8s ease-out forwards;
+            animation-delay: 0.2s;
         }
+         /* Reset cursor when dragging */
+         .carousel-wrapper.grabbing .carousel-slide {
+             cursor: grabbing;
+         }
 
         .carousel-slide img {
             display: block;
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9; /* Adjust aspect ratio as desired */
+            aspect-ratio: 16 / 9;
             object-fit: cover;
-            /* Removed border-bottom */
             transition: transform 0.4s ease-out;
+            pointer-events: none; /* Prevent img stealing touch/mouse events */
         }
 
         .carousel-slide:hover img {
-             transform: scale(1.03); /* Subtle zoom on hover */
+             transform: scale(1.03);
         }
 
-        .carousel-slide .art-info { /* Reuse art-info class for consistency */
+        .carousel-slide .art-info {
             padding: 1.5rem;
             text-align: center;
         }
@@ -251,8 +307,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 10; /* Above the slides */
-            background-color: rgba(43, 43, 43, 0.7); /* Semi-transparent background */
+            z-index: 10;
+            background-color: rgba(43, 43, 43, 0.7);
             color: var(--text-color);
             border: none;
             border-radius: 50%;
@@ -262,7 +318,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            line-height: 1; /* Center icon */
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -287,10 +343,9 @@
              opacity: 0.4;
              cursor: not-allowed;
              background-color: rgba(43, 43, 43, 0.5);
-             transform: translateY(-50%); /* Reset transform on disable */
+             transform: translateY(-50%);
         }
 
-        /* Optional: Carousel Dots */
         .carousel-dots {
             text-align: center;
             margin-top: 1.5rem;
@@ -306,6 +361,8 @@
             margin: 0 6px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            padding: 0; /* Reset button padding */
+            appearance: none; /* Remove default button styles */
         }
 
         .carousel-dot.active {
@@ -317,52 +374,53 @@
 
         /* --- Lightbox --- */
         .lightbox {
-            display: none;
+            display: none; /* Initially hidden */
             position: fixed;
             z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.95); /* Darker background */
+            overflow: auto; /* Allow scroll if content too big, though unlikely */
+            background-color: rgba(0, 0, 0, 0.95);
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(8px); /* Stronger blur */
-            opacity: 0; /* Start hidden for fade-in */
-            transition: opacity 0.5s ease; /* Fade transition */
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            /* Add display: flex to JS when showing */
         }
 
-        .lightbox.show { /* Class to trigger transition */
+        .lightbox.show {
             opacity: 1;
         }
 
         .lightbox-content {
             margin: auto;
             display: block;
-            max-width: 88%; /* Slightly larger max */
+            max-width: 88%;
             max-height: 88%;
-            animation: zoomIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother zoom */
-            border-radius: 5px; /* Slight rounding */
-             box-shadow: 0 0 30px rgba(255, 107, 107, 0.3); /* Subtle glow */
+            animation: zoomIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
         }
 
         .lightbox-caption {
-            margin: 20px auto; /* Increased margin */
+            margin: 20px auto;
             display: block;
             width: 80%;
-            max-width: 750px; /* Slightly wider */
+            max-width: 750px;
             text-align: center;
             color: var(--text-color);
             padding: 10px 0;
-            font-size: 1.2rem; /* Larger caption */
+            font-size: 1.2rem;
             font-family: var(--font-heading);
             letter-spacing: 1px;
-            animation: fadeInUp 0.5s ease-out 0.2s; /* Caption animation */
+            animation: fadeInUp 0.5s ease-out 0.2s;
             animation-fill-mode: backwards;
         }
         .lightbox-caption strong {
-            color: var(--primary-accent); /* Highlight title */
+            color: var(--primary-accent);
             display: block;
              margin-bottom: 5px;
         }
@@ -370,21 +428,24 @@
 
         .lightbox-close {
             position: absolute;
-            top: 20px; /* Adjusted position */
+            top: 20px;
             right: 30px;
             color: var(--text-color);
-            font-size: 45px; /* Larger close button */
+            font-size: 45px;
             font-weight: bold;
-            transition: 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease; /* Added transform */
             cursor: pointer;
-            line-height: 1; /* Ensure consistent alignment */
-             text-shadow: 0 0 10px rgba(0,0,0,0.7); /* Add shadow for visibility */
+            line-height: 1;
+             text-shadow: 0 0 10px rgba(0,0,0,0.7);
+             border: none; /* Ensure button styles are reset */
+             background: none;
+             padding: 0;
         }
 
         .lightbox-close:hover,
-        .lightbox-close:focus {
+        .lightbox-close:focus-visible { /* Use focus-visible */
             color: var(--primary-accent);
-            transform: scale(1.1); /* Add hover scale */
+            transform: scale(1.1);
             text-decoration: none;
             cursor: pointer;
         }
@@ -393,46 +454,46 @@
         #about {
             padding: 50px 1rem;
             max-width: 800px;
-            margin: var(--section-spacing) auto; /* Use variable */
+            margin: var(--section-spacing) auto;
             background-color: var(--card-background);
             border-radius: 8px;
             text-align: center;
-             box-shadow: 0 5px 15px var(--shadow-color); /* Added shadow */
+            box-shadow: 0 5px 15px var(--shadow-color);
+             position: relative; /* For observer */
         }
         #about h2 {
-            color: var(--primary-accent); /* Override title color */
-            /* Inherits from .section-title */
+            color: var(--primary-accent);
         }
          #about h2::after {
-            background-color: var(--primary-accent); /* Ensure underline color */
+            background-color: var(--primary-accent);
         }
         #about p {
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text-color);
-             padding: 0 1rem; /* Add some padding */
+             padding: 0 1rem;
         }
 
         /* --- Testimonials Section --- */
         #testimonials {
-            max-width: 1100px; /* Slightly wider for grid */
-            margin: var(--section-spacing) auto; /* Use variable */
+            max-width: 1100px;
+            margin: var(--section-spacing) auto;
             padding: 0 1rem;
+            position: relative; /* For observer */
         }
 
         #testimonials h2 {
-            color: var(--secondary-accent); /* Use secondary accent */
-            /* Inherits from .section-title */
+            color: var(--secondary-accent);
         }
          #testimonials h2::after {
-            background-color: var(--secondary-accent); /* Specific underline color */
+            background-color: var(--secondary-accent);
         }
 
         .testimonial-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-            gap: 1.5rem; /* Space between cards */
-            margin-top: 1rem; /* Align with section title margin */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
         .testimonial-card {
@@ -440,8 +501,10 @@
             border-radius: 8px;
             padding: 2rem;
             box-shadow: 0 4px 12px var(--shadow-color);
-            border-left: 4px solid var(--primary-accent); /* Accent border */
+            border-left: 4px solid var(--primary-accent);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             /* Properties for stagger animation (initial state set in .animated-section) */
+             /* opacity: 0; transform: translateY(20px); */
         }
 
         .testimonial-card:hover {
@@ -454,13 +517,13 @@
             color: var(--text-color);
             margin-bottom: 1rem;
             position: relative;
-            padding-left: 1.5rem; /* Space for quote mark */
+            padding-left: 1.5rem;
             font-size: 1.05rem;
              line-height: 1.7;
         }
 
         .testimonial-card blockquote::before {
-            content: '“'; /* Opening quote mark */
+            content: '“';
             position: absolute;
             left: -5px;
             top: -10px;
@@ -474,11 +537,11 @@
             text-align: right;
             font-size: 0.95rem;
             font-weight: bold;
-            color: var(--secondary-accent); /* Use secondary for name */
+            color: var(--secondary-accent);
             margin-top: 1rem;
         }
 
-        .testimonial-card footer span { /* For title/company */
+        .testimonial-card footer span {
             display: block;
             font-weight: 300;
             font-size: 0.85rem;
@@ -491,16 +554,16 @@
         #contact {
             padding: 50px 1rem;
             text-align: center;
-            margin: var(--section-spacing) auto; /* Use variable */
-            max-width: 800px; /* Consistent width */
+            margin: var(--section-spacing) auto;
+            max-width: 800px;
+            position: relative; /* For observer */
         }
 
         #contact h2 {
-            color: var(--primary-accent); /* Primary accent for contact */
-            /* Inherits from .section-title */
+            color: var(--primary-accent);
         }
          #contact h2::after {
-             background-color: var(--primary-accent); /* Match title color */
+             background-color: var(--primary-accent);
          }
 
         #contact p {
@@ -508,11 +571,11 @@
             line-height: 1.7;
             color: var(--text-color);
             margin-bottom: 1.5rem;
-             max-width: 600px; /* Limit paragraph width */
+             max-width: 600px;
              margin-left: auto;
              margin-right: auto;
         }
-        #contact a.contact-button { /* Style the button */
+        #contact a.contact-button {
              display: inline-block;
              padding: 12px 25px;
              background-color: var(--primary-accent);
@@ -520,67 +583,76 @@
              text-decoration: none;
              border-radius: 5px;
              font-weight: bold;
-             transition: background-color 0.3s ease, transform 0.3s ease;
+             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
              box-shadow: 0 3px 8px rgba(255, 107, 107, 0.3);
          }
-         #contact a.contact-button:hover {
+         #contact a.contact-button:hover,
+         #contact a.contact-button:focus-visible { /* Use focus-visible */
              background-color: var(--secondary-accent);
              transform: translateY(-2px);
              box-shadow: 0 5px 12px rgba(78, 205, 196, 0.4);
+              color: var(--background-color); /* Ensure text color remains on focus */
          }
 
 
         /* --- Footer --- */
-        footer#page-footer { /* Give footer an ID to distinguish from testimonial footers */
+        footer#page-footer {
             text-align: center;
-            padding: 2.5rem 1rem; /* Increased padding */
-            margin-top: var(--section-spacing); /* Use variable */
+            padding: 2.5rem 1rem;
+            margin-top: var(--section-spacing);
             font-size: 0.95rem;
-            color: rgba(224, 224, 224, 0.7); /* Slightly more visible */
+            color: rgba(224, 224, 224, 0.7);
             border-top: 1px solid var(--card-background);
-            background-color: var(--nav-background); /* Match nav background */
+            background-color: var(--nav-background);
         }
-         footer#page-footer p a { /* Style links in footer */
+         footer#page-footer p a {
              color: var(--secondary-accent);
              text-decoration: none;
              transition: color 0.3s ease;
          }
-         footer#page-footer p a:hover {
+         footer#page-footer p a:hover,
+         footer#page-footer p a:focus-visible { /* Use focus-visible */
              color: var(--primary-accent);
+             text-decoration: underline; /* Add underline on hover/focus */
          }
 
         /* --- Back to Top Button --- */
         #backToTopBtn {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             bottom: 25px;
             right: 25px;
-            z-index: 990; /* Below lightbox, above most content */
+            z-index: 990;
             border: none;
-            outline: none;
+            outline: none; /* Outline handled by :focus-visible */
             background-color: var(--primary-accent);
             color: var(--background-color);
             cursor: pointer;
-            padding: 12px 15px; /* Slightly adjusted padding */
-            border-radius: 50%; /* Make it circular */
-            font-size: 18px; /* Size of the arrow */
-            line-height: 1; /* Align icon vertically */
+            padding: 0; /* Reset padding */
+            width: 45px; /* Fixed size */
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px; /* Arrow size */
+            line-height: 45px; /* Vertically center arrow */
+            text-align: center; /* Horizontally center arrow */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             transition: background-color 0.3s ease, opacity 0.4s ease, transform 0.3s ease;
-            opacity: 0; /* Start fully transparent */
-            transform: translateY(10px); /* Start slightly lower */
+            opacity: 0;
+            transform: translateY(10px);
         }
 
         #backToTopBtn.show {
-            display: block;
+            display: block; /* Use block instead of flex */
             opacity: 0.8;
             transform: translateY(0);
         }
 
-        #backToTopBtn:hover {
+        #backToTopBtn:hover,
+        #backToTopBtn:focus-visible { /* Use focus-visible */
             background-color: var(--secondary-accent);
             opacity: 1;
-             transform: scale(1.1);
+            transform: scale(1.1);
+            color: var(--background-color); /* Ensure color contrast */
         }
 
 
@@ -597,7 +669,6 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
          }
-         /* New animation for carousel slide load */
          @keyframes fadeInSlideRight {
             from { opacity: 0; transform: translateX(30px); }
             to { opacity: 1; transform: translateX(0); }
@@ -606,190 +677,76 @@
 
         /* --- Responsive adjustments --- */
         @media (max-width: 992px) {
-            :root {
-                --section-spacing: 3rem;
-            }
+            :root { --section-spacing: 3rem; }
             .gallery-container, #about, #testimonials, #contact {
                  width: 95%;
-                 max-width: 95%; /* Adjust max-width for sections */
+                 max-width: 95%;
             }
-             .carousel-slide .art-info h3 {
-                 font-size: 1.4rem;
-             }
-              .carousel-slide .art-info p {
-                 font-size: 0.9rem;
-             }
-             .testimonial-container {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min size */
-                gap: 1.2rem;
-             }
-             .testimonial-card {
-                 padding: 1.5rem;
-             }
-              .section-title {
-                 font-size: 2.2rem;
-             }
+             .carousel-slide .art-info h3 { font-size: 1.4rem; }
+             .carousel-slide .art-info p { font-size: 0.9rem; }
+             .testimonial-container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+             .testimonial-card { padding: 1.5rem; }
+             .section-title { font-size: 2.2rem; }
         }
 
         @media (max-width: 768px) {
-             :root {
-                --section-spacing: 2.5rem;
-            }
-            nav ul {
-                justify-content: space-around; /* Adjust nav for smaller screens */
-            }
-            nav ul li {
-                 margin: 0 0.4rem; /* Reduce nav spacing */
-            }
-             nav ul li a {
-                font-size: 0.9rem;
-            }
+             :root { --section-spacing: 2.5rem; }
+            nav ul { justify-content: space-around; }
+            nav ul li { margin: 0 0.4rem; }
+             nav ul li a { font-size: 0.9rem; }
 
-            header h1 {
-                font-size: 2.8rem;
-            }
-             header p {
-                font-size: 1.1rem;
-            }
-            header {
-                padding: 3rem 1rem 4rem 1rem;
-                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            }
+            header h1 { font-size: 2.8rem; }
+             header p { font-size: 1.1rem; }
+            header { padding: 3rem 1rem 4rem 1rem; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
 
-             .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-             }
-              .carousel-slide .art-info h3 {
-                 font-size: 1.3rem;
-             }
-            .carousel-button {
-                 width: 40px;
-                 height: 40px;
-                 font-size: 20px;
-             }
+             .section-title { font-size: 2rem; margin-bottom: 2rem; }
+             .carousel-slide .art-info h3 { font-size: 1.3rem; }
+            .carousel-button { width: 40px; height: 40px; font-size: 20px; }
              .carousel-button.prev { left: 10px; }
              .carousel-button.next { right: 10px; }
 
-             .testimonial-container {
-                 grid-template-columns: 1fr; /* Stack testimonials on smaller screens */
-                 gap: 1rem;
-             }
-             .testimonial-card blockquote {
-                 font-size: 1rem;
-             }
+             .testimonial-container { grid-template-columns: 1fr; gap: 1rem; }
+             .testimonial-card blockquote { font-size: 1rem; }
 
-             .lightbox-content {
-                max-width: 92%;
-                max-height: 85%;
-            }
+             .lightbox-content { max-width: 92%; max-height: 85%; }
              #backToTopBtn {
-                bottom: 20px;
-                right: 20px;
-                padding: 10px 13px;
-                font-size: 16px;
+                bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; line-height: 40px;
             }
         }
 
         @media (max-width: 480px) {
-             :root {
-                --section-spacing: 2rem;
-            }
-             nav {
-                 padding: 0.6rem 0.5rem;
-             }
-             nav ul {
-                 /* Allow wrapping */
-                 flex-wrap: wrap;
-                 justify-content: center;
-                 padding: 0.3rem 0;
-             }
-             nav ul li {
-                 margin: 0.2rem 0.5rem; /* Spacing for wrapped items */
-             }
-             nav ul li a {
-                 font-size: 0.85rem; /* Slightly larger */
-                 padding: 0.4rem 0;
-             }
+             :root { --section-spacing: 2rem; }
+             nav { padding: 0.6rem 0.5rem; }
+             nav ul { flex-wrap: wrap; justify-content: center; padding: 0.3rem 0; }
+             nav ul li { margin: 0.2rem 0.5rem; }
+             nav ul li a { font-size: 0.85rem; padding: 0.4rem 0; }
 
-             header h1 {
-                font-size: 2.2rem;
-            }
-             header p {
-                font-size: 1rem;
-            }
-             header {
-                padding: 2.5rem 1rem 3.5rem 1rem;
-            }
+             header h1 { font-size: 2.2rem; }
+             header p { font-size: 1rem; }
+             header { padding: 2.5rem 1rem 3.5rem 1rem; }
             .gallery-container, #about, #testimonials, #contact {
-                width: 100%;
-                padding: 0 0.5rem; /* Minimal padding */
+                width: 100%; padding: 0 0.5rem;
             }
-             .section-title {
-                 font-size: 1.8rem;
-             }
-             .carousel-wrapper {
-                 border-radius: 0; /* Remove border radius on small screens if full width */
-             }
-             .carousel-slide {
-                 /* Adjustments if needed for single slide view on mobile */
-             }
-              .carousel-slide .art-info h3 {
-                font-size: 1.2rem;
-             }
-             .carousel-slide .art-info p {
-                 font-size: 0.85rem;
-             }
-             .carousel-button {
-                 width: 35px;
-                 height: 35px;
-                 font-size: 18px;
-             }
+             .section-title { font-size: 1.8rem; }
+             .carousel-wrapper { border-radius: 0; }
+             .carousel-slide .art-info h3 { font-size: 1.2rem; }
+             .carousel-slide .art-info p { font-size: 0.85rem; }
+             .carousel-button { width: 35px; height: 35px; font-size: 18px; }
              .carousel-button.prev { left: 5px; }
              .carousel-button.next { right: 5px; }
-              .carousel-dots {
-                 margin-top: 1rem;
-              }
-             .carousel-dot {
-                 width: 10px;
-                 height: 10px;
-                 margin: 0 4px;
-             }
-             .testimonial-card {
-                 padding: 1.2rem;
-             }
-             .testimonial-card blockquote {
-                 padding-left: 1rem;
-             }
-             .testimonial-card blockquote::before {
-                 font-size: 2.5rem;
-                 left: -2px;
-                 top: -5px;
-             }
+              .carousel-dots { margin-top: 1rem; }
+             .carousel-dot { width: 10px; height: 10px; margin: 0 4px; }
+             .testimonial-card { padding: 1.2rem; }
+             .testimonial-card blockquote { padding-left: 1rem; }
+             .testimonial-card blockquote::before { font-size: 2.5rem; left: -2px; top: -5px; }
 
-            .lightbox-content {
-                max-width: 95%;
-                max-height: 80%;
-            }
-             .lightbox-close {
-                top: 15px;
-                right: 20px;
-                font-size: 35px;
-            }
-             .lightbox-caption {
-                 font-size: 1rem;
-                 max-width: 90%;
-             }
-            footer#page-footer {
-                padding: 2rem 1rem;
-                margin-top: var(--section-spacing);
-            }
+            .lightbox-content { max-width: 95%; max-height: 80%; }
+             .lightbox-close { top: 15px; right: 20px; font-size: 35px; }
+             .lightbox-caption { font-size: 1rem; max-width: 90%; }
+            footer#page-footer { padding: 2rem 1rem; margin-top: var(--section-spacing); }
             #backToTopBtn {
-                bottom: 15px;
-                right: 15px;
-                padding: 8px 11px;
-                font-size: 14px;
-            }
+                 bottom: 15px; right: 15px; width: 38px; height: 38px; font-size: 16px; line-height: 38px;
+             }
         }
     </style>
 </head>
@@ -799,7 +756,7 @@
         <ul>
             <li><a href="#home" class="active">Gallery</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#testimonials">Testimonials</a></li> <!-- Added Testimonials Link -->
+            <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -809,14 +766,14 @@
         <p>A Curated Collection of Digital Dreams & Abstract Realities</p>
     </header>
 
-    <main class="gallery-container" id="gallery"> <!-- Added id="gallery" for potential linking -->
+    <main class="gallery-container" id="gallery"> <!-- Added id="gallery" -->
         <h2 class="section-title gallery-title">Featured Works</h2>
 
-        <div class="carousel-container">
+        <div class="carousel-container" role="region" aria-roledescription="carousel" aria-label="Featured Artworks">
             <div class="carousel-wrapper">
-                <div class="carousel-track">
+                <div class="carousel-track" aria-live="polite">
                     <!-- Slides -->
-                    <figure class="carousel-slide">
+                    <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 12">
                         <img src="https://source.unsplash.com/random/800x450/?abstract,vibrant" alt="Abstract Vibrant Waves" loading="lazy" data-title="Chromatic Flow" data-description="Digital Painting, 2024">
                         <figcaption class="art-info">
                             <h3>Chromatic Flow</h3>
@@ -824,7 +781,7 @@
                         </figcaption>
                     </figure>
 
-                    <figure class="carousel-slide">
+                    <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 12">
                         <img src="https://source.unsplash.com/random/800x450/?surreal,landscape" alt="Surreal Floating Island" loading="lazy" data-title="Utopia Suspended" data-description="Mixed Media, 2023">
                         <figcaption class="art-info">
                             <h3>Utopia Suspended</h3>
@@ -832,7 +789,7 @@
                         </figcaption>
                     </figure>
 
-                    <figure class="carousel-slide">
+                    <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 12">
                         <img src="https://source.unsplash.com/random/800x450/?galaxy,nebula" alt="Cosmic Nebula" loading="lazy" data-title="Stardust Echoes" data-description="Astrophotography Art, 2024">
                         <figcaption class="art-info">
                             <h3>Stardust Echoes</h3>
@@ -840,7 +797,7 @@
                         </figcaption>
                     </figure>
 
-                    <figure class="carousel-slide">
+                    <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?geometric,minimalist" alt="Minimalist Geometric Shapes" loading="lazy" data-title="Order in Chaos" data-description="Generative Art, 2023">
                         <figcaption class="art-info">
                             <h3>Order in Chaos</h3>
@@ -848,7 +805,7 @@
                         </figcaption>
                     </figure>
 
-                    <figure class="carousel-slide">
+                    <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?fantasy,forest" alt="Mystical Forest Path" loading="lazy" data-title="Whispering Woods" data-description="Digital Illustration, 2024">
                         <figcaption class="art-info">
                             <h3>Whispering Woods</h3>
@@ -856,7 +813,7 @@
                         </figcaption>
                     </figure>
 
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?cyberpunk,city" alt="Cyberpunk Cityscape" loading="lazy" data-title="Neon Dreams" data-description="Concept Art, 2023">
                         <figcaption class="art-info">
                             <h3>Neon Dreams</h3>
@@ -864,7 +821,7 @@
                         </figcaption>
                     </figure>
 
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="7 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?sculpture,modern" alt="Modern Abstract Sculpture" loading="lazy" data-title="Fluid Form" data-description="3D Render, 2024">
                         <figcaption class="art-info">
                             <h3>Fluid Form</h3>
@@ -872,7 +829,7 @@
                         </figcaption>
                     </figure>
 
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="8 of 12">
                         <img src="https://source.unsplash.com/random/800x450/?portrait,colorful" alt="Colorful Abstract Portrait" loading="lazy" data-title="Fractured Identity" data-description="Oil on Canvas (Digitized), 2022">
                         <figcaption class="art-info">
                             <h3>Fractured Identity</h3>
@@ -880,28 +837,28 @@
                         </figcaption>
                     </figure>
 
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="9 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?nature,macro" alt="Macro shot of dew on leaf" loading="lazy" data-title="Emerald Droplets" data-description="Macro Photography, 2024">
                         <figcaption class="art-info">
                             <h3>Emerald Droplets</h3>
                             <p>Macro Photography, 2024</p>
                         </figcaption>
                     </figure>
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="10 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?architecture,futuristic" alt="Futuristic Building Detail" loading="lazy" data-title="Meta-Structure" data-description="Architectural Render, 2024">
                         <figcaption class="art-info">
                             <h3>Meta-Structure</h3>
                             <p>Architectural Render, 2024</p>
                         </figcaption>
                     </figure>
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="11 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?water,reflection" alt="City lights reflecting on water" loading="lazy" data-title="Liquid Night" data-description="Long Exposure Photography, 2023">
                         <figcaption class="art-info">
                             <h3>Liquid Night</h3>
                             <p>Long Exposure Photography, 2023</p>
                         </figcaption>
                     </figure>
-                     <figure class="carousel-slide">
+                     <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="12 of 12">
                          <img src="https://source.unsplash.com/random/800x450/?pattern,organic" alt="Organic flowing pattern" loading="lazy" data-title="Bio-Luminescence" data-description="Abstract Digital Art, 2024">
                         <figcaption class="art-info">
                             <h3>Bio-Luminescence</h3>
@@ -923,16 +880,16 @@
     </main>
 
     <!-- About section -->
-    <section id="about">
-        <h2 class="section-title">About the Artist</h2>
+    <section id="about" class="animated-section" aria-labelledby="about-title">
+        <h2 class="section-title" id="about-title">About the Artist</h2>
         <p>
             Driven by a passion for the unseen and the imagined, Ephemeral Visions explores the intersection of technology and artistry. Specializing in abstract digital painting, surreal photomanipulation, and generative art, the works aim to evoke emotion and spark curiosity. Each piece is a journey into a unique visual world.
         </p>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials">
-        <h2 class="section-title">What Clients Say</h2>
+    <section id="testimonials" class="animated-section" aria-labelledby="testimonials-title">
+        <h2 class="section-title" id="testimonials-title">What Clients Say</h2>
         <div class="testimonial-container">
             <div class="testimonial-card">
                 <blockquote>
@@ -974,8 +931,8 @@
     </section>
 
     <!-- Contact section -->
-    <section id="contact">
-         <h2 class="section-title">Get In Touch</h2>
+    <section id="contact" class="animated-section" aria-labelledby="contact-title">
+         <h2 class="section-title" id="contact-title">Get In Touch</h2>
         <p>
             For inquiries about available works, commissions, or collaborations, please feel free to reach out. Let's create something unique together.
         </p>
@@ -989,168 +946,297 @@
     </footer>
 
     <!-- Lightbox Structure -->
-    <div id="myLightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
+    <div id="myLightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxCaptionTitle" aria-describedby="lightboxCaptionDesc">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
         <img class="lightbox-content" id="lightboxImg" alt="Enlarged artwork">
-        <div class="lightbox-caption" id="caption"></div>
+        <div class="lightbox-caption" id="caption">
+            <!-- Content set by JS -->
+            <strong id="lightboxCaptionTitle"></strong><span id="lightboxCaptionDesc"></span>
+        </div>
     </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTopBtn" title="Go to top">&#8679;</button> <!-- Using HTML entity for arrow -->
+    <button id="backToTopBtn" title="Go to top" aria-label="Scroll back to top">&#8679;</button> <!-- Using HTML entity for arrow -->
 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const lightbox = document.getElementById('myLightbox');
             const lightboxImg = document.getElementById('lightboxImg');
-            const captionText = document.getElementById('caption');
+            const captionContainer = document.getElementById('caption');
+            const captionTitle = document.getElementById('lightboxCaptionTitle');
+            const captionDesc = document.getElementById('lightboxCaptionDesc');
             const closeBtn = document.querySelector('.lightbox-close');
-            // Select images within carousel slides for lightbox trigger
             const galleryImages = document.querySelectorAll('.carousel-slide img');
             const navLinks = document.querySelectorAll('nav a');
             const backToTopButton = document.getElementById("backToTopBtn");
-            const sections = document.querySelectorAll('section[id], header[id]'); // For active nav highlighting on scroll
+            const sections = document.querySelectorAll('section[id], header[id]');
+            const animatedSections = document.querySelectorAll('.animated-section'); // For scroll animations
 
             // --- Carousel Functionality ---
+            const carouselContainer = document.querySelector('.carousel-container');
             const track = document.querySelector('.carousel-track');
+            const wrapper = document.querySelector('.carousel-wrapper');
             const slides = Array.from(track.children);
             const nextButton = document.querySelector('.carousel-button.next');
             const prevButton = document.querySelector('.carousel-button.prev');
             const dotsNav = document.querySelector('.carousel-dots');
 
-            let slideWidth = 0; // Will be set dynamically
+            let slideWidth = 0;
             let currentIndex = 0;
+            let isDragging = false;
+            let startPos = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID;
+            let autoplayInterval = null;
+            const autoplayDelay = 5000; // 5 seconds
 
             // Function to set slide widths and track position
-            function setSlidePosition() {
-                if (slides.length === 0) return; // Exit if no slides
-                // Determine the width of a single slide based on the wrapper's width
-                const wrapperWidth = track.parentElement.clientWidth;
-                slideWidth = wrapperWidth; // Assuming one slide visible at a time
+            function setSlidePosition(moveInstantly = true) {
+                if (slides.length === 0) return;
+                const wasDragging = isDragging;
+                isDragging = false; // Ensure dragging state is reset
 
-                // Arrange slides next to each other
-                slides.forEach((slide) => {
-                    slide.style.width = `${slideWidth}px`; // Ensure slide width is correct
+                slideWidth = wrapper.clientWidth;
+
+                slides.forEach((slide, index) => {
+                    slide.style.width = `${slideWidth}px`;
+                    // Update aria-label for slide numbering
+                    slide.setAttribute('aria-label', `${index + 1} of ${slides.length}`);
                 });
-                 // Update track width (optional but good practice)
-                 track.style.width = `${slideWidth * slides.length}px`;
-                 // Initial positioning of the track
-                 track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
-                 updateNavControls(); // Update buttons/dots on resize/load
+                track.style.width = `${slideWidth * slides.length}px`;
+
+                // Calculate the correct translate value based on current index
+                currentTranslate = currentIndex * -slideWidth;
+                prevTranslate = currentTranslate; // Sync prevTranslate
+
+                // Apply transform
+                 if (moveInstantly) {
+                    track.style.transition = 'none'; // Disable transition for instant snap
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                    // Force reflow/repaint before re-enabling transition
+                     void track.offsetWidth;
+                    track.style.transition = `transform var(--carousel-transition-speed) ease-in-out`;
+                 } else {
+                     // Already has transition applied, just set the target
+                     track.style.transform = `translateX(${currentTranslate}px)`;
+                 }
+
+                 updateNavControls();
+                 if (wasDragging) wrapper.classList.remove('grabbing'); // Remove grabbing cursor if needed
             }
 
-
             // Create dots
-             if (dotsNav) { // Only create dots if the container exists
-                 dotsNav.innerHTML = ''; // Clear existing dots first
+             if (dotsNav && slides.length > 0) {
+                 dotsNav.innerHTML = '';
                  slides.forEach((_, index) => {
                      const button = document.createElement('button');
                      button.classList.add('carousel-dot');
                      button.setAttribute('aria-label', `Go to slide ${index + 1}`);
                      dotsNav.appendChild(button);
                  });
-
-                 if (dotsNav.children.length > 0) {
-                    dotsNav.children[currentIndex]?.classList.add('active'); // Activate current dot safely
-                 }
+                 dotsNav.children[currentIndex]?.classList.add('active');
 
                  dotsNav.addEventListener('click', e => {
                       if (!e.target.matches('button.carousel-dot')) return;
-
                       const targetIndex = Array.from(dotsNav.children).findIndex(dot => dot === e.target);
                       if(targetIndex !== -1) {
                           moveToSlide(targetIndex);
+                          resetAutoplay();
                       }
                  });
              }
-              const dots = dotsNav ? Array.from(dotsNav.children) : [];
+            const dots = dotsNav ? Array.from(dotsNav.children) : [];
 
 
             // Move to target slide
             const moveToSlide = (targetIndex) => {
-                if (targetIndex < 0 || targetIndex >= slides.length || !slideWidth) return; // Boundary check and ensure slideWidth is calculated
+                if (targetIndex < 0 || targetIndex >= slides.length || !slideWidth) return;
 
-                 // Calculate the new transform value
-                 const amountToMove = slideWidth * targetIndex;
-                 track.style.transform = 'translateX(-' + amountToMove + 'px)';
-                 currentIndex = targetIndex;
+                track.style.transition = `transform var(--carousel-transition-speed) ease-in-out`; // Ensure transition is active
+                currentTranslate = targetIndex * -slideWidth;
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                prevTranslate = currentTranslate;
+                currentIndex = targetIndex;
 
-                 updateNavControls();
+                updateNavControls();
             }
 
             // Update buttons and dots states
             const updateNavControls = () => {
-                // Update Prev/Next buttons
                 if (prevButton && nextButton) {
                     prevButton.disabled = currentIndex === 0;
                     nextButton.disabled = currentIndex === slides.length - 1;
                 }
-
-                // Update Dots
                 if (dots.length > 0) {
                     dots.forEach(dot => dot.classList.remove('active'));
-                    if (dots[currentIndex]) { // Check if dot exists for index
-                        dots[currentIndex].classList.add('active');
-                    }
+                    dots[currentIndex]?.classList.add('active');
                 }
             }
 
-            // Event listeners for buttons
+            // --- Autoplay ---
+            function startAutoplay() {
+                stopAutoplay(); // Clear any existing interval
+                if (slides.length <= 1) return; // Don't autoplay if only one slide
+
+                autoplayInterval = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    moveToSlide(nextIndex);
+                }, autoplayDelay);
+            }
+
+            function stopAutoplay() {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+
+            function resetAutoplay() {
+                 stopAutoplay();
+                 startAutoplay();
+             }
+
+             // Pause autoplay on hover/focus within the carousel
+             carouselContainer.addEventListener('mouseenter', stopAutoplay);
+             carouselContainer.addEventListener('focusin', stopAutoplay); // Catches focus on buttons/dots
+             carouselContainer.addEventListener('mouseleave', startAutoplay);
+             carouselContainer.addEventListener('focusout', startAutoplay); // Resumes when focus leaves container
+
+
+            // --- Touch/Mouse Dragging ---
+            function touchStart(index) {
+                return function(event) {
+                    stopAutoplay(); // Pause autoplay on interaction
+                    currentIndex = index;
+                    startPos = getPositionX(event);
+                    isDragging = true;
+                    animationID = requestAnimationFrame(animation);
+                    wrapper.classList.add('grabbing');
+                    track.style.transition = 'none'; // Disable transition during drag
+                }
+            }
+
+            function touchEnd(event) {
+                if (!isDragging) return; // Prevent execution if not dragging
+                 isDragging = false;
+                 cancelAnimationFrame(animationID);
+
+                 const movedBy = currentTranslate - prevTranslate;
+
+                 // Snap to the next/prev slide if moved enough, otherwise snap back
+                 if (movedBy < -50 && currentIndex < slides.length - 1) { // Threshold of 50px
+                     currentIndex += 1;
+                 }
+                 if (movedBy > 50 && currentIndex > 0) {
+                     currentIndex -= 1;
+                 }
+
+                 setSlidePosition(false); // Move smoothly to the final position
+                 wrapper.classList.remove('grabbing');
+                 startAutoplay(); // Resume autoplay after interaction ends
+            }
+
+            function touchMove(event) {
+                 if (isDragging) {
+                     const currentPosition = getPositionX(event);
+                     currentTranslate = prevTranslate + currentPosition - startPos;
+                 }
+            }
+
+            function getPositionX(event) {
+                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            }
+
+            function animation() {
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                if (isDragging) requestAnimationFrame(animation);
+            }
+
+            // Add event listeners for touch and mouse
+            slides.forEach((slide, index) => {
+                const slideImage = slide.querySelector('img');
+                // Prevent default image drag behavior
+                slideImage?.addEventListener('dragstart', (e) => e.preventDefault());
+
+                // Touch events
+                slide.addEventListener('touchstart', touchStart(index), { passive: true }); // Use passive where possible
+                 // Mouse events
+                 slide.addEventListener('mousedown', touchStart(index));
+            });
+
+            // Add universal move/end listeners
+             wrapper.addEventListener('touchmove', touchMove, { passive: true });
+             wrapper.addEventListener('touchend', touchEnd);
+             wrapper.addEventListener('mouseleave', touchEnd); // Handle mouse leaving the wrapper area
+             wrapper.addEventListener('mousemove', touchMove);
+             wrapper.addEventListener('mouseup', touchEnd);
+
+
+            // --- Carousel Button Listeners ---
             nextButton?.addEventListener('click', () => {
                 moveToSlide(currentIndex + 1);
+                resetAutoplay();
             });
 
             prevButton?.addEventListener('click', () => {
                 moveToSlide(currentIndex - 1);
+                resetAutoplay();
             });
 
             // Recalculate on resize
              let resizeTimeout;
             window.addEventListener('resize', () => {
-                 // Debounce resize event
                  clearTimeout(resizeTimeout);
                  resizeTimeout = setTimeout(() => {
-                      // Reset current index slightly if resize is drastic? Maybe not needed.
-                      setSlidePosition();
-                 }, 150); // Wait 150ms after resize stops
+                     setSlidePosition(true); // Recalculate and snap instantly
+                 }, 150);
              });
 
             // Initial setup
-            setSlidePosition();
-
+            setSlidePosition(true);
+            startAutoplay(); // Start autoplay on load
 
             // --- Lightbox Functionality ---
             galleryImages.forEach(item => {
-                // Trigger lightbox on image click
-                item.addEventListener('click', () => {
-                    lightbox.style.display = 'flex'; // Use flex to center content
-                    requestAnimationFrame(() => { // Ensure display:flex is applied before adding class
-                         lightbox.classList.add('show'); // Trigger fade-in
-                    });
-                    lightboxImg.src = item.src;
-                    lightboxImg.alt = item.alt; // Set alt text for lightbox image
-                    const title = item.getAttribute('data-title') || 'Artwork';
-                    const description = item.getAttribute('data-description') || '';
-                    captionText.innerHTML = `<strong>${title}</strong>${description ? description : ''}`; // Ensure description exists
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                const parentSlide = item.closest('.carousel-slide'); // Get parent slide
+                parentSlide.addEventListener('click', (e) => {
+                    // Only open lightbox if not dragging
+                    if (!isDragging && e.target !== prevButton && e.target !== nextButton && !e.target.closest('.carousel-button') && !e.target.closest('.carousel-dots')) {
+                        lightbox.style.display = 'flex';
+                         requestAnimationFrame(() => {
+                            lightbox.classList.add('show');
+                         });
+                        lightboxImg.src = item.src;
+                        lightboxImg.alt = item.alt;
+                        const title = item.getAttribute('data-title') || 'Artwork';
+                        const description = item.getAttribute('data-description') || '';
+                        captionTitle.textContent = title; // Set title
+                        captionDesc.textContent = description ? ` ${description}` : ''; // Set description
+
+                        document.body.style.overflow = 'hidden';
+                         stopAutoplay(); // Stop carousel autoplay when lightbox is open
+                         closeBtn.focus(); // Move focus to the close button
+                    }
                 });
             });
 
             function closeLightbox() {
-                lightbox.classList.remove('show'); // Trigger fade-out
-                 // Wait for fade-out transition to complete before hiding
+                lightbox.classList.remove('show');
                  lightbox.addEventListener('transitionend', (e) => {
-                     if (e.propertyName === 'opacity') { // Only trigger on opacity transition end
+                     if (e.propertyName === 'opacity' && !lightbox.classList.contains('show')) {
                          lightbox.style.display = 'none';
-                         document.body.style.overflow = 'auto'; // Restore scrolling
+                         document.body.style.overflow = 'auto';
+                         // Try to refocus the element that opened the lightbox (tricky with carousel)
+                         // For simplicity, maybe focus the carousel container or gallery title?
+                         // document.querySelector(`.carousel-slide[aria-label="${currentIndex + 1} of ${slides.length}"]`)?.focus();
                      }
-                 }, { once: true }); // Remove listener after it runs once
+                 }, { once: true });
+                 startAutoplay(); // Resume carousel autoplay
             }
 
             closeBtn.addEventListener('click', closeLightbox);
 
             lightbox.addEventListener('click', (event) => {
-                // Close only if clicking the dark background itself, not the image or caption
                 if (event.target === lightbox) {
                     closeLightbox();
                 }
@@ -1160,6 +1246,11 @@
                 if (event.key === 'Escape' && lightbox.style.display === 'flex') {
                     closeLightbox();
                 }
+                // Basic lightbox keyboard navigation (optional)
+                // if (lightbox.style.display === 'flex') {
+                //     if (event.key === 'ArrowRight') { /* Find next image logic */ }
+                //     if (event.key === 'ArrowLeft') { /* Find previous image logic */ }
+                // }
             });
 
              // --- Nav Link Click Handling & Active State ---
@@ -1169,14 +1260,10 @@
                     if (targetId && targetId.startsWith('#')) {
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
-                            e.preventDefault(); // Prevent default jump
-                            // Deactivate all first
+                            e.preventDefault();
                             navLinks.forEach(node => node.classList.remove('active'));
-                            // Activate clicked one
                             e.currentTarget.classList.add('active');
-                            // Smooth scroll
                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            // Optionally close mobile menu if implemented
                         }
                     }
                  });
@@ -1186,15 +1273,12 @@
             const scrollFunction = () => {
                 if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                     if (!backToTopButton.classList.contains("show")) {
-                        backToTopButton.style.display = 'block'; // Make it visible before adding class
-                        requestAnimationFrame(() => { // Ensure display:block is applied
-                            backToTopButton.classList.add("show");
-                        });
+                        backToTopButton.style.display = 'block';
+                        requestAnimationFrame(() => { backToTopButton.classList.add("show"); });
                     }
                 } else {
                     if (backToTopButton.classList.contains("show")) {
                         backToTopButton.classList.remove("show");
-                         // Optional: Hide after transition
                          backToTopButton.addEventListener('transitionend', (e) => {
                              if (e.propertyName === 'opacity' && !backToTopButton.classList.contains("show")) {
                                  backToTopButton.style.display = 'none';
@@ -1204,26 +1288,25 @@
                 }
             };
 
-            window.addEventListener('scroll', scrollFunction); // Add listener
+            window.addEventListener('scroll', scrollFunction);
 
             backToTopButton.addEventListener("click", () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
-                // Optionally set focus or update active nav link after scroll
-                 setTimeout(() => { // Give scroll time to finish roughly
+                 setTimeout(() => {
                      navLinks.forEach(node => node.classList.remove('active'));
                      document.querySelector('nav a[href="#home"]')?.classList.add('active');
-                 }, 500); // Adjust timing if needed
+                 }, 500);
             });
 
 
             // --- Highlight Nav Link on Scroll ---
-             const observerOptions = {
-                root: null, // relative to document viewport
-                rootMargin: '-40% 0px -60% 0px', // Activate when section is roughly centered
-                 threshold: 0 // Trigger as soon as any part enters/leaves the margin
+             const navObserverOptions = {
+                root: null,
+                rootMargin: '-40% 0px -60% 0px', // Adjust margins to feel right
+                 threshold: 0
              };
 
-             const observerCallback = (entries) => {
+             const navObserverCallback = (entries) => {
                  entries.forEach(entry => {
                      const id = entry.target.getAttribute('id');
                      const navLink = document.querySelector(`nav a[href="#${id}"]`);
@@ -1235,10 +1318,31 @@
                  });
              };
 
-             const observer = new IntersectionObserver(observerCallback, observerOptions);
-
+             const navObserver = new IntersectionObserver(navObserverCallback, navObserverOptions);
              sections.forEach(section => {
-                 observer.observe(section);
+                if(section.id) navObserver.observe(section); // Only observe sections with IDs
+             });
+
+            // --- Scroll Animations for Sections ---
+             const sectionObserverOptions = {
+                 root: null,
+                 rootMargin: '0px 0px -100px 0px', // Trigger when section bottom is 100px above viewport bottom
+                 threshold: 0.1 // Trigger when 10% is visible
+             };
+
+             const sectionObserverCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+             };
+
+             const sectionObserver = new IntersectionObserver(sectionObserverCallback, sectionObserverOptions);
+
+             animatedSections.forEach(section => {
+                 sectionObserver.observe(section);
              });
 
 
