@@ -19,6 +19,7 @@
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
             --carousel-transition-speed: 0.5s;
+            --section-spacing: 4rem; /* Added variable for consistent section spacing */
         }
 
         * {
@@ -38,6 +39,26 @@
             line-height: 1.6;
             overflow-x: hidden;
             perspective: 1000px; /* For potential 3D effects */
+        }
+
+        /* --- Section Titles --- */
+        .section-title { /* Consolidated section title style */
+             font-family: var(--font-heading);
+             font-size: 2.5rem;
+             text-align: center;
+             margin-bottom: 2.5rem; /* Space below title */
+             position: relative;
+             padding-bottom: 0.5rem;
+        }
+        .section-title::after { /* Underline for section title */
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-accent); /* Default underline */
         }
 
         /* --- Navigation --- */
@@ -61,7 +82,7 @@
         }
 
         nav ul li {
-            margin: 0 1.5rem; /* Increased spacing */
+            margin: 0 1.2rem; /* Slightly adjusted spacing */
         }
 
         nav ul li a {
@@ -103,7 +124,7 @@
             padding: 4rem 1rem 5rem 1rem; /* Adjusted padding */
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: 3rem;
+            margin-bottom: var(--section-spacing); /* Use variable */
             position: relative;
             overflow: hidden;
         }
@@ -145,30 +166,18 @@
         /* --- Gallery Section --- */
         .gallery-container {
             max-width: 1200px; /* Max width for the whole section including title */
-            margin: 3rem auto; /* Increased top margin */
+            margin: var(--section-spacing) auto; /* Use variable */
             padding: 0 1rem;
             width: 90%; /* Adjust width as needed */
         }
 
+        /* Use .section-title for gallery */
         .gallery-title {
-             font-family: var(--font-heading);
-             font-size: 2.5rem;
-             text-align: center;
-             margin-bottom: 2.5rem; /* Space below title */
              color: var(--secondary-accent);
-             position: relative;
-             padding-bottom: 0.5rem;
+             /* Inherits from .section-title */
         }
-
-         .gallery-title::after { /* Underline for section title */
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-accent);
+        .gallery-title::after {
+             background-color: var(--secondary-accent); /* Specific underline color */
         }
 
         /* --- Carousel Styles --- */
@@ -205,15 +214,6 @@
             animation: fadeInSlideRight 0.8s ease-out forwards; /* General slide load animation */
             animation-delay: 0.2s; /* Delay slightly */
         }
-
-        /* Adjustments for multiple slides showing (example: 3 slides) */
-        /* Uncomment and adjust JS calculation if needed */
-         /* .carousel-slide {
-            flex: 0 0 calc(100% / 3);
-            width: calc(100% / 3);
-            padding: 0 10px; /* Optional gap between slides */
-         /* } */
-
 
         .carousel-slide img {
             display: block;
@@ -315,7 +315,7 @@
         }
 
 
-        /* --- Lightbox (mostly unchanged) --- */
+        /* --- Lightbox --- */
         .lightbox {
             display: none;
             position: fixed;
@@ -389,26 +389,167 @@
             cursor: pointer;
         }
 
-        /* --- Footer (unchanged) --- */
-        footer {
+        /* --- About Section --- */
+        #about {
+            padding: 50px 1rem;
+            max-width: 800px;
+            margin: var(--section-spacing) auto; /* Use variable */
+            background-color: var(--card-background);
+            border-radius: 8px;
+            text-align: center;
+             box-shadow: 0 5px 15px var(--shadow-color); /* Added shadow */
+        }
+        #about h2 {
+            color: var(--primary-accent); /* Override title color */
+            /* Inherits from .section-title */
+        }
+         #about h2::after {
+            background-color: var(--primary-accent); /* Ensure underline color */
+        }
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+             padding: 0 1rem; /* Add some padding */
+        }
+
+        /* --- Testimonials Section --- */
+        #testimonials {
+            max-width: 1100px; /* Slightly wider for grid */
+            margin: var(--section-spacing) auto; /* Use variable */
+            padding: 0 1rem;
+        }
+
+        #testimonials h2 {
+            color: var(--secondary-accent); /* Use secondary accent */
+            /* Inherits from .section-title */
+        }
+         #testimonials h2::after {
+            background-color: var(--secondary-accent); /* Specific underline color */
+        }
+
+        .testimonial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 1.5rem; /* Space between cards */
+            margin-top: 1rem; /* Align with section title margin */
+        }
+
+        .testimonial-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border-left: 4px solid var(--primary-accent); /* Accent border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px var(--shadow-color);
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem; /* Space for quote mark */
+            font-size: 1.05rem;
+             line-height: 1.7;
+        }
+
+        .testimonial-card blockquote::before {
+            content: '“'; /* Opening quote mark */
+            position: absolute;
+            left: -5px;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary-accent);
+            opacity: 0.5;
+            font-family: serif;
+        }
+
+        .testimonial-card footer {
+            text-align: right;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--secondary-accent); /* Use secondary for name */
+            margin-top: 1rem;
+        }
+
+        .testimonial-card footer span { /* For title/company */
+            display: block;
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 0.2rem;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            padding: 50px 1rem;
+            text-align: center;
+            margin: var(--section-spacing) auto; /* Use variable */
+            max-width: 800px; /* Consistent width */
+        }
+
+        #contact h2 {
+            color: var(--primary-accent); /* Primary accent for contact */
+            /* Inherits from .section-title */
+        }
+         #contact h2::after {
+             background-color: var(--primary-accent); /* Match title color */
+         }
+
+        #contact p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+             max-width: 600px; /* Limit paragraph width */
+             margin-left: auto;
+             margin-right: auto;
+        }
+        #contact a.contact-button { /* Style the button */
+             display: inline-block;
+             padding: 12px 25px;
+             background-color: var(--primary-accent);
+             color: var(--background-color);
+             text-decoration: none;
+             border-radius: 5px;
+             font-weight: bold;
+             transition: background-color 0.3s ease, transform 0.3s ease;
+             box-shadow: 0 3px 8px rgba(255, 107, 107, 0.3);
+         }
+         #contact a.contact-button:hover {
+             background-color: var(--secondary-accent);
+             transform: translateY(-2px);
+             box-shadow: 0 5px 12px rgba(78, 205, 196, 0.4);
+         }
+
+
+        /* --- Footer --- */
+        footer#page-footer { /* Give footer an ID to distinguish from testimonial footers */
             text-align: center;
             padding: 2.5rem 1rem; /* Increased padding */
-            margin-top: 5rem; /* Increased margin */
+            margin-top: var(--section-spacing); /* Use variable */
             font-size: 0.95rem;
             color: rgba(224, 224, 224, 0.7); /* Slightly more visible */
             border-top: 1px solid var(--card-background);
             background-color: var(--nav-background); /* Match nav background */
         }
-         footer p a { /* Style links in footer */
+         footer#page-footer p a { /* Style links in footer */
              color: var(--secondary-accent);
              text-decoration: none;
              transition: color 0.3s ease;
          }
-         footer p a:hover {
+         footer#page-footer p a:hover {
              color: var(--primary-accent);
          }
 
-        /* --- Back to Top Button (unchanged) --- */
+        /* --- Back to Top Button --- */
         #backToTopBtn {
             display: none; /* Hidden by default */
             position: fixed;
@@ -465,8 +606,12 @@
 
         /* --- Responsive adjustments --- */
         @media (max-width: 992px) {
-            .gallery-container {
+            :root {
+                --section-spacing: 3rem;
+            }
+            .gallery-container, #about, #testimonials, #contact {
                  width: 95%;
+                 max-width: 95%; /* Adjust max-width for sections */
             }
              .carousel-slide .art-info h3 {
                  font-size: 1.4rem;
@@ -474,14 +619,27 @@
               .carousel-slide .art-info p {
                  font-size: 0.9rem;
              }
+             .testimonial-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min size */
+                gap: 1.2rem;
+             }
+             .testimonial-card {
+                 padding: 1.5rem;
+             }
+              .section-title {
+                 font-size: 2.2rem;
+             }
         }
 
         @media (max-width: 768px) {
+             :root {
+                --section-spacing: 2.5rem;
+            }
             nav ul {
                 justify-content: space-around; /* Adjust nav for smaller screens */
             }
             nav ul li {
-                 margin: 0 0.5rem; /* Reduce nav spacing */
+                 margin: 0 0.4rem; /* Reduce nav spacing */
             }
              nav ul li a {
                 font-size: 0.9rem;
@@ -497,11 +655,8 @@
                 padding: 3rem 1rem 4rem 1rem;
                 clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
-            .gallery-container {
-                width: 95%;
-                 margin-top: 2rem;
-            }
-             .gallery-title {
+
+             .section-title {
                 font-size: 2rem;
                 margin-bottom: 2rem;
              }
@@ -516,6 +671,14 @@
              .carousel-button.prev { left: 10px; }
              .carousel-button.next { right: 10px; }
 
+             .testimonial-container {
+                 grid-template-columns: 1fr; /* Stack testimonials on smaller screens */
+                 gap: 1rem;
+             }
+             .testimonial-card blockquote {
+                 font-size: 1rem;
+             }
+
              .lightbox-content {
                 max-width: 92%;
                 max-height: 85%;
@@ -529,17 +692,23 @@
         }
 
         @media (max-width: 480px) {
+             :root {
+                --section-spacing: 2rem;
+            }
              nav {
                  padding: 0.6rem 0.5rem;
              }
              nav ul {
-                 justify-content: space-evenly;
+                 /* Allow wrapping */
+                 flex-wrap: wrap;
+                 justify-content: center;
+                 padding: 0.3rem 0;
              }
              nav ul li {
-                 margin: 0 0.2rem;
+                 margin: 0.2rem 0.5rem; /* Spacing for wrapped items */
              }
              nav ul li a {
-                 font-size: 0.8rem; /* Even smaller nav text */
+                 font-size: 0.85rem; /* Slightly larger */
                  padding: 0.4rem 0;
              }
 
@@ -552,11 +721,11 @@
              header {
                 padding: 2.5rem 1rem 3.5rem 1rem;
             }
-            .gallery-container {
+            .gallery-container, #about, #testimonials, #contact {
                 width: 100%;
-                 padding: 0; /* No padding on smallest screens */
+                padding: 0 0.5rem; /* Minimal padding */
             }
-             .gallery-title {
+             .section-title {
                  font-size: 1.8rem;
              }
              .carousel-wrapper {
@@ -586,6 +755,17 @@
                  height: 10px;
                  margin: 0 4px;
              }
+             .testimonial-card {
+                 padding: 1.2rem;
+             }
+             .testimonial-card blockquote {
+                 padding-left: 1rem;
+             }
+             .testimonial-card blockquote::before {
+                 font-size: 2.5rem;
+                 left: -2px;
+                 top: -5px;
+             }
 
             .lightbox-content {
                 max-width: 95%;
@@ -600,9 +780,9 @@
                  font-size: 1rem;
                  max-width: 90%;
              }
-            footer {
+            footer#page-footer {
                 padding: 2rem 1rem;
-                margin-top: 3rem;
+                margin-top: var(--section-spacing);
             }
             #backToTopBtn {
                 bottom: 15px;
@@ -618,8 +798,9 @@
     <nav>
         <ul>
             <li><a href="#home" class="active">Gallery</a></li>
-            <li><a href="#about">About</a></li> <!-- Placeholder Link -->
-            <li><a href="#contact">Contact</a></li> <!-- Placeholder Link -->
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li> <!-- Added Testimonials Link -->
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -628,8 +809,8 @@
         <p>A Curated Collection of Digital Dreams & Abstract Realities</p>
     </header>
 
-    <main class="gallery-container">
-        <h2 class="gallery-title">Featured Works</h2>
+    <main class="gallery-container" id="gallery"> <!-- Added id="gallery" for potential linking -->
+        <h2 class="section-title gallery-title">Featured Works</h2>
 
         <div class="carousel-container">
             <div class="carousel-wrapper">
@@ -741,26 +922,70 @@
 
     </main>
 
-    <!-- Placeholder sections for nav links -->
-    <section id="about" style="padding: 50px 1rem; max-width: 800px; margin: 4rem auto 2rem auto; background-color: var(--card-background); border-radius: 8px; text-align: center;">
-        <h2 class="gallery-title" style="color: var(--primary-accent); font-size: 2rem; margin-bottom: 1.5rem;">About the Artist</h2>
-        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-color);">
-            Driven by a passion for the unseen and the imagined, [Your Name/Studio Name] explores the intersection of technology and artistry. Specializing in [mention your specialties - e.g., abstract digital painting, surreal photomanipulation, generative art], the works aim to evoke emotion and spark curiosity. Each piece is a journey into a unique visual world.
+    <!-- About section -->
+    <section id="about">
+        <h2 class="section-title">About the Artist</h2>
+        <p>
+            Driven by a passion for the unseen and the imagined, Ephemeral Visions explores the intersection of technology and artistry. Specializing in abstract digital painting, surreal photomanipulation, and generative art, the works aim to evoke emotion and spark curiosity. Each piece is a journey into a unique visual world.
         </p>
     </section>
 
-    <section id="contact" style="padding: 50px 1rem; text-align: center; margin-bottom: 4rem;">
-         <h2 class="gallery-title" style="color: var(--secondary-accent); font-size: 2rem; margin-bottom: 1.5rem;">Get In Touch</h2>
-        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1.5rem;">
-            For inquiries, commissions, or collaborations, please reach out.
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                <blockquote>
+                    The piece we commissioned, 'Chromatic Flow', brings such vibrant energy to our space. The process was seamless and the final artwork exceeded our expectations.
+                </blockquote>
+                <footer>
+                    Alex Johnson
+                    <span>Art Collector</span>
+                </footer>
+            </div>
+            <div class="testimonial-card">
+                <blockquote>
+                    Working with this artist was a fantastic experience. Their unique vision translated beautifully into the 'Utopia Suspended' piece. Truly captivating work!
+                </blockquote>
+                <footer>
+                    Samantha Lee
+                    <span>Interior Designer</span>
+                </footer>
+            </div>
+             <div class="testimonial-card">
+                <blockquote>
+                    I purchased 'Stardust Echoes' for my office. It's a constant source of inspiration and conversation. The quality and depth are remarkable. Highly recommended!
+                </blockquote>
+                <footer>
+                    Dr. Evelyn Reed
+                    <span>Astrophysicist</span>
+                </footer>
+            </div>
+             <div class="testimonial-card">
+                <blockquote>
+                    'Neon Dreams' perfectly captured the futuristic aesthetic I was looking for. The attention to detail and atmosphere is incredible. A true talent.
+                </blockquote>
+                <footer>
+                    Kai Tanaka
+                    <span>Game Developer</span>
+                </footer>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact">
+         <h2 class="section-title">Get In Touch</h2>
+        <p>
+            For inquiries about available works, commissions, or collaborations, please feel free to reach out. Let's create something unique together.
         </p>
-        <a href="mailto:your.email@example.com" style="display: inline-block; padding: 12px 25px; background-color: var(--primary-accent); color: var(--background-color); text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease, transform 0.3s ease;">
+        <a href="mailto:your.email@example.com" class="contact-button">
             Send Email
         </a>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Your Artist Name / Studio. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    <footer id="page-footer"> <!-- Added ID -->
+        <p>&copy; 2025 Ephemeral Visions. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
     </footer>
 
     <!-- Lightbox Structure -->
@@ -784,6 +1009,7 @@
             const galleryImages = document.querySelectorAll('.carousel-slide img');
             const navLinks = document.querySelectorAll('nav a');
             const backToTopButton = document.getElementById("backToTopBtn");
+            const sections = document.querySelectorAll('section[id], header[id]'); // For active nav highlighting on scroll
 
             // --- Carousel Functionality ---
             const track = document.querySelector('.carousel-track');
@@ -797,13 +1023,17 @@
 
             // Function to set slide widths and track position
             function setSlidePosition() {
+                if (slides.length === 0) return; // Exit if no slides
                 // Determine the width of a single slide based on the wrapper's width
-                slideWidth = slides[0].getBoundingClientRect().width;
+                const wrapperWidth = track.parentElement.clientWidth;
+                slideWidth = wrapperWidth; // Assuming one slide visible at a time
 
                 // Arrange slides next to each other
-                slides.forEach((slide, index) => {
-                    // We don't need `slide.style.left` if using transform for movement
+                slides.forEach((slide) => {
+                    slide.style.width = `${slideWidth}px`; // Ensure slide width is correct
                 });
+                 // Update track width (optional but good practice)
+                 track.style.width = `${slideWidth * slides.length}px`;
                  // Initial positioning of the track
                  track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
                  updateNavControls(); // Update buttons/dots on resize/load
@@ -812,19 +1042,25 @@
 
             // Create dots
              if (dotsNav) { // Only create dots if the container exists
+                 dotsNav.innerHTML = ''; // Clear existing dots first
                  slides.forEach((_, index) => {
                      const button = document.createElement('button');
                      button.classList.add('carousel-dot');
                      button.setAttribute('aria-label', `Go to slide ${index + 1}`);
                      dotsNav.appendChild(button);
                  });
-                 dotsNav.children[0].classList.add('active'); // Activate first dot
+
+                 if (dotsNav.children.length > 0) {
+                    dotsNav.children[currentIndex]?.classList.add('active'); // Activate current dot safely
+                 }
 
                  dotsNav.addEventListener('click', e => {
                       if (!e.target.matches('button.carousel-dot')) return;
 
                       const targetIndex = Array.from(dotsNav.children).findIndex(dot => dot === e.target);
-                      moveToSlide(targetIndex);
+                      if(targetIndex !== -1) {
+                          moveToSlide(targetIndex);
+                      }
                  });
              }
               const dots = dotsNav ? Array.from(dotsNav.children) : [];
@@ -832,7 +1068,7 @@
 
             // Move to target slide
             const moveToSlide = (targetIndex) => {
-                if (targetIndex < 0 || targetIndex >= slides.length) return; // Boundary check
+                if (targetIndex < 0 || targetIndex >= slides.length || !slideWidth) return; // Boundary check and ensure slideWidth is calculated
 
                  // Calculate the new transform value
                  const amountToMove = slideWidth * targetIndex;
@@ -869,7 +1105,15 @@
             });
 
             // Recalculate on resize
-            window.addEventListener('resize', setSlidePosition);
+             let resizeTimeout;
+            window.addEventListener('resize', () => {
+                 // Debounce resize event
+                 clearTimeout(resizeTimeout);
+                 resizeTimeout = setTimeout(() => {
+                      // Reset current index slightly if resize is drastic? Maybe not needed.
+                      setSlidePosition();
+                 }, 150); // Wait 150ms after resize stops
+             });
 
             // Initial setup
             setSlidePosition();
@@ -887,7 +1131,7 @@
                     lightboxImg.alt = item.alt; // Set alt text for lightbox image
                     const title = item.getAttribute('data-title') || 'Artwork';
                     const description = item.getAttribute('data-description') || '';
-                    captionText.innerHTML = `<strong>${title}</strong>${description}`;
+                    captionText.innerHTML = `<strong>${title}</strong>${description ? description : ''}`; // Ensure description exists
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 });
             });
@@ -895,9 +1139,11 @@
             function closeLightbox() {
                 lightbox.classList.remove('show'); // Trigger fade-out
                  // Wait for fade-out transition to complete before hiding
-                 lightbox.addEventListener('transitionend', () => {
-                     lightbox.style.display = 'none';
-                     document.body.style.overflow = 'auto'; // Restore scrolling
+                 lightbox.addEventListener('transitionend', (e) => {
+                     if (e.propertyName === 'opacity') { // Only trigger on opacity transition end
+                         lightbox.style.display = 'none';
+                         document.body.style.overflow = 'auto'; // Restore scrolling
+                     }
                  }, { once: true }); // Remove listener after it runs once
             }
 
@@ -916,41 +1162,87 @@
                 }
             });
 
-             // --- Active Nav Link ---
+             // --- Nav Link Click Handling & Active State ---
              navLinks.forEach(link => {
                  link.addEventListener('click', (e) => {
-                    navLinks.forEach(node => node.classList.remove('active'));
-                    e.currentTarget.classList.add('active');
                     const targetId = e.currentTarget.getAttribute('href');
                     if (targetId && targetId.startsWith('#')) {
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
-                            e.preventDefault();
+                            e.preventDefault(); // Prevent default jump
+                            // Deactivate all first
+                            navLinks.forEach(node => node.classList.remove('active'));
+                            // Activate clicked one
+                            e.currentTarget.classList.add('active');
+                            // Smooth scroll
                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Optionally close mobile menu if implemented
                         }
                     }
                  });
              });
 
             // --- Back to Top Button Functionality ---
-            window.onscroll = function() {scrollFunction()};
-
-            function scrollFunction() {
+            const scrollFunction = () => {
                 if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    backToTopButton.classList.add("show");
+                    if (!backToTopButton.classList.contains("show")) {
+                        backToTopButton.style.display = 'block'; // Make it visible before adding class
+                        requestAnimationFrame(() => { // Ensure display:block is applied
+                            backToTopButton.classList.add("show");
+                        });
+                    }
                 } else {
-                    backToTopButton.classList.remove("show");
+                    if (backToTopButton.classList.contains("show")) {
+                        backToTopButton.classList.remove("show");
+                         // Optional: Hide after transition
+                         backToTopButton.addEventListener('transitionend', (e) => {
+                             if (e.propertyName === 'opacity' && !backToTopButton.classList.contains("show")) {
+                                 backToTopButton.style.display = 'none';
+                             }
+                         }, { once: true });
+                    }
                 }
-            }
+            };
+
+            window.addEventListener('scroll', scrollFunction); // Add listener
 
             backToTopButton.addEventListener("click", () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
-                document.body.focus();
-                navLinks.forEach(node => node.classList.remove('active'));
-                document.querySelector('nav a[href="#home"]')?.classList.add('active');
+                // Optionally set focus or update active nav link after scroll
+                 setTimeout(() => { // Give scroll time to finish roughly
+                     navLinks.forEach(node => node.classList.remove('active'));
+                     document.querySelector('nav a[href="#home"]')?.classList.add('active');
+                 }, 500); // Adjust timing if needed
             });
 
-        });
+
+            // --- Highlight Nav Link on Scroll ---
+             const observerOptions = {
+                root: null, // relative to document viewport
+                rootMargin: '-40% 0px -60% 0px', // Activate when section is roughly centered
+                 threshold: 0 // Trigger as soon as any part enters/leaves the margin
+             };
+
+             const observerCallback = (entries) => {
+                 entries.forEach(entry => {
+                     const id = entry.target.getAttribute('id');
+                     const navLink = document.querySelector(`nav a[href="#${id}"]`);
+
+                     if (entry.isIntersecting && navLink) {
+                         navLinks.forEach(link => link.classList.remove('active'));
+                         navLink.classList.add('active');
+                     }
+                 });
+             };
+
+             const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+             sections.forEach(section => {
+                 observer.observe(section);
+             });
+
+
+        }); // End DOMContentLoaded
     </script>
 
 </body>
