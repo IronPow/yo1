@@ -197,6 +197,12 @@
         .art-item:nth-child(4) { animation-delay: 0.15s; }
         .art-item:nth-child(5) { animation-delay: 0.25s; }
         .art-item:nth-child(6) { animation-delay: 0.35s; }
+        .art-item:nth-child(7) { animation-delay: 0.1s; }
+        .art-item:nth-child(8) { animation-delay: 0.2s; }
+        .art-item:nth-child(9) { animation-delay: 0.3s; }
+        .art-item:nth-child(10) { animation-delay: 0.15s; }
+        .art-item:nth-child(11) { animation-delay: 0.25s; }
+        .art-item:nth-child(12) { animation-delay: 0.35s; }
         /* Add more if needed */
 
 
@@ -331,6 +337,40 @@
              color: var(--primary-accent);
          }
 
+        /* --- Back to Top Button --- */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 990; /* Below lightbox, above most content */
+            border: none;
+            outline: none;
+            background-color: var(--primary-accent);
+            color: var(--background-color);
+            cursor: pointer;
+            padding: 12px 15px; /* Slightly adjusted padding */
+            border-radius: 50%; /* Make it circular */
+            font-size: 18px; /* Size of the arrow */
+            line-height: 1; /* Align icon vertically */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease, opacity 0.4s ease, transform 0.3s ease;
+            opacity: 0; /* Start fully transparent */
+            transform: translateY(10px); /* Start slightly lower */
+        }
+
+        #backToTopBtn.show {
+            display: block;
+            opacity: 0.8;
+            transform: translateY(0);
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--secondary-accent);
+            opacity: 1;
+             transform: scale(1.1);
+        }
+
 
         /* --- Animations --- */
         @keyframes zoomIn {
@@ -393,6 +433,12 @@
                 max-width: 92%;
                 max-height: 85%;
             }
+             #backToTopBtn {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 13px;
+                font-size: 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -449,6 +495,12 @@
             footer {
                 padding: 2rem 1rem;
                 margin-top: 3rem;
+            }
+            #backToTopBtn {
+                bottom: 15px;
+                right: 15px;
+                padding: 8px 11px;
+                font-size: 14px;
             }
         }
     </style>
@@ -596,6 +648,10 @@
         <div class="lightbox-caption" id="caption"></div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">&#8679;</button> <!-- Using HTML entity for arrow -->
+
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const lightbox = document.getElementById('myLightbox');
@@ -604,6 +660,7 @@
             const closeBtn = document.querySelector('.lightbox-close');
             const galleryItems = document.querySelectorAll('.art-item img');
             const navLinks = document.querySelectorAll('nav a');
+            const backToTopButton = document.getElementById("backToTopBtn");
 
             // --- Lightbox Functionality ---
             galleryItems.forEach(item => {
@@ -649,26 +706,57 @@
              // Simple active state based on click (can be improved with scrollspy)
              navLinks.forEach(link => {
                  link.addEventListener('click', (e) => {
-                     navLinks.forEach(node => node.classList.remove('active'));
-                     e.currentTarget.classList.add('active');
-                     // Basic smooth scroll for internal links (works if sections have IDs)
-                     const targetId = e.currentTarget.getAttribute('href');
-                     if (targetId.startsWith('#')) {
-                          const targetElement = document.querySelector(targetId);
-                           if (targetElement) {
-                               // Use preventDefault only if it's a valid internal link
-                               e.preventDefault();
-                               targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                               // Update URL hash without jumping (optional)
-                               // history.pushState(null, null, targetId);
-                           }
-                     }
+                    // Remove active class from all links
+                    navLinks.forEach(node => node.classList.remove('active'));
+                    // Add active class to the clicked link
+                    e.currentTarget.classList.add('active');
+
+                    // Handle smooth scrolling for internal links
+                    const targetId = e.currentTarget.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            // Prevent default only if it's a valid internal link that exists
+                            e.preventDefault();
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Optional: Update URL hash without jumping - careful with history spamming
+                            // if (history.pushState) {
+                            //     history.pushState(null, null, targetId);
+                            // } else {
+                            //     // Fallback for older browsers
+                            //     location.hash = targetId;
+                            // }
+                        }
+                    }
                  });
              });
 
+            // --- Back to Top Button Functionality ---
+            // Show or hide the button based on scroll position
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopButton.classList.add("show");
+                } else {
+                    backToTopButton.classList.remove("show");
+                }
+            }
+
+            // Scroll to the top when the button is clicked
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+                // Optionally, set focus back to the top or a primary element
+                 document.body.focus(); // Or focus on a specific element like header
+                 // Ensure the correct nav link is active after scrolling to top
+                 navLinks.forEach(node => node.classList.remove('active'));
+                 document.querySelector('nav a[href="#home"]').classList.add('active');
+            });
+
+
             // Optional: Add scroll reveal effect if needed (more robust with Intersection Observer API)
-            // This basic example uses CSS animations triggered on load.
-            // For true scroll reveal, Intersection Observer is recommended.
+            // The existing CSS animations trigger on load and with delay.
+            // For true scroll reveal (elements animate as they enter viewport), Intersection Observer is recommended.
 
         });
     </script>
