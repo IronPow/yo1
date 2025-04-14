@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Gallery Showcase</title>
+    <title>Art Gallery Showcase - Enhanced</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap');
 
@@ -15,6 +15,7 @@
             --secondary-accent: #4ecdc4;
             --card-background: #2b2b2b;
             --shadow-color: rgba(0, 0, 0, 0.5);
+            --nav-background: #222;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
         }
@@ -23,6 +24,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Added smooth scroll */
         }
 
         body {
@@ -34,9 +39,67 @@
             perspective: 1000px; /* For potential 3D effects */
         }
 
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--nav-background);
+            padding: 0.8rem 1rem;
+            position: sticky; /* Make nav sticky */
+            top: 0;
+            z-index: 900; /* Ensure nav is below lightbox but above content */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--card-background);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center; /* Center nav items */
+            align-items: center;
+            max-width: 1200px; /* Limit nav width */
+            margin: 0 auto; /* Center the ul */
+        }
+
+        nav ul li {
+            margin: 0 1.5rem; /* Increased spacing */
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400; /* Slightly bolder */
+            padding: 0.5rem 0; /* Add padding for larger clickable area */
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after { /* Underline effect */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-accent);
+            transition: width 0.3s ease-out;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active { /* Style for hover and potential active state */
+            color: var(--primary-accent);
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+
+        /* --- Header --- */
         header {
             background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-            padding: 3rem 1rem 4rem 1rem;
+            padding: 4rem 1rem 5rem 1rem; /* Adjusted padding */
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             margin-bottom: 3rem;
@@ -57,62 +120,104 @@
 
         header h1 {
             font-family: var(--font-heading);
-            font-size: 3.5rem;
+            font-size: 3.8rem; /* Slightly larger */
             color: var(--background-color);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem; /* Increased margin */
             position: relative;
             z-index: 1;
+            animation: fadeInDown 1s ease-out; /* Added intro animation */
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Slightly larger */
             color: var(--card-background);
-            max-width: 600px;
+            max-width: 650px; /* Slightly wider */
             margin: 0 auto;
             font-weight: 300;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 1s ease-out 0.3s; /* Added intro animation with delay */
+            animation-fill-mode: backwards; /* Start animation from hidden state */
         }
 
+        /* --- Gallery --- */
         .gallery-container {
             max-width: 1400px;
-            margin: 2rem auto;
+            margin: 3rem auto; /* Increased top margin */
             padding: 0 1rem;
+        }
+
+        /* Added Section Title */
+        .gallery-title {
+             font-family: var(--font-heading);
+             font-size: 2.5rem;
+             text-align: center;
+             margin-bottom: 2.5rem; /* Space below title */
+             color: var(--secondary-accent);
+             position: relative;
+             padding-bottom: 0.5rem;
+        }
+
+         .gallery-title::after { /* Underline for section title */
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-accent);
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem; /* Increased gap */
         }
 
         .art-item {
             background-color: var(--card-background);
-            border-radius: 8px;
+            border-radius: 12px; /* Slightly more rounded */
             overflow: hidden;
-            box-shadow: 0 10px 20px var(--shadow-color);
-            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+            box-shadow: 0 12px 25px var(--shadow-color); /* Enhanced shadow */
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
             cursor: pointer;
             position: relative;
+            opacity: 0; /* Start hidden for scroll animation */
+            transform: translateY(20px); /* Start slightly lower for scroll animation */
+            animation: fadeInSlideUp 0.6s ease-out forwards; /* Scroll reveal animation */
+             /* Stagger animation using animation-delay inline or via JS */
         }
 
+        /* Stagger animation delay (simple example) */
+        .art-item:nth-child(1) { animation-delay: 0.1s; }
+        .art-item:nth-child(2) { animation-delay: 0.2s; }
+        .art-item:nth-child(3) { animation-delay: 0.3s; }
+        .art-item:nth-child(4) { animation-delay: 0.15s; }
+        .art-item:nth-child(5) { animation-delay: 0.25s; }
+        .art-item:nth-child(6) { animation-delay: 0.35s; }
+        /* Add more if needed */
+
+
         .art-item:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px var(--shadow-color);
+            transform: translateY(-12px) scale(1.04); /* Enhanced hover effect */
+            box-shadow: 0 25px 50px var(--shadow-color);
         }
 
         .art-item img {
             display: block;
             width: 100%;
             height: auto;
-            aspect-ratio: 1 / 1; /* Default aspect ratio, can vary per image */
+            aspect-ratio: 1 / 1;
             object-fit: cover;
-            transition: opacity 0.4s ease-out;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Added transform transition */
+            border-bottom: 3px solid var(--primary-accent); /* Added border accent */
         }
 
         .art-item:hover img {
-            opacity: 0.85;
+            opacity: 0.9;
+            transform: scale(1.05); /* Subtle zoom on image hover */
         }
 
         .art-info {
@@ -122,18 +227,18 @@
 
         .art-info h3 {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem; /* Slightly larger */
+            margin-bottom: 0.6rem;
             color: var(--primary-accent);
         }
 
         .art-info p {
-            font-size: 0.9rem;
+            font-size: 0.95rem; /* Slightly larger */
             color: var(--text-color);
             font-weight: 300;
         }
 
-        /* Lightbox Styles */
+        /* --- Lightbox --- */
         .lightbox {
             display: none;
             position: fixed;
@@ -143,97 +248,190 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95); /* Darker background */
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px); /* Stronger blur */
+            opacity: 0; /* Start hidden for fade-in */
+            transition: opacity 0.5s ease; /* Fade transition */
+        }
+
+        .lightbox.show { /* Class to trigger transition */
+            opacity: 1;
         }
 
         .lightbox-content {
             margin: auto;
             display: block;
-            max-width: 85%;
-            max-height: 85%;
-            animation: zoomIn 0.6s ease-out;
+            max-width: 88%; /* Slightly larger max */
+            max-height: 88%;
+            animation: zoomIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother zoom */
+            border-radius: 5px; /* Slight rounding */
+             box-shadow: 0 0 30px rgba(255, 107, 107, 0.3); /* Subtle glow */
         }
 
         .lightbox-caption {
-            margin: 15px auto;
+            margin: 20px auto; /* Increased margin */
             display: block;
             width: 80%;
-            max-width: 700px;
+            max-width: 750px; /* Slightly wider */
             text-align: center;
             color: var(--text-color);
             padding: 10px 0;
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Larger caption */
             font-family: var(--font-heading);
             letter-spacing: 1px;
+            animation: fadeInUp 0.5s ease-out 0.2s; /* Caption animation */
+            animation-fill-mode: backwards;
         }
+        .lightbox-caption strong {
+            color: var(--primary-accent); /* Highlight title */
+            display: block;
+             margin-bottom: 5px;
+        }
+
 
         .lightbox-close {
             position: absolute;
-            top: 25px;
-            right: 35px;
+            top: 20px; /* Adjusted position */
+            right: 30px;
             color: var(--text-color);
-            font-size: 40px;
+            font-size: 45px; /* Larger close button */
             font-weight: bold;
-            transition: 0.3s;
+            transition: 0.3s ease;
             cursor: pointer;
+            line-height: 1; /* Ensure consistent alignment */
+             text-shadow: 0 0 10px rgba(0,0,0,0.7); /* Add shadow for visibility */
         }
 
         .lightbox-close:hover,
         .lightbox-close:focus {
             color: var(--primary-accent);
+            transform: scale(1.1); /* Add hover scale */
             text-decoration: none;
             cursor: pointer;
         }
 
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
+        /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-            font-size: 0.9rem;
-            color: rgba(224, 224, 224, 0.6);
+            padding: 2.5rem 1rem; /* Increased padding */
+            margin-top: 5rem; /* Increased margin */
+            font-size: 0.95rem;
+            color: rgba(224, 224, 224, 0.7); /* Slightly more visible */
             border-top: 1px solid var(--card-background);
+            background-color: var(--nav-background); /* Match nav background */
+        }
+         footer p a { /* Style links in footer */
+             color: var(--secondary-accent);
+             text-decoration: none;
+             transition: color 0.3s ease;
+         }
+         footer p a:hover {
+             color: var(--primary-accent);
+         }
+
+
+        /* --- Animations --- */
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeInDown {
+             from { opacity: 0; transform: translateY(-20px); }
+             to { opacity: 1; transform: translateY(0); }
+        }
+         @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+         }
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive adjustments */
+        /* --- Responsive adjustments --- */
+        @media (max-width: 992px) {
+             .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                 gap: 2rem;
+             }
+        }
+
         @media (max-width: 768px) {
+            nav ul {
+                justify-content: space-around; /* Adjust nav for smaller screens */
+            }
+            nav ul li {
+                 margin: 0 0.5rem; /* Reduce nav spacing */
+            }
+             nav ul li a {
+                font-size: 0.9rem;
+            }
+
             header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+             header p {
+                font-size: 1.1rem;
             }
             header {
-                padding: 2rem 1rem 3rem 1rem;
+                padding: 3rem 1rem 4rem 1rem;
                 clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 1.5rem;
             }
+             .gallery-title {
+                font-size: 2rem;
+             }
             .art-item:hover {
-                transform: translateY(-5px) scale(1.02);
+                transform: translateY(-8px) scale(1.03); /* Slightly reduce hover */
+            }
+             .lightbox-content {
+                max-width: 92%;
+                max-height: 85%;
             }
         }
 
         @media (max-width: 480px) {
+             nav {
+                 padding: 0.6rem 0.5rem;
+             }
+             nav ul {
+                 justify-content: space-evenly;
+             }
+             nav ul li {
+                 margin: 0 0.2rem;
+             }
+             nav ul li a {
+                 font-size: 0.8rem; /* Even smaller nav text */
+                 padding: 0.4rem 0;
+             }
+
              header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
              header p {
                 font-size: 1rem;
             }
+             header {
+                padding: 2.5rem 1rem 3.5rem 1rem;
+            }
+            .gallery-container {
+                margin-top: 2rem;
+            }
             .gallery-grid {
-                grid-template-columns: 1fr; /* Single column on small screens */
-                gap: 1rem;
+                grid-template-columns: 1fr; /* Single column */
+                gap: 1.5rem; /* Adjust gap for single column */
             }
              .art-item:hover {
-                transform: none; /* Disable hover transform on very small screens if needed */
-                 box-shadow: 0 10px 20px var(--shadow-color); /* Keep base shadow */
+                transform: translateY(-5px) scale(1.02); /* Minimal hover on mobile */
+                 box-shadow: 0 10px 20px var(--shadow-color);
+            }
+             .art-info h3 {
+                font-size: 1.4rem;
             }
             .lightbox-content {
                 max-width: 95%;
@@ -241,23 +439,40 @@
             }
              .lightbox-close {
                 top: 15px;
-                right: 25px;
-                font-size: 30px;
+                right: 20px;
+                font-size: 35px;
+            }
+             .lightbox-caption {
+                 font-size: 1rem;
+                 max-width: 90%;
+             }
+            footer {
+                padding: 2rem 1rem;
+                margin-top: 3rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Gallery</a></li>
+            <li><a href="#about">About</a></li> <!-- Placeholder Link -->
+            <li><a href="#contact">Contact</a></li> <!-- Placeholder Link -->
+        </ul>
+    </nav>
+
+    <header id="home">
         <h1>Ephemeral Visions</h1>
         <p>A Curated Collection of Digital Dreams & Abstract Realities</p>
     </header>
 
     <main class="gallery-container">
+        <h2 class="gallery-title">Featured Works</h2>
         <div class="gallery-grid">
             <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?abstract,vibrant" alt="Abstract Vibrant Waves" data-title="Chromatic Flow" data-description="Digital Painting, 2024">
+                <img src="https://source.unsplash.com/random/600x600/?abstract,vibrant" alt="Abstract Vibrant Waves" loading="lazy" data-title="Chromatic Flow" data-description="Digital Painting, 2024">
                 <figcaption class="art-info">
                     <h3>Chromatic Flow</h3>
                     <p>Digital Painting, 2024</p>
@@ -265,7 +480,7 @@
             </figure>
 
             <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?surreal,landscape" alt="Surreal Floating Island" data-title="Utopia Suspended" data-description="Mixed Media, 2023">
+                <img src="https://source.unsplash.com/random/600x600/?surreal,landscape" alt="Surreal Floating Island" loading="lazy" data-title="Utopia Suspended" data-description="Mixed Media, 2023">
                 <figcaption class="art-info">
                     <h3>Utopia Suspended</h3>
                     <p>Mixed Media, 2023</p>
@@ -273,7 +488,7 @@
             </figure>
 
             <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?galaxy,nebula" alt="Cosmic Nebula" data-title="Stardust Echoes" data-description="Astrophotography Art, 2024">
+                <img src="https://source.unsplash.com/random/600x600/?galaxy,nebula" alt="Cosmic Nebula" loading="lazy" data-title="Stardust Echoes" data-description="Astrophotography Art, 2024">
                 <figcaption class="art-info">
                     <h3>Stardust Echoes</h3>
                     <p>Astrophotography Art, 2024</p>
@@ -281,7 +496,7 @@
             </figure>
 
             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?geometric,minimalist" alt="Minimalist Geometric Shapes" data-title="Order in Chaos" data-description="Generative Art, 2023">
+                 <img src="https://source.unsplash.com/random/600x600/?geometric,minimalist" alt="Minimalist Geometric Shapes" loading="lazy" data-title="Order in Chaos" data-description="Generative Art, 2023">
                 <figcaption class="art-info">
                     <h3>Order in Chaos</h3>
                     <p>Generative Art, 2023</p>
@@ -289,7 +504,7 @@
             </figure>
 
             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?fantasy,forest" alt="Mystical Forest Path" data-title="Whispering Woods" data-description="Digital Illustration, 2024">
+                 <img src="https://source.unsplash.com/random/600x600/?fantasy,forest" alt="Mystical Forest Path" loading="lazy" data-title="Whispering Woods" data-description="Digital Illustration, 2024">
                 <figcaption class="art-info">
                     <h3>Whispering Woods</h3>
                     <p>Digital Illustration, 2024</p>
@@ -297,7 +512,7 @@
             </figure>
 
              <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?cyberpunk,city" alt="Cyberpunk Cityscape" data-title="Neon Dreams" data-description="Concept Art, 2023">
+                 <img src="https://source.unsplash.com/random/600x600/?cyberpunk,city" alt="Cyberpunk Cityscape" loading="lazy" data-title="Neon Dreams" data-description="Concept Art, 2023">
                 <figcaption class="art-info">
                     <h3>Neon Dreams</h3>
                     <p>Concept Art, 2023</p>
@@ -305,7 +520,7 @@
             </figure>
 
              <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?sculpture,modern" alt="Modern Abstract Sculpture" data-title="Fluid Form" data-description="3D Render, 2024">
+                 <img src="https://source.unsplash.com/random/600x600/?sculpture,modern" alt="Modern Abstract Sculpture" loading="lazy" data-title="Fluid Form" data-description="3D Render, 2024">
                 <figcaption class="art-info">
                     <h3>Fluid Form</h3>
                     <p>3D Render, 2024</p>
@@ -313,7 +528,7 @@
             </figure>
 
              <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?portrait,colorful" alt="Colorful Abstract Portrait" data-title="Fractured Identity" data-description="Oil on Canvas (Digitized), 2022">
+                <img src="https://source.unsplash.com/random/600x600/?portrait,colorful" alt="Colorful Abstract Portrait" loading="lazy" data-title="Fractured Identity" data-description="Oil on Canvas (Digitized), 2022">
                 <figcaption class="art-info">
                     <h3>Fractured Identity</h3>
                     <p>Oil on Canvas (Digitized), 2022</p>
@@ -321,24 +536,63 @@
             </figure>
 
              <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?nature,macro" alt="Macro shot of dew on leaf" data-title="Emerald Droplets" data-description="Macro Photography, 2024">
+                 <img src="https://source.unsplash.com/random/600x600/?nature,macro" alt="Macro shot of dew on leaf" loading="lazy" data-title="Emerald Droplets" data-description="Macro Photography, 2024">
                 <figcaption class="art-info">
                     <h3>Emerald Droplets</h3>
                     <p>Macro Photography, 2024</p>
+                </figcaption>
+            </figure>
+             <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?architecture,futuristic" alt="Futuristic Building Detail" loading="lazy" data-title="Meta-Structure" data-description="Architectural Render, 2024">
+                <figcaption class="art-info">
+                    <h3>Meta-Structure</h3>
+                    <p>Architectural Render, 2024</p>
+                </figcaption>
+            </figure>
+             <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?water,reflection" alt="City lights reflecting on water" loading="lazy" data-title="Liquid Night" data-description="Long Exposure Photography, 2023">
+                <figcaption class="art-info">
+                    <h3>Liquid Night</h3>
+                    <p>Long Exposure Photography, 2023</p>
+                </figcaption>
+            </figure>
+             <figure class="art-item">
+                 <img src="https://source.unsplash.com/random/600x600/?pattern,organic" alt="Organic flowing pattern" loading="lazy" data-title="Bio-Luminescence" data-description="Abstract Digital Art, 2024">
+                <figcaption class="art-info">
+                    <h3>Bio-Luminescence</h3>
+                    <p>Abstract Digital Art, 2024</p>
                 </figcaption>
             </figure>
 
         </div>
     </main>
 
+    <!-- Placeholder sections for nav links -->
+    <section id="about" style="padding: 50px 1rem; max-width: 800px; margin: 4rem auto 2rem auto; background-color: var(--card-background); border-radius: 8px; text-align: center;">
+        <h2 class="gallery-title" style="color: var(--primary-accent); font-size: 2rem; margin-bottom: 1.5rem;">About the Artist</h2>
+        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-color);">
+            Driven by a passion for the unseen and the imagined, [Your Name/Studio Name] explores the intersection of technology and artistry. Specializing in [mention your specialties - e.g., abstract digital painting, surreal photomanipulation, generative art], the works aim to evoke emotion and spark curiosity. Each piece is a journey into a unique visual world.
+        </p>
+    </section>
+
+    <section id="contact" style="padding: 50px 1rem; text-align: center; margin-bottom: 4rem;">
+         <h2 class="gallery-title" style="color: var(--secondary-accent); font-size: 2rem; margin-bottom: 1.5rem;">Get In Touch</h2>
+        <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 1.5rem;">
+            For inquiries, commissions, or collaborations, please reach out.
+        </p>
+        <a href="mailto:your.email@example.com" style="display: inline-block; padding: 12px 25px; background-color: var(--primary-accent); color: var(--background-color); text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease, transform 0.3s ease;">
+            Send Email
+        </a>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Your Artist Name / Studio. All Rights Reserved.</p>
+        <p>&copy; 2025 Your Artist Name / Studio. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
     </footer>
 
     <!-- Lightbox Structure -->
     <div id="myLightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg">
+        <img class="lightbox-content" id="lightboxImg" alt="Enlarged artwork">
         <div class="lightbox-caption" id="caption"></div>
     </div>
 
@@ -349,39 +603,73 @@
             const captionText = document.getElementById('caption');
             const closeBtn = document.querySelector('.lightbox-close');
             const galleryItems = document.querySelectorAll('.art-item img');
+            const navLinks = document.querySelectorAll('nav a');
 
+            // --- Lightbox Functionality ---
             galleryItems.forEach(item => {
                 item.addEventListener('click', () => {
                     lightbox.style.display = 'flex'; // Use flex to center content
+                    requestAnimationFrame(() => { // Ensure display:flex is applied before adding class
+                         lightbox.classList.add('show'); // Trigger fade-in
+                    });
                     lightboxImg.src = item.src;
+                    lightboxImg.alt = item.alt; // Set alt text for lightbox image
                     const title = item.getAttribute('data-title') || 'Artwork';
                     const description = item.getAttribute('data-description') || '';
-                    captionText.innerHTML = `<strong>${title}</strong><br>${description}`;
+                    captionText.innerHTML = `<strong>${title}</strong>${description}`;
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 });
             });
 
             function closeLightbox() {
-                lightbox.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                lightbox.classList.remove('show'); // Trigger fade-out
+                 // Wait for fade-out transition to complete before hiding
+                 lightbox.addEventListener('transitionend', () => {
+                     lightbox.style.display = 'none';
+                     document.body.style.overflow = 'auto'; // Restore scrolling
+                 }, { once: true }); // Remove listener after it runs once
             }
 
-            // Close lightbox when clicking the close button
             closeBtn.addEventListener('click', closeLightbox);
 
-            // Close lightbox when clicking outside the image
             lightbox.addEventListener('click', (event) => {
+                // Close only if clicking the dark background itself, not the image or caption
                 if (event.target === lightbox) {
                     closeLightbox();
                 }
             });
 
-             // Close lightbox with Escape key
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape' && lightbox.style.display === 'flex') {
                     closeLightbox();
                 }
             });
+
+             // --- Active Nav Link ---
+             // Simple active state based on click (can be improved with scrollspy)
+             navLinks.forEach(link => {
+                 link.addEventListener('click', (e) => {
+                     navLinks.forEach(node => node.classList.remove('active'));
+                     e.currentTarget.classList.add('active');
+                     // Basic smooth scroll for internal links (works if sections have IDs)
+                     const targetId = e.currentTarget.getAttribute('href');
+                     if (targetId.startsWith('#')) {
+                          const targetElement = document.querySelector(targetId);
+                           if (targetElement) {
+                               // Use preventDefault only if it's a valid internal link
+                               e.preventDefault();
+                               targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                               // Update URL hash without jumping (optional)
+                               // history.pushState(null, null, targetId);
+                           }
+                     }
+                 });
+             });
+
+            // Optional: Add scroll reveal effect if needed (more robust with Intersection Observer API)
+            // This basic example uses CSS animations triggered on load.
+            // For true scroll reveal, Intersection Observer is recommended.
+
         });
     </script>
 
