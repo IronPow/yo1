@@ -11,8 +11,9 @@
         :root {
             --background-color: #1a1a1a;
             --text-color: #e0e0e0;
-            --primary-accent: #ff6b6b;
-            --secondary-accent: #4ecdc4;
+            --primary-accent: #ff6b6b; /* Coral Red */
+            --secondary-accent: #4ecdc4; /* Turquoise */
+            --tertiary-accent: #ffe66d; /* Light Yellow - for events */
             --card-background: #2b2b2b;
             --shadow-color: rgba(0, 0, 0, 0.5);
             --nav-background: #222;
@@ -43,25 +44,27 @@
         }
 
         /* --- Focus Visible --- */
-        /* Add a distinct outline for keyboard navigation */
         :focus-visible {
             outline: 3px solid var(--focus-outline-color);
             outline-offset: 2px;
         }
-        /* Remove default outline when focus is not visible (mouse clicks) */
         :focus:not(:focus-visible) {
             outline: none;
         }
-        /* Specific adjustments for elements where default might look odd */
-         .carousel-button:focus-visible {
-             outline-offset: -4px; /* Offset inside button */
+         .carousel-button:focus-visible,
+         .carousel-dot:focus-visible,
+         #backToTopBtn:focus-visible,
+         .event-card a:focus-visible, /* Added for event links */
+         .contact-button:focus-visible,
+         .lightbox-close:focus-visible,
+         footer#page-footer p a:focus-visible {
+            outline: 3px solid var(--focus-outline-color);
          }
-         .carousel-dot:focus-visible {
-              outline-offset: 3px;
-         }
-          #backToTopBtn:focus-visible {
-              outline-offset: 1px;
-          }
+         .carousel-button:focus-visible { outline-offset: -4px; }
+         .carousel-dot:focus-visible { outline-offset: 3px; }
+         #backToTopBtn:focus-visible { outline-offset: 1px; }
+         .event-card a:focus-visible { outline-offset: 1px; }
+         .contact-button:focus-visible { outline-offset: 1px; }
 
 
         /* --- Section Titles --- */
@@ -81,7 +84,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--primary-accent);
+            background-color: var(--primary-accent); /* Default */
         }
 
         /* --- Navigation --- */
@@ -102,10 +105,11 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
         nav ul li {
-            margin: 0 1.2rem;
+            margin: 0 1.0rem; /* Slightly reduced margin */
         }
 
         nav ul li a {
@@ -116,6 +120,7 @@
             padding: 0.5rem 0;
             position: relative;
             transition: color 0.3s ease;
+            white-space: nowrap; /* Prevent link text breaking */
         }
 
         nav ul li a::after {
@@ -196,16 +201,18 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Stagger children animation */
-        .animated-section.visible .testimonial-card {
+        /* Stagger children animation for testimonials and events */
+        .animated-section.visible .testimonial-card,
+        .animated-section.visible .event-card {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
         }
-        .animated-section.visible .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-        .animated-section.visible .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-        .animated-section.visible .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
-        .animated-section.visible .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+        /* Define separate delays if needed, or use a generic counter in JS */
+        .animated-section.visible > div > *:nth-child(1) { animation-delay: 0.1s; }
+        .animated-section.visible > div > *:nth-child(2) { animation-delay: 0.2s; }
+        .animated-section.visible > div > *:nth-child(3) { animation-delay: 0.3s; }
+        .animated-section.visible > div > *:nth-child(4) { animation-delay: 0.4s; }
         /* Add more if needed */
 
 
@@ -230,7 +237,6 @@
             position: relative;
             width: 100%;
             margin: 0 auto;
-            /* Add focus styles for container if needed for accessibility */
         }
 
         .carousel-wrapper {
@@ -247,11 +253,9 @@
         .carousel-track {
             display: flex;
             transition: transform var(--carousel-transition-speed) ease-in-out;
-            /* Width will be set by JS */
-            /* Add aria-live for screen reader announcements */
             aria-live: polite;
-            user-select: none; /* Prevent text selection during drag */
-             -webkit-user-drag: none; /* Prevent image dragging */
+            user-select: none;
+             -webkit-user-drag: none;
         }
 
         .carousel-slide {
@@ -259,14 +263,13 @@
             width: 100%;
             background-color: var(--card-background);
             overflow: hidden;
-            cursor: pointer; /* Pointer cursor for opening lightbox */
+            cursor: pointer;
             position: relative;
             opacity: 0;
             transform: translateX(20px);
             animation: fadeInSlideRight 0.8s ease-out forwards;
             animation-delay: 0.2s;
         }
-         /* Reset cursor when dragging */
          .carousel-wrapper.grabbing .carousel-slide {
              cursor: grabbing;
          }
@@ -278,7 +281,7 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             transition: transform 0.4s ease-out;
-            pointer-events: none; /* Prevent img stealing touch/mouse events */
+            pointer-events: none;
         }
 
         .carousel-slide:hover img {
@@ -361,8 +364,8 @@
             margin: 0 6px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            padding: 0; /* Reset button padding */
-            appearance: none; /* Remove default button styles */
+            padding: 0;
+            appearance: none;
         }
 
         .carousel-dot.active {
@@ -374,21 +377,20 @@
 
         /* --- Lightbox --- */
         .lightbox {
-            display: none; /* Initially hidden */
+            display: none;
             position: fixed;
             z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Allow scroll if content too big, though unlikely */
+            overflow: auto;
             background-color: rgba(0, 0, 0, 0.95);
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(8px);
             opacity: 0;
             transition: opacity 0.5s ease;
-            /* Add display: flex to JS when showing */
         }
 
         .lightbox.show {
@@ -433,17 +435,17 @@
             color: var(--text-color);
             font-size: 45px;
             font-weight: bold;
-            transition: color 0.3s ease, transform 0.3s ease; /* Added transform */
+            transition: color 0.3s ease, transform 0.3s ease;
             cursor: pointer;
             line-height: 1;
              text-shadow: 0 0 10px rgba(0,0,0,0.7);
-             border: none; /* Ensure button styles are reset */
+             border: none;
              background: none;
              padding: 0;
         }
 
         .lightbox-close:hover,
-        .lightbox-close:focus-visible { /* Use focus-visible */
+        .lightbox-close:focus-visible {
             color: var(--primary-accent);
             transform: scale(1.1);
             text-decoration: none;
@@ -474,6 +476,93 @@
              padding: 0 1rem;
         }
 
+        /* --- Events Section --- */
+        #events {
+            max-width: 1100px;
+            margin: var(--section-spacing) auto;
+            padding: 0 1rem;
+            position: relative; /* For observer */
+        }
+
+        #events .section-title { /* Select title specifically within #events */
+            color: var(--tertiary-accent);
+        }
+        #events .section-title::after {
+            background-color: var(--tertiary-accent);
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .event-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 1.8rem; /* Slightly less padding than testimonials */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border-left: 4px solid var(--tertiary-accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px var(--shadow-color);
+        }
+
+        .event-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--tertiary-accent);
+            margin-bottom: 0.7rem;
+        }
+
+        .event-card .event-detail {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            opacity: 0.9;
+        }
+        .event-card .event-detail svg { /* Style for potential icons */
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            fill: var(--secondary-accent); /* Use secondary accent for icons */
+            flex-shrink: 0;
+        }
+
+
+        .event-card .event-description {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            font-weight: 300;
+            margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .event-card a {
+            display: inline-block;
+            font-size: 0.9rem;
+            color: var(--secondary-accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.2s ease;
+            margin-top: auto; /* Push to bottom if card heights vary */
+        }
+
+        .event-card a:hover,
+        .event-card a:focus-visible {
+            color: var(--primary-accent);
+            text-decoration: underline;
+            transform: translateX(3px);
+        }
+
+
         /* --- Testimonials Section --- */
         #testimonials {
             max-width: 1100px;
@@ -482,10 +571,10 @@
             position: relative; /* For observer */
         }
 
-        #testimonials h2 {
+        #testimonials .section-title { /* Target only testimonials title */
             color: var(--secondary-accent);
         }
-         #testimonials h2::after {
+         #testimonials .section-title::after {
             background-color: var(--secondary-accent);
         }
 
@@ -503,8 +592,6 @@
             box-shadow: 0 4px 12px var(--shadow-color);
             border-left: 4px solid var(--primary-accent);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-             /* Properties for stagger animation (initial state set in .animated-section) */
-             /* opacity: 0; transform: translateY(20px); */
         }
 
         .testimonial-card:hover {
@@ -559,10 +646,10 @@
             position: relative; /* For observer */
         }
 
-        #contact h2 {
+        #contact .section-title { /* Target only contact title */
             color: var(--primary-accent);
         }
-         #contact h2::after {
+         #contact .section-title::after {
              background-color: var(--primary-accent);
          }
 
@@ -587,11 +674,11 @@
              box-shadow: 0 3px 8px rgba(255, 107, 107, 0.3);
          }
          #contact a.contact-button:hover,
-         #contact a.contact-button:focus-visible { /* Use focus-visible */
+         #contact a.contact-button:focus-visible {
              background-color: var(--secondary-accent);
              transform: translateY(-2px);
              box-shadow: 0 5px 12px rgba(78, 205, 196, 0.4);
-              color: var(--background-color); /* Ensure text color remains on focus */
+              color: var(--background-color);
          }
 
 
@@ -611,9 +698,9 @@
              transition: color 0.3s ease;
          }
          footer#page-footer p a:hover,
-         footer#page-footer p a:focus-visible { /* Use focus-visible */
+         footer#page-footer p a:focus-visible {
              color: var(--primary-accent);
-             text-decoration: underline; /* Add underline on hover/focus */
+             text-decoration: underline;
          }
 
         /* --- Back to Top Button --- */
@@ -624,17 +711,17 @@
             right: 25px;
             z-index: 990;
             border: none;
-            outline: none; /* Outline handled by :focus-visible */
+            outline: none;
             background-color: var(--primary-accent);
             color: var(--background-color);
             cursor: pointer;
-            padding: 0; /* Reset padding */
-            width: 45px; /* Fixed size */
+            padding: 0;
+            width: 45px;
             height: 45px;
             border-radius: 50%;
-            font-size: 20px; /* Arrow size */
-            line-height: 45px; /* Vertically center arrow */
-            text-align: center; /* Horizontally center arrow */
+            font-size: 20px;
+            line-height: 45px;
+            text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             transition: background-color 0.3s ease, opacity 0.4s ease, transform 0.3s ease;
             opacity: 0;
@@ -642,17 +729,17 @@
         }
 
         #backToTopBtn.show {
-            display: block; /* Use block instead of flex */
+            display: block;
             opacity: 0.8;
             transform: translateY(0);
         }
 
         #backToTopBtn:hover,
-        #backToTopBtn:focus-visible { /* Use focus-visible */
+        #backToTopBtn:focus-visible {
             background-color: var(--secondary-accent);
             opacity: 1;
             transform: scale(1.1);
-            color: var(--background-color); /* Ensure color contrast */
+            color: var(--background-color);
         }
 
 
@@ -678,21 +765,23 @@
         /* --- Responsive adjustments --- */
         @media (max-width: 992px) {
             :root { --section-spacing: 3rem; }
-            .gallery-container, #about, #testimonials, #contact {
+            .gallery-container, #about, #events, #testimonials, #contact {
                  width: 95%;
                  max-width: 95%;
             }
              .carousel-slide .art-info h3 { font-size: 1.4rem; }
              .carousel-slide .art-info p { font-size: 0.9rem; }
-             .testimonial-container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+             .testimonial-container, .events-container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
              .testimonial-card { padding: 1.5rem; }
+             .event-card { padding: 1.5rem; }
              .section-title { font-size: 2.2rem; }
+             nav ul li { margin: 0 0.8rem; } /* Adjust nav spacing */
         }
 
         @media (max-width: 768px) {
              :root { --section-spacing: 2.5rem; }
-            nav ul { justify-content: space-around; }
-            nav ul li { margin: 0 0.4rem; }
+            nav ul { justify-content: space-around; padding: 0.3rem 0; }
+            nav ul li { margin: 0.2rem 0.4rem; }
              nav ul li a { font-size: 0.9rem; }
 
             header h1 { font-size: 2.8rem; }
@@ -705,8 +794,9 @@
              .carousel-button.prev { left: 10px; }
              .carousel-button.next { right: 10px; }
 
-             .testimonial-container { grid-template-columns: 1fr; gap: 1rem; }
+             .testimonial-container, .events-container { grid-template-columns: 1fr; gap: 1rem; }
              .testimonial-card blockquote { font-size: 1rem; }
+             .event-card h3 { font-size: 1.3rem; }
 
              .lightbox-content { max-width: 92%; max-height: 85%; }
              #backToTopBtn {
@@ -717,14 +807,14 @@
         @media (max-width: 480px) {
              :root { --section-spacing: 2rem; }
              nav { padding: 0.6rem 0.5rem; }
-             nav ul { flex-wrap: wrap; justify-content: center; padding: 0.3rem 0; }
+             nav ul { justify-content: center; }
              nav ul li { margin: 0.2rem 0.5rem; }
              nav ul li a { font-size: 0.85rem; padding: 0.4rem 0; }
 
              header h1 { font-size: 2.2rem; }
              header p { font-size: 1rem; }
              header { padding: 2.5rem 1rem 3.5rem 1rem; }
-            .gallery-container, #about, #testimonials, #contact {
+            .gallery-container, #about, #events, #testimonials, #contact {
                 width: 100%; padding: 0 0.5rem;
             }
              .section-title { font-size: 1.8rem; }
@@ -736,9 +826,12 @@
              .carousel-button.next { right: 5px; }
               .carousel-dots { margin-top: 1rem; }
              .carousel-dot { width: 10px; height: 10px; margin: 0 4px; }
-             .testimonial-card { padding: 1.2rem; }
+             .testimonial-card, .event-card { padding: 1.2rem; }
              .testimonial-card blockquote { padding-left: 1rem; }
              .testimonial-card blockquote::before { font-size: 2.5rem; left: -2px; top: -5px; }
+             .event-card h3 { font-size: 1.2rem; }
+             .event-card .event-detail { font-size: 0.9rem; }
+             .event-card .event-description { font-size: 0.85rem; }
 
             .lightbox-content { max-width: 95%; max-height: 80%; }
              .lightbox-close { top: 15px; right: 20px; font-size: 35px; }
@@ -756,6 +849,7 @@
         <ul>
             <li><a href="#home" class="active">Gallery</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li> <!-- Added Events Link -->
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -766,7 +860,7 @@
         <p>A Curated Collection of Digital Dreams & Abstract Realities</p>
     </header>
 
-    <main class="gallery-container" id="gallery"> <!-- Added id="gallery" -->
+    <main class="gallery-container" id="gallery">
         <h2 class="section-title gallery-title">Featured Works</h2>
 
         <div class="carousel-container" role="region" aria-roledescription="carousel" aria-label="Featured Artworks">
@@ -887,6 +981,59 @@
         </p>
     </section>
 
+    <!-- Events Section -->
+    <section id="events" class="animated-section" aria-labelledby="events-title">
+        <h2 class="section-title" id="events-title">Upcoming Events</h2>
+        <div class="events-container">
+            <div class="event-card">
+                <h3>Exhibition: "Digital Dreams" Opening Night</h3>
+                <p class="event-detail">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6l5.25 3.15.75-1.23-4.5-2.71V7z"></path></svg>
+                    <span>October 15, 2025 | 7:00 PM - 9:00 PM</span>
+                </p>
+                <p class="event-detail">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7.589 2 4 5.589 4 10c0 6.5 8 12 8 12s8-5.5 8-12c0-4.411-3.589-8-8-8zm0 12c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"></path></svg>
+                     <span>The Void Gallery, 123 Cyber St.</span>
+                </p>
+                <p class="event-description">
+                    Join us for the opening reception of "Digital Dreams," showcasing the latest works from Ephemeral Visions. Meet the artist and enjoy refreshments.
+                </p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-card">
+                <h3>Artist Talk: The Process Behind Abstraction</h3>
+                 <p class="event-detail">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6l5.25 3.15.75-1.23-4.5-2.71V7z"></path></svg>
+                    <span>November 5, 2025 | 3:00 PM GMT</span>
+                 </p>
+                 <p class="event-detail">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m13 18 6-5-6-5v3H4v4h9z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path></svg>
+                     <span>Online Event (Zoom)</span>
+                 </p>
+                <p class="event-description">
+                    An online session where the artist discusses the techniques and inspirations behind their abstract digital works. Q&A session included.
+                </p>
+                <a href="#">Register Now</a>
+            </div>
+             <div class="event-card">
+                <h3>Workshop: Introduction to Generative Art</h3>
+                 <p class="event-detail">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6l5.25 3.15.75-1.23-4.5-2.71V7z"></path></svg>
+                    <span>November 20, 2025 | 10:00 AM - 1:00 PM</span>
+                 </p>
+                 <p class="event-detail">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7.589 2 4 5.589 4 10c0 6.5 8 12 8 12s8-5.5 8-12c0-4.411-3.589-8-8-8zm0 12c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"></path></svg>
+                     <span>CodeSpace Hub, 404 Logic Ln.</span>
+                 </p>
+                <p class="event-description">
+                    A hands-on workshop exploring the basics of creating art with code. Suitable for beginners. Limited spots available.
+                </p>
+                <a href="#">Book Your Place</a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="animated-section" aria-labelledby="testimonials-title">
         <h2 class="section-title" id="testimonials-title">What Clients Say</h2>
@@ -941,7 +1088,7 @@
         </a>
     </section>
 
-    <footer id="page-footer"> <!-- Added ID -->
+    <footer id="page-footer">
         <p>&copy; 2025 Ephemeral Visions. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
     </footer>
 
@@ -950,13 +1097,12 @@
         <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
         <img class="lightbox-content" id="lightboxImg" alt="Enlarged artwork">
         <div class="lightbox-caption" id="caption">
-            <!-- Content set by JS -->
             <strong id="lightboxCaptionTitle"></strong><span id="lightboxCaptionDesc"></span>
         </div>
     </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTopBtn" title="Go to top" aria-label="Scroll back to top">&#8679;</button> <!-- Using HTML entity for arrow -->
+    <button id="backToTopBtn" title="Go to top" aria-label="Scroll back to top">&#8679;</button>
 
 
     <script>
@@ -970,8 +1116,9 @@
             const galleryImages = document.querySelectorAll('.carousel-slide img');
             const navLinks = document.querySelectorAll('nav a');
             const backToTopButton = document.getElementById("backToTopBtn");
+            // Updated selector to include the new #events section
             const sections = document.querySelectorAll('section[id], header[id]');
-            const animatedSections = document.querySelectorAll('.animated-section'); // For scroll animations
+            const animatedSections = document.querySelectorAll('.animated-section');
 
             // --- Carousel Functionality ---
             const carouselContainer = document.querySelector('.carousel-container');
@@ -990,45 +1137,39 @@
             let prevTranslate = 0;
             let animationID;
             let autoplayInterval = null;
-            const autoplayDelay = 5000; // 5 seconds
+            const autoplayDelay = 5000;
 
-            // Function to set slide widths and track position
             function setSlidePosition(moveInstantly = true) {
                 if (slides.length === 0) return;
                 const wasDragging = isDragging;
-                isDragging = false; // Ensure dragging state is reset
+                isDragging = false;
 
                 slideWidth = wrapper.clientWidth;
+                if (!slideWidth) return; // Avoid errors if wrapper has no width yet
 
                 slides.forEach((slide, index) => {
                     slide.style.width = `${slideWidth}px`;
-                    // Update aria-label for slide numbering
                     slide.setAttribute('aria-label', `${index + 1} of ${slides.length}`);
                 });
                 track.style.width = `${slideWidth * slides.length}px`;
 
-                // Calculate the correct translate value based on current index
                 currentTranslate = currentIndex * -slideWidth;
-                prevTranslate = currentTranslate; // Sync prevTranslate
+                prevTranslate = currentTranslate;
 
-                // Apply transform
                  if (moveInstantly) {
-                    track.style.transition = 'none'; // Disable transition for instant snap
+                    track.style.transition = 'none';
                     track.style.transform = `translateX(${currentTranslate}px)`;
-                    // Force reflow/repaint before re-enabling transition
                      void track.offsetWidth;
                     track.style.transition = `transform var(--carousel-transition-speed) ease-in-out`;
                  } else {
-                     // Already has transition applied, just set the target
                      track.style.transform = `translateX(${currentTranslate}px)`;
                  }
 
                  updateNavControls();
-                 if (wasDragging) wrapper.classList.remove('grabbing'); // Remove grabbing cursor if needed
+                 if (wasDragging) wrapper.classList.remove('grabbing');
             }
 
-            // Create dots
-             if (dotsNav && slides.length > 0) {
+            if (dotsNav && slides.length > 0) {
                  dotsNav.innerHTML = '';
                  slides.forEach((_, index) => {
                      const button = document.createElement('button');
@@ -1049,12 +1190,10 @@
              }
             const dots = dotsNav ? Array.from(dotsNav.children) : [];
 
-
-            // Move to target slide
             const moveToSlide = (targetIndex) => {
                 if (targetIndex < 0 || targetIndex >= slides.length || !slideWidth) return;
 
-                track.style.transition = `transform var(--carousel-transition-speed) ease-in-out`; // Ensure transition is active
+                track.style.transition = `transform var(--carousel-transition-speed) ease-in-out`;
                 currentTranslate = targetIndex * -slideWidth;
                 track.style.transform = `translateX(${currentTranslate}px)`;
                 prevTranslate = currentTranslate;
@@ -1063,7 +1202,6 @@
                 updateNavControls();
             }
 
-            // Update buttons and dots states
             const updateNavControls = () => {
                 if (prevButton && nextButton) {
                     prevButton.disabled = currentIndex === 0;
@@ -1075,10 +1213,9 @@
                 }
             }
 
-            // --- Autoplay ---
             function startAutoplay() {
-                stopAutoplay(); // Clear any existing interval
-                if (slides.length <= 1) return; // Don't autoplay if only one slide
+                stopAutoplay();
+                if (slides.length <= 1) return;
 
                 autoplayInterval = setInterval(() => {
                     const nextIndex = (currentIndex + 1) % slides.length;
@@ -1096,44 +1233,40 @@
                  startAutoplay();
              }
 
-             // Pause autoplay on hover/focus within the carousel
-             carouselContainer.addEventListener('mouseenter', stopAutoplay);
-             carouselContainer.addEventListener('focusin', stopAutoplay); // Catches focus on buttons/dots
-             carouselContainer.addEventListener('mouseleave', startAutoplay);
-             carouselContainer.addEventListener('focusout', startAutoplay); // Resumes when focus leaves container
+             carouselContainer?.addEventListener('mouseenter', stopAutoplay);
+             carouselContainer?.addEventListener('focusin', stopAutoplay);
+             carouselContainer?.addEventListener('mouseleave', startAutoplay);
+             carouselContainer?.addEventListener('focusout', startAutoplay);
 
-
-            // --- Touch/Mouse Dragging ---
             function touchStart(index) {
                 return function(event) {
-                    stopAutoplay(); // Pause autoplay on interaction
+                    stopAutoplay();
                     currentIndex = index;
                     startPos = getPositionX(event);
                     isDragging = true;
                     animationID = requestAnimationFrame(animation);
                     wrapper.classList.add('grabbing');
-                    track.style.transition = 'none'; // Disable transition during drag
+                    track.style.transition = 'none';
                 }
             }
 
             function touchEnd(event) {
-                if (!isDragging) return; // Prevent execution if not dragging
+                if (!isDragging) return;
                  isDragging = false;
                  cancelAnimationFrame(animationID);
 
                  const movedBy = currentTranslate - prevTranslate;
 
-                 // Snap to the next/prev slide if moved enough, otherwise snap back
-                 if (movedBy < -50 && currentIndex < slides.length - 1) { // Threshold of 50px
+                 if (movedBy < -50 && currentIndex < slides.length - 1) {
                      currentIndex += 1;
                  }
                  if (movedBy > 50 && currentIndex > 0) {
                      currentIndex -= 1;
                  }
 
-                 setSlidePosition(false); // Move smoothly to the final position
+                 setSlidePosition(false);
                  wrapper.classList.remove('grabbing');
-                 startAutoplay(); // Resume autoplay after interaction ends
+                 startAutoplay();
             }
 
             function touchMove(event) {
@@ -1152,27 +1285,19 @@
                 if (isDragging) requestAnimationFrame(animation);
             }
 
-            // Add event listeners for touch and mouse
             slides.forEach((slide, index) => {
                 const slideImage = slide.querySelector('img');
-                // Prevent default image drag behavior
                 slideImage?.addEventListener('dragstart', (e) => e.preventDefault());
-
-                // Touch events
-                slide.addEventListener('touchstart', touchStart(index), { passive: true }); // Use passive where possible
-                 // Mouse events
+                slide.addEventListener('touchstart', touchStart(index), { passive: true });
                  slide.addEventListener('mousedown', touchStart(index));
             });
 
-            // Add universal move/end listeners
-             wrapper.addEventListener('touchmove', touchMove, { passive: true });
-             wrapper.addEventListener('touchend', touchEnd);
-             wrapper.addEventListener('mouseleave', touchEnd); // Handle mouse leaving the wrapper area
-             wrapper.addEventListener('mousemove', touchMove);
-             wrapper.addEventListener('mouseup', touchEnd);
+             wrapper?.addEventListener('touchmove', touchMove, { passive: true });
+             wrapper?.addEventListener('touchend', touchEnd);
+             wrapper?.addEventListener('mouseleave', touchEnd);
+             wrapper?.addEventListener('mousemove', touchMove);
+             wrapper?.addEventListener('mouseup', touchEnd);
 
-
-            // --- Carousel Button Listeners ---
             nextButton?.addEventListener('click', () => {
                 moveToSlide(currentIndex + 1);
                 resetAutoplay();
@@ -1183,24 +1308,26 @@
                 resetAutoplay();
             });
 
-            // Recalculate on resize
              let resizeTimeout;
             window.addEventListener('resize', () => {
                  clearTimeout(resizeTimeout);
                  resizeTimeout = setTimeout(() => {
-                     setSlidePosition(true); // Recalculate and snap instantly
+                     setSlidePosition(true);
                  }, 150);
              });
 
-            // Initial setup
-            setSlidePosition(true);
-            startAutoplay(); // Start autoplay on load
+            // Initial setup only if carousel exists
+            if (track && wrapper && slides.length > 0) {
+                setSlidePosition(true);
+                startAutoplay();
+            }
+
 
             // --- Lightbox Functionality ---
             galleryImages.forEach(item => {
-                const parentSlide = item.closest('.carousel-slide'); // Get parent slide
-                parentSlide.addEventListener('click', (e) => {
-                    // Only open lightbox if not dragging
+                const parentSlide = item.closest('.carousel-slide');
+                parentSlide?.addEventListener('click', (e) => {
+                    // Check if the click target is not a button/dot and not during drag
                     if (!isDragging && e.target !== prevButton && e.target !== nextButton && !e.target.closest('.carousel-button') && !e.target.closest('.carousel-dots')) {
                         lightbox.style.display = 'flex';
                          requestAnimationFrame(() => {
@@ -1210,12 +1337,12 @@
                         lightboxImg.alt = item.alt;
                         const title = item.getAttribute('data-title') || 'Artwork';
                         const description = item.getAttribute('data-description') || '';
-                        captionTitle.textContent = title; // Set title
-                        captionDesc.textContent = description ? ` ${description}` : ''; // Set description
+                        captionTitle.textContent = title;
+                        captionDesc.textContent = description ? ` ${description}` : '';
 
                         document.body.style.overflow = 'hidden';
-                         stopAutoplay(); // Stop carousel autoplay when lightbox is open
-                         closeBtn.focus(); // Move focus to the close button
+                         stopAutoplay(); // Stop carousel autoplay
+                         closeBtn.focus();
                     }
                 });
             });
@@ -1226,31 +1353,26 @@
                      if (e.propertyName === 'opacity' && !lightbox.classList.contains('show')) {
                          lightbox.style.display = 'none';
                          document.body.style.overflow = 'auto';
-                         // Try to refocus the element that opened the lightbox (tricky with carousel)
-                         // For simplicity, maybe focus the carousel container or gallery title?
-                         // document.querySelector(`.carousel-slide[aria-label="${currentIndex + 1} of ${slides.length}"]`)?.focus();
+                         // Attempt to focus the slide that opened the lightbox (might need refinement)
+                         const activeSlide = document.querySelector(`.carousel-slide[aria-label="${currentIndex + 1} of ${slides.length}"]`);
+                         activeSlide?.focus();
                      }
                  }, { once: true });
                  startAutoplay(); // Resume carousel autoplay
             }
 
-            closeBtn.addEventListener('click', closeLightbox);
+            closeBtn?.addEventListener('click', closeLightbox);
 
-            lightbox.addEventListener('click', (event) => {
+            lightbox?.addEventListener('click', (event) => {
                 if (event.target === lightbox) {
                     closeLightbox();
                 }
             });
 
             document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && lightbox.style.display === 'flex') {
+                if (event.key === 'Escape' && lightbox?.style.display === 'flex') {
                     closeLightbox();
                 }
-                // Basic lightbox keyboard navigation (optional)
-                // if (lightbox.style.display === 'flex') {
-                //     if (event.key === 'ArrowRight') { /* Find next image logic */ }
-                //     if (event.key === 'ArrowLeft') { /* Find previous image logic */ }
-                // }
             });
 
              // --- Nav Link Click Handling & Active State ---
@@ -1260,10 +1382,18 @@
                     if (targetId && targetId.startsWith('#')) {
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
-                            e.preventDefault();
+                            e.preventDefault(); // Prevent default anchor jump
                             navLinks.forEach(node => node.classList.remove('active'));
                             e.currentTarget.classList.add('active');
-                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Calculate offset for sticky nav
+                            const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - navHeight - 10; // 10px buffer
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
                         }
                     }
                  });
@@ -1290,20 +1420,22 @@
 
             window.addEventListener('scroll', scrollFunction);
 
-            backToTopButton.addEventListener("click", () => {
+            backToTopButton?.addEventListener("click", () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
+                 // Update active nav link after scrolling
                  setTimeout(() => {
                      navLinks.forEach(node => node.classList.remove('active'));
                      document.querySelector('nav a[href="#home"]')?.classList.add('active');
-                 }, 500);
+                 }, 500); // Delay to allow scroll to finish roughly
             });
 
 
             // --- Highlight Nav Link on Scroll ---
              const navObserverOptions = {
                 root: null,
-                rootMargin: '-40% 0px -60% 0px', // Adjust margins to feel right
-                 threshold: 0
+                // Adjust rootMargin: top margin is negative nav height + threshold, bottom is negative viewport height + threshold
+                rootMargin: `-${(document.querySelector('nav')?.offsetHeight || 60) + 50}px 0px -${window.innerHeight - (document.querySelector('nav')?.offsetHeight || 60) - 100}px 0px`,
+                 threshold: 0 // Trigger as soon as element enters/leaves margin area
              };
 
              const navObserverCallback = (entries) => {
@@ -1320,21 +1452,26 @@
 
              const navObserver = new IntersectionObserver(navObserverCallback, navObserverOptions);
              sections.forEach(section => {
-                if(section.id) navObserver.observe(section); // Only observe sections with IDs
+                if(section.id) navObserver.observe(section);
              });
 
             // --- Scroll Animations for Sections ---
              const sectionObserverOptions = {
                  root: null,
-                 rootMargin: '0px 0px -100px 0px', // Trigger when section bottom is 100px above viewport bottom
-                 threshold: 0.1 // Trigger when 10% is visible
+                 rootMargin: '0px 0px -100px 0px',
+                 threshold: 0.1
              };
 
              const sectionObserverCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Stop observing once visible
+                        // Apply stagger delay to children if applicable
+                        const cards = entry.target.querySelectorAll('.testimonial-card, .event-card');
+                        cards.forEach((card, index) => {
+                            card.style.animationDelay = `${index * 0.1}s`; // Apply inline delay
+                        });
+                        observer.unobserve(entry.target);
                     }
                 });
              };
