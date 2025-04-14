@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Gallery Showcase - Enhanced</title>
+    <title>Art Gallery Carousel - Enhanced</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap');
 
@@ -18,6 +18,7 @@
             --nav-background: #222;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
+            --carousel-transition-speed: 0.5s;
         }
 
         * {
@@ -141,14 +142,14 @@
             animation-fill-mode: backwards; /* Start animation from hidden state */
         }
 
-        /* --- Gallery --- */
+        /* --- Gallery Section --- */
         .gallery-container {
-            max-width: 1400px;
+            max-width: 1200px; /* Max width for the whole section including title */
             margin: 3rem auto; /* Increased top margin */
             padding: 0 1rem;
+            width: 90%; /* Adjust width as needed */
         }
 
-        /* Added Section Title */
         .gallery-title {
              font-family: var(--font-heading);
              font-size: 2.5rem;
@@ -170,81 +171,151 @@
             background-color: var(--primary-accent);
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem; /* Increased gap */
+        /* --- Carousel Styles --- */
+        .carousel-container {
+            position: relative; /* Needed for absolute positioning of buttons */
+            width: 100%;
+            margin: 0 auto; /* Center the carousel container */
         }
 
-        .art-item {
-            background-color: var(--card-background);
-            border-radius: 12px; /* Slightly more rounded */
+        .carousel-wrapper {
             overflow: hidden;
-            box-shadow: 0 12px 25px var(--shadow-color); /* Enhanced shadow */
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+            width: 100%; /* Take full width of the container */
+            border-radius: 12px;
+             box-shadow: 0 8px 20px var(--shadow-color); /* Shadow on the wrapper */
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform var(--carousel-transition-speed) ease-in-out;
+            /* Width will be set by JS */
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%; /* Each slide takes full width of the wrapper */
+            width: 100%; /* Ensure width is set for calculation */
+            background-color: var(--card-background);
+            /* Removed border-radius here, apply to wrapper or content */
+            overflow: hidden; /* Ensure content fits */
+            /* Removed box-shadow here, apply to wrapper */
             cursor: pointer;
             position: relative;
-            opacity: 0; /* Start hidden for scroll animation */
-            transform: translateY(20px); /* Start slightly lower for scroll animation */
-            animation: fadeInSlideUp 0.6s ease-out forwards; /* Scroll reveal animation */
-             /* Stagger animation using animation-delay inline or via JS */
+            opacity: 0; /* Start hidden for load animation */
+            transform: translateX(20px); /* Start slightly offset for load animation */
+            animation: fadeInSlideRight 0.8s ease-out forwards; /* General slide load animation */
+            animation-delay: 0.2s; /* Delay slightly */
         }
 
-        /* Stagger animation delay (simple example) */
-        .art-item:nth-child(1) { animation-delay: 0.1s; }
-        .art-item:nth-child(2) { animation-delay: 0.2s; }
-        .art-item:nth-child(3) { animation-delay: 0.3s; }
-        .art-item:nth-child(4) { animation-delay: 0.15s; }
-        .art-item:nth-child(5) { animation-delay: 0.25s; }
-        .art-item:nth-child(6) { animation-delay: 0.35s; }
-        .art-item:nth-child(7) { animation-delay: 0.1s; }
-        .art-item:nth-child(8) { animation-delay: 0.2s; }
-        .art-item:nth-child(9) { animation-delay: 0.3s; }
-        .art-item:nth-child(10) { animation-delay: 0.15s; }
-        .art-item:nth-child(11) { animation-delay: 0.25s; }
-        .art-item:nth-child(12) { animation-delay: 0.35s; }
-        /* Add more if needed */
+        /* Adjustments for multiple slides showing (example: 3 slides) */
+        /* Uncomment and adjust JS calculation if needed */
+         /* .carousel-slide {
+            flex: 0 0 calc(100% / 3);
+            width: calc(100% / 3);
+            padding: 0 10px; /* Optional gap between slides */
+         /* } */
 
 
-        .art-item:hover {
-            transform: translateY(-12px) scale(1.04); /* Enhanced hover effect */
-            box-shadow: 0 25px 50px var(--shadow-color);
-        }
-
-        .art-item img {
+        .carousel-slide img {
             display: block;
             width: 100%;
             height: auto;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 16 / 9; /* Adjust aspect ratio as desired */
             object-fit: cover;
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Added transform transition */
-            border-bottom: 3px solid var(--primary-accent); /* Added border accent */
+            /* Removed border-bottom */
+            transition: transform 0.4s ease-out;
         }
 
-        .art-item:hover img {
-            opacity: 0.9;
-            transform: scale(1.05); /* Subtle zoom on image hover */
+        .carousel-slide:hover img {
+             transform: scale(1.03); /* Subtle zoom on hover */
         }
 
-        .art-info {
+        .carousel-slide .art-info { /* Reuse art-info class for consistency */
             padding: 1.5rem;
             text-align: center;
         }
 
-        .art-info h3 {
+        .carousel-slide .art-info h3 {
             font-family: var(--font-heading);
-            font-size: 1.6rem; /* Slightly larger */
+            font-size: 1.6rem;
             margin-bottom: 0.6rem;
             color: var(--primary-accent);
         }
 
-        .art-info p {
-            font-size: 0.95rem; /* Slightly larger */
+        .carousel-slide .art-info p {
+            font-size: 0.95rem;
             color: var(--text-color);
             font-weight: 300;
         }
 
-        /* --- Lightbox --- */
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10; /* Above the slides */
+            background-color: rgba(43, 43, 43, 0.7); /* Semi-transparent background */
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            line-height: 1; /* Center icon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .carousel-button:hover {
+            background-color: var(--primary-accent);
+             color: var(--background-color);
+             transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-button.prev {
+            left: 15px;
+        }
+
+        .carousel-button.next {
+            right: 15px;
+        }
+
+        .carousel-button:disabled {
+             opacity: 0.4;
+             cursor: not-allowed;
+             background-color: rgba(43, 43, 43, 0.5);
+             transform: translateY(-50%); /* Reset transform on disable */
+        }
+
+        /* Optional: Carousel Dots */
+        .carousel-dots {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--card-background);
+            border: 1px solid var(--secondary-accent);
+            border-radius: 50%;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-accent);
+            transform: scale(1.2);
+             border-color: var(--primary-accent);
+        }
+
+
+        /* --- Lightbox (mostly unchanged) --- */
         .lightbox {
             display: none;
             position: fixed;
@@ -318,7 +389,7 @@
             cursor: pointer;
         }
 
-        /* --- Footer --- */
+        /* --- Footer (unchanged) --- */
         footer {
             text-align: center;
             padding: 2.5rem 1rem; /* Increased padding */
@@ -337,7 +408,7 @@
              color: var(--primary-accent);
          }
 
-        /* --- Back to Top Button --- */
+        /* --- Back to Top Button (unchanged) --- */
         #backToTopBtn {
             display: none; /* Hidden by default */
             position: fixed;
@@ -385,16 +456,23 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
          }
-        @keyframes fadeInSlideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+         /* New animation for carousel slide load */
+         @keyframes fadeInSlideRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+         }
+
 
         /* --- Responsive adjustments --- */
         @media (max-width: 992px) {
-             .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                 gap: 2rem;
+            .gallery-container {
+                 width: 95%;
+            }
+             .carousel-slide .art-info h3 {
+                 font-size: 1.4rem;
+             }
+              .carousel-slide .art-info p {
+                 font-size: 0.9rem;
              }
         }
 
@@ -419,16 +497,25 @@
                 padding: 3rem 1rem 4rem 1rem;
                 clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
+            .gallery-container {
+                width: 95%;
+                 margin-top: 2rem;
             }
              .gallery-title {
                 font-size: 2rem;
+                margin-bottom: 2rem;
              }
-            .art-item:hover {
-                transform: translateY(-8px) scale(1.03); /* Slightly reduce hover */
-            }
+              .carousel-slide .art-info h3 {
+                 font-size: 1.3rem;
+             }
+            .carousel-button {
+                 width: 40px;
+                 height: 40px;
+                 font-size: 20px;
+             }
+             .carousel-button.prev { left: 10px; }
+             .carousel-button.next { right: 10px; }
+
              .lightbox-content {
                 max-width: 92%;
                 max-height: 85%;
@@ -466,19 +553,40 @@
                 padding: 2.5rem 1rem 3.5rem 1rem;
             }
             .gallery-container {
-                margin-top: 2rem;
+                width: 100%;
+                 padding: 0; /* No padding on smallest screens */
             }
-            .gallery-grid {
-                grid-template-columns: 1fr; /* Single column */
-                gap: 1.5rem; /* Adjust gap for single column */
-            }
-             .art-item:hover {
-                transform: translateY(-5px) scale(1.02); /* Minimal hover on mobile */
-                 box-shadow: 0 10px 20px var(--shadow-color);
-            }
-             .art-info h3 {
-                font-size: 1.4rem;
-            }
+             .gallery-title {
+                 font-size: 1.8rem;
+             }
+             .carousel-wrapper {
+                 border-radius: 0; /* Remove border radius on small screens if full width */
+             }
+             .carousel-slide {
+                 /* Adjustments if needed for single slide view on mobile */
+             }
+              .carousel-slide .art-info h3 {
+                font-size: 1.2rem;
+             }
+             .carousel-slide .art-info p {
+                 font-size: 0.85rem;
+             }
+             .carousel-button {
+                 width: 35px;
+                 height: 35px;
+                 font-size: 18px;
+             }
+             .carousel-button.prev { left: 5px; }
+             .carousel-button.next { right: 5px; }
+              .carousel-dots {
+                 margin-top: 1rem;
+              }
+             .carousel-dot {
+                 width: 10px;
+                 height: 10px;
+                 margin: 0 4px;
+             }
+
             .lightbox-content {
                 max-width: 95%;
                 max-height: 80%;
@@ -522,101 +630,115 @@
 
     <main class="gallery-container">
         <h2 class="gallery-title">Featured Works</h2>
-        <div class="gallery-grid">
-            <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?abstract,vibrant" alt="Abstract Vibrant Waves" loading="lazy" data-title="Chromatic Flow" data-description="Digital Painting, 2024">
-                <figcaption class="art-info">
-                    <h3>Chromatic Flow</h3>
-                    <p>Digital Painting, 2024</p>
-                </figcaption>
-            </figure>
 
-            <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?surreal,landscape" alt="Surreal Floating Island" loading="lazy" data-title="Utopia Suspended" data-description="Mixed Media, 2023">
-                <figcaption class="art-info">
-                    <h3>Utopia Suspended</h3>
-                    <p>Mixed Media, 2023</p>
-                </figcaption>
-            </figure>
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    <!-- Slides -->
+                    <figure class="carousel-slide">
+                        <img src="https://source.unsplash.com/random/800x450/?abstract,vibrant" alt="Abstract Vibrant Waves" loading="lazy" data-title="Chromatic Flow" data-description="Digital Painting, 2024">
+                        <figcaption class="art-info">
+                            <h3>Chromatic Flow</h3>
+                            <p>Digital Painting, 2024</p>
+                        </figcaption>
+                    </figure>
 
-            <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?galaxy,nebula" alt="Cosmic Nebula" loading="lazy" data-title="Stardust Echoes" data-description="Astrophotography Art, 2024">
-                <figcaption class="art-info">
-                    <h3>Stardust Echoes</h3>
-                    <p>Astrophotography Art, 2024</p>
-                </figcaption>
-            </figure>
+                    <figure class="carousel-slide">
+                        <img src="https://source.unsplash.com/random/800x450/?surreal,landscape" alt="Surreal Floating Island" loading="lazy" data-title="Utopia Suspended" data-description="Mixed Media, 2023">
+                        <figcaption class="art-info">
+                            <h3>Utopia Suspended</h3>
+                            <p>Mixed Media, 2023</p>
+                        </figcaption>
+                    </figure>
 
-            <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?geometric,minimalist" alt="Minimalist Geometric Shapes" loading="lazy" data-title="Order in Chaos" data-description="Generative Art, 2023">
-                <figcaption class="art-info">
-                    <h3>Order in Chaos</h3>
-                    <p>Generative Art, 2023</p>
-                </figcaption>
-            </figure>
+                    <figure class="carousel-slide">
+                        <img src="https://source.unsplash.com/random/800x450/?galaxy,nebula" alt="Cosmic Nebula" loading="lazy" data-title="Stardust Echoes" data-description="Astrophotography Art, 2024">
+                        <figcaption class="art-info">
+                            <h3>Stardust Echoes</h3>
+                            <p>Astrophotography Art, 2024</p>
+                        </figcaption>
+                    </figure>
 
-            <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?fantasy,forest" alt="Mystical Forest Path" loading="lazy" data-title="Whispering Woods" data-description="Digital Illustration, 2024">
-                <figcaption class="art-info">
-                    <h3>Whispering Woods</h3>
-                    <p>Digital Illustration, 2024</p>
-                </figcaption>
-            </figure>
+                    <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?geometric,minimalist" alt="Minimalist Geometric Shapes" loading="lazy" data-title="Order in Chaos" data-description="Generative Art, 2023">
+                        <figcaption class="art-info">
+                            <h3>Order in Chaos</h3>
+                            <p>Generative Art, 2023</p>
+                        </figcaption>
+                    </figure>
 
-             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?cyberpunk,city" alt="Cyberpunk Cityscape" loading="lazy" data-title="Neon Dreams" data-description="Concept Art, 2023">
-                <figcaption class="art-info">
-                    <h3>Neon Dreams</h3>
-                    <p>Concept Art, 2023</p>
-                </figcaption>
-            </figure>
+                    <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?fantasy,forest" alt="Mystical Forest Path" loading="lazy" data-title="Whispering Woods" data-description="Digital Illustration, 2024">
+                        <figcaption class="art-info">
+                            <h3>Whispering Woods</h3>
+                            <p>Digital Illustration, 2024</p>
+                        </figcaption>
+                    </figure>
 
-             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?sculpture,modern" alt="Modern Abstract Sculpture" loading="lazy" data-title="Fluid Form" data-description="3D Render, 2024">
-                <figcaption class="art-info">
-                    <h3>Fluid Form</h3>
-                    <p>3D Render, 2024</p>
-                </figcaption>
-            </figure>
+                     <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?cyberpunk,city" alt="Cyberpunk Cityscape" loading="lazy" data-title="Neon Dreams" data-description="Concept Art, 2023">
+                        <figcaption class="art-info">
+                            <h3>Neon Dreams</h3>
+                            <p>Concept Art, 2023</p>
+                        </figcaption>
+                    </figure>
 
-             <figure class="art-item">
-                <img src="https://source.unsplash.com/random/600x600/?portrait,colorful" alt="Colorful Abstract Portrait" loading="lazy" data-title="Fractured Identity" data-description="Oil on Canvas (Digitized), 2022">
-                <figcaption class="art-info">
-                    <h3>Fractured Identity</h3>
-                    <p>Oil on Canvas (Digitized), 2022</p>
-                </figcaption>
-            </figure>
+                     <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?sculpture,modern" alt="Modern Abstract Sculpture" loading="lazy" data-title="Fluid Form" data-description="3D Render, 2024">
+                        <figcaption class="art-info">
+                            <h3>Fluid Form</h3>
+                            <p>3D Render, 2024</p>
+                        </figcaption>
+                    </figure>
 
-             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?nature,macro" alt="Macro shot of dew on leaf" loading="lazy" data-title="Emerald Droplets" data-description="Macro Photography, 2024">
-                <figcaption class="art-info">
-                    <h3>Emerald Droplets</h3>
-                    <p>Macro Photography, 2024</p>
-                </figcaption>
-            </figure>
-             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?architecture,futuristic" alt="Futuristic Building Detail" loading="lazy" data-title="Meta-Structure" data-description="Architectural Render, 2024">
-                <figcaption class="art-info">
-                    <h3>Meta-Structure</h3>
-                    <p>Architectural Render, 2024</p>
-                </figcaption>
-            </figure>
-             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?water,reflection" alt="City lights reflecting on water" loading="lazy" data-title="Liquid Night" data-description="Long Exposure Photography, 2023">
-                <figcaption class="art-info">
-                    <h3>Liquid Night</h3>
-                    <p>Long Exposure Photography, 2023</p>
-                </figcaption>
-            </figure>
-             <figure class="art-item">
-                 <img src="https://source.unsplash.com/random/600x600/?pattern,organic" alt="Organic flowing pattern" loading="lazy" data-title="Bio-Luminescence" data-description="Abstract Digital Art, 2024">
-                <figcaption class="art-info">
-                    <h3>Bio-Luminescence</h3>
-                    <p>Abstract Digital Art, 2024</p>
-                </figcaption>
-            </figure>
+                     <figure class="carousel-slide">
+                        <img src="https://source.unsplash.com/random/800x450/?portrait,colorful" alt="Colorful Abstract Portrait" loading="lazy" data-title="Fractured Identity" data-description="Oil on Canvas (Digitized), 2022">
+                        <figcaption class="art-info">
+                            <h3>Fractured Identity</h3>
+                            <p>Oil on Canvas (Digitized), 2022</p>
+                        </figcaption>
+                    </figure>
 
+                     <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?nature,macro" alt="Macro shot of dew on leaf" loading="lazy" data-title="Emerald Droplets" data-description="Macro Photography, 2024">
+                        <figcaption class="art-info">
+                            <h3>Emerald Droplets</h3>
+                            <p>Macro Photography, 2024</p>
+                        </figcaption>
+                    </figure>
+                     <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?architecture,futuristic" alt="Futuristic Building Detail" loading="lazy" data-title="Meta-Structure" data-description="Architectural Render, 2024">
+                        <figcaption class="art-info">
+                            <h3>Meta-Structure</h3>
+                            <p>Architectural Render, 2024</p>
+                        </figcaption>
+                    </figure>
+                     <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?water,reflection" alt="City lights reflecting on water" loading="lazy" data-title="Liquid Night" data-description="Long Exposure Photography, 2023">
+                        <figcaption class="art-info">
+                            <h3>Liquid Night</h3>
+                            <p>Long Exposure Photography, 2023</p>
+                        </figcaption>
+                    </figure>
+                     <figure class="carousel-slide">
+                         <img src="https://source.unsplash.com/random/800x450/?pattern,organic" alt="Organic flowing pattern" loading="lazy" data-title="Bio-Luminescence" data-description="Abstract Digital Art, 2024">
+                        <figcaption class="art-info">
+                            <h3>Bio-Luminescence</h3>
+                            <p>Abstract Digital Art, 2024</p>
+                        </figcaption>
+                    </figure>
+                    <!-- End Slides -->
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-button prev" aria-label="Previous Slide">&#10094;</button>
+            <button class="carousel-button next" aria-label="Next Slide">&#10095;</button>
+
+            <!-- Pagination Dots -->
+             <div class="carousel-dots"></div>
         </div>
+
     </main>
 
     <!-- Placeholder sections for nav links -->
@@ -658,12 +780,104 @@
             const lightboxImg = document.getElementById('lightboxImg');
             const captionText = document.getElementById('caption');
             const closeBtn = document.querySelector('.lightbox-close');
-            const galleryItems = document.querySelectorAll('.art-item img');
+            // Select images within carousel slides for lightbox trigger
+            const galleryImages = document.querySelectorAll('.carousel-slide img');
             const navLinks = document.querySelectorAll('nav a');
             const backToTopButton = document.getElementById("backToTopBtn");
 
+            // --- Carousel Functionality ---
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.carousel-button.next');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const dotsNav = document.querySelector('.carousel-dots');
+
+            let slideWidth = 0; // Will be set dynamically
+            let currentIndex = 0;
+
+            // Function to set slide widths and track position
+            function setSlidePosition() {
+                // Determine the width of a single slide based on the wrapper's width
+                slideWidth = slides[0].getBoundingClientRect().width;
+
+                // Arrange slides next to each other
+                slides.forEach((slide, index) => {
+                    // We don't need `slide.style.left` if using transform for movement
+                });
+                 // Initial positioning of the track
+                 track.style.transform = 'translateX(-' + (slideWidth * currentIndex) + 'px)';
+                 updateNavControls(); // Update buttons/dots on resize/load
+            }
+
+
+            // Create dots
+             if (dotsNav) { // Only create dots if the container exists
+                 slides.forEach((_, index) => {
+                     const button = document.createElement('button');
+                     button.classList.add('carousel-dot');
+                     button.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                     dotsNav.appendChild(button);
+                 });
+                 dotsNav.children[0].classList.add('active'); // Activate first dot
+
+                 dotsNav.addEventListener('click', e => {
+                      if (!e.target.matches('button.carousel-dot')) return;
+
+                      const targetIndex = Array.from(dotsNav.children).findIndex(dot => dot === e.target);
+                      moveToSlide(targetIndex);
+                 });
+             }
+              const dots = dotsNav ? Array.from(dotsNav.children) : [];
+
+
+            // Move to target slide
+            const moveToSlide = (targetIndex) => {
+                if (targetIndex < 0 || targetIndex >= slides.length) return; // Boundary check
+
+                 // Calculate the new transform value
+                 const amountToMove = slideWidth * targetIndex;
+                 track.style.transform = 'translateX(-' + amountToMove + 'px)';
+                 currentIndex = targetIndex;
+
+                 updateNavControls();
+            }
+
+            // Update buttons and dots states
+            const updateNavControls = () => {
+                // Update Prev/Next buttons
+                if (prevButton && nextButton) {
+                    prevButton.disabled = currentIndex === 0;
+                    nextButton.disabled = currentIndex === slides.length - 1;
+                }
+
+                // Update Dots
+                if (dots.length > 0) {
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    if (dots[currentIndex]) { // Check if dot exists for index
+                        dots[currentIndex].classList.add('active');
+                    }
+                }
+            }
+
+            // Event listeners for buttons
+            nextButton?.addEventListener('click', () => {
+                moveToSlide(currentIndex + 1);
+            });
+
+            prevButton?.addEventListener('click', () => {
+                moveToSlide(currentIndex - 1);
+            });
+
+            // Recalculate on resize
+            window.addEventListener('resize', setSlidePosition);
+
+            // Initial setup
+            setSlidePosition();
+
+
             // --- Lightbox Functionality ---
-            galleryItems.forEach(item => {
+            galleryImages.forEach(item => {
+                // Trigger lightbox on image click
                 item.addEventListener('click', () => {
                     lightbox.style.display = 'flex'; // Use flex to center content
                     requestAnimationFrame(() => { // Ensure display:flex is applied before adding class
@@ -703,36 +917,22 @@
             });
 
              // --- Active Nav Link ---
-             // Simple active state based on click (can be improved with scrollspy)
              navLinks.forEach(link => {
                  link.addEventListener('click', (e) => {
-                    // Remove active class from all links
                     navLinks.forEach(node => node.classList.remove('active'));
-                    // Add active class to the clicked link
                     e.currentTarget.classList.add('active');
-
-                    // Handle smooth scrolling for internal links
                     const targetId = e.currentTarget.getAttribute('href');
                     if (targetId && targetId.startsWith('#')) {
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
-                            // Prevent default only if it's a valid internal link that exists
                             e.preventDefault();
                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            // Optional: Update URL hash without jumping - careful with history spamming
-                            // if (history.pushState) {
-                            //     history.pushState(null, null, targetId);
-                            // } else {
-                            //     // Fallback for older browsers
-                            //     location.hash = targetId;
-                            // }
                         }
                     }
                  });
              });
 
             // --- Back to Top Button Functionality ---
-            // Show or hide the button based on scroll position
             window.onscroll = function() {scrollFunction()};
 
             function scrollFunction() {
@@ -743,20 +943,12 @@
                 }
             }
 
-            // Scroll to the top when the button is clicked
             backToTopButton.addEventListener("click", () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
-                // Optionally, set focus back to the top or a primary element
-                 document.body.focus(); // Or focus on a specific element like header
-                 // Ensure the correct nav link is active after scrolling to top
-                 navLinks.forEach(node => node.classList.remove('active'));
-                 document.querySelector('nav a[href="#home"]').classList.add('active');
+                document.body.focus();
+                navLinks.forEach(node => node.classList.remove('active'));
+                document.querySelector('nav a[href="#home"]')?.classList.add('active');
             });
-
-
-            // Optional: Add scroll reveal effect if needed (more robust with Intersection Observer API)
-            // The existing CSS animations trigger on load and with delay.
-            // For true scroll reveal (elements animate as they enter viewport), Intersection Observer is recommended.
 
         });
     </script>
