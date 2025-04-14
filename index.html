@@ -3,73 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Only</title>
+    <title>HTML Only</title>
     <style>
         body {
-            font-family: monospace;
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
-            line-height: 1.5;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
-        .code-block {
-            background-color: #252526;
-            border: 1px solid #333;
-            padding: 10px;
-            border-radius: 4px;
-            white-space: pre-wrap; /* Allows wrapping long lines */
-            word-wrap: break-word; /* Breaks long words */
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
         }
-        .comment { color: #6A9955; }
-        .tag { color: #569cd6; }
-        .attr-name { color: #9cdcfe; }
-        .attr-value { color: #ce9178; }
-        .text { color: #d4d4d4; }
-        .script-tag { color: #d7ba7d; }
-        .css-selector { color: #d7ba7d; }
-        .css-prop { color: #9cdcfe; }
-        .css-value { color: #ce9178; }
+        h1 {
+            color: #0056b3;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <div class="code-block">
-        <span class="comment">&lt;!-- This is a simulation of code within the required format --&gt;</span>
-        <br>
-        <span class="tag">&lt;!DOCTYPE html&gt;</span>
-        <br>
-        <span class="tag">&lt;html <span class="attr-name">lang</span>=<span class="attr-value">"en"</span>&gt;</span>
-        <br>
-        &nbsp;&nbsp;<span class="tag">&lt;head&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;meta <span class="attr-name">charset</span>=<span class="attr-value">"UTF-8"</span>&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span><span class="text">Example</span><span class="tag">&lt;/title&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;style&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-selector">body</span> { <span class="css-prop">color</span>: <span class="css-value">#333</span>; }
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/style&gt;</span>
-        <br>
-        &nbsp;&nbsp;<span class="tag">&lt;/head&gt;</span>
-        <br>
-        &nbsp;&nbsp;<span class="tag">&lt;body&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">Hello There!</span><span class="tag">&lt;/h1&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">This is just HTML code.</span><span class="tag">&lt;/p&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="script-tag">&lt;script&gt;</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// No extra words, just code.</span>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text">console</span>.<span class="text">log</span>(<span class="attr-value">'Executing script...'</span>);
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="script-tag">&lt;/script&gt;</span>
-        <br>
-        &nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span>
-        <br>
-        <span class="tag">&lt;/html&gt;</span>
+    <div class="container">
+        <h1>Hello!</h1>
+        <p>This is a sample HTML page generated entirely with code.</p>
+        <button id="myButton">Click Me</button>
     </div>
+
+    <script>
+        document.getElementById('myButton').addEventListener('click', function() {
+            alert('Button clicked!');
+        });
+    </script>
 </body>
 </html>
