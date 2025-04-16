@@ -4,712 +4,651 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spectacular One-Page Wonder</title>
+    <title>Spectacular Effort Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Base Styles */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
+        :root {
+            --primary-color: #0D0D2B; /* Deep space blue */
+            --secondary-color: #2A2A4F; /* Darker purple */
+            --accent-color-1: #00F5FF; /* Electric cyan */
+            --accent-color-2: #FF00E5; /* Vibrant magenta */
+            --text-color: #E0E0FF; /* Light lavender text */
+            --glow-color-1: rgba(0, 245, 255, 0.7);
+            --glow-color-2: rgba(255, 0, 229, 0.7);
+            --font-main: 'Roboto', sans-serif;
+            --font-display: 'Orbitron', sans-serif;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
-            font-size: 16px; /* Base font size */
         }
 
         body {
-            font-family: 'Poppins', sans-serif; /* Using a common sans-serif, fallback */
+            font-family: var(--font-main);
+            background-color: var(--primary-color);
+            color: var(--text-color);
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4; /* Fallback background */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 10%, var(--secondary-color) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 90%, var(--secondary-color) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* Use Poppins from Google Fonts (optional but nice) */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        /* Variables */
-        :root {
-            --primary-color: #6a11cb;
-            --secondary-color: #2575fc;
-            --accent-color: #ff6b6b;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --text-color: #495057;
-            --gradient-start: #6a11cb;
-            --gradient-mid: #2575fc;
-            --gradient-end: #30cfd0;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
-        }
-
-        /* Animated Gradient Background */
-        .background-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end), var(--gradient-mid), var(--gradient-start));
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header/Navigation */
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            z-index: 1000;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .main-header .container {
+        /* --- Header & Hero --- */
+        .hero {
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--light-color);
-            text-decoration: none;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .main-nav ul li {
-            margin-left: 2rem;
-        }
-
-        .main-nav ul li a {
-            color: var(--light-color);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.5rem 0;
+            text-align: center;
             position: relative;
-            transition: color 0.3s ease;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2rem;
+            border-bottom: 3px solid var(--accent-color-1);
+            box-shadow: 0 5px 25px var(--glow-color-1);
         }
 
-        .main-nav ul li a::after {
+        .hero::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 245, 255, 0.05), rgba(255, 0, 229, 0.05));
+            z-index: 0;
+            animation: pulse-background 15s infinite alternate ease-in-out;
         }
 
-        .main-nav ul li a:hover,
-        .main-nav ul li a.active {
-            color: var(--accent-color);
-        }
-
-        .main-nav ul li a:hover::after,
-        .main-nav ul li a.active::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--light-color);
-            position: relative;
-            overflow: hidden; /* Needed for potential particle effects or shapes */
-            padding-top: 80px; /* Offset for fixed header */
+        @keyframes pulse-background {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
 
         .hero-content {
+            position: relative;
             z-index: 1;
-            max-width: 800px;
-            animation: fadeInDown 1s ease-out;
         }
 
-        #hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
-        }
-
-         #hero h1 span {
-            background: linear-gradient(90deg, #ff8a00, #e52e71);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .main-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2), var(--accent-color-1));
             background-clip: text;
-            text-fill-color: transparent;
-            padding: 0 5px;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient-flow 10s infinite linear, flicker 5s infinite alternate;
+            text-shadow: 0 0 10px var(--glow-color-1), 0 0 20px var(--glow-color-2);
         }
 
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
 
-        #hero p {
-            font-size: 1.3rem;
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { text-shadow: 0 0 8px var(--glow-color-1), 0 0 15px var(--glow-color-2), 0 0 25px var(--accent-color-1), 0 0 40px var(--accent-color-2); }
+            20%, 24%, 55% { text-shadow: none; }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             margin-bottom: 2rem;
+            color: var(--text-color);
+            opacity: 0.9;
             font-weight: 300;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 5px rgba(224, 224, 255, 0.5);
         }
 
         .cta-button {
             display: inline-block;
-            background: var(--accent-color);
-            color: var(--light-color);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
+            font-family: var(--font-display);
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--accent-color-2), var(--accent-color-1));
+            color: var(--primary-color);
             text-decoration: none;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 1.1rem;
-            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--glow-color-2), 0 0 25px var(--glow-color-1);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
-            background: #ff4757; /* Darker accent */
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 25px var(--glow-color-2), 0 0 40px var(--glow-color-1);
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
         }
 
-        /* Section Styling */
-        .section {
-            padding: 80px 0;
-            background-color: var(--light-color);
-            position: relative;
-            z-index: 5; /* Ensure content sections are above bg */
-            box-shadow: 0 -10px 20px rgba(0,0,0,0.05); /* Shadow to lift from gradient */
-            margin-top: -1px; /* Prevent thin line between sections */
-        }
-
-        .section:nth-of-type(odd) {
-             /* Slightly different bg for variation */
-             background-color: #ffffff;
-        }
-
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--dark-color);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
+        /* Particle Canvas */
+        #particle-canvas {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* --- Sections --- */
+        .content-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--accent-color-1);
+            text-shadow: 0 0 10px var(--glow-color-1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section h2::after {
+            content: '';
+            display: block;
             width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+            margin: 10px auto 0;
             border-radius: 2px;
         }
 
-        /* Features Section */
-        #features .features-grid {
+        /* Grid Layout for Features */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
         }
 
-        .feature-item {
-            background: #ffffff;
-            padding: 2.5rem 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+        .feature-card {
+            background-color: rgba(42, 42, 79, 0.7); /* Semi-transparent background */
+            border: 1px solid var(--accent-color-1);
+            padding: 30px;
+            border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #eee;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform-origin: center;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+            animation: rotate-glow 5s linear infinite;
+        }
+
+        @keyframes rotate-glow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 20px var(--glow-color-1), 0 0 30px var(--glow-color-2);
+            border-color: var(--accent-color-2);
         }
 
         .feature-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
             background-clip: text;
-            text-fill-color: transparent;
-            display: inline-block; /* Needed for gradient */
-        }
-
-        .feature-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        .feature-item p {
-            color: var(--text-color);
-            font-size: 0.95rem;
-        }
-
-        /* Showcase Section */
-        #showcase {
-             background-color: #f0f2f5; /* Slightly different background */
-        }
-
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .showcase-item {
+            -webkit-background-clip: text;
+            color: transparent;
             position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            aspect-ratio: 16 / 10; /* Maintain aspect ratio */
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); /* Placeholder gradient */
+            z-index: 1;
         }
 
-        .showcase-item::before { /* Placeholder for image */
-            content: 'Project ' attr(data-project);
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .feature-card h3 {
+            font-family: var(--font-display);
             font-size: 1.5rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            background: rgba(0, 0, 0, 0.3); /* Dark overlay for text visibility */
-            transition: background 0.4s ease;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
         }
 
-        .showcase-item:hover::before {
-             background: rgba(0, 0, 0, 0.1);
+        .feature-card p {
+            font-size: 0.95rem;
+            color: rgba(224, 224, 255, 0.8);
+            position: relative;
+            z-index: 1;
         }
 
-        /* About Section */
-        #about p {
+        /* Interactive Section */
+        .interactive-section {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        #effort-meter-container {
+            width: 300px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            border: 2px solid var(--accent-color-1);
+            border-radius: 15px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #effort-meter-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+            border-radius: 13px 0 0 13px;
+            transition: width 0.5s ease-out;
+            box-shadow: 0 0 15px var(--glow-color-1), 0 0 20px var(--glow-color-2);
+        }
+
+        #effort-level {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-family: var(--font-display);
+            color: var(--accent-color-2);
+            text-shadow: 0 0 8px var(--glow-color-2);
+            transition: color 0.5s ease;
+        }
+
+        .effort-button {
+            font-family: var(--font-display);
+            padding: 10px 25px;
+            background-color: transparent;
+            color: var(--accent-color-1);
+            border: 2px solid var(--accent-color-1);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 20px;
+            text-shadow: 0 0 5px var(--glow-color-1);
+        }
+
+        .effort-button:hover {
+            background-color: var(--accent-color-1);
+            color: var(--primary-color);
+            box-shadow: 0 0 15px var(--glow-color-1);
+            transform: scale(1.05);
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+             background: linear-gradient(rgba(42, 42, 79, 0.8), rgba(42, 42, 79, 0.9)),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M0 10 L100 10 M10 0 L10 100 M0 30 L100 30 M30 0 L30 100 M0 50 L100 50 M50 0 L50 100 M0 70 L100 70 M70 0 L70 100 M0 90 L100 90 M90 0 L90 100" stroke="%2300F5FF" stroke-width="0.1" opacity="0.2"/></svg>');
+            background-size: cover, 50px 50px;
+            background-attachment: fixed, scroll;
+        }
+
+        .manifesto-content {
             max-width: 800px;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto;
             text-align: center;
             font-size: 1.1rem;
-            color: var(--text-color);
-        }
-
-         /* Footer */
-        .main-footer {
-            background-color: var(--dark-color);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 3rem 0;
-            text-align: center;
+            line-height: 1.8;
+            color: rgba(224, 224, 255, 0.9);
             position: relative;
-            z-index: 5;
-            margin-top: -1px;
+            z-index: 1;
         }
 
-        .main-footer p {
-            margin-bottom: 1rem;
+        .manifesto-content strong {
+            color: var(--accent-color-2);
+            font-weight: 700;
         }
 
-        .social-links a {
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0 0.8rem;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+        /* Animated Divider */
+        .animated-divider {
+            height: 4px;
+            width: 100px;
+            margin: 60px auto;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 245, 255, 0.3);
+            border-radius: 2px;
         }
 
-        .social-links a:hover {
-            color: var(--accent-color);
+        .animated-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-color-1), var(--accent-color-2), transparent);
+            animation: scan 4s linear infinite;
+            border-radius: 2px;
         }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes scan {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; } /* Keeps it off-screen before restart */
         }
 
-        @keyframes fadeInUp {
-             from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            background-color: var(--secondary-color);
+            border-top: 2px solid var(--accent-color-2);
+            box-shadow: 0 -5px 20px var(--glow-color-2);
+            position: relative;
+            z-index: 10;
         }
 
-        /* Apply entrance animation to sections - using JS later for view trigger */
-        .section-content {
-             opacity: 0; /* Start hidden */
-             transform: translateY(30px);
-             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .site-footer p {
+            font-size: 0.9rem;
+            color: rgba(224, 224, 255, 0.7);
         }
 
-        .section-content.visible {
-             opacity: 1;
-             transform: translateY(0);
+        .site-footer span {
+            font-family: var(--font-display);
+            color: var(--accent-color-1);
+            font-weight: 700;
         }
 
+        /* Scroll Animations */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            #hero h1 {
-                font-size: 3rem;
-            }
-             #hero p {
-                font-size: 1.1rem;
-            }
-            .section-title {
-                 font-size: 2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            html {
-                font-size: 15px;
+            .main-title {
+                font-size: clamp(2rem, 10vw, 3rem);
             }
-
-            .main-header .container {
-                flex-direction: column;
-                align-items: center;
+            .subtitle {
+                 font-size: clamp(0.9rem, 4vw, 1.2rem);
             }
-            .main-nav ul {
-                margin-top: 1rem;
-                padding-left: 0; /* Reset padding */
-            }
-            .main-nav ul li {
-                margin: 0 1rem;
-            }
-            #hero {
-                padding-top: 120px; /* Adjust for taller header */
-                height: auto; /* Adjust height */
-                min-height: 80vh;
-                padding-bottom: 3rem;
-            }
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-             #hero p {
-                font-size: 1rem;
-            }
-             .section {
-                padding: 60px 0;
-            }
-            .section-title {
-                 font-size: 1.8rem;
-                 margin-bottom: 3rem;
-            }
-            #features .features-grid, .showcase-grid {
-                 grid-template-columns: 1fr; /* Stack on smaller screens */
-                 gap: 2rem;
-            }
-             .feature-item {
-                 padding: 2rem 1.5rem;
-            }
-        }
-
-         @media (max-width: 480px) {
-            html {
-                 font-size: 14px;
-            }
-             .logo {
-                 font-size: 1.5rem;
-             }
-            .main-nav ul li {
-                margin: 0 0.5rem;
-            }
-             .main-nav ul li a {
-                 font-size: 0.9rem;
-             }
-            #hero h1 {
+            .content-section h2 {
                 font-size: 2rem;
             }
-             #hero p {
-                font-size: 0.9rem;
-                margin-bottom: 1.5rem;
+            .features-grid {
+                grid-template-columns: 1fr; /* Stack cards on smaller screens */
             }
-            .cta-button {
-                padding: 0.7rem 1.5rem;
-                font-size: 1rem;
-            }
-             .section {
-                padding: 50px 0;
-            }
-            .section-title {
-                 font-size: 1.6rem;
-            }
-             .container {
-                 padding: 0 15px;
-             }
-         }
+        }
 
     </style>
 </head>
 <body>
 
-    <div class="background-gradient"></div>
+    <canvas id="particle-canvas"></canvas>
 
-    <header class="main-header" id="main-header">
-        <div class="container">
-            <a href="#hero" class="logo">Spectacular</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#showcase">Showcase</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-            </nav>
+    <header class="hero">
+        <div class="hero-content reveal">
+            <h1 class="main-title" id="main-title-text">Spectacular Effort</h1>
+            <p class="subtitle">Where Laziness Ends and Craftsmanship Begins. Built with Dedication.</p>
+            <a href="#manifesto" class="cta-button">Explore the Ethos</a>
         </div>
     </header>
 
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Welcome to the <span>Spectacular</span> Web Experience</h1>
-                <p>Discover innovation, beauty, and seamless design all in one place. Built with passion and modern web technologies.</p>
-                <a href="#features" class="cta-button">Explore Features</a>
+    <main>
+        <section id="features" class="content-section">
+            <div class="container">
+                <h2 class="reveal">Core Principles</h2>
+                <div class="features-grid">
+                    <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                        <div class="feature-icon">✨</div>
+                        <h3>Uncompromising Quality</h3>
+                        <p>No shortcuts. Every detail is meticulously crafted for a truly spectacular result.</p>
+                    </div>
+                    <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                         <div class="feature-icon">💡</div>
+                        <h3>Creative Innovation</h3>
+                        <p>Pushing boundaries requires effort. We embrace challenges to deliver the unexpected.</p>
+                    </div>
+                    <div class="feature-card reveal" style="transition-delay: 0.3s;">
+                         <div class="feature-icon">🚀</div>
+                        <h3>Peak Performance</h3>
+                        <p>Optimization isn't an afterthought. We build robust, efficient, and responsive experiences.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+            <div class="animated-divider reveal"></div>
+        </section>
 
-    <section id="features" class="section">
-        <div class="container">
-            <h2 class="section-title">Amazing Features</h2>
-            <div class="features-grid section-content">
-                <div class="feature-item">
-                    <div class="feature-icon">✨</div> <!-- Using Emoji as icon -->
-                    <h3>Stunning Design</h3>
-                    <p>Visually captivating layout with smooth animations and a vibrant gradient background.</p>
+        <section id="interactive" class="content-section interactive-section">
+             <div class="container">
+                <h2 class="reveal">Measure the Effort</h2>
+                <p class="reveal">Witness the power of dedication. Click to fuel the engine.</p>
+                <div id="effort-meter-container" class="reveal">
+                    <div id="effort-meter-bar"></div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📱</div>
-                    <h3>Fully Responsive</h3>
-                    <p>Adapts perfectly to any screen size, from large desktops to small mobile devices.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Optimized Performance</h3>
-                    <p>Lightweight and fast-loading, built with clean HTML, CSS, and minimal JavaScript.</p>
-                </div>
-                 <div class="feature-item">
-                    <div class="feature-icon">💡</div>
-                    <h3>Interactive Elements</h3>
-                    <p>Engaging hover effects and smooth transitions enhance the user experience.</p>
-                </div>
-                 <div class="feature-item">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Modern Aesthetics</h3>
-                    <p>Utilizes contemporary design principles, fonts, and color palettes.</p>
-                </div>
-                 <div class="feature-item">
-                    <div class="feature-icon">🧩</div>
-                    <h3>Single File Simplicity</h3>
-                    <p>Everything neatly packaged within this one HTML file for easy viewing and modification.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div id="effort-level" class="reveal">Effort Level: 0%</div>
+                <button id="increase-effort" class="effort-button reveal">Inject Effort</button>
+             </div>
+        </section>
 
-    <section id="showcase" class="section">
-        <div class="container">
-            <h2 class="section-title">Showcase Gallery</h2>
-            <div class="showcase-grid section-content">
-                <div class="showcase-item" data-project="1"></div>
-                <div class="showcase-item" data-project="2" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);"></div>
-                <div class="showcase-item" data-project="3" style="background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);"></div>
-                <div class="showcase-item" data-project="4" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);"></div>
-                <div class="showcase-item" data-project="5" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
-                <div class="showcase-item" data-project="6" style="background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);"></div>
+        <section id="manifesto" class="content-section manifesto">
+            <div class="container manifesto-content reveal">
+                <h2>The Anti-Lazy Manifesto</h2>
+                <p>
+                    We stand against the mundane, the mediocre, the 'good enough'. We believe true value lies in <strong>dedication</strong>, in the persistent pursuit of excellence. Laziness breeds complacency; <strong>effort sparks brilliance</strong>.
+                </p>
+                <p>
+                    This digital space is a testament to that belief. It's not just code and pixels; it's hours of thought, iteration, and refinement. It's the rejection of templates and the embrace of <strong>bespoke creation</strong>.
+                </p>
+                <p>
+                    Join us in celebrating the <strong>spectacular</strong>. Demand more. Create more. <strong>Never settle for lazy.</strong>
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="about" class="section">
+    <footer class="site-footer">
         <div class="container">
-             <h2 class="section-title">About This Page</h2>
-             <div class="section-content">
-                <p>This page is a demonstration of what can be achieved within a single HTML file using modern CSS and a touch of JavaScript. It aims to be visually "spectacular" through the use of animated gradients, smooth transitions, responsive design, and clean typography.</p>
-                <p>No external libraries (except Google Fonts, which is optional) or frameworks were used, keeping it lightweight and self-contained. Explore the sections to see the different elements in action!</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2024 Spectacular Web Creations. All rights reserved.</p>
-            <div class="social-links">
-                <!-- Replace # with actual links -->
-                <a href="#" aria-label="Twitter" title="Twitter">X</a>
-                <a href="#" aria-label="GitHub" title="GitHub">G</a>
-                <a href="#" aria-label="LinkedIn" title="LinkedIn">L</a>
-            </div>
+            <p>&copy; <span id="year"></span> - Crafted with <span>Spectacular Effort</span>. Laziness Not Found.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // --- Particle Animation ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-            // Smooth scrolling for nav links
-            const navLinks = document.querySelectorAll('.main-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Basic smooth scroll (also handled by CSS html { scroll-behavior: smooth; })
-                    // This JS part focuses on updating the active class
-                    const targetId = this.getAttribute('href');
-                    if (targetId.startsWith('#')) {
-                         // Remove active class from all links
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        // Add active class to the clicked link
-                        this.classList.add('active');
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight; // Make canvas cover hero section
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial size
 
-                         // Optional: If CSS scroll-behavior isn't enough or for specific offsets
-                         // e.preventDefault();
-                         // const targetElement = document.querySelector(targetId);
-                         // if (targetElement) {
-                         //    const headerOffset = document.getElementById('main-header').offsetHeight;
-                         //    const elementPosition = targetElement.getBoundingClientRect().top;
-                         //    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                         //
-                         //    window.scrollTo({
-                         //        top: offsetPosition,
-                         //        behavior: "smooth"
-                         //    });
-                         // }
-                    }
-                });
-            });
-
-            // Highlight nav link based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            const headerHeight = document.getElementById('main-header').offsetHeight;
-
-            function highlightNavLink() {
-                let scrollY = window.pageYOffset;
-                let currentSection = '';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - headerHeight - 50; // Add some buffer
-                    const sectionHeight = section.offsetHeight;
-                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                // Special case for reaching the bottom (highlight last section if near bottom)
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-                     currentSection = sections[sections.length - 1].getAttribute('id');
-                }
-
-                // Update active class
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + currentSection) {
-                        link.classList.add('active');
-                    }
-                });
-
-                 // Fallback to home if no section is active (e.g., at the very top)
-                if (!currentSection && scrollY < window.innerHeight / 2) {
-                    const homeLink = document.querySelector('.main-nav a[href="#hero"]');
-                    if(homeLink) homeLink.classList.add('active');
-                }
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? 'rgba(0, 245, 255, 0.8)' : 'rgba(255, 0, 229, 0.8)'; // Cyan or Magenta
             }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
 
-            // Animate sections on scroll
-            const sectionContents = document.querySelectorAll('.section-content');
-            const observerOptions = {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the element is visible
-            };
+                // Boundary check (bounce effect could be added, but simple wrap for now)
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
 
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        // Optional: Unobserve after animation to save resources
-                        // observer.unobserve(entry.target);
-                    } else {
-                        // Optional: Remove class to re-animate if scrolling up/down again
-                         // entry.target.classList.remove('visible');
-                    }
-                });
-            };
+                 // Keep particles within viewport slightly more aggressively
+                 if (this.x < -this.size) this.x = canvas.width + this.size;
+                 if (this.x > canvas.width + this.size) this.x = -this.size;
+                 if (this.y < -this.size) this.y = canvas.height + this.size;
+                 if (this.y > canvas.height + this.size) this.y = -this.size;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-            sectionContents.forEach(content => {
-                observer.observe(content);
-            });
+        function initParticles() {
+            particles = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 15000; // Adjust density based on area
+            numberOfParticles = Math.min(150, Math.max(30, numberOfParticles)); // Clamp particle count
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
 
+        function animateParticles() {
+            // Check if canvas is roughly in view (optimization for hero only)
+            const heroRect = document.querySelector('.hero').getBoundingClientRect();
+            if (heroRect.bottom > 0 && heroRect.top < window.innerHeight) {
+                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                 particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                 });
+            }
+            requestAnimationFrame(animateParticles);
+        }
 
-            // Add shadow to header on scroll
-             const header = document.getElementById('main-header');
-             function handleHeaderScroll() {
-                if (window.scrollY > 50) {
-                    header.style.background = 'rgba(255, 255, 255, 0.2)';
-                    header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-                } else {
-                     header.style.background = 'rgba(255, 255, 255, 0.1)';
-                     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-                }
-             }
-
-             // Initial calls and event listeners
-             highlightNavLink(); // Initial check
-             handleHeaderScroll(); // Initial check for header style
-             window.addEventListener('scroll', () => {
-                 highlightNavLink();
-                 handleHeaderScroll();
-             });
-
+        // Adjust particle behavior on resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                resizeCanvas();
+                initParticles(); // Reinitialize particles for new size
+            }, 250); // Debounce resize event
         });
+
+        initParticles();
+        animateParticles();
+
+        // --- Effort Meter Interaction ---
+        const effortBar = document.getElementById('effort-meter-bar');
+        const effortLevelText = document.getElementById('effort-level');
+        const increaseEffortButton = document.getElementById('increase-effort');
+        let currentEffort = 0;
+        const maxEffort = 100;
+        const effortIncrement = 10;
+
+        increaseEffortButton.addEventListener('click', () => {
+            currentEffort = Math.min(maxEffort, currentEffort + effortIncrement);
+            updateEffortMeter();
+
+            // Reset after reaching max
+            if (currentEffort === maxEffort) {
+                effortLevelText.textContent = "Effort MAX! Resetting...";
+                effortLevelText.style.color = 'var(--accent-color-1)'; // Change color at max
+                setTimeout(() => {
+                    currentEffort = 0;
+                    updateEffortMeter();
+                     effortLevelText.style.color = 'var(--accent-color-2)'; // Reset color
+                }, 1500);
+            }
+        });
+
+        function updateEffortMeter() {
+            const percentage = (currentEffort / maxEffort) * 100;
+            effortBar.style.width = `${percentage}%`;
+            if (currentEffort < maxEffort) {
+                effortLevelText.textContent = `Effort Level: ${currentEffort}%`;
+            }
+            // Dynamic gradient based on effort? (Optional complexity)
+            // effortBar.style.background = `linear-gradient(90deg, var(--accent-color-1), hsl(${120 + percentage}, 100%, 50%))`;
+        }
+
+        // --- Scroll Reveal Animation ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Unobserve after revealing to save resources
+                    // revealObserver.unobserve(entry.target);
+                } else {
+                     // Optional: Reset animation if element scrolls out of view
+                     // entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+         // --- Typewriter effect for main title (subtle) ---
+        const titleElement = document.getElementById('main-title-text');
+        const originalTitle = titleElement.textContent;
+        titleElement.textContent = ''; // Clear initial text
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < originalTitle.length) {
+                titleElement.textContent += originalTitle.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100); // Adjust typing speed (ms)
+            }
+        }
+
+        // Start typewriter after a short delay
+        setTimeout(typeWriter, 500);
+
+
+        // --- Footer Year ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+
     </script>
 
 </body>
