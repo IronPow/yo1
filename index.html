@@ -4,29 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger Bliss - Handcrafted Burgers</title>
+    <title>Chrome & Caliber // Augment Your Arsenal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&display=swap');
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
         :root {
-            /* --- Burger Bliss Theme --- */
-            --color-primary: #ff6b35; /* Vibrant Orange */
-            --color-secondary: #f7c59f; /* Light Peach/Tan */
-            --color-dark: #331a00; /* Deep Brown */
-            --color-dark-grey: #2c2c2c;
-            --color-light: #fff8f0; /* Creamy White */
-            --color-success: #4caf50; /* Green for freshness */
-            --color-text: var(--color-dark-grey);
-            --color-text-light: var(--color-light);
-            --color-border: rgba(51, 26, 0, 0.15);
+            --color-primary-cyan: #00ffff; /* Neon Cyan */
+            --color-primary-magenta: #ff00ff; /* Neon Magenta */
+            --color-secondary-lime: #7fff00; /* Neon Lime */
+            --color-secondary-blue: #0077ff; /* Electric Blue */
+            --color-background-dark: #0a0514; /* Deep Purple/Black */
+            --color-background-medium: #1a1035; /* Dark Purple */
+            --color-background-light: #2a1a55; /* Lighter Purple */
+            --color-text-light: #e0e0ff; /* Light Lavender/White */
+            --color-text-medium: #a0a0c0; /* Medium Grey/Lavender */
+            --color-text-dark: var(--color-background-dark);
+            --color-glitch-1: var(--color-primary-cyan);
+            --color-glitch-2: var(--color-primary-magenta);
 
-            --font-heading: 'Oswald', sans-serif;
-            --font-body: 'Montserrat', sans-serif;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
 
-            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
-            --shadow-dark: 0 8px 25px rgba(51, 26, 0, 0.2);
-            --transition-speed: 0.3s;
+            --glow-cyan: 0 0 5px var(--color-primary-cyan), 0 0 10px var(--color-primary-cyan), 0 0 15px var(--color-primary-cyan), 0 0 20px rgba(0, 255, 255, 0.5);
+            --glow-magenta: 0 0 5px var(--color-primary-magenta), 0 0 10px var(--color-primary-magenta), 0 0 15px var(--color-primary-magenta), 0 0 20px rgba(255, 0, 255, 0.5);
+            --glow-lime: 0 0 5px var(--color-secondary-lime), 0 0 10px var(--color-secondary-lime), 0 0 15px var(--color-secondary-lime), 0 0 20px rgba(127, 255, 0, 0.5);
+
+            --transition-speed: 0.4s;
+            --clip-path-sharp: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+             --clip-path-sharp-alt: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
         }
 
         *, *::before, *::after {
@@ -37,41 +43,140 @@
 
         html {
             scroll-behavior: smooth;
-            font-size: 16px; /* Base font size */
+            font-size: 16px;
+            background-color: var(--color-background-dark);
         }
 
         body {
             font-family: var(--font-body);
-            color: var(--color-text);
-            background-color: var(--color-light);
-            line-height: 1.6;
+            color: var(--color-text-light);
+            background-color: var(--color-background-dark);
+            line-height: 1.7;
             overflow-x: hidden;
-            /* Subtle pattern for texture */
-            background-image: linear-gradient(rgba(255, 248, 240, 0.95), rgba(255, 248, 240, 0.95)),
-                              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7c59f' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            /* Subtle animated grid background */
+            background-image:
+                linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: backgroundPan 20s linear infinite;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes backgroundPan {
+          0% { background-position: 0 0; }
+          100% { background-position: 400px 400px; }
         }
+
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative; /* For pseudo elements */
+        }
+
+        /* --- Utility Classes --- */
+        .glitch-text {
+            position: relative;
+            color: var(--color-primary-cyan);
+            text-shadow: var(--glow-cyan);
+            animation: glitch 5s infinite steps(1);
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-background-dark); /* Match body bg */
+            overflow: hidden;
+            clip-path: inset(50% 0 50% 0); /* Default hidden */
+        }
+
+        .glitch-text::before {
+            left: -2px;
+            text-shadow: -2px 0 var(--color-primary-magenta);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: 2px;
+            text-shadow: -2px 0 var(--color-secondary-lime);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0%, 100% { clip-path: inset(40% 0 61% 0); transform: translate(-3px, 2px); }
+            25% { clip-path: inset(15% 0 86% 0); transform: translate(2px, -1px); }
+            50% { clip-path: inset(60% 0 31% 0); transform: translate(-1px, 3px); }
+            75% { clip-path: inset(90% 0 5% 0); transform: translate(3px, -2px); }
+        }
+        @keyframes glitch-anim-2 {
+            0%, 100% { clip-path: inset(60% 0 21% 0); transform: translate(2px, -3px); }
+            20% { clip-path: inset(85% 0 5% 0); transform: translate(-3px, 1px); }
+            40% { clip-path: inset(30% 0 71% 0); transform: translate(1px, 2px); }
+            60% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, -1px); }
+            80% { clip-path: inset(70% 0 15% 0); transform: translate(3px, 3px); }
+        }
+
+
+        .neon-border {
+            position: relative;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 2px; /* Space for the glow */
+        }
+
+        .neon-border::before,
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Allow clicks through */
+        }
+
+        .neon-border::before {
+             box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
+             z-index: -1;
+        }
+
+        .neon-border::after { /* Animated corner effect */
+          border: 2px solid transparent;
+          width: 20px;
+          height: 20px;
+          animation: animateCorner 4s linear infinite;
+        }
+
+        @keyframes animateCorner {
+          0%, 100% { top: -2px; left: -2px; border-left-color: var(--color-primary-cyan); border-top-color: var(--color-primary-cyan); box-shadow: -2px -2px 5px var(--color-primary-cyan); }
+          25% { top: -2px; left: calc(100% - 18px); border-right-color: var(--color-primary-cyan); border-top-color: var(--color-primary-cyan); box-shadow: 2px -2px 5px var(--color-primary-cyan); }
+          50% { top: calc(100% - 18px); left: calc(100% - 18px); border-right-color: var(--color-primary-cyan); border-bottom-color: var(--color-primary-cyan); box-shadow: 2px 2px 5px var(--color-primary-cyan); }
+          75% { top: calc(100% - 18px); left: -2px; border-left-color: var(--color-primary-cyan); border-bottom-color: var(--color-primary-cyan); box-shadow: -2px 2px 5px var(--color-primary-cyan); }
+        }
+
 
         /* --- Header --- */
         .header {
-            background-color: rgba(51, 26, 0, 0.9); /* Dark Brown Transparent */
+            background-color: rgba(10, 5, 20, 0.8); /* Dark bg with transparency */
+            backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: var(--shadow-light);
-            transition: background-color var(--transition-speed) ease;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            transition: background-color var(--transition-speed) ease, padding var(--transition-speed) ease;
         }
 
         .header.scrolled {
-             background-color: rgba(51, 26, 0, 0.98); /* More opaque on scroll */
+             background-color: rgba(10, 5, 20, 0.95);
+             padding: 10px 0;
+             border-bottom-color: rgba(0, 255, 255, 0.4);
         }
 
         .header .container {
@@ -82,18 +187,20 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 2.2em;
-            color: var(--color-primary);
+            font-size: 1.8em;
+            color: var(--color-text-light);
             text-decoration: none;
             font-weight: 700;
             letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 0 0 5px var(--color-primary-cyan);
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
         }
-
-        .logo i {
-            margin-right: 5px;
-            color: var(--color-secondary);
+        .logo span { color: var(--color-primary-cyan); }
+        .logo:hover {
+            color: var(--color-primary-cyan);
+            text-shadow: var(--glow-cyan);
         }
+        .logo i { margin-right: 8px; color: var(--color-primary-magenta); }
 
         .nav ul {
             list-style: none;
@@ -101,17 +208,19 @@
         }
 
         .nav li {
-            margin-left: 30px;
+            margin-left: 35px;
         }
 
         .nav a {
-            color: var(--color-light);
+            color: var(--color-text-medium);
             text-decoration: none;
             font-size: 1em;
-            font-weight: 500;
+            font-weight: 600;
             padding: 5px 0;
             position: relative;
-            transition: color var(--transition-speed) ease;
+            transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav a::after {
@@ -119,134 +228,200 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--color-primary);
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-primary-cyan);
             transition: width var(--transition-speed) ease;
+            box-shadow: var(--glow-cyan);
+            opacity: 0;
         }
 
         .nav a:hover,
         .nav a.active {
-            color: var(--color-primary);
+            color: var(--color-primary-cyan);
+            text-shadow: 0 0 3px var(--color-primary-cyan);
         }
 
         .nav a:hover::after,
         .nav a.active::after {
             width: 100%;
+            opacity: 1;
         }
 
          /* Mobile Nav Toggle */
         .nav-toggle {
             display: none;
-            color: var(--color-light);
+            color: var(--color-primary-cyan);
             font-size: 1.8em;
             cursor: pointer;
+            border: 1px solid var(--color-primary-cyan);
+            padding: 5px 8px;
+            border-radius: 3px;
+             transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .nav-toggle:hover {
+             background-color: rgba(0, 255, 255, 0.1);
+             box-shadow: var(--glow-cyan);
         }
 
 
         /* --- Hero Section --- */
         .hero {
-            padding: 200px 0 120px;
-            /* Replace with a real, high-quality burger image URL */
-            background-image: linear-gradient(rgba(51, 26, 0, 0.6), rgba(51, 26, 0, 0.8)), url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            padding: 220px 0 150px;
+            background: linear-gradient(rgba(10, 5, 20, 0.7), var(--color-background-dark) 90%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><pattern id="p" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="10" y2="10" stroke="%2300ffff" stroke-width="0.5" opacity="0.1"/><line x1="5" y1="0" x2="15" y2="10" stroke="%23ff00ff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23p)"/></svg>'), /* Subtle diagonal pattern */
+                        var(--color-background-dark); /* Fallback */
+            background-size: auto, 100px 100px, auto;
             text-align: center;
-            color: var(--color-light);
             position: relative;
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
+         .hero::before { /* Overlay lines */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: backgroundPan 30s linear infinite reverse;
+            pointer-events: none;
+         }
+
 
         .hero-content {
-            max-width: 800px;
-            animation: fadeIn HeroAnimation 1s ease-out forwards;
+            max-width: 900px;
+            z-index: 1;
+            position: relative;
             opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s ease-out 0.5s forwards;
         }
 
-        @keyframes fadeInHeroAnimation {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
             font-family: var(--font-heading);
-            font-size: 4.5em; /* Larger heading */
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 4.8em; /* Larger heading */
+            font-weight: 900;
+            margin-bottom: 15px;
             line-height: 1.1;
-            color: var(--color-light);
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            color: var(--color-text-light);
+            text-shadow: 0 0 10px var(--color-primary-cyan), 0 0 20px var(--color-primary-cyan), 0 0 5px var(--color-primary-magenta);
+            letter-spacing: 2px;
         }
 
-        .hero h1 span {
-            color: var(--color-primary); /* Highlight word */
+        .hero h1 span { /* Highlight word */
+             color: var(--color-primary-cyan);
+             text-shadow: var(--glow-cyan);
+             display: inline-block; /* Allows transform/animation */
         }
 
-        .hero p {
-            font-size: 1.4em;
-            margin-bottom: 40px;
+        .hero p.subtitle {
+            font-size: 1.5em;
             font-weight: 400;
-            line-height: 1.7;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
+            color: var(--color-text-medium);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+             text-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 35px;
+            padding: 14px 40px;
             font-family: var(--font-heading);
-            font-size: 1.2em;
-            font-weight: 500;
-            color: var(--color-dark);
-            background-color: var(--color-primary);
-            border: 2px solid var(--color-primary);
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--color-background-dark);
+            background-color: var(--color-primary-cyan);
+            border: 2px solid var(--color-primary-cyan);
             text-decoration: none;
-            border-radius: 50px; /* Pill shape */
             transition: all var(--transition-speed) ease;
-            box-shadow: var(--shadow-light);
-            letter-spacing: 0.5px;
+            box-shadow: var(--glow-cyan), 0 0 15px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            clip-path: var(--clip-path-sharp);
         }
+         .cta-button::before { /* Hover effect */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--color-primary-magenta), transparent);
+            transition: left var(--transition-speed) ease;
+         }
 
         .cta-button:hover {
+            color: var(--color-text-light);
             background-color: transparent;
-            color: var(--color-primary);
-            border-color: var(--color-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            border-color: var(--color-primary-magenta);
+            box-shadow: var(--glow-magenta), 0 0 20px rgba(0,0,0,0.7);
+            transform: scale(1.05); /* Slight zoom */
         }
+         .cta-button:hover::before {
+            left: 100%;
+         }
 
         .cta-button.secondary {
             background-color: transparent;
-            color: var(--color-light);
-            border: 2px solid var(--color-secondary);
-            margin-left: 15px;
+            color: var(--color-primary-magenta);
+            border: 2px solid var(--color-primary-magenta);
+            box-shadow: var(--glow-magenta), 0 0 15px rgba(0,0,0,0.5);
+            margin-left: 20px;
+             clip-path: var(--clip-path-sharp-alt);
         }
+         .cta-button.secondary::before {
+            background: linear-gradient(90deg, transparent, var(--color-primary-cyan), transparent);
+         }
 
         .cta-button.secondary:hover {
-             background-color: var(--color-secondary);
-             color: var(--color-dark);
-             border-color: var(--color-secondary);
-             box-shadow: 0 6px 20px rgba(247, 197, 159, 0.4);
+            color: var(--color-background-dark);
+            background-color: var(--color-primary-magenta);
+            border-color: var(--color-primary-magenta);
+            box-shadow: var(--glow-magenta), 0 0 20px rgba(0,0,0,0.7);
         }
+         .cta-button.secondary:hover::before {
+            left: 100%;
+         }
+
 
         /* --- Section General Styling --- */
         .content-section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-         .content-section.bg-dark {
-            background-color: var(--color-dark);
-            color: var(--color-light);
-         }
-         .content-section.bg-dark .section-title { color: var(--color-primary); }
-         .content-section.bg-dark .section-subtitle { color: var(--color-secondary); }
-         .content-section.bg-dark p { color: rgba(255, 248, 240, 0.8); }
-         .content-section.bg-dark .feature-card { background-color: rgba(255, 255, 255, 0.05); border-color: rgba(247, 197, 159, 0.2); }
-         .content-section.bg-dark .feature-card h3 { color: var(--color-secondary); }
+        .content-section::before { /* Section Divider Lines */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 500px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-primary-cyan), transparent);
+            opacity: 0.3;
+        }
+        .content-section:first-of-type::before { display: none; } /* No line above first section */
 
 
         .section-title {
@@ -254,16 +429,17 @@
             font-family: var(--font-heading);
             font-size: 2.8em;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-primary-cyan);
             margin-bottom: 15px;
             letter-spacing: 1px;
             text-transform: uppercase;
+            text-shadow: var(--glow-cyan);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.1em;
-            color: var(--color-text);
+            font-size: 1.2em;
+            color: var(--color-text-medium);
             margin-bottom: 60px;
             font-weight: 400;
             max-width: 700px;
@@ -272,55 +448,181 @@
             line-height: 1.7;
         }
 
-        /* --- About Section --- */
-        #about .container {
+        /* --- Manifesto/About Section --- */
+        #manifesto .container {
             display: flex;
             align-items: center;
             gap: 50px;
             flex-wrap: wrap;
         }
 
-        .about-content {
-            flex: 1;
-            min-width: 300px;
+        .manifesto-content {
+            flex: 1.2;
+            min-width: 320px;
         }
 
-        .about-content h3 {
+        .manifesto-content h3 {
             font-family: var(--font-heading);
-            font-size: 2em;
-            color: var(--color-dark);
+            font-size: 1.8em;
+            color: var(--color-primary-magenta);
             margin-bottom: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            text-shadow: var(--glow-magenta);
         }
 
-        .about-content p {
+        .manifesto-content p {
             margin-bottom: 20px;
-            font-size: 1.05em;
+            font-size: 1.1em;
+            color: var(--color-text-medium);
+        }
+        .manifesto-content strong {
+             color: var(--color-text-light);
+             font-weight: 600;
         }
 
-        .about-image {
-            flex: 1;
+        .manifesto-visual {
+            flex: 0.8;
             min-width: 300px;
-            text-align: center; /* Center image if needed */
+            text-align: center;
+            position: relative;
+            height: 350px; /* Fixed height */
+             background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+             border: 1px solid rgba(0, 255, 255, 0.3);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             clip-path: polygon(0 15%, 100% 0, 100% 85%, 0% 100%);
+             animation: pulseBorder 3s infinite alternate;
+        }
+         @keyframes pulseBorder {
+            from { border-color: rgba(0, 255, 255, 0.3); box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2); }
+            to { border-color: rgba(255, 0, 255, 0.3); box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.2); }
+         }
+
+         .manifesto-visual i { /* Placeholder Icon */
+             font-size: 6em;
+             color: var(--color-primary-cyan);
+             opacity: 0.5;
+             text-shadow: var(--glow-cyan);
+             animation: iconFloat 4s ease-in-out infinite;
+         }
+
+         @keyframes iconFloat {
+             0%, 100% { transform: translateY(0); opacity: 0.5; }
+             50% { transform: translateY(-10px); opacity: 0.8; }
+         }
+
+
+        /* --- Arsenal / Product Section --- */
+        #arsenal {
+             background-color: var(--color-background-medium);
+        }
+         #arsenal .section-title { color: var(--color-primary-magenta); text-shadow: var(--glow-magenta); }
+         #arsenal .section-subtitle { color: var(--color-text-medium); }
+         #arsenal .content-section::before { background: linear-gradient(90deg, transparent, var(--color-primary-magenta), transparent); }
+
+
+        .arsenal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
 
-        .about-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: var(--shadow-dark);
-            /* Placeholder Aspect Ratio */
-             aspect-ratio: 4 / 3;
-             background-color: var(--color-secondary);
-             object-fit: cover; /* Use cover if real image is used */
-             display: flex; /* For placeholder text */
-             align-items: center; /* For placeholder text */
-             justify-content: center; /* For placeholder text */
-             color: var(--color-dark); /* For placeholder text */
-             font-style: italic; /* For placeholder text */
+        .arsenal-card {
+            background-color: rgba(10, 5, 20, 0.6); /* Dark Transparent */
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            clip-path: var(--clip-path-sharp-alt);
+             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+         .arsenal-card::before { /* Glow effect */
+            content: '';
+            position: absolute;
+            inset: -1px; /* Cover border */
+            background: conic-gradient(from 90deg at 50% 50%, rgba(255, 0, 255, 0.5), transparent 50%, transparent);
+            animation: rotateGlow 5s linear infinite paused; /* Paused initially */
+            z-index: -1;
+            border-radius: 5px; /* Match parent */
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+         }
+         @keyframes rotateGlow { to { transform: rotate(450deg); } } /* 90 + 360 */
+
+         .arsenal-card:hover {
+             transform: translateY(-10px) scale(1.02);
+             border-color: var(--color-primary-magenta);
+             box-shadow: 0 10px 25px rgba(255, 0, 255, 0.3), 0 0 15px rgba(0,0,0,0.6);
+         }
+         .arsenal-card:hover::before {
+             opacity: 1;
+             animation-play-state: running;
+         }
+
+
+        .arsenal-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--color-background-light), var(--color-background-medium)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M10 10 L40 40 M40 10 L10 40" stroke="%23ff00ff" stroke-width="1" opacity="0.1"/></svg>'); /* Wireframe pattern */
+            background-size: cover, 50px 50px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             color: var(--color-primary-magenta);
+             font-size: 3em;
+             opacity: 0.6;
+             border-bottom: 1px solid rgba(255, 0, 255, 0.3);
         }
 
-        /* --- Features Section --- */
+        .arsenal-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .arsenal-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5em;
+            color: var(--color-primary-magenta);
+            margin-bottom: 10px;
+            font-weight: 600;
+             letter-spacing: 1px;
+        }
+
+        .arsenal-content p {
+            font-size: 1em;
+            color: var(--color-text-medium);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .arsenal-tags {
+            margin-top: auto; /* Push to bottom */
+             padding-top: 15px;
+             border-top: 1px dashed rgba(0, 255, 255, 0.2);
+        }
+
+        .arsenal-tags span {
+            display: inline-block;
+            background-color: rgba(0, 255, 255, 0.1);
+            color: var(--color-primary-cyan);
+            padding: 3px 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            border-radius: 3px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+
+        /* --- Features/Tech Section --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -328,257 +630,254 @@
         }
 
         .feature-card {
-            background-color: #fff;
-            border: 1px solid var(--color-border);
+            background-color: transparent;
+            border: 1px solid rgba(0, 255, 255, 0.1);
             padding: 30px 25px;
-            border-radius: 8px;
             text-align: center;
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            box-shadow: var(--shadow-light);
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            position: relative; /* For pseudo elements */
         }
+         .feature-card::before { /* Angle effect */
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px;
+            width: 15px; height: 15px;
+            border-left: 2px solid var(--color-primary-cyan);
+            border-top: 2px solid var(--color-primary-cyan);
+            transition: all var(--transition-speed);
+            opacity: 0.5;
+         }
+         .feature-card::after { /* Angle effect */
+            content: '';
+            position: absolute;
+            bottom: 5px; right: 5px;
+            width: 15px; height: 15px;
+            border-right: 2px solid var(--color-primary-cyan);
+            border-bottom: 2px solid var(--color-primary-cyan);
+            transition: all var(--transition-speed);
+             opacity: 0.5;
+         }
+
 
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-dark);
+            background-color: rgba(0, 255, 255, 0.05);
+            border-color: rgba(0, 255, 255, 0.4);
+             box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
         }
+         .feature-card:hover::before {
+             transform: translate(-3px, -3px);
+             opacity: 1;
+             border-color: var(--color-primary-magenta);
+         }
+         .feature-card:hover::after {
+             transform: translate(3px, 3px);
+             opacity: 1;
+             border-color: var(--color-primary-magenta);
+         }
 
         .feature-icon {
             font-size: 3em;
             margin-bottom: 20px;
-            color: var(--color-primary);
+            color: var(--color-primary-cyan);
+            text-shadow: var(--glow-cyan);
+            transition: color var(--transition-speed), transform var(--transition-speed);
         }
+         .feature-card:hover .feature-icon {
+             color: var(--color-primary-magenta);
+             text-shadow: var(--glow-magenta);
+             transform: scale(1.1);
+         }
 
         .feature-card h3 {
-            font-family: var(--font-body);
+            font-family: var(--font-heading);
             font-size: 1.3em;
-            color: var(--color-dark);
+            color: var(--color-text-light);
             margin-bottom: 10px;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .feature-card p {
             font-size: 0.95em;
             line-height: 1.6;
-            color: var(--color-text);
+            color: var(--color-text-medium);
         }
 
-        /* --- Menu Highlights Section --- */
-        #menu-highlights {
-            background-color: var(--color-secondary); /* Light Peach background */
+
+        /* --- Network/Contact Section --- */
+        #network {
+             background: var(--color-background-medium);
+             padding-bottom: 0; /* Remove bottom padding as footer follows */
         }
-         #menu-highlights .section-title { color: var(--color-dark); }
-         #menu-highlights .section-subtitle { color: var(--color-dark); opacity: 0.8; }
+         #network .section-title { color: var(--color-secondary-lime); text-shadow: var(--glow-lime); }
+         #network .content-section::before { background: linear-gradient(90deg, transparent, var(--color-secondary-lime), transparent); }
 
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .menu-item-card {
-            background-color: var(--color-light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow-dark);
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-item-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 35px rgba(51, 26, 0, 0.3);
-        }
-
-        .menu-item-image {
-            width: 100%;
-            height: 250px;
-            background-color: var(--color-primary); /* Placeholder color */
-             /* Replace with actual image */
-            background-size: cover;
-            background-position: center;
-             display: flex; /* For placeholder text */
-             align-items: center; /* For placeholder text */
-             justify-content: center; /* For placeholder text */
-             color: var(--color-light); /* For placeholder text */
-             font-style: italic; /* For placeholder text */
-             font-size: 1.2em;
-        }
-         /* Placeholder image examples */
-         .menu-item-card:nth-child(1) .menu-item-image { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'); }
-         .menu-item-card:nth-child(2) .menu-item-image { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'); }
-         .menu-item-card:nth-child(3) .menu-item-image { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1603614550297-d60acf198e45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'); }
-
-
-        .menu-item-content {
-            padding: 25px;
-            flex-grow: 1; /* Ensure content fills space */
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-item-content h3 {
-            font-family: var(--font-heading);
-            font-size: 1.6em;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .menu-item-content p {
-            font-size: 0.95em;
-            color: var(--color-text);
-            margin-bottom: 15px;
-            flex-grow: 1; /* Push price down */
-        }
-
-        .menu-item-price {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--color-dark);
-            text-align: right;
-            margin-top: auto; /* Align to bottom */
-        }
-
-         .menu-button-container {
-             text-align: center;
-             margin-top: 50px;
-         }
-
-        /* --- Location/Contact Section --- */
-         #location {
-             padding-bottom: 0; /* Remove bottom padding as map/footer follows */
-         }
-        .location-content {
+        .network-content {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
-            align-items: center;
-             margin-bottom: 60px; /* Space before map */
+            align-items: stretch; /* Make columns equal height */
+             margin-bottom: 80px; /* Space before map */
         }
 
-        .location-details {
+        .network-details {
             flex: 1;
             min-width: 300px;
+             background-color: rgba(10, 5, 20, 0.5);
+             padding: 30px;
+             border: 1px solid rgba(127, 255, 0, 0.3); /* Lime border */
+             clip-path: var(--clip-path-sharp);
         }
 
-        .location-details h3 {
+        .network-details h3 {
             font-family: var(--font-heading);
-            font-size: 1.8em;
-            color: var(--color-primary);
-            margin-bottom: 15px;
+            font-size: 1.6em;
+            color: var(--color-secondary-lime);
+            margin-bottom: 20px;
              display: flex;
              align-items: center;
+             text-shadow: var(--glow-lime);
         }
-         .location-details h3 i {
-             margin-right: 10px;
+         .network-details h3 i {
+             margin-right: 12px;
              font-size: 1.2em;
          }
 
-        .location-details p {
-            margin-bottom: 15px;
+        .network-details p {
+            margin-bottom: 20px;
             font-size: 1.05em;
             line-height: 1.8;
+            color: var(--color-text-medium);
         }
-         .location-details strong {
-             color: var(--color-dark);
+         .network-details strong {
+             color: var(--color-text-light);
+             font-weight: 600;
+         }
+         .network-details a {
+             color: var(--color-primary-cyan);
+             text-decoration: none;
+             border-bottom: 1px dashed var(--color-primary-cyan);
+             transition: color var(--transition-speed), border-color var(--transition-speed);
+         }
+         .network-details a:hover {
+             color: var(--color-secondary-lime);
+             border-bottom-color: var(--color-secondary-lime);
          }
 
 
-        .location-map {
+        .network-map {
             flex: 1.5; /* Map takes slightly more space */
             min-width: 300px;
-            height: 400px;
-            background-color: var(--color-secondary); /* Placeholder */
-            border-radius: 8px;
-            box-shadow: var(--shadow-light);
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             color: var(--color-dark);
-             font-style: italic;
-             /* Embed Google Maps here */
+            min-height: 400px;
+            background-color: var(--color-background-dark); /* Placeholder */
+            border: 1px solid rgba(127, 255, 0, 0.3);
+             clip-path: var(--clip-path-sharp-alt);
+             position: relative;
+             overflow: hidden;
         }
-        .location-map iframe {
+        .network-map iframe {
             width: 100%;
             height: 100%;
             border: 0;
-            border-radius: 8px;
+            filter: grayscale(100%) contrast(1.2) brightness(0.8) invert(100%); /* Cyberpunk map style */
         }
 
 
         /* --- Footer --- */
         .footer {
-            background-color: var(--color-dark);
-            color: var(--color-light);
-            padding: 50px 0 30px;
+            background-color: var(--color-background-dark);
+            color: var(--color-text-medium);
+            padding: 60px 0 30px;
             text-align: center;
-            margin-top: 0; /* No extra margin needed if map is above */
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            position: relative;
         }
+         .footer::before { /* Decorative lines */
+            content: '';
+            position: absolute;
+            bottom: 10px; left: 10%; right: 10%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-primary-magenta), transparent);
+            opacity: 0.2;
+         }
 
         .footer .logo {
-             margin-bottom: 20px;
-             display: inline-block; /* Allow margin bottom */
-             font-size: 2em; /* Slightly smaller footer logo */
+             margin-bottom: 25px;
+             display: inline-block;
+             font-size: 1.6em;
+             opacity: 0.8;
         }
 
-
-        .footer p {
-            color: var(--color-secondary);
-            font-size: 0.9em;
+        .footer-links {
             margin-bottom: 30px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
         }
+
+        .footer-links a {
+            color: var(--color-text-medium);
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
+             text-transform: uppercase;
+             letter-spacing: 1px;
+        }
+        .footer-links a:hover {
+            color: var(--color-primary-cyan);
+            text-shadow: 0 0 5px var(--color-primary-cyan);
+        }
+
 
         .social-links a {
-            color: var(--color-light);
-            margin: 0 15px;
-            font-size: 1.5em;
+            color: var(--color-text-medium);
+            margin: 0 12px;
+            font-size: 1.4em;
             text-decoration: none;
-            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
-            display: inline-block; /* Allows transform */
+            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+            display: inline-block;
         }
 
         .social-links a:hover {
-            color: var(--color-primary);
-            transform: translateY(-3px);
+            color: var(--color-primary-magenta);
+            transform: translateY(-3px) scale(1.1);
+            text-shadow: var(--glow-magenta);
         }
 
         .copyright {
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 0.85em;
-            color: rgba(247, 197, 159, 0.6); /* Faded secondary color */
+            color: rgba(160, 160, 192, 0.5); /* Faded medium text color */
             letter-spacing: 0.5px;
+             text-transform: uppercase;
         }
+         .copyright span { color: var(--color-primary-cyan); opacity: 0.7;}
+
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             html { font-size: 15px; }
-            .hero h1 { font-size: 3.8em; }
-            .hero p { font-size: 1.2em; }
+            .hero h1 { font-size: 4em; }
+            .hero p.subtitle { font-size: 1.3em; }
             .section-title { font-size: 2.5em; }
-             .about-content, .about-image { text-align: center; }
-             .location-content { flex-direction: column; }
-             .location-map { width: 100%; }
+             .manifesto-content { order: 2; text-align: center; }
+             .manifesto-visual { order: 1; margin-bottom: 40px; height: 300px; }
+             .network-content { flex-direction: column; }
+             .network-map { min-height: 350px; }
         }
 
         @media (max-width: 768px) {
             .nav ul {
-                display: none; /* Hide desktop nav */
+                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 100%; /* Position below header */
                 left: 0;
                 width: 100%;
-                background-color: rgba(51, 26, 0, 0.98);
+                background-color: rgba(10, 5, 20, 0.98);
+                backdrop-filter: blur(5px);
                 padding: 10px 0;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-top: 1px solid rgba(0, 255, 255, 0.2);
             }
             .nav ul.active {
-                display: flex; /* Show when active */
+                display: flex;
             }
             .nav li {
                 margin: 10px 0;
@@ -586,38 +885,46 @@
             }
             .nav a {
                  padding: 10px 20px;
-                 display: block; /* Make links full width */
+                 display: block;
+                 width: 100%;
             }
             .nav a::after { display: none; /* Remove underline effect */ }
             .nav-toggle {
                 display: block; /* Show hamburger icon */
             }
 
-            .hero { padding: 160px 0 100px; min-height: 70vh; }
-            .hero h1 { font-size: 3em; }
-            .hero p { font-size: 1.1em; }
+            .hero { padding: 180px 0 100px; min-height: 80vh; }
+            .hero h1 { font-size: 3.2em; }
+            .hero p.subtitle { font-size: 1.2em; }
 
-            .cta-button { padding: 12px 28px; font-size: 1.1em; }
-            .cta-button.secondary { margin-left: 0; margin-top: 15px; }
+            .cta-button { padding: 12px 30px; font-size: 1em; }
+             .cta-button.secondary { margin-left: 0; margin-top: 20px; display: block; /* Stack buttons */ }
 
-            #about .container { flex-direction: column; }
-            .about-image { margin-top: 30px; }
+            #manifesto .container { gap: 30px; }
+            .manifesto-visual { clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%); }
 
-            .features-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-            .menu-grid { grid-template-columns: 1fr; } /* Stack menu items */
-            .content-section { padding: 60px 0; }
+            .arsenal-grid { grid-template-columns: 1fr; gap: 30px; }
+            .features-grid { grid-template-columns: 1fr; gap: 25px; }
+            .content-section { padding: 80px 0; }
             .section-title { font-size: 2.2em; }
             .section-subtitle { margin-bottom: 40px; }
+            .container { padding: 0 20px; }
         }
 
         @media (max-width: 480px) {
             html { font-size: 14px; }
-            .logo { font-size: 1.8em; }
-            .hero h1 { font-size: 2.5em; }
-            .hero p { font-size: 1em; }
-            .cta-button { width: 80%; /* Make buttons wider */ }
-            .menu-item-image { height: 200px; }
-            .footer .social-links a { margin: 0 10px; font-size: 1.4em; }
+            body { background-size: 30px 30px; } /* Smaller grid on small screens */
+             .hero::before { background-size: 60px 60px; }
+            .logo { font-size: 1.6em; }
+            .hero h1 { font-size: 2.6em; letter-spacing: 1px; }
+            .hero p.subtitle { font-size: 1.1em; }
+            .cta-button { width: 90%; }
+             .cta-button.secondary { width: 90%; }
+
+            .arsenal-image-placeholder { height: 180px; }
+            .footer-links a { margin: 0 10px; display: block; margin-bottom: 10px; }
+             .social-links a { margin: 0 8px; font-size: 1.3em; }
+             .copyright { font-size: 0.8em; }
         }
 
     </style>
@@ -626,17 +933,17 @@
 
     <header class="header" id="header">
         <div class="container">
-            <a href="#hero" class="logo"><i class="fas fa-burger"></i>Burger Bliss</a>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <a href="#hero" class="logo"><i class="fas fa-crosshairs"></i> Chrome<span>&</span>Caliber</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="nav" id="nav-menu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#menu-highlights">Menu</a></li>
-                    <li><a href="#location">Visit Us</a></li>
-                    <li><a href="#" class="cta-button small-nav-button" style="padding: 8px 15px; font-size: 0.9em; margin-left: 15px; display: none;">Order Now</a></li> <!-- Hide on desktop nav initially -->
+                    <li><a href="#hero" class="active">///Initialize</a></li>
+                    <li><a href="#manifesto">///Manifesto</a></li>
+                    <li><a href="#arsenal">///Arsenal</a></li>
+                    <li><a href="#features">///Tech_Spec</a></li>
+                    <li><a href="#network">///Network</a></li>
                 </ul>
             </nav>
         </div>
@@ -646,133 +953,151 @@
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="hero-content">
-                <h1>The Ultimate <span>Burger</span> Experience</h1>
-                <p>Handcrafted patties, fresh ingredients, and sauces made with love. Taste the difference.</p>
-                <a href="#menu-highlights" class="cta-button">View Our Menu</a>
-                <a href="#" class="cta-button secondary">Order Online</a>
+                <h1><span class="glitch-text" data-text="AUGMENT">AUGMENT</span> YOUR REALITY</h1>
+                <p class="subtitle">// Precision hardware for the chrome-plated future. Forge your edge in the neon dawn.</p>
+                <a href="#arsenal" class="cta-button">Enter the Arsenal</a>
+                <a href="#network" class="cta-button secondary">Access Network</a>
             </div>
+             <!-- Add more visual flair maybe? -->
+             <!-- <div class="hero-scanlines"></div> -->
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="content-section">
+        <!-- Manifesto/About Section -->
+        <section id="manifesto" class="content-section">
             <div class="container">
-                <div class="about-content">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Our Story</h2>
-                     <h3>Crafted with Passion, Served with Joy</h3>
-                    <p>Burger Bliss started with a simple idea: make the best darn burger you've ever tasted. We believe in quality, from sourcing the freshest local ingredients to handcrafting each patty daily.</p>
-                    <p>It's more than just food; it's about creating moments of pure burger happiness. Come share the joy with us!</p>
-                    <a href="#" class="cta-button" style="background-color: var(--color-dark); color: var(--color-light); border-color: var(--color-dark);">Learn More</a>
+                <div class="manifesto-content">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">/// Our <span style="color: var(--color-primary-magenta); text-shadow: var(--glow-magenta);">Manifesto</span></h2>
+                    <h3>Engineered for the Edge</h3>
+                    <p>In the sprawl of tomorrow, <strong>survival is adaptation</strong>. Chrome & Caliber was forged in the neon-drenched alleys and data streams, born from the need for reliable, cutting-edge hardware. We don't just sell firearms; we provide <strong>extensions of intent</strong>.</p>
+                    <p>Our philosophy is simple: <strong>Precision. Power. Progress.</strong> Every piece is meticulously crafted, integrating bleeding-edge tech with battle-tested design. For the Operators navigating the shadows, the Corps demanding dominance, or the Individuals carving their path – we are your source.</p>
+                    <p><strong>// Upgrade your existence. Equip the future.</strong></p>
                 </div>
-                <div class="about-image">
-                    <!-- Replace with a real image of the restaurant interior or happy customers -->
-                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80" alt="Delicious Burger Being Prepared">
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="content-section bg-dark">
-            <div class="container">
-                <h2 class="section-title">Why Choose Burger Bliss?</h2>
-                <p class="section-subtitle">We're committed to delivering not just a meal, but an unforgettable flavor adventure.</p>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <span class="feature-icon"><i class="fas fa-seedling"></i></span>
-                        <h3>Fresh Ingredients</h3>
-                        <p>Locally sourced produce and premium quality meats delivered daily.</p>
-                    </div>
-                    <div class="feature-card">
-                        <span class="feature-icon"><i class="fas fa-hand-paper"></i></span> <!-- Using hand as 'handcrafted' -->
-                        <h3>Handcrafted Patties</h3>
-                        <p>Never frozen, always perfectly seasoned and grilled to perfection.</p>
-                    </div>
-                    <div class="feature-card">
-                        <span class="feature-icon"><i class="fas fa-pepper-hot"></i></span> <!-- Icon for sauce/flavor -->
-                        <h3>Secret Sauces</h3>
-                        <p>Our unique, house-made sauces elevate every bite.</p>
-                    </div>
-                    <div class="feature-card">
-                        <span class="feature-icon"><i class="fas fa-shipping-fast"></i></span>
-                        <h3>Fast & Friendly</h3>
-                        <p>Quick service whether you dine-in, take-out, or get delivery.</p>
-                    </div>
+                <div class="manifesto-visual">
+                    <!-- Placeholder Schematic/Icon -->
+                    <i class="fas fa-atom"></i>
+                    <!-- Could be replaced with an SVG animation or schematic graphic -->
                 </div>
             </div>
         </section>
 
-        <!-- Menu Highlights Section -->
-        <section id="menu-highlights" class="content-section">
+        <!-- Arsenal / Product Section -->
+        <section id="arsenal" class="content-section">
             <div class="container">
-                <h2 class="section-title">Signature Burgers</h2>
-                <p class="section-subtitle">Get a taste of our most popular creations. Check our full menu for more!</p>
-                <div class="menu-grid">
-                    <!-- Menu Item 1 -->
-                    <div class="menu-item-card">
-                        <div class="menu-item-image" title="The Bliss Classic">
-                            <!-- Image loaded via CSS background -->
+                <h2 class="section-title">// System Arsenal //</h2>
+                <p class="section-subtitle">Curated selection of high-impact hardware. Filter by designation or function. Full catalog access granted upon secure connection.</p>
+                <div class="arsenal-grid">
+                    <!-- Arsenal Item 1 -->
+                    <div class="arsenal-card">
+                        <div class="arsenal-image-placeholder">
+                            <i class="fas fa-bolt"></i> <!-- Placeholder icon -->
                         </div>
-                        <div class="menu-item-content">
-                            <h3>The Bliss Classic</h3>
-                            <p>Our signature beef patty, melted cheddar, crisp lettuce, tomato, onion, pickles, and Bliss sauce on a toasted brioche bun.</p>
-                            <div class="menu-item-price">$12.99</div>
-                        </div>
-                    </div>
-                    <!-- Menu Item 2 -->
-                    <div class="menu-item-card">
-                         <div class="menu-item-image" title="Spicy Baja Burger">
-                            <!-- Image loaded via CSS background -->
-                        </div>
-                        <div class="menu-item-content">
-                            <h3>Spicy Baja Burger</h3>
-                            <p>Juicy patty topped with pepper jack cheese, avocado, jalapeños, crispy onion straws, and a zesty chipotle mayo.</p>
-                            <div class="menu-item-price">$14.50</div>
+                        <div class="arsenal-content">
+                            <h3>Neuro-Dart Pistol "Synapse"</h3>
+                            <p>Compact sidearm delivering targeted electro-neural pulses. Non-lethal takedown or system disruption capabilities.</p>
+                            <div class="arsenal-tags">
+                                <span>Sidearm</span>
+                                <span>Non-Lethal</span>
+                                <span>EMP</span>
+                                <span>Stealth</span>
+                            </div>
                         </div>
                     </div>
-                    <!-- Menu Item 3 -->
-                    <div class="menu-item-card">
-                         <div class="menu-item-image" title="Mushroom Swiss Melt">
-                            <!-- Image loaded via CSS background -->
+                    <!-- Arsenal Item 2 -->
+                    <div class="arsenal-card">
+                         <div class="arsenal-image-placeholder">
+                             <i class="fas fa-fire"></i> <!-- Placeholder icon -->
+                         </div>
+                        <div class="arsenal-content">
+                            <h3>Plasma Carbine "Helios" MK.IV</h3>
+                            <p>Versatile directed energy weapon. Variable charge settings for armor penetration or area denial. Integrated targeting AI.</p>
+                             <div class="arsenal-tags">
+                                <span>Rifle</span>
+                                <span>Energy</span>
+                                <span>Anti-Armor</span>
+                                <span>AI-Assist</span>
+                             </div>
                         </div>
-                        <div class="menu-item-content">
-                            <h3>Mushroom Swiss Melt</h3>
-                            <p>Sautéed mushrooms, melted Swiss cheese, caramelized onions, and garlic aioli smothering our classic patty.</p>
-                            <div class="menu-item-price">$13.75</div>
+                    </div>
+                    <!-- Arsenal Item 3 -->
+                    <div class="arsenal-card">
+                         <div class="arsenal-image-placeholder">
+                             <i class="fas fa-wave-square"></i> <!-- Placeholder icon -->
+                         </div>
+                        <div class="arsenal-content">
+                            <h3>Sonic Projector "Banshee"</h3>
+                            <p>Focused acoustic wave emitter. Capable of disorientation, structural damage, or data transmission disruption via harmonic resonance.</p>
+                             <div class="arsenal-tags">
+                                <span>Heavy</span>
+                                <span>Acoustic</span>
+                                <span>Crowd Control</span>
+                                <span>Utility</span>
+                             </div>
                         </div>
                     </div>
                 </div>
-                 <div class="menu-button-container">
-                    <a href="#" class="cta-button">View Full Menu</a>
+                 <div style="text-align: center; margin-top: 60px;">
+                    <a href="#" class="cta-button secondary">Request Full Catalog [Secure Link]</a>
                  </div>
             </div>
         </section>
 
-        <!-- Location Section -->
-        <section id="location" class="content-section">
+        <!-- Features/Tech Section -->
+        <section id="features" class="content-section">
             <div class="container">
-                <h2 class="section-title">Visit Our Grill</h2>
-                <p class="section-subtitle">Find us sizzling up the best burgers in town. Drop by and say hi!</p>
-                <div class="location-content">
-                    <div class="location-details">
-                        <h3><i class="fas fa-map-marker-alt"></i> Our Address</h3>
+                <h2 class="section-title">// Technological Edge //</h2>
+                <p class="section-subtitle">Core systems and proprietary advancements integrated into our hardware solutions. Define the engagement.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon"><i class="fas fa-brain"></i></span>
+                        <h3>Neural Interface</h3>
+                        <p>Direct bio-feedback loop for enhanced targeting, recoil compensation, and system monitoring.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon"><i class="fas fa-atom"></i></span>
+                        <h3>Adaptive Power Cores</h3>
+                        <p>Modular energy cells adjusting output based on tactical needs. Hot-swappable for sustained operation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon"><i class="fas fa-shield-alt"></i></span>
+                        <h3>Chameleon Plating</h3>
+                        <p>Active camouflage systems utilizing meta-materials for multi-spectrum signature reduction.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon"><i class="fas fa-project-diagram"></i></span>
+                        <h3>Predictive Trajectory AI</h3>
+                        <p>Onboard processors calculate environmental factors and target movement for superior accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network/Contact Section -->
+        <section id="network" class="content-section">
+            <div class="container">
+                <h2 class="section-title">// Access the Network //</h2>
+                <p class="section-subtitle">Establish secure comms or designate rendezvous coordinates. Our grid nodes operate in the deep strata of the city.</p>
+                <div class="network-content">
+                    <div class="network-details">
+                        <h3><i class="fas fa-signal"></i> Secure Comms Channel</h3>
                         <p>
-                            <strong>Burger Bliss Central</strong><br>
-                            123 Flavor Street<br>
-                            Foodie Town, FT 54321
+                            <strong>Encryption Level:</strong> Quantum-Entangled<br>
+                            <strong>Access Point:</strong> <a href="mailto:uplink@chrome-caliber.sec">uplink@chrome-caliber.sec</a><br>
+                            <strong>Voice Protocol:</strong> +1 [REDACTED]-77-CYBER
                         </p>
-                        <h3><i class="fas fa-clock"></i> Opening Hours</h3>
+                        <h3><i class="fas fa-map-marker-alt"></i> Primary Node Location</h3>
                         <p>
-                            <strong>Mon - Thu:</strong> 11:00 AM - 10:00 PM<br>
-                            <strong>Fri - Sat:</strong> 11:00 AM - 11:00 PM<br>
-                            <strong>Sun:</strong> 12:00 PM - 9:00 PM
+                            <strong>Sector Designation:</strong> Neo-Kyoto // Sub-Level 7<br>
+                            <strong>Grid Reference:</strong> 774.98.AQR<br>
+                            (Physical access requires Level Gamma clearance)
                         </p>
-                         <h3><i class="fas fa-phone"></i> Contact Us</h3>
+                         <h3><i class="fas fa-clock"></i> Operational Cycles</h3>
                          <p>
-                             Give us a call: <a href="tel:+1234567890">(123) 456-7890</a><br>
-                             Order online: <a href="#" target="_blank" rel="noopener noreferrer">Order Now!</a>
+                             <strong>Automated Systems:</strong> 24/7/365<br>
+                             <strong>Agent Interface:</strong> Standard Cycle 0900 - 2100 [UTC+9]
                          </p>
                     </div>
-                    <div class="location-map">
-                        <!-- Embed Google Map Here -->
+                    <div class="network-map">
+                        <!-- Embed Map - Styled with CSS filter -->
                          <iframe
                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019986876666!2d-122.41941568468193!3d37.77492957975918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808c5b5b0f4b%3A0x3f1f3f7f3f7f3f7f!2sSan%20Francisco%20City%20Hall!5e0!3m2!1sen!2sus!4v1651111111111!5m2!1sen!2sus"
                              width="600"
@@ -781,7 +1106,7 @@
                              allowfullscreen=""
                              loading="lazy"
                              referrerpolicy="no-referrer-when-downgrade"
-                             title="Restaurant Location Map"></iframe>
+                             title="Network Node Map"></iframe>
                     </div>
                 </div>
             </div>
@@ -790,16 +1115,20 @@
 
     <footer class="footer">
         <div class="container">
-            <a href="#hero" class="logo"><i class="fas fa-burger"></i>Burger Bliss</a>
-            <p>Handcrafted burgers made with passion. Taste the bliss in every bite.</p>
+            <a href="#hero" class="logo"><i class="fas fa-crosshairs"></i> Chrome<span>&</span>Caliber</a>
+            <div class="footer-links">
+                 <a href="#">///Data_Policy</a>
+                 <a href="#">///Terms_Of_Acquisition</a>
+                 <a href="#">///Secure_Uplink</a>
+             </div>
             <div class="social-links">
-                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                 <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                 <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+                 <a href="#" aria-label="Encrypted Comms"><i class="fab fa-discord"></i></a> <!-- Using Discord as example -->
+                 <a href="#" aria-label="Secure Feed"><i class="fab fa-twitch"></i></a> <!-- Using Twitch as example -->
+                 <a href="#" aria-label="Matrix Access"><i class="fas fa-code-branch"></i></a> <!-- Generic tech icon -->
+                 <a href="#" aria-label="Darknet Forum"><i class="fab fa-reddit-alien"></i></a> <!-- Using Reddit as example -->
              </div>
             <p class="copyright">
-                &copy; <span id="current-year"></span> Burger Bliss. All Rights Reserved. Crafted with <i class="fas fa-heart" style="color: var(--color-primary);"></i>.
+                &copy; <span id="current-year"></span> Chrome & Caliber // Division of Kain Industries // All Rights Reserved // System Time: <span id="system-time">--:--:--</span>
             </p>
         </div>
     </footer>
@@ -810,13 +1139,27 @@
             const navMenu = document.getElementById('nav-menu');
             const navToggle = document.getElementById('nav-toggle');
             const navLinks = document.querySelectorAll('.nav a[href^="#"]');
-            const smallNavButton = document.querySelector('.small-nav-button');
             const currentYearSpan = document.getElementById('current-year');
+            const systemTimeSpan = document.getElementById('system-time');
 
             // Set current year in footer
             if (currentYearSpan) {
                 currentYearSpan.textContent = new Date().getFullYear();
             }
+
+             // Update system time
+            const updateTime = () => {
+                if (systemTimeSpan) {
+                    const now = new Date();
+                    const hours = String(now.getHours()).padStart(2, '0');
+                    const minutes = String(now.getMinutes()).padStart(2, '0');
+                    const seconds = String(now.getSeconds()).padStart(2, '0');
+                    systemTimeSpan.textContent = `${hours}:${minutes}:${seconds}`;
+                }
+            };
+             updateTime();
+             setInterval(updateTime, 1000);
+
 
             // Sticky Header background change on scroll
             const handleScroll = () => {
@@ -826,23 +1169,11 @@
                     header.classList.remove('scrolled');
                 }
             };
-            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', handleScroll, { passive: true });
             handleScroll(); // Initial check
 
             // Mobile Navigation Toggle
             if (navToggle && navMenu) {
-                 // Show/hide small nav button based on screen size
-                 const checkNavButtonVisibility = () => {
-                     if (window.innerWidth <= 768) {
-                         smallNavButton.style.display = 'inline-block';
-                     } else {
-                         smallNavButton.style.display = 'none';
-                         navMenu.classList.remove('active'); // Ensure menu is closed if resizing larger
-                     }
-                 };
-                 checkNavButtonVisibility();
-                 window.addEventListener('resize', checkNavButtonVisibility);
-
                 navToggle.addEventListener('click', () => {
                     navMenu.classList.toggle('active');
                     // Toggle burger/close icon
@@ -850,9 +1181,11 @@
                     if (navMenu.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
                         icon.classList.add('fa-times');
+                        navToggle.style.boxShadow = 'var(--glow-magenta)'; // Indicate active
                     } else {
                         icon.classList.remove('fa-times');
                         icon.classList.add('fa-bars');
+                         navToggle.style.boxShadow = 'none';
                     }
                 });
 
@@ -864,6 +1197,7 @@
                              const icon = navToggle.querySelector('i');
                              icon.classList.remove('fa-times');
                              icon.classList.add('fa-bars');
+                              navToggle.style.boxShadow = 'none';
                          }
                      });
                  });
@@ -877,13 +1211,14 @@
                          const icon = navToggle.querySelector('i');
                          icon.classList.remove('fa-times');
                          icon.classList.add('fa-bars');
+                         navToggle.style.boxShadow = 'none';
                      }
                  });
             }
 
 
             // Smooth Scroll & Active Link Highlighting
-            const headerHeight = header?.offsetHeight || 70;
+            const headerHeight = header?.offsetHeight || 60;
 
             navLinks.forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -892,13 +1227,15 @@
                     const targetElement = document.querySelector(targetId);
 
                     if (targetElement) {
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight + 1; // +1 for pixel perfect
+                        // Adjusted scroll position calculation for better alignment
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10; // Added offset
 
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
                         });
-                        // Don't setActiveLink here, let scroll handler do it for accuracy
+                        // Update active link immediately for responsiveness (scroll handler might lag)
+                        // setActiveLink(targetId);
                     }
                 });
             });
@@ -906,28 +1243,33 @@
             // Active link on scroll
             const sections = document.querySelectorAll('section[id]');
 
-            const setActiveLink = () => {
-                let currentSectionId = '#hero'; // Default
-                const scrollPosition = window.pageYOffset;
+            const setActiveLink = (forcedId = null) => {
+                let currentSectionId = forcedId;
 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - headerHeight * 1.5; // Adjust threshold
-                    const sectionBottom = sectionTop + section.offsetHeight;
+                if (!currentSectionId) {
+                    const scrollPosition = window.pageYOffset;
+                    let foundSection = false;
 
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                         currentSectionId = `#${section.getAttribute('id')}`;
-                    }
-                });
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop - headerHeight * 1.5; // Adjust threshold
+                        const sectionBottom = sectionTop + section.offsetHeight;
 
-                 // Check if scrolled to the very top
-                 if (scrollPosition < headerHeight) {
-                    currentSectionId = '#hero';
-                 }
-                  // Check if scrolled to the very bottom (for contact/location)
-                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) { // 50px buffer
-                     const lastSection = sections[sections.length - 1];
-                     if(lastSection) currentSectionId = `#${lastSection.id}`;
-                 }
+                        if (!foundSection && scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                             currentSectionId = `#${section.getAttribute('id')}`;
+                             foundSection = true;
+                        }
+                    });
+
+                     // Default to hero if near top or no section found yet
+                     if (!foundSection && scrollPosition < sections[0].offsetTop - headerHeight * 1.5) {
+                         currentSectionId = '#hero';
+                     }
+                      // Check if scrolled to the very bottom (for contact/network)
+                     if (!foundSection && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) { // 50px buffer
+                         const lastSection = sections[sections.length - 1];
+                         if(lastSection) currentSectionId = `#${lastSection.id}`;
+                     }
+                }
 
 
                 navLinks.forEach(link => {
@@ -938,14 +1280,49 @@
                 });
             };
 
-            // Debounce scroll event
+            // Debounce scroll event for performance
             let scrollTimeout;
             window.addEventListener('scroll', () => {
                 clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(setActiveLink, 50);
+                scrollTimeout = setTimeout(() => setActiveLink(), 50); // Debounce time
             }, { passive: true });
 
-            setActiveLink(); // Initial check
+            setActiveLink(); // Initial check on load
+
+            // --- Optional: Add simple scroll reveal ---
+            const revealElements = document.querySelectorAll('.content-section > .container > *:not(.section-title):not(.section-subtitle), .arsenal-card, .feature-card');
+
+            const observerOptions = {
+              root: null, // relative to document viewport
+              rootMargin: '0px',
+              threshold: 0.1 // 10% visible
+            };
+
+            const revealCallback = (entries, observer) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+                   // Optional: Unobserve after revealing to save resources
+                   // observer.unobserve(entry.target);
+                } else {
+                    // Optional: re-hide if scrolling up
+                    // entry.target.style.opacity = '0';
+                    // entry.target.style.transform = 'translateY(20px)';
+                }
+              });
+            };
+
+            const observer = new IntersectionObserver(revealCallback, observerOptions);
+
+            revealElements.forEach(el => {
+              // Initial state (hidden)
+              el.style.opacity = '0';
+              el.style.transform = 'translateY(20px)';
+              el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+              observer.observe(el);
+            });
+
         });
     </script>
 
